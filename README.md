@@ -2,6 +2,8 @@
 
 Premium React/Vite website for Vedanta Netralya, based on the original Haldwani hospital information.
 
+Live site: https://godofwar4344r.github.io/vedanta-netralya/
+
 ## Run Locally
 
 ```bash
