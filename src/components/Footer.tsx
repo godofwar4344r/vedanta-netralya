@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
       <div className="max-w-[1800px] mx-auto px-6 lg:px-16 pt-20 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-cream/10">
           
-          {/* Column 1: Brand details (col-span-4) */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
+          {/* Column 1: Brand details (col-span-3) */}
+          <div className="lg:col-span-3 flex flex-col gap-6">
             <Link to="/" className="inline-flex items-center self-start bg-white px-4 py-2 rounded-2xl shadow-md border border-white/20 hover:scale-[1.02] transition-transform duration-300">
               <img src={logoImg} alt="Vedanta Netralya" className="h-10 md:h-12 object-contain" />
             </Link>
@@ -49,8 +49,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Specialties & Services (col-span-3) */}
-          <div className="lg:col-span-3 flex flex-col gap-6">
+          {/* Column 2: Specialties & Services (col-span-2) */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
             <h3 className="text-[10px] tracking-[0.25em] font-black uppercase text-brand-teal font-body">
               <EditableText id="footer-services-title">Eye Specialties</EditableText>
             </h3>
@@ -99,7 +99,46 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 4: Contact details (col-span-3) */}
+          {/* Column 4: Health Blog (col-span-2) */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            <h3 className="text-[10px] tracking-[0.25em] font-black uppercase text-brand-teal font-body">
+              <EditableText id="footer-blog-title">Health Blog</EditableText>
+            </h3>
+            <div className="flex flex-col gap-4 text-xs font-lora">
+              {[
+                {
+                  title: "femto-cataract: robotic precision",
+                  date: "Jun 12, 2026",
+                  link: "/cataract"
+                },
+                {
+                  title: "living with glaucoma: key tips",
+                  date: "May 28, 2026",
+                  link: "/glaucoma-services"
+                },
+                {
+                  title: "implantable lenses (icl) guide",
+                  date: "May 15, 2026",
+                  link: "/refractive-surgery"
+                }
+              ].map((post, idx) => (
+                <Link 
+                  key={idx} 
+                  to={post.link}
+                  className="group flex flex-col gap-1 text-cream/70 hover:text-brand-teal-bright transition-colors duration-300"
+                >
+                  <span className="font-merriweather text-[10px] tracking-wider uppercase font-bold text-cream/90 group-hover:text-brand-teal-bright transition-colors line-clamp-2 leading-snug">
+                    {post.title}
+                  </span>
+                  <span className="text-[8px] tracking-widest text-cream/40 uppercase font-bold font-body">
+                    {post.date}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 5: Contact details (col-span-3) */}
           <div className="lg:col-span-3 flex flex-col gap-6">
             <h3 className="text-[10px] tracking-[0.25em] font-black uppercase text-brand-teal font-body">
               <EditableText id="footer-contact-title">Contact & Help</EditableText>
