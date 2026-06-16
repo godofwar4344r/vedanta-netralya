@@ -189,16 +189,33 @@ const Chatbot: React.FC = () => {
 
   return (
     <>
-      {/* Floating Chat Bubble Button */}
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 z-[999] bg-brand-navy border border-brand-teal/40 text-cream p-5 rounded-full shadow-2xl hover:bg-brand-teal hover:text-brand-navy hover:shadow-brand-teal/30 transition-all flex items-center justify-center glow-teal"
-        aria-label="Open AI Assistant"
-      >
-        <MessageSquare className="w-6 h-6" />
-      </motion.button>
+      {/* Floating AI Bot Card Widget Button */}
+      {!isOpen && (
+        <motion.button
+          onClick={() => setIsOpen(true)}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-8 right-8 z-[999] p-2.5 pr-4 md:p-3 md:pr-5 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 w-[170px] md:w-[200px] select-none text-left glow-navy"
+          aria-label="Open AI Assistant"
+        >
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-brand-teal/10 text-brand-teal relative">
+            <MessageSquare className="w-4.5 h-4.5 md:w-5 md:h-5" />
+            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500 animate-ping" />
+            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500" />
+          </div>
+          <div className="min-w-0 flex flex-col leading-tight">
+            <span className="text-[7px] md:text-[8px] tracking-widest font-black uppercase text-brand-teal">
+              AI Vision Bot
+            </span>
+            <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate">
+              Ocular Assistant
+            </span>
+            <span className="text-[7px] md:text-[8px] font-bold text-green-400 block mt-0.5">
+              Online Now
+            </span>
+          </div>
+        </motion.button>
+      )}
 
       {/* Chat Window Popup */}
       <AnimatePresence>

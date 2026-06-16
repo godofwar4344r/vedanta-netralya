@@ -332,7 +332,7 @@ const Layout: React.FC = () => {
 
       {/* Floating Google Maps Location Button */}
       {/* Floating Google Maps Location Widget & Button */}
-      <div className="fixed bottom-24 right-8 z-[999] flex flex-col items-end">
+      <div className="fixed bottom-28 right-8 z-[999] flex flex-col items-end">
         <AnimatePresence>
           {isLocationWidgetOpen && (
             <motion.div
