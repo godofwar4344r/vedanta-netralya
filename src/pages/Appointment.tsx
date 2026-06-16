@@ -16,9 +16,10 @@ const Appointment: React.FC = () => {
   });
 
   const doctors = [
-    { name: 'Dr. Sameer Varma', specialty: 'Cataract & Glaucoma' },
-    { name: 'Dr. Kanhaiya Mittal', specialty: 'Retina & VR Surgery' },
-    { name: 'Dr. R.J.K. Singh', specialty: 'Comprehensive Ophthalmology' }
+    { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive'] },
+    { name: 'Dr. Kanhaiya Mittal', specialties: ['Retina'] },
+    { name: 'Dr. Davinder Tyagi', specialties: ['Retina'] },
+    { name: 'Dr. R.J.K. Singh', specialties: ['Cataract'] }
   ];
 
   const timeSlots = [
@@ -107,9 +108,12 @@ const Appointment: React.FC = () => {
                     className="bg-cream/5 border border-cream/15 rounded-2xl px-5 py-4 text-sm text-cream focus:outline-none focus:border-brand-teal"
                   >
                     <option value="" className="text-brand-navy">Choose Specialty...</option>
-                    <option value="Cataract" className="text-brand-navy">Robotic FLACS Cataract</option>
-                    <option value="LASIK" className="text-brand-navy">Bladeless Femto-LASIK / SMILE</option>
+                    <option value="Cataract" className="text-brand-navy">Cataract Surgery</option>
+                    <option value="Retina" className="text-brand-navy">Retina & VR Surgery</option>
+                    <option value="Glaucoma" className="text-brand-navy">Glaucoma Management</option>
+                    <option value="Oculoplasty" className="text-brand-navy">Oculoplasty Services</option>
                     <option value="Pediatric" className="text-brand-navy">Pediatric Ophthalmology & Squint</option>
+                    <option value="Refractive" className="text-brand-navy">Refractive Surgery (ICL / Glass Removal)</option>
                   </select>
                 </div>
 
@@ -123,7 +127,7 @@ const Appointment: React.FC = () => {
                   >
                     <option value="" className="text-brand-navy">Choose Surgeon...</option>
                     {doctors
-                      .filter(d => !formData.specialty || d.specialty === formData.specialty)
+                      .filter(d => !formData.specialty || d.specialties.includes(formData.specialty))
                       .map((d, i) => (
                         <option key={i} value={d.name} className="text-brand-navy">{d.name}</option>
                       ))

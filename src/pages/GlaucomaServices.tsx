@@ -1,10 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowUpRight, CheckCircle2, Search, Activity, Award, AlertTriangle, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { Sparkles, ArrowUpRight, CheckCircle2, Search, Award, AlertTriangle, ShieldAlert, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { EditableText, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
+import serviceGlaucoma from '../assets/service-glaucoma.png';
 
 const GlaucomaServices: React.FC = () => {
+  const [isTunnelVision, setIsTunnelVision] = React.useState(false);
   const diagnosticTools = [
     {
       title: 'Tonometry (NCT & Applanation)',
@@ -67,17 +70,23 @@ const GlaucomaServices: React.FC = () => {
             </Link>
           </div>
           
-          {/* Visual Accoutrement */}
-          <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10 flex items-center justify-center p-8">
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy via-brand-navy/95 to-brand-teal/20 opacity-90" />
-            <div className="relative z-10 text-center">
-              <div className="w-20 h-20 rounded-full bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal mx-auto mb-6">
-                <Activity className="w-10 h-10" />
+          {/* Full Bleed Image Placement */}
+          <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
+            <EditableMedia
+              id="glaucoma-image-hero"
+              src={serviceGlaucoma}
+              alt="Glaucoma Early Detection"
+              className="w-full h-full object-cover opacity-90 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent p-8 flex items-end pointer-events-none">
+              <div>
+                <span className="text-[10px] text-brand-teal tracking-[0.3em] font-black uppercase">
+                  <EditableText id="glaucoma-visual-title">Early Detection</EditableText>
+                </span>
+                <p className="text-cream text-lg font-merriweather font-bold mt-1">
+                  <EditableText id="glaucoma-visual-desc">Humphrey visual fields and RNFL OCT.</EditableText>
+                </p>
               </div>
-              <h2 className="text-cream text-2xl font-merriweather font-bold mb-2">Early Detection</h2>
-              <p className="text-cream/60 text-xs font-lora max-w-sm mx-auto">
-                Comprehensive screening including Goldmann Applanation, Visual Fields, and RNFL OCT.
-              </p>
             </div>
           </div>
         </div>
@@ -135,6 +144,77 @@ const GlaucomaServices: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Interactive Tunnel Vision Simulator */}
+        <div className="mb-24 bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-xl border border-cream/10">
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-teal/5 blur-3xl pointer-events-none" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Description */}
+            <div className="lg:col-span-5">
+              <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-3 block">[ Interactive Visualizer ]</span>
+              <h2 className="text-3xl font-black mb-4 leading-tight">Glaucoma Tunnel Vision</h2>
+              <p className="text-sm text-cream/70 font-lora leading-relaxed mb-6">
+                Glaucoma is often called the "silent thief of sight" because it causes irreversible peripheral vision loss without pain or warnings. Toggle below to experience how advanced glaucoma restricts your visual field.
+              </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setIsTunnelVision(false)}
+                  className={`px-6 py-3.5 rounded-full text-[10px] tracking-widest uppercase font-black transition-all ${
+                    !isTunnelVision
+                      ? 'bg-brand-teal text-brand-navy'
+                      : 'bg-cream/10 text-cream/80 hover:bg-cream/20'
+                  }`}
+                >
+                  Normal Vision
+                </button>
+                <button
+                  onClick={() => setIsTunnelVision(true)}
+                  className={`px-6 py-3.5 rounded-full text-[10px] tracking-widest uppercase font-black transition-all ${
+                    isTunnelVision
+                      ? 'bg-brand-teal text-brand-navy animate-pulse'
+                      : 'bg-cream/10 text-cream/80 hover:bg-cream/20'
+                  }`}
+                >
+                  Tunnel Vision
+                </button>
+              </div>
+            </div>
+
+            {/* Right Display */}
+            <div className="lg:col-span-7">
+              <div className="relative w-full aspect-[16/9] bg-[#030712] rounded-3xl border border-cream/10 overflow-hidden shadow-2xl">
+                {/* Base Viewport Image */}
+                <div 
+                  className={`w-full h-full relative transition-all duration-700 select-none ${
+                    isTunnelVision ? 'scale-[1.03]' : ''
+                  }`}
+                >
+                  <img 
+                    src={serviceGlaucoma} 
+                    alt="Glaucoma Visual Simulator" 
+                    className="w-full h-full object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/40 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Glaucoma Tunnel Vision Vignette Overlay */}
+                <div 
+                  className={`absolute inset-0 pointer-events-none z-20 transition-opacity duration-700 ${
+                    isTunnelVision ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{
+                    background: 'radial-gradient(circle at 50% 50%, transparent 12%, rgba(3, 7, 18, 0.98) 45%)'
+                  }}
+                />
+
+                {/* Active Mode Tag */}
+                <div className="absolute bottom-4 left-4 bg-brand-navy-deep/80 border border-cream/10 px-4 py-2 rounded-xl text-[9px] tracking-wider uppercase font-black z-30">
+                  Active Mode: {isTunnelVision ? 'GLAUCOMA TUNNEL VISION' : 'NORMAL CLEAR VISION'}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -200,7 +280,7 @@ const GlaucomaServices: React.FC = () => {
             <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Dedicated Oversight</span>
             <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">Preserve Your Vision Fields</h2>
             <p className="text-base text-cream/70 font-lora leading-relaxed mb-8 max-w-3xl">
-              By combining early detection diagnostics with customized medication and surgical interventions, our clinical team headed by Dr. Sameer Varma ensures that glaucoma patients in Haldwani and Kichha maintain their visual health and active lifestyles.
+              By combining early detection diagnostics with customized medication and surgical interventions, our clinical team headed by Dr. Sameer Varma ensures that glaucoma patients in Haldwani maintain their visual health and active lifestyles.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">

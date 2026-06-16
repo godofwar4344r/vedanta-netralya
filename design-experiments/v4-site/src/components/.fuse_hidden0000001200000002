@@ -1,0 +1,44 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const BackgroundEye: React.FC = () => {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
+        className="w-[120vh] h-[120vh] max-w-[1200px] max-h-[1200px] opacity-[0.03] flex items-center justify-center"
+      >
+        <svg viewBox="0 0 400 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="bgIrisGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#5b9bff" />
+              <stop offset="60%" stopColor="#2f74e0" />
+              <stop offset="100%" stopColor="#0a2640" />
+            </radialGradient>
+            <radialGradient id="bgPupilGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#061829" />
+              <stop offset="100%" stopColor="#0a2640" />
+            </radialGradient>
+          </defs>
+
+          {/* Outer Ring Glow */}
+          <circle cx="200" cy="200" r="160" fill="none" stroke="#2f74e0" strokeWidth="2" strokeDasharray="5,15" opacity="0.3" />
+          <circle cx="200" cy="200" r="120" fill="none" stroke="#0a2640" strokeWidth="1" opacity="0.2" />
+
+          {/* Iris */}
+          <circle cx="200" cy="200" r="85" fill="url(#bgIrisGradient)" />
+          
+          {/* Pupil */}
+          <circle cx="200" cy="200" r="35" fill="url(#bgPupilGlow)" />
+          
+          {/* Highlights */}
+          <circle cx="175" cy="175" r="12" fill="white" />
+          <circle cx="225" cy="225" r="5" fill="white" opacity="0.6" />
+        </svg>
+      </motion.div>
+    </div>
+  );
+};
+
+export default BackgroundEye;

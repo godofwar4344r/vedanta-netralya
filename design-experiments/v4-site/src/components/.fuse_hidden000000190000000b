@@ -1,0 +1,137 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+
+// Service card imagery
+import serviceCataract from '../assets/service-cataract.png';
+import serviceLasik from '../assets/service-lasik.png';
+import servicePaediatric from '../assets/service-paediatric.png';
+import serviceGlaucoma from '../assets/service-glaucoma.png';
+import serviceRetina from '../assets/service-retina.png';
+
+interface Spec {
+  num: string;
+  tag: string;
+  title: string;
+  desc: string;
+  stat: string;
+  statLabel: string;
+  stat2: string;
+  stat2Label: string;
+  img: string;
+  path: string;
+}
+
+const SPECS: Spec[] = [
+  { num: '01', tag: 'Robotic FLACS Laser', title: 'Cataract Surgery', desc: 'Premium micro-incision phacoemulsification with foldable multifocal & toric IOLs. Painless, with visual recovery inside 24 hours.', stat: '15,000+', statLabel: 'Lens implants', stat2: '24 hrs', stat2Label: 'Recovery', img: serviceCataract, path: '/cataract' },
+  { num: '02', tag: 'Bladeless Femto-LASIK', title: 'Refractive LASIK', desc: 'Custom wavefront-guided LASIK and SMILE for permanent, total freedom from glasses and contact lenses.', stat: '20/20', statLabel: 'Vision achieved', stat2: '15 min', stat2Label: 'Procedure', img: serviceLasik, path: '/lasik' },
+  { num: '03', tag: 'Squint & Orthoptics', title: 'Pediatric Ophthalmology', desc: 'Gentle, specialised eye care for infants and children — squint correction and structured vision-therapy programs.', stat: '5,000+', statLabel: 'Children treated', stat2: '0–16', stat2Label: 'Age range', img: servicePaediatric, path: '/paediatric-ophthalmology' },
+  { num: '04', tag: 'Intraocular Pressure Control', title: 'Glaucoma Management', desc: 'Advanced imaging, micro-shunts, and selective laser trabeculoplasty to protect the optic nerve for life.', stat: '4,500+', statLabel: 'Patients managed', stat2: 'SLT', stat2Label: 'Laser therapy', img: serviceGlaucoma, path: '/glaucoma-services' },
+  { num: '05', tag: 'Vitreoretinal Specialty', title: 'Retina & Vitreous', desc: 'Sutureless surgery for diabetic retinopathy, macular degeneration, and retinal detachment.', stat: '6,000+', statLabel: 'Procedures', stat2: '25G', stat2Label: 'Sutureless', img: serviceRetina, path: '/retina-services' },
+];
+
+const StickySpecialties: React.FC = () => {
+  const [active, setActive] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    // A card becomes "active" the moment its centre crosses the middle band
+    // of the viewport — so the pinned text on the right syncs exactly with
+    // whichever card is currently centre-screen.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number((entry.target as HTMLElement).dataset.index);
+            setActive(idx);
+          }
+        });
+      },
+      { root: null, rootMargin: '-48% 0px -48% 0px', threshold: 0 }
+    );
+    cardRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const spec = SPECS[active];
+
+  return (
+    <section id="wings" className="py-24 bg-cream-dark relative z-10">
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
+        {/* heading */}
+        <div className="mb-14">
+          <p className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black mb-4">§ 01 — Specialties</p>
+          <h2 className="section-text text-brand-navy">
+            Five wings of <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>ophthalmic excellence.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          {/* LEFT — scrolling cards */}
+          <div className="flex flex-col gap-10 lg:gap-16">
+            {SPECS.map((s, i) => (
+              <div
+                key={i}
+                data-index={i}
+                ref={(el) => (cardRefs.current[i] = el)}
+                className={`rounded-[2rem] overflow-hidden bg-white border border-brand-navy/10 shadow-[0_30px_60px_-40px_rgba(10,38,64,0.5)] transition-all duration-500 ${
+                  active === i ? 'opacity-100' : 'opacity-60'
+                }`}
+              >
+                <div className="relative h-[300px] md:h-[360px] overflow-hidden">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover" />
+                  <span className="absolute top-4 left-4 bg-brand-navy/90 text-white rounded-full px-4 py-2 text-[10px] tracking-[0.16em] uppercase font-black">
+                    {s.tag}
+                  </span>
+                </div>
+                <div className="p-7">
+                  <h4 className="text-2xl font-black text-brand-navy mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{s.title}</h4>
+                  <p className="text-sm text-brand-navy/60 font-lora leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT — sticky synced text */}
+          <div className="lg:sticky lg:top-32 hidden lg:block">
+            <div className="text-[clamp(80px,9vw,150px)] font-black leading-[0.8] text-brand-navy/10 transition-all duration-500" style={{ fontFamily: 'Playfair Display, serif' }}>
+              {spec.num}
+            </div>
+
+            <div key={active} className="fade-up">
+              <p className="text-brand-teal text-[11px] tracking-[0.2em] uppercase font-black mt-6 mb-2">{spec.tag}</p>
+              <h3 className="text-4xl lg:text-5xl font-black text-brand-navy leading-tight tracking-tight mb-5" style={{ fontFamily: 'Playfair Display, serif' }}>
+                {spec.title}
+              </h3>
+              <p className="text-base text-brand-navy/60 font-lora leading-relaxed max-w-md mb-7">{spec.desc}</p>
+
+              <div className="flex gap-10 border-t border-brand-navy/10 pt-6">
+                <div>
+                  <p className="text-3xl font-black text-brand-teal" style={{ fontFamily: 'Playfair Display, serif' }}>{spec.stat}</p>
+                  <p className="text-[9px] tracking-[0.14em] uppercase text-brand-navy/50 font-black mt-1.5">{spec.statLabel}</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-black text-brand-teal" style={{ fontFamily: 'Playfair Display, serif' }}>{spec.stat2}</p>
+                  <p className="text-[9px] tracking-[0.14em] uppercase text-brand-navy/50 font-black mt-1.5">{spec.stat2Label}</p>
+                </div>
+              </div>
+
+              <Link to={spec.path} className="inline-flex items-center gap-2 mt-8 bg-brand-navy text-white hover:bg-brand-teal px-6 py-3.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-black transition-all">
+                Explore {spec.title} <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* progress dots */}
+            <div className="flex gap-2 mt-10">
+              {SPECS.map((_, i) => (
+                <span key={i} className={`h-2 rounded-full transition-all duration-300 ${active === i ? 'w-7 bg-brand-teal' : 'w-2 bg-brand-navy/15'}`} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default StickySpecialties;

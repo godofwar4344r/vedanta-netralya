@@ -1,0 +1,153 @@
+{
+  "texts": {
+    "services-title-1": {
+      "content": "World-Class",
+      "style": {}
+    },
+    "specialty-list-title-3": {
+      "content": "Glaucoma Management",
+      "style": {}
+    },
+    "specialty-list-title-4": {
+      "content": "Retina & Vitreous",
+      "style": {}
+    },
+    "contact-emergency-phone": {
+      "content": "Emergency: +919068561971",
+      "style": {
+        "color": "#420a0a"
+      }
+    },
+    "tpa-title": {
+      "content": "Our Cashless \nTPA / Insurance Partners",
+      "style": {
+        "fontSize": "3rem"
+      }
+    },
+    "centres-title": {
+      "content": "Our\nSuperspecialty Centres",
+      "style": {
+        "fontSize": "3rem"
+      }
+    },
+    "centres-eyebrow": {
+      "content": "",
+      "style": {}
+    },
+    "reels-title": {
+      "content": "Gallery",
+      "style": {}
+    },
+    "reels-eyebrow": {
+      "content": "\n",
+      "style": {}
+    },
+    "contact-title": {
+      "content": "Support Desk",
+      "style": {
+        "fontSize": "4rem"
+      }
+    },
+    "contact-eyebrow": {
+      "content": "",
+      "style": {}
+    },
+    "service-item-desc-0": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-0": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-desc-1": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-1": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-2": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-desc-2": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-3": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-desc-3": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-4": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-desc-4": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-title-5": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "service-item-desc-5": {
+      "style": {
+        "color": "#061829"
+      }
+    },
+    "specialty-detail-tag-0": {
+      "content": "",
+      "style": {}
+    },
+    "about-eyebrow": {
+      "content": "",
+      "style": {}
+    }
+  },
+  "media": {},
+  "sections": {},
+  "lists": {},
+  "cards": {
+    "specialty-item-card-4": {
+      "deleted": true
+    },
+    "service-card-0": {
+      "bgColor": "#f5f1ea"
+    },
+    "service-card-1": {
+      "textColor": "#061829",
+      "bgColor": "#f5f1ea"
+    },
+    "service-card-2": {
+      "bgColor": "#f5f1ea"
+    },
+    "service-card-3": {
+      "bgColor": "#f5f1ea"
+    },
+    "service-card-4": {
+      "bgColor": "#f5f1ea",
+      "textColor": "#00abc0"
+    },
+    "service-card-5": {
+      "textColor": "#00abc0",
+      "bgColor": "#f5f1ea"
+    }
+  }
+}

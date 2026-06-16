@@ -38,8 +38,8 @@ const FAQ_DATABASE = [
     answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant with 50+ years experience, Sitapur Eye Hospital Fellow), Dr. Kanhaiya Mittal (Chief Retina Consultant, MD AIIMS New Delhi), and clinical panel consultant Dr. Davinder Tyagi."
   },
   {
-    keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'kichha', 'where'],
-    answer: "Our main superspecialty center is located at Canal Road, Tikonia Circle, Haldwani, Uttarakhand. We also operate a specialist clinic on Bareilly Road, Kichha. Visit `/centres` for maps and full directions."
+    keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where'],
+    answer: "Our main superspecialty center is located at Canal Road, Tikonia Circle, Haldwani, Uttarakhand. Visit `/centres` for maps and full directions."
   },
   {
     keywords: ['cost', 'price', 'insurance', 'tpa', 'cashless', 'panel'],

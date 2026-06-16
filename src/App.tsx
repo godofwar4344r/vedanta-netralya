@@ -4,13 +4,12 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Cataract from './pages/Cataract';
-import LASIK from './pages/LASIK';
+import RefractiveSurgery from './pages/RefractiveSurgery';
 import Doctors from './pages/Doctors';
 import Centres from './pages/Centres';
 import Appointment from './pages/Appointment';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
-import ImageGallery from './pages/ImageGallery';
 import VideoGallery from './pages/VideoGallery';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -35,7 +34,7 @@ function App() {
         <Route path="vision-mission" element={<VisionMission />} />
         <Route path="services" element={<Services />} />
         <Route path="cataract" element={<Cataract />} />
-        <Route path="lasik" element={<LASIK />} />
+        <Route path="refractive-surgery" element={<RefractiveSurgery />} />
         <Route path="retina-services" element={<RetinaServices />} />
         <Route path="optical-services" element={<OpticalServices />} />
         <Route path="oculoplasty-services" element={<OculoplastyServices />} />
@@ -48,8 +47,8 @@ function App() {
         <Route path="appointment" element={<Appointment />} />
         <Route path="contact" element={<Contact />} />
         <Route path="testimonials" element={<Testimonials />} />
-        <Route path="gallery" element={<ImageGallery />} />
-        <Route path="gallery/images" element={<ImageGallery />} />
+        <Route path="gallery" element={<VideoGallery />} />
+        <Route path="gallery/images" element={<VideoGallery />} />
         <Route path="gallery/videos" element={<VideoGallery />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />

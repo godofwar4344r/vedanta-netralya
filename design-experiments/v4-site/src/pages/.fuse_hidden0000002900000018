@@ -1,48 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowUpRight, CheckCircle2, Search, Activity, Award, AlertTriangle, ShieldAlert } from 'lucide-react';
+import { Sparkles, ArrowUpRight, CheckCircle2, Search, Award, AlertTriangle, ShieldAlert, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { EditableText, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
+import serviceGlaucoma from '../assets/service-glaucoma.png';
 
-// Assets
-import heroSurgery from '../assets/hero-surgery.png';
-
-const LASIK: React.FC = () => {
-  const diagnosticChecks = [
+const GlaucomaServices: React.FC = () => {
+  const diagnosticTools = [
     {
-      title: 'Corneal Topography & Elevation Mapping',
-      desc: 'Highly detailed elevation scan maps plotting 22,000 distinct points on the cornea, critical for mapping astigmatism and checking keratoconus safety.'
+      title: 'Tonometry (NCT & Applanation)',
+      desc: 'Highly accurate intraocular pressure monitoring using both advanced Non-Contact Tonometry (NCT) and Goldmann Applanation Tonometry, the clinical gold standard.'
     },
     {
-      title: 'Optical Biometry (ALADIN)',
-      desc: 'Advanced non-contact biometry scanning to measure exact corneal curvature and axial length, establishing safety parameters before laser correction.'
+      title: 'Perimetry / Visual Field Analysis',
+      desc: 'Computerized Humphrey Visual Field (HVF) analysis to map the peripheral vision and locate silent blind spots or patterns of early glaucomatous field loss.'
     },
     {
-      title: 'Dry Eye & Tear Film Assessment',
-      desc: 'Thorough evaluation of the tear film and corneal surface to ensure post-operative healing comfort and optimize visual stability.'
+      title: 'Gonioscopy & Angle Assessment',
+      desc: 'Direct examination of the eye\'s drainage angle using specialized gonioscopy lenses to differentiate between open-angle and narrow-angle glaucoma.'
     },
     {
-      title: 'Pachymetry (Corneal Thickness)',
-      desc: 'Ultrasonic or optical measurements of corneal thickness to verify the residual stromal bed is thick enough for safe flap creation.'
+      title: 'Optic Nerve Head OCT & Pachymetry',
+      desc: 'High-definition RNFL analysis to track optic nerve fiber loss, combined with ultrasonic pachymetry to measure central corneal thickness for corrected IOP calculations.'
     }
   ];
 
-  const correctiveProcedures = [
+  const glaucomaTreatments = [
     {
-      title: 'Wavefront-Guided Femto-LASIK',
-      desc: 'Completely customized, blade-free laser vision correction. A computerized femtosecond laser creates a precise flap, followed by personalized correction.'
+      title: 'YAG Laser Iridotomy',
+      desc: 'A quick, non-invasive outpatient laser procedure that creates a tiny microscopic channel in the iris, resolving and preventing acute angle-closure attacks.'
     },
     {
-      title: 'Flapless keyhole SMILE',
-      desc: 'Small-incision lenticule extraction. Flapless, sutureless refractive surgery that minimizes dry eye and preserves maximal corneal strength.'
+      title: 'Selective Laser Trabeculoplasty (SLT)',
+      desc: 'Advanced cold laser therapy targeted at the trabecular meshwork to improve natural fluid outflow and lower intraocular pressure, reducing eyedrop dependency.'
     },
     {
-      title: 'Implantable Collamer Lenses (ICL)',
-      desc: 'Premium phakic lens implants for thin corneas or high prescriptions (up to -20.00D), providing permanent correction without thinning the cornea.'
+      title: 'Filtration Trabeculectomy Surgery',
+      desc: 'Surgical creation of a new drainage pathway (a filtration bleb) to bypass blocked channels, achieving low, stable intraocular pressures for advanced cases.'
     },
     {
-      title: 'Toric Lenses & Astigmatism Correction',
-      desc: 'Direct optical astigmatism correction through tailored laser profiling or implantation of premium toric intraocular lenses.'
+      title: 'Medical Therapy & Nerve Protection',
+      desc: 'Customized prescription regimens utilizing modern prostaglandin analogs and beta-blockers, combined with regular diurnal variations monitoring.'
     }
   ];
 
@@ -56,44 +55,53 @@ const LASIK: React.FC = () => {
         {/* Header Banner */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
           <div className="lg:col-span-7">
-            <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Refractive Independence</span>
-            <h1 className="section-text text-brand-navy mb-6">Bladeless Femto-LASIK & SMILE</h1>
+            <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Silent Sight Safeguard</span>
+            <h1 className="section-text text-brand-navy mb-6">Glaucoma Care & Diagnostics</h1>
             <p className="text-lg font-lora text-brand-navy/70 leading-relaxed mb-6">
-              Imagine waking up to crystal clear vision without glasses. We offer advanced, blade-free laser vision correction tailored to the unique topography of your eyes.
+              Detecting the silent threat early. We offer advanced structural diagnostics and therapeutic laser treatments to protect your optic nerve.
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              Under our NABH-certified surgical care protocols, AIIMS-trained surgeons use high-precision topography-guided mapping and advanced excimer lasers to permanently correct myopia, hyperopia, and astigmatism.
+              Glaucoma causes irreversible vision loss without early warning signs. By combining computerized visual field perimetry, gonioscopy, central pachymetry, and high-definition RNFL optical coherence tomography, we map and monitor every aspect of your nerve health.
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
-              Check LASIK Suitability
+              Book Glaucoma Screening
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
           
-          {/* Visual Accoutrement */}
+          {/* Full Bleed Image Placement */}
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
-            <img src={heroSurgery} alt="Painless. Precise. Ethical." className="w-full h-full object-cover opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent p-8 flex items-end">
+            <EditableMedia
+              id="glaucoma-image-hero"
+              src={serviceGlaucoma}
+              alt="Glaucoma Early Detection"
+              className="w-full h-full object-cover opacity-90 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent p-8 flex items-end pointer-events-none">
               <div>
-                <span className="text-[10px] text-brand-teal tracking-[0.3em] font-black uppercase">Painless. Precise. Ethical.</span>
-                <p className="text-cream text-lg font-merriweather font-bold mt-1">NABH-certified surgical care wing.</p>
+                <span className="text-[10px] text-brand-teal tracking-[0.3em] font-black uppercase">
+                  <EditableText id="glaucoma-visual-title">Early Detection</EditableText>
+                </span>
+                <p className="text-cream text-lg font-merriweather font-bold mt-1">
+                  <EditableText id="glaucoma-visual-desc">Humphrey visual fields and RNFL OCT.</EditableText>
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Suitability Checks Section */}
+        {/* Diagnostics & Clinical Exams */}
         <div className="mb-24">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Diagnostics Suite</p>
-            <h2 className="section-text text-brand-navy mb-6">LASIK Screening & Safety Audits</h2>
+            <h2 className="section-text text-brand-navy mb-6">Screening & Diagnostics</h2>
             <p className="text-base text-brand-navy/60 font-lora">
-              Safety is our absolute priority. We perform comprehensive structural suitability checks using advanced Corneal Topography before recommending any refractive procedure.
+              Glaucoma management relies on precision measurements. Our diagnostic suite tracks even the smallest changes in pressure, angles, and nerve thickness.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {diagnosticChecks.map((proc, idx) => (
+            {diagnosticTools.map((proc, idx) => (
               <div 
                 key={idx} 
                 className="bg-white border border-brand-navy/10 rounded-[2.5rem] p-8 shadow-sm hover:border-brand-teal/40 transition-all duration-300 flex gap-4 items-start"
@@ -110,18 +118,18 @@ const LASIK: React.FC = () => {
           </div>
         </div>
 
-        {/* Laser Suite Section */}
+        {/* Treatment Suite */}
         <div className="mb-24">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Correction Spectrum</p>
-            <h2 className="section-text text-brand-navy mb-6">Our Refractive Treatment Suite</h2>
+            <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Therapy & Lasers</p>
+            <h2 className="section-text text-brand-navy mb-6">Glaucoma Treatment Suite</h2>
             <p className="text-base text-brand-navy/60 font-lora">
-              From advanced Femto lasers to micro-incision SMILE and phakic ICL lens implants, we offer the complete range of refractive corrections.
+              Our clinical experts employ targeted therapies—from cold laser SLT to filtration micro-surgeries—to successfully stabilize intraocular pressure.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {correctiveProcedures.map((proc, idx) => (
+            {glaucomaTreatments.map((proc, idx) => (
               <div 
                 key={idx} 
                 className="bg-white border border-brand-navy/10 rounded-[2.5rem] p-8 shadow-sm hover:border-brand-teal/40 transition-all duration-300 flex gap-4 items-start"
@@ -144,7 +152,7 @@ const LASIK: React.FC = () => {
             <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Clinical Profile</p>
             <h2 className="section-text text-brand-navy mb-6">Symptoms, Risks & Treatments</h2>
             <p className="text-base text-brand-navy/60 font-lora">
-              Understanding refractive errors, lifestyle impacts of visual dependence, and laser correction solutions.
+              Understanding glaucoma symptoms, structural optic nerve damage risks, and target intraocular pressure-lowering therapies.
             </p>
           </div>
 
@@ -156,10 +164,10 @@ const LASIK: React.FC = () => {
               </div>
               <h3 className="text-xl font-black text-brand-navy mb-4">Common Symptoms</h3>
               <ul className="space-y-3 text-xs leading-relaxed text-brand-navy/70 font-lora list-disc pl-4">
-                <li>Nearsightedness (difficulty seeing distant road signs or whiteboards clearly)</li>
-                <li>Farsightedness (blurry vision when reading or looking at phone screens)</li>
-                <li>Astigmatism (distorted or shadowed vision at all focal distances)</li>
-                <li>Frequent eye strain, headaches, and squinting to focus</li>
+                <li>Often completely asymptomatic in early stages ("silent thief of sight")</li>
+                <li>Gradual loss of peripheral vision, eventually leading to tunnel vision</li>
+                <li>Severe eye pain, headache, blurred vision, nausea, and vomiting (during acute attacks)</li>
+                <li>Seeing rainbow-colored halos or rings around light sources</li>
               </ul>
             </div>
 
@@ -170,10 +178,10 @@ const LASIK: React.FC = () => {
               </div>
               <h3 className="text-xl font-black text-brand-navy mb-4">Potential Effects</h3>
               <ul className="space-y-3 text-xs leading-relaxed text-brand-navy/70 font-lora list-disc pl-4">
-                <li>Heavy and restrictive dependency on heavy spectacles or contact lenses</li>
-                <li>Limitations in participating in active sports, swimming, and professional careers (e.g., defense, aviation)</li>
-                <li>Chronic dry eye and corneal hypoxia from long-term contact lens overwear</li>
-                <li>Substandard peripheral visual tracking due to frame obstructions</li>
+                <li>Irreversible progressive atrophy of the optic nerve head</li>
+                <li>Irretrievable loss of peripheral visual field, narrowing down to total blindness</li>
+                <li>Permanent damage to the retinal nerve fiber layer (RNFL)</li>
+                <li>Severe, chronic eye pressure surges causing optic disk cupping</li>
               </ul>
             </div>
 
@@ -184,39 +192,39 @@ const LASIK: React.FC = () => {
               </div>
               <h3 className="text-xl font-black text-cream mb-4">The Cure / Treatment</h3>
               <ul className="space-y-3 text-xs leading-relaxed text-cream/80 font-lora list-disc pl-4">
-                <li>Wavefront-guided Femto-LASIK (completely blade-free flap procedure)</li>
-                <li>SMILE (Small Incision Lenticule Extraction) flapless keyhole correction</li>
-                <li>Implantation of Implantable Collamer Lenses (ICL) for thin corneas or high refractive errors</li>
-                <li>Topography-guided Contoura Vision custom corneal ablation for HD clarity</li>
+                <li>Humphrey Visual Field (HVF) analysis and nerve fiber OCT scan diagnostics</li>
+                <li>Non-invasive Selective Laser Trabeculoplasty (SLT) to stimulate natural fluid drain</li>
+                <li>YAG Laser Peripheral Iridotomy for narrow-angle glaucoma</li>
+                <li>Trabeculectomy surgical bypass or drainage valve implants for severe cases</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Tech Features Banner */}
+        {/* Clinical Care Banner */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-brand-navy text-cream rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-xl">
           <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brand-teal/10 blur-3xl" />
           <div className="lg:col-span-12 flex flex-col justify-center">
-            <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Personalized Sight Correction</span>
-            <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">Advanced Contoura Vision Corneal Mapping</h2>
+            <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Dedicated Oversight</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">Preserve Your Vision Fields</h2>
             <p className="text-base text-cream/70 font-lora leading-relaxed mb-8 max-w-3xl">
-              We employ advanced Contoura Vision mapping that analyzes 22,000 unique elevation points on your cornea. This maps optical imperfections in detail, enabling excimer lasers to create a highly personalized treatment profile for extremely sharp vision.
+              By combining early detection diagnostics with customized medication and surgical interventions, our clinical team headed by Dr. Sameer Varma ensures that glaucoma patients in Haldwani and Kichha maintain their visual health and active lifestyles.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">
                 <Sparkles className="w-6 h-6 text-brand-teal mb-3" />
-                <h3 className="font-bold text-xs mb-1">Bladeless Flaps</h3>
-                <p className="text-[11px] text-cream/60 leading-normal">Computer-guided femtosecond flap creations.</p>
+                <h3 className="font-bold text-xs mb-1">Cold Laser SLT</h3>
+                <p className="text-[11px] text-cream/60 leading-normal">Gentle outflow stimulation to lower pressure naturally.</p>
               </div>
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">
-                <Activity className="w-6 h-6 text-brand-teal mb-3" />
-                <h3 className="font-bold text-xs mb-1">Corneal Topography</h3>
-                <p className="text-[11px] text-cream/60 leading-normal">Safeguarding long-term corneal biomechanical strength.</p>
+                <ShieldCheck className="w-6 h-6 text-brand-teal mb-3" />
+                <h3 className="font-bold text-xs mb-1">HVF Computerized Fields</h3>
+                <p className="text-[11px] text-cream/60 leading-normal">Regular perimetry audits to capture early changes.</p>
               </div>
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">
                 <Award className="w-6 h-6 text-brand-teal mb-3" />
-                <h3 className="font-bold text-xs mb-1">Permanent Freedom</h3>
-                <p className="text-[11px] text-cream/60 leading-normal">No glasses or contacts needed after brief 15 min procedures.</p>
+                <h3 className="font-bold text-xs mb-1">Micro-Incision Shunts</h3>
+                <p className="text-[11px] text-cream/60 leading-normal">Precision surgical options for complicated situations.</p>
               </div>
             </div>
           </div>
@@ -229,5 +237,5 @@ const LASIK: React.FC = () => {
   );
 };
 
-export default LASIK;
+export default GlaucomaServices;
 

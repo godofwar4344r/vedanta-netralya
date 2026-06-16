@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vedanta Netralya — Redesign Concept (V2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe6;        /* warm cream paper */
+    --paper-2:#ece4d6;      /* deeper sand */
+    --ink:#0a2640;          /* navy ink */
+    --ink-deep:#061829;
+    --teal:#0a8fa0;         /* dialed-down, less neon teal */
+    --teal-soft:#cfe6e8;
+    --line:rgba(10,38,64,.14);
+    --muted:rgba(10,38,64,.58);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+  .serif{font-family:'Fraunces',serif}
+  .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:400}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;color:var(--teal)}
+  .num{font-family:'Fraunces',serif;font-size:12px;letter-spacing:.1em;color:var(--muted)}
+  a{color:inherit;text-decoration:none}
+
+  /* ---- top bar ---- */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(244,239,230,.78);border-bottom:1px solid var(--line)}
+  .nav .row{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:38px;width:auto;display:block}
+  .brand b{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:.01em}
+  .brand span{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);display:block;margin-top:2px}
+  .links{display:flex;gap:30px;font-size:13px;font-weight:500;color:var(--muted)}
+  .links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);
+       font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+       padding:13px 22px;border-radius:999px;transition:.3s;border:1px solid var(--ink)}
+  .btn:hover{background:transparent;color:var(--ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  .arrow{display:inline-block;transition:transform .3s}
+  .btn:hover .arrow{transform:translate(3px,-3px)}
+  @media(max-width:880px){.links{display:none}}
+
+  /* ---- hero ---- */
+  .hero{position:relative;padding:78px 0 40px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(46px,6.4vw,92px);line-height:.98;letter-spacing:-.02em}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--teal)}
+  .hero p.lede{margin-top:26px;max-width:430px;font-size:16px;line-height:1.7;color:var(--muted)}
+  .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .credit{margin-top:46px;display:flex;gap:34px;border-top:1px solid var(--line);padding-top:26px;max-width:480px}
+  .credit div b{font-family:'Fraunces',serif;font-size:30px;font-weight:600;display:block;line-height:1}
+  .credit div span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:7px;display:block}
+
+  .portrait{position:relative}
+  .portrait .frame{position:relative;border-radius:200px 200px 28px 28px;overflow:hidden;
+       aspect-ratio:4/5;background:linear-gradient(160deg,var(--paper-2),#dccfb9);box-shadow:0 40px 80px -40px rgba(10,38,64,.4)}
+  .portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.05) saturate(1.02)}
+  .portrait .ring{position:absolute;inset:-14px;border:1px solid var(--line);border-radius:210px 210px 36px 36px;pointer-events:none}
+  .tag{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;
+       box-shadow:0 16px 40px -18px rgba(10,38,64,.35);display:flex;align-items:center;gap:12px}
+  .tag .dot{width:8px;height:8px;border-radius:50%;background:#21a366;box-shadow:0 0 0 4px rgba(33,163,102,.18)}
+  .tag b{font-size:12.5px;font-weight:600}
+  .tag span{font-size:10px;color:var(--muted);display:block}
+  .tag.t1{top:18%;left:-26px}
+  .tag.t2{bottom:14%;right:-22px}
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .portrait{max-width:380px;margin:0 auto}
+    .tag.t1{left:-8px}.tag.t2{right:-8px}
+  }
+
+  /* ---- marquee credibility ---- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink);color:var(--paper);overflow:hidden}
+  .strip .track{display:flex;gap:56px;white-space:nowrap;padding:18px 0;animation:slide 32s linear infinite;width:max-content}
+  .strip .track span{font-family:'Fraunces',serif;font-size:17px;letter-spacing:.02em;display:flex;align-items:center;gap:56px;color:rgba(244,239,230,.85)}
+  .strip .track i{color:var(--teal);font-style:normal}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---- section scaffolding ---- */
+  section{padding:104px 0}
+  .head{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;margin-bottom:54px}
+  .head h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.02em;max-width:680px}
+  .head h2 em{font-style:italic;color:var(--teal);font-weight:400}
+  .head .meta{max-width:340px;justify-self:end;color:var(--muted);font-size:14.5px;line-height:1.65}
+
+  /* ---- about split ---- */
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+  .about .img{border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 70px -40px rgba(10,38,64,.4)}
+  .about .img img{width:100%;height:100%;object-fit:cover}
+  .about p{color:var(--muted);font-size:16px;line-height:1.8;margin-top:18px}
+  .about .lead{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:23px;line-height:1.5;color:var(--ink)}
+  @media(max-width:880px){.about{grid-template-columns:1fr;gap:32px}}
+
+  /* ---- specialties ---- */
+  .spec{border-top:1px solid var(--line)}
+  .spec-row{display:grid;grid-template-columns:60px 1fr auto;gap:24px;align-items:center;
+       padding:30px 8px;border-bottom:1px solid var(--line);cursor:pointer;transition:.4s;position:relative}
+  .spec-row:hover{padding-left:24px;background:linear-gradient(90deg,rgba(10,143,160,.05),transparent)}
+  .spec-row .t{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3vw,38px);transition:.3s;color:var(--ink)}
+  .spec-row .d{color:var(--muted);font-size:14px;max-width:520px;margin-top:6px;line-height:1.55}
+  .spec-row .stat{text-align:right}
+  .spec-row .stat b{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--teal);display:block;line-height:1}
+  .spec-row .stat span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px;display:block}
+  .spec-row .plus{position:absolute;right:0;top:30px}
+  @media(max-width:880px){.spec-row{grid-template-columns:40px 1fr}.spec-row .stat{display:none}}
+
+  /* ---- services (dark) ---- */
+  .dark{background:var(--ink);color:var(--paper)}
+  .dark .head h2{color:var(--paper)}
+  .dark .head .meta{color:rgba(244,239,230,.6)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:rgba(244,239,230,.03);border:1px solid rgba(244,239,230,.12);border-radius:22px;overflow:hidden;transition:.4s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-8px);border-color:rgba(10,143,160,.55);background:rgba(244,239,230,.05)}
+  .card .pic{aspect-ratio:16/10;overflow:hidden;position:relative}
+  .card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+  .card:hover .pic img{transform:scale(1.06)}
+  .card .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--ink),transparent 55%)}
+  .card .body{padding:26px;display:flex;flex-direction:column;flex:1}
+  .card .body h3{font-family:'Fraunces',serif;font-weight:500;font-size:21px;margin-bottom:10px}
+  .card .body p{font-size:13.5px;line-height:1.65;color:rgba(244,239,230,.6);flex:1}
+  .card .more{margin-top:20px;padding-top:16px;border-top:1px solid rgba(244,239,230,.12);
+       font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--teal);display:flex;align-items:center;gap:8px}
+  @media(max-width:880px){.cards{grid-template-columns:1fr}}
+
+  /* ---- testimonial ---- */
+  .quote{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .quote .big{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.32;letter-spacing:-.01em}
+  .quote .big em{font-style:italic;color:var(--teal)}
+  .quote .who{margin-top:30px;display:flex;align-items:center;gap:14px}
+  .quote .who .av{width:46px;height:46px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;color:var(--ink)}
+  .quote .who b{font-size:14px;font-weight:600;display:block}
+  .quote .who span{font-size:12px;color:var(--muted)}
+  .mini{border-left:1px solid var(--line);padding-left:34px;display:flex;flex-direction:column;gap:26px}
+  .mini .r{font-size:14.5px;line-height:1.65;color:var(--muted)}
+  .mini .r b{color:var(--ink);font-weight:600}
+  @media(max-width:880px){.quote{grid-template-columns:1fr;gap:34px}.mini{border-left:none;border-top:1px solid var(--line);padding:30px 0 0}}
+
+  /* ---- CTA ---- */
+  .cta-band{background:var(--paper-2);text-align:center}
+  .cta-band h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.4vw,76px);line-height:1.02;letter-spacing:-.02em}
+  .cta-band h2 em{font-style:italic;color:var(--teal);font-weight:400}
+  .cta-band p{color:var(--muted);max-width:440px;margin:22px auto 36px;font-size:16px;line-height:1.7}
+
+  /* ---- footer ---- */
+  footer{background:var(--ink-deep);color:rgba(244,239,230,.7);padding:64px 0 34px;font-size:13px}
+  footer .top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,230,.12);padding-bottom:34px}
+  footer .top b{font-family:'Fraunces',serif;color:var(--paper);font-size:20px;font-weight:600}
+  footer .bot{display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;font-size:11.5px;letter-spacing:.05em}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .flag{position:fixed;bottom:18px;left:18px;z-index:99;background:var(--ink);color:var(--paper);font-size:11px;
+        letter-spacing:.14em;text-transform:uppercase;padding:9px 15px;border-radius:999px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+  .flag b{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="wrap row">
+    <a class="brand" href="#">
+      <img src="../src/assets/logo.png" alt="Vedanta Netralya"/>
+      <span style="display:block">
+        <b>Vedanta Netralya</b>
+        <span>Super-Specialty Eye Institute</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#specialties">Specialties</a>
+      <a href="#services">Services</a>
+      <a href="#stories">Stories</a>
+    </nav>
+    <a class="btn" href="#cta">Book Consultation <span class="arrow">↗</span></a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow" style="margin-bottom:22px">North India · Estd. 2003</p>
+      <h1>The clarity<br>you were<br><em>born to see.</em></h1>
+      <p class="lede">A super-specialty eye institute where robotic-laser precision meets unhurried, human care — from your first screening to a lifetime of clear vision.</p>
+      <div class="cta">
+        <a class="btn" href="#cta">Book a consultation <span class="arrow">↗</span></a>
+        <a class="btn ghost" href="#specialties">Explore specialties</a>
+      </div>
+      <div class="credit">
+        <div><b>18+</b><span>Years of care</span></div>
+        <div><b>25K+</b><span>Surgeries</span></div>
+        <div><b>1.2L+</b><span>Patients</span></div>
+      </div>
+    </div>
+
+    <div class="portrait reveal">
+      <div class="ring"></div>
+      <div class="frame">
+        <img src="../src/assets/dr-sameer-verma.png" alt="Dr. Sameer Varma"/>
+      </div>
+      <div class="tag t1"><span class="dot"></span><span><b>Dr. Sameer Varma</b><span>M.S., Fellow SNC · Lead Surgeon</span></span></div>
+      <div class="tag t2"><span><b>Robotic FLACS</b><span>24-hour recovery</span></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="track">
+    <span>Cataract <i>✦</i> LASIK <i>✦</i> Cornea <i>✦</i> Pediatric <i>✦</i> Oculoplasty <i>✦</i> Retina <i>✦</i> Glaucoma <i>✦</i></span>
+    <span>Cataract <i>✦</i> LASIK <i>✦</i> Cornea <i>✦</i> Pediatric <i>✦</i> Oculoplasty <i>✦</i> Retina <i>✦</i> Glaucoma <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="img reveal"><img src="../src/assets/gallery-3.png" alt="Vedanta Netralya"/></div>
+      <div class="reveal">
+        <p class="eyebrow">Our heritage</p>
+        <h2 class="serif" style="font-weight:500;font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.02em;margin:18px 0 24px">
+          A legacy of <span class="ital" style="color:var(--teal)">ocular excellence.</span>
+        </h2>
+        <p class="lead">From a single trusted clinic into the Kumaun region's elite super-specialty eye institute — built on one promise: ethical, world-class care.</p>
+        <p>Founded in 2003, Vedanta Netralya has grown by investing where it matters: robotic laser systems, high-definition diagnostics, and dedicated micro-surgical wings — all under the leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Kanhaiya Mittal.</p>
+        <p>A newly built, fully air-conditioned hospital designed so that precision medicine never feels clinical — only calm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section id="specialties" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="num">§ 01</span>
+      <h2>Five wings of <em>ophthalmic excellence.</em></h2>
+      <p class="meta">Each wing equipped with internationally-certified instruments and led by fellowship-trained super-specialists.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-row reveal">
+        <span class="num">01</span>
+        <div><div class="t">Cataract Surgery</div><div class="d">Robotic FLACS laser with premium foldable IOLs. Painless, with recovery inside 24 hours.</div></div>
+        <div class="stat"><b>15,000+</b><span>Lens implants</span></div>
+      </div>
+      <div class="spec-row reveal">
+        <span class="num">02</span>
+        <div><div class="t">Refractive LASIK</div><div class="d">Bladeless Femto-LASIK & SMILE for permanent freedom from glasses.</div></div>
+        <div class="stat"><b>20/20</b><span>Vision achieved</span></div>
+      </div>
+      <div class="spec-row reveal">
+        <span class="num">03</span>
+        <div><div class="t">Pediatric Ophthalmology</div><div class="d">Squint correction, orthoptics, and gentle vision therapy for children.</div></div>
+        <div class="stat"><b>5,000+</b><span>Children treated</span></div>
+      </div>
+      <div class="spec-row reveal">
+        <span class="num">04</span>
+        <div><div class="t">Glaucoma Management</div><div class="d">Selective laser trabeculoplasty and micro-shunts to protect the optic nerve.</div></div>
+        <div class="stat"><b>4,500+</b><span>Patients</span></div>
+      </div>
+      <div class="spec-row reveal">
+        <span class="num">05</span>
+        <div><div class="t">Retina & Vitreous</div><div class="d">Sutureless surgery for diabetic retinopathy, AMD, and retinal detachment.</div></div>
+        <div class="stat"><b>6,000+</b><span>Procedures</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="dark">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="num" style="color:rgba(244,239,230,.5)">§ 02</span>
+      <h2>World-class <em>clinical care.</em></h2>
+      <p class="meta">Six core services, each with its own dedicated suite, surgeon, and recovery pathway.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-lasik.png" alt=""></div><div class="body"><h3>Femto-LASIK & SMILE</h3><p>Ultra-precise vision-correction lasers for absolute freedom from spectacles and contact lenses.</p><div class="more">Learn more →</div></div></div>
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-glaucoma.png" alt=""></div><div class="body"><h3>Glaucoma & Laser</h3><p>Pressure monitoring, selective laser therapy, and advanced micro-drainage implants.</p><div class="more">Learn more →</div></div></div>
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-retina.png" alt=""></div><div class="body"><h3>Retinal Care & Surgery</h3><p>Comprehensive medical & surgical retina care for diabetic retinopathy, AMD, and tears.</p><div class="more">Learn more →</div></div></div>
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-paediatric.png" alt=""></div><div class="body"><h3>Squint & Pediatric</h3><p>Specialised diagnostics, squint correction, and child-friendly alignment therapies.</p><div class="more">Learn more →</div></div></div>
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-cataract.png" alt=""></div><div class="body"><h3>Cataract & IOL</h3><p>Robotic FLACS with multifocal, trifocal, and toric premium lens options.</p><div class="more">Learn more →</div></div></div>
+      <div class="card reveal"><div class="pic"><img src="../src/assets/service-oculoplasty.png" alt=""></div><div class="body"><h3>Oculoplasty & Lid</h3><p>Eyelid reconstruction, lacrimal tear-duct surgery, and cosmetic blepharoplasty.</p><div class="more">Learn more →</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section id="stories">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="num">§ 03</span>
+      <h2>Stories of <em>restored sight.</em></h2>
+      <p class="meta">Real outcomes from patients across the Kumaun region.</p>
+    </div>
+    <div class="quote">
+      <div class="reveal">
+        <p class="big">“My cataract surgery was completely painless — I was home within hours, and by the next morning my vision was <em>perfectly clear.</em>”</p>
+        <div class="who"><div class="av">R</div><div><b>Rajesh Singhal</b><span>Robotic FLACS · Haldwani, Nainital</span></div></div>
+      </div>
+      <div class="mini reveal">
+        <div class="r"><b>★★★★★ Priyanka Sharma</b> — “Getting rid of my specs after 12 years feels like a miracle. The bladeless LASIK took under 15 minutes.” <i>Femto-LASIK</i></div>
+        <div class="r"><b>★★★★★ Harbhajan Singh</b> — “The SLT laser didn't hurt at all and brought my pressure down. Grateful to Dr. Kanhaiya Mittal.” <i>Glaucoma</i></div>
+        <div class="r"><b>★★★★★ Meena Joshi</b> — “Calm, unhurried, and genuinely caring from screening to follow-up.” <i>Retina</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta-band">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" style="margin-bottom:20px">Your vision awaits</p>
+      <h2>The clarity<br><em>you deserve.</em></h2>
+      <p>Book a consultation with our specialists and take the first step toward a lifetime of clear sight.</p>
+      <a class="btn" href="#" style="font-size:12px;padding:16px 28px">Begin your consultation <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <b>Vedanta Netralya</b>
+        <p style="margin-top:10px;max-width:280px;line-height:1.6">Super-specialty eye institute · Kumaun region, Uttarakhand · Estd. 2003.</p>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap">
+        <div><p style="color:var(--paper);font-weight:600;margin-bottom:12px">Care</p>Cataract<br>LASIK<br>Retina<br>Glaucoma</div>
+        <div><p style="color:var(--paper);font-weight:600;margin-bottom:12px">Institute</p>About<br>Doctors<br>Facilities<br>Centres</div>
+        <div><p style="color:var(--paper);font-weight:600;margin-bottom:12px">Visit</p>Appointment<br>Contact<br>Eye Test<br>Gallery</div>
+      </div>
+    </div>
+    <div class="bot">
+      <span>© 2026 Vedanta Netralya. All rights reserved.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<div class="flag">Redesign concept · <b>V2</b></div>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

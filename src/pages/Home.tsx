@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowUpRight, Plus, Eye, Sparkles, ChevronDown, Activity, Heart, Shield, Layers, Quote, Star, Scissors } from 'lucide-react';
+import { ArrowUpRight, Plus, Eye, Sparkles, ChevronDown, Activity, Heart, Shield, Layers, Quote, Star, Scissors, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { EditableContainer, EditableText, EditableMedia, EditableCard } from '../components/Editable';
+import { useEdit } from '../context/EditContext';
 import VisionSimulator from '../components/VisionSimulator';
-import EditableSection from '../components/EditableSection';
 
 
 // Assets
@@ -12,6 +13,14 @@ import heroEyePrecision from '../assets/hero-eye-precision.png';
 import drSameerVerma from '../assets/dr-sameer-verma.png';
 import introVid from '../assets/intro-video.mp4';
 import gallery3 from '../assets/gallery-3.png';
+
+// Service Images
+import serviceLasik from '../assets/service-lasik.png';
+import serviceGlaucoma from '../assets/service-glaucoma.png';
+import serviceRetina from '../assets/service-retina.png';
+import servicePaediatric from '../assets/service-paediatric.png';
+import serviceOculoplasty from '../assets/service-oculoplasty.png';
+import serviceCataract from '../assets/service-cataract.png';
 
 const Counter: React.FC<{ value: number; suffix?: string; duration?: number }> = ({ value, suffix = '', duration = 2 }) => {
   const [count, setCount] = useState(0);
@@ -170,6 +179,20 @@ const itemVariants = {
   }
 };
 
+const getHomeServiceImage = (index: number) => {
+  switch (index) {
+    case 0: return serviceLasik;
+    case 1: return serviceGlaucoma;
+    case 2: return serviceRetina;
+    case 3: return servicePaediatric;
+    case 4: return serviceOculoplasty;
+    case 5: return serviceCataract;
+    default: return serviceLasik;
+  }
+};
+
+let hasPlayedIntroVideo = false;
+
 const Home: React.FC = () => {
   const [activeSpec, setActiveSpec] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -192,9 +215,20 @@ const Home: React.FC = () => {
   const textOpacity = useTransform(scrollY, [0, 200], [1, 0]);
 
   // Intro Video States & Ref
-  const [showIntroVideo, setShowIntroVideo] = useState(true);
-  const [introVideoReady, setIntroVideoReady] = useState(false);
+  const [isVideoDone, setIsVideoDone] = useState(hasPlayedIntroVideo);
+  const [introVideoReady, setIntroVideoReady] = useState(hasPlayedIntroVideo);
   const introVideoRef = useRef<HTMLVideoElement>(null);
+
+  const { state, isEditMode, selectElement, selectedElement } = useEdit();
+  const heroMedia = state.media['hero-doctor-portrait'] || {};
+  const isSelected = selectedElement?.id === 'hero-doctor-portrait' && selectedElement?.type === 'media';
+  const [isPortraitHovered, setIsPortraitHovered] = useState(false);
+
+  const heroHeight = isMobile 
+    ? (heroMedia.height || '46vh') 
+    : (heroMedia.height || '58vh');
+  const heroWidth = heroMedia.width || 'auto';
+  const portraitSrc = heroMedia.src || drSameerVerma;
 
   const handleIntroVideoLoaded = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
@@ -209,9 +243,22 @@ const Home: React.FC = () => {
     const video = e.currentTarget;
     if (video.currentTime >= 5.0) {
       video.pause();
-      setShowIntroVideo(false);
+      setIsVideoDone(true);
+      hasPlayedIntroVideo = true;
     }
   };
+
+  useEffect(() => {
+    if (hasPlayedIntroVideo) return;
+    // Fallback: If video is not ready after 3 seconds, fail gracefully to fallback image
+    const timer = setTimeout(() => {
+      if (!introVideoReady) {
+        setIsVideoDone(true);
+        hasPlayedIntroVideo = true;
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [introVideoReady]);
 
 
 
@@ -227,44 +274,54 @@ const Home: React.FC = () => {
       path: '/cataract'
     },
     { 
-      title: 'Refractive LASIK', 
+      title: 'Retina & Vitreous', 
       num: '02',
-      tag: 'Bladeless Femto-LASIK',
-      stat: '20/20',
-      statLabel: 'Vision Achieved',
-      desc: 'Custom wavefront-guided LASIK and SMILE procedures for permanent freedom from glasses.',
-      icon: <Eye className="w-8 h-8" />,
-      path: '/lasik'
-    },
-    { 
-      title: 'Pediatric Ophthalmology', 
-      num: '03',
-      tag: 'Squint & Orthoptics',
-      stat: '5,000+',
-      statLabel: 'Children Treated',
-      desc: 'Specialized eye care for infants and children, squint correction, and vision therapy programs.',
-      icon: <Eye className="w-8 h-8" />,
-      path: '/contact'
+      tag: 'Vitreoretinal Specialty',
+      stat: '6,000+',
+      statLabel: 'Procedures',
+      desc: 'Specialized medical and surgical retinal care for diabetic retinopathy, macular degeneration, and retinal detachment.',
+      icon: <Layers className="w-8 h-8" />,
+      path: '/retina-services'
     },
     { 
       title: 'Glaucoma Management', 
-      num: '04',
+      num: '03',
       tag: 'Intraocular Pressure Control',
       stat: '4,500+',
       statLabel: 'Glaucoma Patients',
       desc: 'Advanced diagnostic imaging, micro-shunts, and selective laser trabeculoplasty (SLT) to manage intraocular pressure and protect your optic nerve.',
-      icon: <Eye className="w-8 h-8" />,
-      path: '/services'
+      icon: <Activity className="w-8 h-8" />,
+      path: '/glaucoma-services'
     },
     { 
-      title: 'Retina & Vitreous', 
+      title: 'Oculoplasty Services', 
+      num: '04',
+      tag: 'Eyelid & Orbit Surgery',
+      stat: '4,000+',
+      statLabel: 'Reconstructions',
+      desc: 'Correction of drooping eyelids, tear duct blocks (DCR), ocular tumors, prosthetics, and cosmetic eye surgeries.',
+      icon: <Scissors className="w-8 h-8" />,
+      path: '/oculoplasty-services'
+    },
+    { 
+      title: 'Pediatric Ophthalmology', 
       num: '05',
-      tag: 'Vitreoretinal Specialty',
-      stat: '6,000+',
-      statLabel: 'Retina Procedures',
-      desc: 'Specialized vitreoretinal care for diabetic retinopathy, macular degeneration, and retinal detachment using state-of-the-art sutureless surgery.',
-      icon: <Sparkles className="w-8 h-8" />,
-      path: '/services'
+      tag: 'Squint & Orthoptics',
+      stat: '5,000+',
+      statLabel: 'Children Treated',
+      desc: 'Specialized eye care for infants and children, squint correction, and structural vision therapy programs.',
+      icon: <Heart className="w-8 h-8" />,
+      path: '/paediatric-ophthalmology'
+    },
+    { 
+      title: 'Refractive Surgery', 
+      num: '06',
+      tag: 'Lens Implants (ICL / RLE)',
+      stat: '20/20',
+      statLabel: 'Vision Quality',
+      desc: 'Advanced lens-based vision correction solutions including Implantable Collamer Lenses (ICL) and Refractive Lens Exchange to eliminate glasses.',
+      icon: <Eye className="w-8 h-8" />,
+      path: '/refractive-surgery'
     }
   ];
 
@@ -276,7 +333,7 @@ const Home: React.FC = () => {
     <div className="overflow-hidden bg-transparent">
 
       {/* === HERO: Sticky Doctor Section === */}
-      <div className="sticky top-0 h-[80vh] overflow-hidden bg-cream flex items-end justify-center z-10 w-full">
+      <div className="sticky top-0 h-[72vh] md:h-[80vh] overflow-hidden flex items-end justify-center z-10 w-full">
 
           {/* Soft radial glow behind doctor */}
           <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-0">
@@ -285,62 +342,83 @@ const Home: React.FC = () => {
 
           {/* Doctor Portrait / Intro Video - centered, smooth cross-fade */}
           <motion.div 
-            style={{ opacity: doctorOpacity }}
-            className="absolute bottom-0 left-0 right-0 h-full flex justify-center items-end z-10 pointer-events-none"
+            onMouseEnter={() => setIsPortraitHovered(true)}
+            onMouseLeave={() => setIsPortraitHovered(false)}
+            onClick={(e) => {
+              if (!isEditMode) return;
+              e.stopPropagation();
+              selectElement({ id: 'hero-doctor-portrait', type: 'media', defaultSrc: drSameerVerma });
+            }}
+            style={{
+              opacity: doctorOpacity,
+              bottom: isMobile ? "0px" : "15px",
+              height: heroHeight,
+              width: heroWidth === 'auto' ? undefined : heroWidth,
+              aspectRatio: heroWidth === 'auto' ? '682/1024' : undefined,
+              scale: isMobile ? 1.0 : 1.34,
+              x: isMobile ? "0px" : "4vw",
+              originY: 1,
+              originX: 0.5,
+              outline: isEditMode ? (isSelected ? '3px solid #00abc0' : isPortraitHovered ? '2px dashed rgba(0,171,192,0.55)' : undefined) : undefined,
+              outlineOffset: '2px',
+              borderRadius: '16px',
+              overflow: 'hidden'
+            }}
+            className={`absolute flex items-end justify-center z-10 ${
+              isEditMode ? 'cursor-pointer pointer-events-auto' : 'pointer-events-none'
+            }`}
           >
-            <AnimatePresence>
-              {showIntroVideo && (
-                <motion.video
-                  ref={introVideoRef}
-                  src={introVid}
-                  autoPlay
-                  muted
-                  playsInline
-                  onLoadedMetadata={handleIntroVideoLoaded}
-                  onSeeked={handleIntroVideoSeeked}
-                  onTimeUpdate={handleIntroVideoTimeUpdate}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: introVideoReady ? 1 : 0 }}
-                  exit={{ opacity: 0, transition: { duration: 0 } }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="absolute bottom-0 h-full w-auto object-contain select-none z-20 pointer-events-none mix-blend-multiply"
-                  style={{
-                    scale: 0.95,
-                    x: isMobile ? "0px" : "4vw",
-                    originY: 1,
-                    originX: 0.5,
-                    filter: 'contrast(1.15) brightness(1.12) saturate(1.05)',
-                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0) 100%)',
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0) 100%)',
-                    clipPath: 'inset(0% 8% 8% 8%)'
-                  }}
-                />
-              )}
-            </AnimatePresence>
-            <motion.img
-              src={drSameerVerma}
-              alt="Dr. Sameer Verma – Senior Eye Specialist"
+            {/* Intro Video plays first, then fades out smoothly to the identical fallback image */}
+            <motion.video
+              ref={introVideoRef}
+              src={introVid}
+              autoPlay
+              muted
+              playsInline
+              onLoadedMetadata={handleIntroVideoLoaded}
+              onSeeked={handleIntroVideoSeeked}
+              onTimeUpdate={handleIntroVideoTimeUpdate}
               initial={{ opacity: 0 }}
-              animate={showIntroVideo ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0 }}
-              className="absolute bottom-0 h-full w-auto object-contain select-none z-10"
+              animate={{ opacity: !isVideoDone && introVideoReady ? 1 : 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover select-none z-20 pointer-events-none mix-blend-multiply"
               style={{
-                scale: 0.95,
-                x: isMobile ? "0px" : "4vw",
+                scale: 1.0,
                 originY: 1,
                 originX: 0.5,
-                filter: 'contrast(1.15) brightness(1.12) saturate(1.05) drop-shadow(0 -10px 60px rgba(0,20,40,0.12))'
+                filter: 'contrast(1.15) brightness(1.12) saturate(1.05)'
               }}
             />
+            
+            <motion.img
+              src={portraitSrc}
+              alt="Dr. Sameer Verma – Senior Eye Specialist"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: isVideoDone || !introVideoReady ? 1 : 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover select-none z-10"
+              style={{
+                scale: 1.0,
+                originY: 1,
+                originX: 0.5,
+                filter: 'contrast(1.15) brightness(1.12) saturate(1.05)'
+              }}
+            />
+
+            {isEditMode && isSelected && (
+              <span className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 bg-brand-teal text-brand-navy text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-lg pointer-events-auto">
+                Hero Doctor Portrait
+              </span>
+            )}
           </motion.div>
 
           {/* Floating Widget 1: Digital Eye Test — Right */}
           <motion.div
             style={{ opacity: widgetOpacity }}
             initial={{ opacity: 0, x: 70 }}
-            animate={showIntroVideo ? { opacity: 0, x: 70 } : { opacity: 1, x: 0 }}
-            transition={{ delay: 1.1, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[25%] z-20"
+            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
+            transition={{ delay: 0.1, duration: 0.7, type: 'spring', stiffness: 80 }}
+            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[25%] z-20"
           >
             <motion.div
               animate={{ y: [0, -10, 0] }}
@@ -365,9 +443,9 @@ const Home: React.FC = () => {
           <motion.div
             style={{ opacity: widgetOpacity }}
             initial={{ opacity: 0, x: 70 }}
-            animate={showIntroVideo ? { opacity: 0, x: 70 } : { opacity: 1, x: 0 }}
-            transition={{ delay: 1.3, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[45%] z-20"
+            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
+            transition={{ delay: 0.3, duration: 0.7, type: 'spring', stiffness: 80 }}
+            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[45%] z-20"
           >
             <motion.div
               animate={{ y: [0, -9, 0] }}
@@ -394,9 +472,9 @@ const Home: React.FC = () => {
           <motion.div
             style={{ opacity: widgetOpacity }}
             initial={{ opacity: 0, x: 70 }}
-            animate={showIntroVideo ? { opacity: 0, x: 70 } : { opacity: 1, x: 0 }}
-            transition={{ delay: 1.5, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[65%] z-20"
+            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
+            transition={{ delay: 0.5, duration: 0.7, type: 'spring', stiffness: 80 }}
+            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[65%] z-20"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
@@ -419,26 +497,24 @@ const Home: React.FC = () => {
           {/* "The Clarity You Deserve." — scroll responsive alignment */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={showIntroVideo ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            animate={isVideoDone ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{ y: textY, opacity: textOpacity }}
-            className="absolute bottom-[14%] left-[6%] sm:left-[8%] lg:left-[10%] z-30 pointer-events-none select-none w-max max-w-[45vw]"
+            className="absolute bottom-[10%] left-[4%] sm:left-[8%] lg:left-[10%] z-30 pointer-events-none select-none w-max max-w-[78vw] sm:max-w-[45vw]"
           >
             <h1 className="leading-[0.95] text-left">
               <motion.span 
                 initial={{ opacity: 0, y: 40 }}
-                animate={showIntroVideo ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
+                animate={isVideoDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.9, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-brand-navy"
-                style={{ fontFamily: 'var(--font-body, serif)' }}
-              >The Clarity</motion.span>
+              ><EditableText id="hero-title-main">The Clarity</EditableText></motion.span>
               <motion.span 
                 initial={{ opacity: 0, y: 40 }}
-                animate={showIntroVideo ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 2.3, ease: [0.16, 1, 0.3, 1] }}
+                animate={isVideoDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.9, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl italic font-light text-brand-teal"
-                style={{ fontFamily: 'Lora, serif' }}
-              >You Deserve.</motion.span>
+              ><EditableText id="hero-title-sub">You Deserve.</EditableText></motion.span>
             </h1>
           </motion.div>
 
@@ -462,11 +538,11 @@ const Home: React.FC = () => {
       </div>
 
       {/* Content sections scroll UP over the pinned doctor */}
-      <div className="relative z-40 bg-cream" style={{ marginTop: '-1px' }}>
+      <div className="relative z-40 bg-cream" style={{ marginTop: isMobile ? '-12px' : '-32px' }}>
 
       {/* === STATS COUNTER SECTION === */}
-      <EditableSection id="stats-counter">
-        <section className="py-16 bg-cream relative z-10">
+      <EditableContainer id="stats-counter">
+        <section className="pt-8 pb-16 bg-cream relative z-10">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
               {[
@@ -475,64 +551,68 @@ const Home: React.FC = () => {
                 { value: 120000, suffix: '+', label: 'Patients Treated' },
                 { value: 25, suffix: '+', label: 'Publications' }
               ].map((item, idx) => (
-                <div 
-                  key={idx}
-                  className="bg-white border-2 border-brand-navy rounded-2xl p-6 shadow-[4px_4px_0px_0px_rgba(0,30,60,0.95)] hover:shadow-[2px_2px_0px_0px_rgba(0,30,60,0.95)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 flex flex-col justify-center items-center"
-                >
-                  <h3 className="text-3xl md:text-4xl font-black text-brand-navy mb-2">
-                    <Counter value={item.value} suffix={item.suffix} />
-                  </h3>
-                  <p className="text-[9px] tracking-[0.15em] uppercase text-brand-navy/60 font-black leading-tight">
-                    {item.label}
-                  </p>
-                </div>
+                <EditableCard key={idx} id={`stat-card-${idx}`} className="h-full">
+                  <div 
+                    className="bg-white border-2 border-brand-navy rounded-2xl p-6 shadow-[4px_4px_0px_0px_rgba(0,30,60,0.95)] hover:shadow-[2px_2px_0px_0px_rgba(0,30,60,0.95)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 flex flex-col justify-center items-center h-full"
+                  >
+                    <h3 className="text-3xl md:text-4xl font-black text-brand-navy mb-2">
+                      <Counter value={item.value} suffix={item.suffix} />
+                    </h3>
+                    <p className="text-[9px] tracking-[0.15em] uppercase text-brand-navy/60 font-black leading-tight">
+                      <EditableText id={`stat-label-${idx}`}>{item.label}</EditableText>
+                    </p>
+                  </div>
+                </EditableCard>
               ))}
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === ABOUT HOSPITAL & HISTORY SECTION === */}
-      <EditableSection id="about-hospital-legacy">
+      <EditableContainer id="about-hospital-legacy">
         <section className="py-24 bg-cream relative z-10">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left: Legacy Image */}
               <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden shadow-2xl relative group max-h-[500px]">
-                <img 
-                  src={gallery3} 
-                  alt="Vedanta Netralya Legacy & Clinical Care" 
+                <EditableMedia
+                  id="about-legacy-image"
+                  src={gallery3}
+                  alt="Vedanta Netralya Legacy & Clinical Care"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-brand-navy/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-brand-navy/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
 
               {/* Right: Hospital History Content */}
               <div className="lg:col-span-7 flex flex-col gap-6">
                 <p className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black mb-2">Our Heritage</p>
                 <h2 className="section-text text-brand-navy">
-                  A Legacy of<br />
-                  <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>Ocular Excellence.</span>
+                  <EditableText id="about-legacy-title-1">A Legacy of</EditableText><br />
+                  <span className="italic font-light text-brand-teal">
+                    <EditableText id="about-legacy-title-2">Ocular Excellence.</EditableText>
+                  </span>
                 </h2>
                 <p className="text-lg text-brand-navy/70 font-lora leading-relaxed">
-                  Founded in 2003, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced robotic laser systems, high-definition diagnostics, and advanced micro-surgical wings to restore visual clarity.
+                  <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced robotic laser systems, high-definition diagnostics, and advanced micro-surgical wings to restore visual clarity.</EditableText>
                 </p>
                 <p className="text-base text-brand-navy/60 font-lora leading-relaxed">
-                  Under the able leadership of a team of ophthalmic experts Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Kanhaiya Mittal, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.
+                  <EditableText id="about-legacy-desc-2">Under the leadership of a team of ophthalmic experts Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Kanhaiya Mittal, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.</EditableText>
                 </p>
               </div>
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === MARQUEE SPECIALTIES === */}
-      <EditableSection id="marquee-specialties">
+      <EditableContainer id="marquee-specialties">
         <div className="bg-brand-navy py-6 overflow-hidden relative z-10">
           <div className="flex marquee-track whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center gap-16 mr-16">
-                {['CATARACT', 'LASIK', 'CORNEA', 'PEDIATRIC', 'OCULOPLASTY', 'RETINA', 'GLAUCOMA'].map((item, j) => (
+                {['CATARACT', 'RETINA', 'GLAUCOMA', 'OCULOPLASTY', 'PEDIATRIC', 'REFRACTIVE'].map((item, j) => (
                   <div key={j} className="flex items-center gap-16">
                     <span className="text-cream text-2xl font-black tracking-wider">{item}</span>
                     <span className="text-brand-teal text-xl">✦</span>
@@ -542,10 +622,10 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === SPECIALTIES SECTION === */}
-      <EditableSection id="specialties-wing">
+      <EditableContainer id="specialties-wing">
         <section id="wings" className="py-24 bg-cream-dark relative">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <motion.div 
@@ -557,13 +637,15 @@ const Home: React.FC = () => {
             >
               <div className="lg:col-span-4">
                 <h2 className="section-text text-brand-navy leading-tight">
-                  vedanta<br/>
-                  <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>specialties.</span>
+                  <EditableText id="specialties-title-1">vedanta</EditableText><br/>
+                  <span className="italic font-light text-brand-teal">
+                    <EditableText id="specialties-title-2">specialties.</EditableText>
+                  </span>
                 </h2>
               </div>
               <div className="lg:col-span-8 flex items-end">
                 <p className="text-lg text-brand-navy/60 font-lora leading-relaxed max-w-2xl">
-                  Five pillars of ophthalmic excellence — each wing equipped with internationally-certified equipment and led by AIIMS-trained super-specialists.
+                  <EditableText id="specialties-desc">Six wings of ophthalmic excellence — each wing equipped with internationally-certified equipment and led by board-certified super-specialists.</EditableText>
                 </p>
               </div>
             </motion.div>
@@ -572,34 +654,35 @@ const Home: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <div className="lg:col-span-5 flex flex-col gap-2">
                 {specialties.map((spec, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => setActiveSpec(idx)}
-                    onMouseEnter={() => setActiveSpec(idx)}
-                    className={`group cursor-pointer py-6 border-t border-brand-navy/10 transition-all ${
-                      activeSpec === idx ? 'pl-4 border-t-brand-teal' : ''
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className={`text-[10px] font-black tracking-widest transition-colors ${
-                          activeSpec === idx ? 'text-brand-teal' : 'text-brand-navy/30'
+                  <EditableCard key={idx} id={`specialty-item-card-${idx}`} className="border-t border-brand-navy/10">
+                    <div
+                      onClick={() => setActiveSpec(idx)}
+                      onMouseEnter={() => setActiveSpec(idx)}
+                      className={`group cursor-pointer py-6 transition-all ${
+                        activeSpec === idx ? 'pl-4 border-t-brand-teal' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <span className={`text-[10px] font-black tracking-widest transition-colors ${
+                            activeSpec === idx ? 'text-brand-teal' : 'text-brand-navy/30'
+                          }`}>
+                            {spec.num}
+                          </span>
+                          <h3 className={`text-2xl md:text-3xl font-black transition-all ${
+                            activeSpec === idx ? 'text-brand-navy' : 'text-brand-navy/40'
+                          }`}>
+                            <EditableText id={`specialty-list-title-${idx}`}>{spec.title}</EditableText>
+                          </h3>
+                        </div>
+                        <div className={`w-10 h-10 rounded-full border border-brand-navy/20 flex items-center justify-center transition-all ${
+                          activeSpec === idx ? 'bg-brand-navy border-brand-navy text-brand-teal rotate-45' : ''
                         }`}>
-                          {spec.num}
-                        </span>
-                        <h3 className={`text-2xl md:text-3xl font-black transition-all ${
-                          activeSpec === idx ? 'text-brand-navy' : 'text-brand-navy/40'
-                        }`}>
-                          {spec.title}
-                        </h3>
-                      </div>
-                      <div className={`w-10 h-10 rounded-full border border-brand-navy/20 flex items-center justify-center transition-all ${
-                        activeSpec === idx ? 'bg-brand-navy border-brand-navy text-brand-teal rotate-45' : ''
-                      }`}>
-                        <Plus className="w-3.5 h-3.5" />
+                          <Plus className="w-3.5 h-3.5" />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </EditableCard>
                 ))}
                 <div className="border-t border-brand-navy/10" />
               </div>
@@ -621,18 +704,26 @@ const Home: React.FC = () => {
                             {specialties[activeSpec].icon}
                           </div>
                           <span className="text-[9px] tracking-widest uppercase text-brand-teal-bright font-black">
-                            {specialties[activeSpec].tag}
+                            <EditableText id={`specialty-detail-tag-${activeSpec}`}>{specialties[activeSpec].tag}</EditableText>
                           </span>
                         </div>
                         
-                        <h4 className="text-3xl md:text-4xl font-black mb-4">{specialties[activeSpec].title}</h4>
-                        <p className="text-sm text-cream/70 font-lora leading-relaxed mb-8">{specialties[activeSpec].desc}</p>
+                        <h4 className="text-3xl md:text-4xl font-black mb-4">
+                          <EditableText id={`specialty-detail-title-${activeSpec}`}>{specialties[activeSpec].title}</EditableText>
+                        </h4>
+                        <p className="text-sm text-cream/70 font-lora leading-relaxed mb-8">
+                          <EditableText id={`specialty-detail-desc-${activeSpec}`}>{specialties[activeSpec].desc}</EditableText>
+                        </p>
                       </div>
 
                       <div className="border-t border-cream/10 pt-6 flex items-end justify-between">
                         <div>
-                          <p className="text-4xl font-black text-brand-teal mb-1">{specialties[activeSpec].stat}</p>
-                          <p className="text-[9px] tracking-widest uppercase text-cream/40 font-black">{specialties[activeSpec].statLabel}</p>
+                          <p className="text-4xl font-black text-brand-teal mb-1">
+                            <EditableText id={`specialty-detail-stat-${activeSpec}`}>{specialties[activeSpec].stat}</EditableText>
+                          </p>
+                          <p className="text-[9px] tracking-widest uppercase text-cream/40 font-black">
+                            <EditableText id={`specialty-detail-statlabel-${activeSpec}`}>{specialties[activeSpec].statLabel}</EditableText>
+                          </p>
                         </div>
                         <Link to={specialties[activeSpec].path} className="bg-brand-teal text-brand-navy w-12 h-12 rounded-full flex items-center justify-center hover:bg-cream hover:text-brand-navy transition-all shadow-md">
                           <ArrowUpRight className="w-4 h-4" />
@@ -645,71 +736,98 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === OUR SERVICES GRID SECTION === */}
-      <EditableSection id="services-grid-home">
-        <section id="services" className="py-24 bg-brand-navy text-cream relative z-10 border-t border-cream/5">
-          <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
+      <EditableContainer id="services-grid-home">
+        <section id="services" className="py-24 bg-brand-navy text-cream relative z-10 border-t border-cream/5 overflow-hidden">
+          {/* Decorative Background Glows for Glassmorphism */}
+          <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px] pointer-events-none z-0" />
+          <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-brand-teal/5 rounded-full blur-[150px] pointer-events-none z-0" />
+
+          <div className="max-w-[1800px] mx-auto px-6 lg:px-16 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black">Our Services</span>
+                  <span className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black">
+                    <EditableText id="services-eyebrow">Our Services</EditableText>
+                  </span>
                 </div>
                 <h2 className="section-text">
-                  World-Class <br/>
-                  <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>Clinical Specialties.</span>
+                  <EditableText id="services-title-1">World-Class</EditableText> <br/>
+                  <span className="italic font-light text-brand-teal">
+                    <EditableText id="services-title-2">Clinical Specialties.</EditableText>
+                  </span>
                 </h2>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -6 }}
-                  className="bg-brand-navy-deep border border-cream/10 hover:border-brand-teal/40 rounded-[2rem] p-8 lg:p-10 flex flex-col justify-between group transition-all duration-300 relative overflow-hidden shadow-lg"
-                >
-                  {/* Background glow on hover */}
-                  <div className="absolute -right-20 -top-20 w-40 h-40 bg-brand-teal/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div>
-                    <div className="w-14 h-14 rounded-2xl bg-brand-teal/10 border border-brand-teal/25 flex items-center justify-center text-brand-teal-bright mb-8 group-hover:bg-brand-teal-bright group-hover:text-brand-navy-deep transition-all duration-300">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl lg:text-2xl font-black text-cream mb-4">{service.title}</h3>
-                    <p className="text-sm font-lora text-cream/60 leading-relaxed mb-8">{service.description}</p>
-                  </div>
-
-                  <Link 
-                    to={service.path}
-                    className="inline-flex items-center gap-2 text-xs tracking-wider uppercase font-black text-brand-teal group-hover:text-cream transition-colors mt-auto"
+                <EditableCard key={index} id={`service-card-${index}`} className="h-full">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -6 }}
+                    className="bg-brand-navy-deep/40 backdrop-blur-md border border-cream/10 hover:border-brand-teal/40 rounded-[2rem] flex flex-col justify-between group transition-all duration-300 relative overflow-hidden shadow-lg h-full"
                   >
-                    Learn More 
-                    <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
-                  </Link>
-                </motion.div>
+                    {/* Background glow on hover */}
+                    <div className="absolute -right-20 -top-20 w-40 h-40 bg-brand-teal/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    
+                    {/* Top Image Container */}
+                    <div className="relative h-48 w-full overflow-hidden rounded-t-[2rem]">
+                      <EditableMedia
+                        id={`home-service-image-${index}`}
+                        src={getHomeServiceImage(index)}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-80 pointer-events-none" />
+                      <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-brand-navy/80 backdrop-blur-md border border-cream/10 flex items-center justify-center text-brand-teal pointer-events-none">
+                        {service.icon}
+                      </div>
+                    </div>
+
+                    {/* Content Container */}
+                    <div className="p-6 lg:p-8 flex flex-col flex-grow justify-between">
+                      <div>
+                        <h3 className="text-xl font-black text-cream mb-3">
+                          <EditableText id={`service-item-title-${index}`}>{service.title}</EditableText>
+                        </h3>
+                        <p className="text-xs font-lora text-cream/60 leading-relaxed mb-6">
+                          <EditableText id={`service-item-desc-${index}`}>{service.description}</EditableText>
+                        </p>
+                      </div>
+
+                      <Link 
+                        to={service.path}
+                        className="inline-flex items-center gap-2 text-[10px] tracking-wider uppercase font-black text-black hover:text-brand-navy transition-colors mt-auto border-t border-brand-navy/10 pt-4 w-full"
+                      >
+                        <EditableText id={`service-item-link-${index}`}>Learn More</EditableText> 
+                        <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </EditableCard>
               ))}
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === EMBEDDED VISION SIMULATOR === */}
-      <EditableSection id="vision-simulator-home">
+      <EditableContainer id="vision-simulator-home">
         <section id="simulator" className="py-24 bg-cream relative z-10 border-t border-brand-navy/5">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <VisionSimulator />
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === FAQ ACCORDION SECTION === */}
-      <EditableSection id="faq-home">
+      <EditableContainer id="faq-home">
         <section className="py-24 bg-cream-dark relative z-10 border-t border-brand-navy/5">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -718,11 +836,15 @@ const Home: React.FC = () => {
               <div className="lg:col-span-5 flex flex-col gap-8">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black">Support Desk</span>
+                    <span className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black">
+                      <EditableText id="faq-eyebrow">Support Desk</EditableText>
+                    </span>
                   </div>
                   <h2 className="section-text text-brand-navy">
-                    Frequently Asked <br />
-                    <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>Questions.</span>
+                    <EditableText id="faq-title-1">Frequently Asked</EditableText> <br />
+                    <span className="italic font-light text-brand-teal">
+                      <EditableText id="faq-title-2">Questions.</EditableText>
+                    </span>
                   </h2>
                 </div>
               </div>
@@ -743,7 +865,7 @@ const Home: React.FC = () => {
                         <span className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
                           isOpen ? 'text-brand-teal' : 'text-brand-navy group-hover:text-brand-teal'
                         }`}>
-                          {faq.question}
+                          <EditableText id={`faq-question-${index}`}>{faq.question}</EditableText>
                         </span>
                         <span className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
                           isOpen 
@@ -764,7 +886,7 @@ const Home: React.FC = () => {
                             className="overflow-hidden"
                           >
                             <p className="pb-6 pr-6 text-brand-navy/70 text-sm md:text-base font-lora leading-relaxed">
-                              {faq.answer}
+                              <EditableText id={`faq-answer-${index}`}>{faq.answer}</EditableText>
                             </p>
                           </motion.div>
                         )}
@@ -777,17 +899,21 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === TPA & INSURANCE PARTNERS === */}
-      <EditableSection id="tpa-partners-section">
+      <EditableContainer id="tpa-partners-section">
         <section className="py-24 bg-white relative z-10 border-t border-brand-navy/5 shadow-sm overflow-hidden">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Cashless Panels</p>
-              <h2 className="section-text text-brand-navy mb-6">Our Cashless TPA / Insurance Partners</h2>
+              <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 font-body">
+                <EditableText id="tpa-eyebrow">Cashless Panels</EditableText>
+              </p>
+              <h2 className="section-text text-brand-navy mb-6 font-body">
+                <EditableText id="tpa-title">Our Cashless TPA / Insurance Partners</EditableText>
+              </h2>
               <p className="text-base text-brand-navy/60 font-lora">
-                We accept cashless surgery pre-authorizations and cards from more than 40 leading TPAs and insurers.
+                <EditableText id="tpa-desc">We accept cashless surgery pre-authorizations and cards from more than 40 leading TPAs and insurers.</EditableText>
               </p>
             </div>
             
@@ -819,17 +945,21 @@ const Home: React.FC = () => {
             </motion.div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
 
       {/* === TESTIMONIALS SECTION === */}
-      <EditableSection id="testimonials-home">
+      <EditableContainer id="testimonials-home">
         <section className="py-24 bg-cream-dark relative z-10 border-t border-brand-navy/5">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Patient Chronicles</p>
-              <h2 className="section-text text-brand-navy mb-6">Patient Stories</h2>
+              <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 font-body">
+                <EditableText id="testimonial-eyebrow">Patient Chronicles</EditableText>
+              </p>
+              <h2 className="section-text text-brand-navy mb-6 font-body">
+                <EditableText id="testimonial-title">Patient Stories</EditableText>
+              </h2>
               <p className="text-base text-brand-navy/60 font-lora">
-                Hear from patients who restored their visual clarity and spectacles-free freedom through our clinical experts.
+                <EditableText id="testimonial-desc">Hear from patients who restored their visual clarity and spectacles-free freedom through our clinical experts.</EditableText>
               </p>
             </div>
             
@@ -857,56 +987,110 @@ const Home: React.FC = () => {
                   rating: 5
                 }
               ].map((rev, i) => (
-                <div
-                  key={i}
-                  className="bg-brand-navy text-cream rounded-[2.5rem] p-8 border border-cream/5 shadow-xl flex flex-col justify-between relative overflow-hidden"
-                >
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-brand-teal/5 blur-xl" />
-                  
-                  <div>
-                    <Quote className="w-10 h-10 text-brand-teal/30 mb-6" />
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(rev.rating)].map((_, idx) => (
-                        <Star key={idx} className="w-4 h-4 fill-brand-teal-bright text-brand-teal-bright" />
-                      ))}
-                    </div>
-                    <p className="text-sm text-cream/80 font-lora leading-relaxed mb-8">"{rev.quote}"</p>
-                  </div>
-
-                  <div className="border-t border-cream/10 pt-4 flex justify-between items-center">
+                <EditableCard key={i} id={`testimonial-card-${i}`} className="h-full">
+                  <div
+                    className="bg-brand-navy text-cream rounded-[2.5rem] p-8 border border-cream/5 shadow-xl flex flex-col justify-between relative overflow-hidden h-full"
+                  >
+                    <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-brand-teal/5 blur-xl" />
+                    
                     <div>
-                      <h3 className="font-bold text-sm text-cream font-body">{rev.name}</h3>
-                      <p className="text-[10px] text-cream/50 tracking-wider font-lora">{rev.location}</p>
+                      <Quote className="w-10 h-10 text-brand-teal/30 mb-6" />
+                      <div className="flex gap-1 mb-4">
+                        {[...Array(rev.rating)].map((_, idx) => (
+                          <Star key={idx} className="w-4 h-4 fill-brand-teal-bright text-brand-teal-bright" />
+                        ))}
+                      </div>
+                      <p className="text-sm text-cream/80 font-lora leading-relaxed mb-8">
+                        <EditableText id={`testimonial-quote-${i}`}>{`"${rev.quote}"`}</EditableText>
+                      </p>
                     </div>
-                    <span className="text-[9px] tracking-wider uppercase text-brand-teal font-black bg-brand-teal/10 px-3 py-1 rounded-full border border-brand-teal/20">
-                      {rev.treatment.split(' ')[0]}
-                    </span>
+
+                    <div className="border-t border-cream/10 pt-4 flex justify-between items-center">
+                      <div>
+                        <h3 className="font-bold text-sm text-cream font-body">
+                          <EditableText id={`testimonial-name-${i}`}>{rev.name}</EditableText>
+                        </h3>
+                        <p className="text-[10px] text-cream/50 tracking-wider font-lora">
+                          <EditableText id={`testimonial-location-${i}`}>{rev.location}</EditableText>
+                        </p>
+                      </div>
+                      <span className="text-[9px] tracking-wider uppercase text-brand-teal font-black bg-brand-teal/10 px-3 py-1 rounded-full border border-brand-teal/20">
+                        {rev.treatment.split(' ')[0]}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </EditableCard>
               ))}
             </div>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
+
+      {/* === BRANCHES & DIRECTIONS SECTION === */}
+      <EditableContainer id="homepage-location-section">
+        <section className="py-20 bg-cream-dark relative z-10 border-t border-brand-navy/5">
+          <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Our Locations</span>
+              <h2 className="section-text text-brand-navy mb-6">Find Our Centres</h2>
+              <p className="text-base text-brand-navy/60 font-lora">
+                Visit our superspecialty eye hospitals. Select a branch below to view its location, clinical timings, and get instant driving directions.
+              </p>
+            </div>
+
+            <div className="max-w-xl mx-auto">
+              {/* Haldwani Card */}
+              <div className="bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/5 hover:border-brand-teal/40 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Superspecialty Centre</span>
+                  <h3 className="text-2xl font-black mb-4">Haldwani Centre</h3>
+                  <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
+                    Canal Road, Tikonia Circle, Near Eye Q Hospital, Haldwani, Uttarakhand 263139
+                  </p>
+                  <div className="space-y-2 text-xs text-cream/60 font-body mb-8">
+                    <p><strong>OPD Hours:</strong> Mon - Sat: 9:00 AM - 7:00 PM</p>
+                    <p><strong>Sunday:</strong> 9:00 AM - 2:00 PM</p>
+                    <p><strong>Phone:</strong> 05946-223616, +91-9068561971</p>
+                  </div>
+                </div>
+                <a 
+                  href="https://www.google.com/maps/place/Vedanta+Netralya+Haldwani/@29.2266568,79.5255779,642m/data=!3m1!1e3!4m10!1m2!2m1!1svedanta+netralya+haldwani!3m6!1s0x39a09b1779d2b223:0xccc4371f2e361808!8m2!3d29.2266493!4d79.5281364!15sChl2ZWRhbnRhIG5ldHJhbHlhIGhhbGR3YW5pkgEPZXllX2NhcmVfY2VudGVy4AEA!16s%2Fg%2F11n422c3lg!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-[0.2em] uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Navigate on Google Maps
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </EditableContainer>
 
       {/* === CALL TO ACTION === */}
-      <EditableSection id="cta-section">
+      <EditableContainer id="cta-section">
         <section className="py-24 bg-transparent text-center relative z-10">
           <div className="max-w-4xl mx-auto px-6">
-            <p className="text-brand-teal text-[10px] tracking-[0.5em] uppercase mb-8 font-black">Your Vision Awaits</p>
+            <p className="text-brand-teal text-[10px] tracking-[0.5em] uppercase mb-8 font-black">
+              <EditableText id="cta-eyebrow">Your Vision Awaits</EditableText>
+            </p>
             <h2 className="section-text text-brand-navy mb-8">
-              The Clarity <br />
-              <span className="italic font-light text-brand-teal" style={{ fontFamily: 'Lora, serif' }}>You Deserve.</span>
+              <EditableText id="cta-title-1">The Clarity</EditableText> <br />
+              <span className="italic font-light text-brand-teal">
+                <EditableText id="cta-title-2">You Deserve.</EditableText>
+              </span>
             </h2>
             <Link to="/appointment" className="group inline-flex items-center gap-4 bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all shadow-xl">
-              Begin Your Consultation
+              <EditableText id="cta-button-text">Begin Your Consultation</EditableText>
               <span className="w-8 h-8 rounded-full bg-brand-teal text-brand-navy group-hover:bg-cream group-hover:text-brand-navy flex items-center justify-center transition-colors">
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </span>
             </Link>
           </div>
         </section>
-      </EditableSection>
+      </EditableContainer>
       </div>{/* end of z-40 content overlay wrapper */}
     </div>
   );

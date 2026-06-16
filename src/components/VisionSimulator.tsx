@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Eye } from 'lucide-react';
 
 const VisionSimulator: React.FC = () => {
-  const [filter, setFilter] = useState<'clear' | 'cataract' | 'myopia' | 'miosis' | 'mydriasis' | 'nightblindness'>('clear');
+  const [filter, setFilter] = useState<'clear' | 'cataract' | 'myopia' | 'nightblindness' | 'glaucoma'>('clear');
 
   // Denser starfield array (approx 50 stars) for a filled starry sky effect
   const stars = [
@@ -86,9 +86,8 @@ const VisionSimulator: React.FC = () => {
             {[
               { id: 'clear', label: 'Clear 20/20 Vision', desc: 'Sharp, focused stars and a crisp crescent moon.', icon: <Eye className="w-4 h-4" /> },
               { id: 'cataract', label: 'Cataract (Halos & Blur)', desc: 'Cloudy details and scattered halo glare around moon and stars.', icon: <Sparkles className="w-4 h-4" /> },
-              { id: 'myopia', label: 'Myopia (Before LASIK)', desc: 'Heavy distant blur, typical refractive error.', icon: <Eye className="w-4 h-4 rotate-180" /> },
-              { id: 'miosis', label: 'Miosis (Constricted Pupil)', desc: 'Dimmer night view but pinpoint sharp focus (pinhole effect).', icon: <Eye className="w-4 h-4 scale-75 opacity-70" /> },
-              { id: 'mydriasis', label: 'Mydriasis (Dilated Pupil)', desc: 'Brighter view with extreme glare and halos around light sources.', icon: <Eye className="w-4 h-4 scale-125 text-brand-teal" /> },
+              { id: 'glaucoma', label: 'Glaucoma (Tunnel Vision)', desc: 'Loss of peripheral vision, creating a darkened shadow ring around the edges.', icon: <Eye className="w-4 h-4 text-brand-teal border border-brand-teal/30 rounded-full p-0.5" /> },
+              { id: 'myopia', label: 'Myopia (Refractive Error)', desc: 'Heavy distant blur, typical refractive error.', icon: <Eye className="w-4 h-4 rotate-180" /> },
               { id: 'nightblindness', label: 'Night Blindness (Nyctalopia)', desc: 'Severe low-light vision loss; most stars disappear completely.', icon: <Eye className="w-4 h-4 opacity-30" /> },
             ].map((opt) => (
               <button
@@ -127,8 +126,6 @@ const VisionSimulator: React.FC = () => {
               className={`w-full h-full relative transition-all duration-500 select-none ${
                 filter === 'cataract' ? 'blur-[2.5px] contrast-[0.8]' :
                 filter === 'myopia' ? 'blur-[8px]' : 
-                filter === 'miosis' ? 'brightness-[0.5]' :
-                filter === 'mydriasis' ? 'brightness-[1.25] contrast-[1.1]' :
                 filter === 'nightblindness' ? 'brightness-[0.2] contrast-[0.9]' : ''
               }`}
             >
@@ -146,8 +143,6 @@ const VisionSimulator: React.FC = () => {
                     key={idx} 
                     className={`absolute bg-white rounded-full transition-all duration-500 ${star.size} ${
                       filter === 'cataract' ? 'shadow-[0_0_10px_rgba(255,255,255,0.9)] opacity-95' :
-                      filter === 'mydriasis' ? 'shadow-[0_0_15px_rgba(255,255,255,0.95)] opacity-100 scale-150' :
-                      filter === 'miosis' ? 'opacity-70 scale-75' :
                       filter === 'nightblindness' ? 'opacity-40 scale-75' : 'opacity-90'
                     }`}
                     style={{ 
@@ -160,12 +155,9 @@ const VisionSimulator: React.FC = () => {
 
               {/* Curved Crescent Moon */}
               <div className="absolute top-[20%] left-[45%] w-24 h-24 flex items-center justify-center">
-                {/* Halos glare overlay for Cataract or Mydriasis */}
+                {/* Halos glare overlay for Cataract */}
                 {filter === 'cataract' && (
                   <div className="absolute w-32 h-32 bg-[#fefcbf]/25 rounded-full blur-[16px] animate-pulse" />
-                )}
-                {filter === 'mydriasis' && (
-                  <div className="absolute w-48 h-48 bg-[#fefcbf]/35 rounded-full blur-[24px] animate-pulse" />
                 )}
                 
                 <svg viewBox="0 0 100 100" className="w-16 h-16 relative z-10 transition-transform duration-500">
@@ -177,13 +169,22 @@ const VisionSimulator: React.FC = () => {
                     style={{
                       filter: 
                         filter === 'cataract' ? 'drop-shadow(0 0 12px rgba(254,252,191,0.9))' : 
-                        filter === 'mydriasis' ? 'drop-shadow(0 0 20px rgba(254,252,191,1)) drop-shadow(0 0 40px rgba(254,252,191,0.6))' : 
                         'none'
                     }}
                   />
                 </svg>
               </div>
             </div>
+
+            {/* Glaucoma Tunnel Vision Vignette Overlay */}
+            <div 
+              className={`absolute inset-0 pointer-events-none z-20 transition-opacity duration-500 ${
+                filter === 'glaucoma' ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                background: 'radial-gradient(circle at 50% 28%, transparent 15%, rgba(3, 7, 18, 0.98) 50%)'
+              }}
+            />
 
             {/* Filter Info Tag */}
             <div className="absolute bottom-4 left-4 bg-brand-navy-deep/80 border border-cream/10 px-4 py-2 rounded-xl text-[10px] tracking-wider uppercase font-black z-30">
