@@ -332,7 +332,7 @@ const Layout: React.FC = () => {
 
       {/* Floating Google Maps Location Button */}
       {/* Floating Google Maps Location Widget & Button */}
-      <div className="fixed bottom-28 right-8 z-[999] flex flex-col items-end">
+      <div className="fixed bottom-28 right-8 z-[999] flex flex-col items-end gap-3">
         <AnimatePresence>
           {isLocationWidgetOpen && (
             <motion.div
@@ -340,7 +340,7 @@ const Layout: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 15 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-3 w-[290px] bg-brand-navy/95 border border-brand-teal/30 rounded-3xl p-5 shadow-2xl text-cream flex flex-col gap-3.5 backdrop-blur-md glow-navy"
+              className="mb-1 w-[290px] bg-brand-navy/95 border border-brand-teal/30 rounded-3xl p-5 shadow-2xl text-cream flex flex-col gap-3.5 backdrop-blur-md glow-navy"
             >
               <div className="flex justify-between items-center border-b border-cream/10 pb-2">
                 <h3 className="font-body text-[10px] font-black uppercase text-brand-teal tracking-wider flex items-center gap-1.5">
@@ -413,6 +413,36 @@ const Layout: React.FC = () => {
             </span>
           </div>
         </motion.button>
+
+        {/* WhatsApp Support Floating Widget */}
+        <motion.a
+          href="https://wa.me/919068561971"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="p-2.5 pr-4 md:p-3 md:pr-5 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-emerald-500/20 bg-brand-navy/95 text-cream hover:bg-emerald-600 hover:text-white hover:border-emerald-500 transition-all duration-300 w-[170px] md:w-[200px] select-none text-left glow-emerald"
+          title="WhatsApp Support"
+        >
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-500/10 text-emerald-400 relative">
+            <svg className="w-4.5 h-4.5 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.578 3.98 14.106 2.957 11.48 2.956c-5.44 0-9.866 4.372-9.87 9.802 0 1.634.428 3.234 1.239 4.646l-.99 3.616 3.798-.986zM17.15 14.74c-.285-.141-1.676-.816-1.936-.91-.26-.094-.45-.141-.64.141-.19.283-.735.91-.9 1.1-.165.19-.33.21-.615.07-.285-.141-1.2-.437-2.286-1.395-.845-.744-1.416-1.663-1.58-1.945-.165-.282-.018-.434.124-.574.127-.127.285-.33.428-.495.143-.165.19-.282.285-.47.095-.188.047-.353-.024-.494-.07-.142-.64-1.525-.877-2.09-.23-.554-.464-.48-.64-.488-.166-.008-.356-.01-.546-.01-.19 0-.5.07-.76.353-.26.283-1 .966-1 2.359s1.01 2.735 1.15 2.922c.14.188 1.986 2.993 4.81 4.197.67.285 1.2.456 1.61.584.673.21 1.285.18 1.768.109.54-.08 1.676-.676 1.916-1.33.24-.654.24-1.216.168-1.33-.072-.114-.265-.184-.55-.325z"/>
+            </svg>
+            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-emerald-500" />
+          </div>
+          <div className="min-w-0 flex flex-col leading-tight">
+            <span className="text-[7px] md:text-[8px] tracking-widest font-black uppercase text-emerald-400">
+              WhatsApp Support
+            </span>
+            <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate text-white">
+              Direct Help Desk
+            </span>
+            <span className="text-[7px] md:text-[8px] font-medium block mt-0.5 text-cream/50">
+              Chat With Us Now
+            </span>
+          </div>
+        </motion.a>
       </div>
 
       {/* Floating Web-Speech AI Chatbot */}

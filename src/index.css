@@ -131,6 +131,7 @@
 /* === Premium Glow === */
 .glow-teal { box-shadow: 0 0 40px rgba(0, 171, 192, 0.3), 0 0 80px rgba(0, 171, 192, 0.15); }
 .glow-navy { box-shadow: 0 20px 60px rgba(10, 38, 64, 0.15); }
+.glow-emerald { box-shadow: 0 0 40px rgba(16, 185, 129, 0.25), 0 0 80px rgba(16, 185, 129, 0.12); }
 
 /* === Pulse rings === */
 @keyframes pulse-ring {

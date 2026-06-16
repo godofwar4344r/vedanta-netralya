@@ -18,8 +18,12 @@ const FAQ_DATABASE = [
     answer: "We specialize in advanced Robotic FLACS (Femtoseconds Laser-Assisted Cataract Surgery) with premium foldable IOL implants (multifocal, trifocal, toric). Recovery is painless and takes under 24 hours. Would you like to schedule a cataract screening?"
   },
   {
-    keywords: ['lasik', 'smile', 'specs', 'glasses', 'refractive', 'contoura'],
-    answer: "We offer advanced Bladeless Femto-LASIK, Contoura Vision, and SMILE procedures for permanent freedom from glasses. Most patients achieve 20/20 vision. Would you like to book a suitability check?"
+    keywords: ['glaucoma', 'pressure', 'kala motia', 'nerve', 'optic'],
+    answer: "Glaucoma (Kala Motia) is a progressive optic nerve disease, often linked to increased eye pressure. We offer advanced diagnostics (OCT, Perimetry) and treatments (eye drops, laser, surgery) headed by Dr. Sameer Varma. Try simulating it on our Glaucoma Services page!"
+  },
+  {
+    keywords: ['refractive', 'specs', 'glasses', 'icl', 'rle', 'freedom'],
+    answer: "We offer advanced Refractive Surgery options like ICL (Implantable Collamer Lens) and RLE (Refractive Lens Exchange) for permanent freedom from glasses. Visit our Refractive Surgery page or ask me about booking a suitability check!"
   },
   {
     keywords: ['miosis', 'mydriasis', 'pupil', 'constriction', 'dilation'],
@@ -50,8 +54,8 @@ const FAQ_DATABASE = [
     answer: "You can test your visual acuity digitally on our brand new interactive testing page! Head over to `/test-eye` to take a 2-minute Tumbling E test right now."
   },
   {
-    keywords: ['simulator', 'simulate', 'how cataracts look', 'miosis', 'mydriasis', 'night blindness', 'blurry', 'halos'],
-    answer: "Curious how different eye conditions affect sight? Try our interactive first-person sight simulator at the bottom of the Home page (`/`), or check the bottom of our Services page to experience Cataract, Myopia, Miosis, Mydriasis, and Night Blindness filters firsthand!"
+    keywords: ['simulator', 'simulate', 'how cataracts look', 'glaucoma', 'tunnel vision', 'night blindness', 'blurry', 'halos'],
+    answer: "Curious how different eye conditions affect sight? Try our interactive first-person sight simulator at the bottom of the Home page (`/`) to experience Cataract, Myopia, and Night Blindness filters, or try the interactive Glaucoma Tunnel Vision simulator on our Glaucoma Services page!"
   }
 ];
 
@@ -60,7 +64,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: "Hello! I am your Vedanta Netralya voice assistant. Ask me anything about cataract, LASIK, appointments, or our doctors.",
+      text: "Hello! I am your Vedanta Netralya voice assistant. Ask me anything about cataract, glaucoma, appointments, or our doctors.",
       timestamp: new Date()
     }
   ]);
@@ -137,7 +141,7 @@ const Chatbot: React.FC = () => {
       }
     }
     
-    return "I'm the Vedanta Netralya assistant. I can guide you on LASIK, Cataract treatments, Pediatric eye care, doctor profiles, and booking details. Try asking: 'How do I book an appointment?' or 'What is FLACS Cataract?'";
+    return "I'm the Vedanta Netralya assistant. I can guide you on glaucoma, Cataract treatments, Pediatric eye care, Refractive Surgery, doctor profiles, and booking details. Try asking: 'How do I book an appointment?' or 'What is Glaucoma?'";
   };
 
   const handleSendMessage = (text: string) => {
