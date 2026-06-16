@@ -382,17 +382,36 @@ const Layout: React.FC = () => {
 
         <motion.button
           onClick={() => setIsLocationWidgetOpen(!isLocationWidgetOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className={`w-14 h-14 rounded-full shadow-2xl flex items-center justify-center glow-teal border transition-all ${
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className={`p-2.5 pr-4 md:p-3 md:pr-5 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border transition-all duration-300 w-[170px] md:w-[200px] select-none text-left ${
             isLocationWidgetOpen 
-              ? 'bg-brand-teal text-brand-navy border-brand-teal' 
-              : 'bg-brand-navy border-brand-teal/40 text-cream hover:bg-brand-teal hover:text-brand-navy hover:shadow-brand-teal/30'
+              ? 'bg-brand-teal text-brand-navy border-brand-teal glow-teal' 
+              : 'bg-brand-navy/95 border-brand-teal/40 text-cream hover:bg-brand-teal hover:text-brand-navy hover:shadow-brand-teal/30'
           }`}
           title="Locations & Directions Widget"
           aria-label="Toggle Location Widget"
         >
-          <MapPin className="w-5 h-5 animate-pulse" />
+          <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+            isLocationWidgetOpen ? 'bg-brand-navy text-brand-teal' : 'bg-brand-teal/10 text-brand-teal'
+          }`}>
+            <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5" />
+          </div>
+          <div className="min-w-0 flex flex-col leading-tight">
+            <span className={`text-[7px] md:text-[8px] tracking-widest font-black uppercase ${
+              isLocationWidgetOpen ? 'text-brand-navy/60' : 'text-brand-teal'
+            }`}>
+              Find Us
+            </span>
+            <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate">
+              Haldwani Centre
+            </span>
+            <span className={`text-[7px] md:text-[8px] font-medium block mt-0.5 ${
+              isLocationWidgetOpen ? 'text-brand-navy/60' : 'text-cream/50'
+            }`}>
+              Directions & Info
+            </span>
+          </div>
         </motion.button>
       </div>
 
