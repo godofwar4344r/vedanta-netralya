@@ -74,9 +74,19 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     const handleOpenBot = () => setIsOpen(true);
     window.addEventListener('open-chatbot', handleOpenBot);
-    return () => window.removeEventListener('open-chatbot', handleOpenBot);
+    
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('open-chatbot', handleOpenBot);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
   const [isMuted, setIsMuted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Speech Recognition setup
@@ -199,25 +209,37 @@ const Chatbot: React.FC = () => {
           onClick={() => setIsOpen(true)}
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-8 right-8 z-[999] p-2.5 pr-4 md:p-3 md:pr-5 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 w-[170px] md:w-[200px] select-none text-left glow-navy"
+          layout
+          className={`fixed bottom-8 right-8 z-[999] p-2.5 md:p-3 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 select-none text-left glow-navy ${
+            isScrolled ? 'w-10 h-10 md:w-12 md:h-12 justify-center p-0 rounded-full' : 'w-[170px] md:w-[200px] pr-4 md:pr-5'
+          }`}
           aria-label="Open AI Assistant"
         >
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-brand-teal/10 text-brand-teal relative">
+          <div className={`rounded-xl flex items-center justify-center flex-shrink-0 bg-brand-teal/10 text-brand-teal relative ${
+            isScrolled ? 'w-8 h-8 md:w-10 md:h-10 rounded-full' : 'w-8 h-8 md:w-10 md:h-10'
+          }`}>
             <MessageSquare className="w-4.5 h-4.5 md:w-5 md:h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500 animate-ping" />
             <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500" />
           </div>
-          <div className="min-w-0 flex flex-col leading-tight">
-            <span className="text-[7px] md:text-[8px] tracking-widest font-black uppercase text-brand-teal">
-              AI Vision Bot
-            </span>
-            <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate">
-              Ocular Assistant
-            </span>
-            <span className="text-[7px] md:text-[8px] font-bold text-green-400 block mt-0.5">
-              Online Now
-            </span>
-          </div>
+          {!isScrolled && (
+            <motion.div 
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: 'auto' }}
+              exit={{ opacity: 0, width: 0 }}
+              className="min-w-0 flex flex-col leading-tight"
+            >
+              <span className="text-[7px] md:text-[8px] tracking-widest font-black uppercase text-brand-teal">
+                AI Vision Bot
+              </span>
+              <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate">
+                Ocular Assistant
+              </span>
+              <span className="text-[7px] md:text-[8px] font-bold text-green-400 block mt-0.5">
+                Online Now
+              </span>
+            </motion.div>
+          )}
         </motion.button>
       )}
 
