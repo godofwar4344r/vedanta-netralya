@@ -79,7 +79,7 @@ const Appointment: React.FC = () => {
               }`}>
                 {num}
               </div>
-              <span className={`text-[10px] tracking-wider uppercase font-black ${
+              <span className={`hidden sm:inline-block text-[10px] tracking-wider uppercase font-black ${
                 step >= num ? 'text-cream' : 'text-cream/40'
               }`}>
                 {num === 1 ? 'Specialty' : num === 2 ? 'Date & Time' : 'Patient Info'}

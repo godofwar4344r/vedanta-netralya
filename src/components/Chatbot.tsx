@@ -251,7 +251,7 @@ const Chatbot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3, cubicBezier: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-28 right-8 z-[999] w-[90vw] sm:w-[400px] h-[550px] max-h-[calc(100vh-140px)] bg-brand-navy-deep border border-brand-teal/20 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col glass-dark glow-navy"
+            className="fixed bottom-24 md:bottom-28 right-4 md:right-8 left-4 md:left-auto z-[999] w-[calc(100%-32px)] md:w-[400px] h-[550px] max-h-[calc(100vh-140px)] bg-brand-navy-deep border border-brand-teal/20 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col glass-dark glow-navy"
           >
             {/* Header */}
             <div className="bg-brand-navy p-6 border-b border-cream/10 flex justify-between items-center">

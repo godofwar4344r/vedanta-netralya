@@ -94,6 +94,7 @@ const Footer: React.FC = () => {
               <Link to="/centres" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Centres</Link>
               <Link to="/gallery" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Media Gallery</Link>
               <Link to="/test-eye" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300 font-extrabold text-brand-teal">Digital Eye Test</Link>
+              <Link to="/prevention" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300 font-extrabold text-brand-teal">Eye Prevention</Link>
               <Link to="/contact" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Contact Us</Link>
               <Link to="/appointment" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Book Appointment</Link>
             </div>

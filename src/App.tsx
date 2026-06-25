@@ -24,6 +24,7 @@ import GlaucomaServices from './pages/GlaucomaServices';
 import VRSurgery from './pages/VRSurgery';
 import Facilities from './pages/Facilities';
 import VisionMission from './pages/VisionMission';
+import Prevention from './pages/Prevention';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
         <Route path="test-eye" element={<TestEye />} />
+        <Route path="prevention" element={<Prevention />} />
       </Route>
     </Routes>
   );

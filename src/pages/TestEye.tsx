@@ -129,7 +129,7 @@ const TestEye: React.FC = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="max-w-[1800px] mx-auto px-6 lg:px-16 py-16"
+      className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-16 py-12 md:py-20"
     >
       <div className="text-center max-w-3xl mx-auto mb-16">
         <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Visual Diagnostics</p>
@@ -139,7 +139,7 @@ const TestEye: React.FC = () => {
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto bg-brand-navy text-cream rounded-[3rem] border border-cream/10 p-8 md:p-12 shadow-2xl relative overflow-hidden min-h-[600px] flex flex-col justify-between">
+      <div className="max-w-3xl mx-auto bg-brand-navy text-cream rounded-[3rem] border border-cream/10 p-5 md:p-12 shadow-2xl relative overflow-hidden min-h-[600px] flex flex-col justify-between">
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-teal/10 blur-3xl" />
 
         <AnimatePresence mode="wait">

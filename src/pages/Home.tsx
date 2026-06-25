@@ -211,6 +211,7 @@ const Home: React.FC = () => {
   }, []);
 
   const isMobile = screenWidth < 768;
+  const isTabletOrMobile = screenWidth < 1024;
   const textY = useTransform(scrollY, [0, 300], [0, -50]);
   const textOpacity = useTransform(scrollY, [0, 200], [1, 0]);
 
@@ -500,9 +501,9 @@ const Home: React.FC = () => {
             animate={isVideoDone ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{ y: textY, opacity: textOpacity }}
-            className="absolute bottom-[10%] left-[4%] sm:left-[8%] lg:left-[10%] z-30 pointer-events-none select-none w-max max-w-[78vw] sm:max-w-[45vw]"
+            className="absolute top-[12%] md:top-auto md:bottom-[10%] left-6 md:left-[4%] sm:left-[8%] lg:left-[10%] right-6 md:right-auto z-30 pointer-events-none select-none text-center md:text-left"
           >
-            <h1 className="leading-[0.95] text-left">
+            <h1 className="leading-[0.95] text-center md:text-left">
               <motion.span 
                 initial={{ opacity: 0, y: 40 }}
                 animate={isVideoDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -657,7 +658,7 @@ const Home: React.FC = () => {
                   <EditableCard key={idx} id={`specialty-item-card-${idx}`} className="border-t border-brand-navy/10">
                     <div
                       onClick={() => setActiveSpec(idx)}
-                      onMouseEnter={() => setActiveSpec(idx)}
+                      onMouseEnter={() => !isTabletOrMobile ? setActiveSpec(idx) : undefined}
                       className={`group cursor-pointer py-6 transition-all ${
                         activeSpec === idx ? 'pl-4 border-t-brand-teal' : ''
                       }`}
@@ -682,12 +683,62 @@ const Home: React.FC = () => {
                         </div>
                       </div>
                     </div>
+
+                    {/* Accordion detail inline for mobile */}
+                    <AnimatePresence initial={false}>
+                      {isTabletOrMobile && activeSpec === idx && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="bg-brand-navy rounded-[2rem] p-6 text-cream relative overflow-hidden shadow-xl mb-6 mt-2">
+                            <div className="relative z-10 flex flex-col gap-6">
+                              <div className="flex items-start justify-between">
+                                <div className="w-12 h-12 rounded-xl bg-brand-teal/15 border border-brand-teal/30 flex items-center justify-center text-brand-teal-bright">
+                                  {spec.icon}
+                                </div>
+                                <span className="text-[8px] tracking-widest uppercase text-brand-teal-bright font-black mt-2">
+                                  <EditableText id={`specialty-detail-tag-${idx}`}>{spec.tag}</EditableText>
+                                </span>
+                              </div>
+                              
+                              <div>
+                                <h4 className="text-xl font-black mb-2">
+                                  <EditableText id={`specialty-detail-title-${idx}`}>{spec.title}</EditableText>
+                                </h4>
+                                <p className="text-xs text-cream/70 font-lora leading-relaxed">
+                                  <EditableText id={`specialty-detail-desc-${idx}`}>{spec.desc}</EditableText>
+                                </p>
+                              </div>
+
+                              <div className="border-t border-cream/10 pt-4 flex items-end justify-between">
+                                <div>
+                                  <p className="text-2xl font-black text-brand-teal leading-none mb-1">
+                                    <EditableText id={`specialty-detail-stat-${idx}`}>{spec.stat}</EditableText>
+                                  </p>
+                                  <p className="text-[8px] tracking-widest uppercase text-cream/40 font-black">
+                                    <EditableText id={`specialty-detail-statlabel-${idx}`}>{spec.statLabel}</EditableText>
+                                  </p>
+                                </div>
+                                <Link to={spec.path} className="bg-brand-teal text-brand-navy w-10 h-10 rounded-full flex items-center justify-center hover:bg-cream hover:text-brand-navy transition-all shadow-md">
+                                  <ArrowUpRight className="w-3.5 h-3.5" />
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </EditableCard>
                 ))}
                 <div className="border-t border-brand-navy/10" />
               </div>
 
-              <div className="lg:col-span-7">
+              {/* Desktop specialty detail block */}
+              <div className="hidden lg:block lg:col-span-7">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeSpec}

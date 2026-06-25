@@ -138,10 +138,7 @@ export const EditProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const toggleEditMode = useCallback(() => {
-    setIsEditMode(prev => {
-      if (prev) setSelectedElement(null); // closing editor clears selection
-      return !prev;
-    });
+    // Visual editing toggle is disabled
   }, []);
 
   // Push current state to history before applying the next one.
