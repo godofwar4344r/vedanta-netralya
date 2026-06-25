@@ -210,7 +210,7 @@ const Chatbot: React.FC = () => {
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           layout
-          className={`fixed bottom-8 right-8 z-[999] p-2.5 md:p-3 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 select-none text-left glow-navy ${
+          className={`fixed bottom-28 md:bottom-8 right-4 md:right-8 z-[999] p-2.5 md:p-3 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 select-none text-left glow-navy ${
             isScrolled ? 'w-10 h-10 md:w-12 md:h-12 justify-center p-0 rounded-full' : 'w-[170px] md:w-[200px] pr-4 md:pr-5'
           }`}
           aria-label="Open AI Assistant"

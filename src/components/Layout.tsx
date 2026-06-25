@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X, MapPin, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, Menu, X, MapPin, ArrowUpRight, Phone, Calendar } from 'lucide-react';
 import Logo from './Logo';
 import BackgroundEye from './BackgroundEye';
 import Chatbot from './Chatbot';
@@ -246,9 +246,8 @@ const Layout: React.FC = () => {
       {/* === FOOTER === */}
       <Footer />
 
-      {/* Floating Google Maps Location Button */}
       {/* Floating Google Maps Location Widget & Button */}
-      <div className="fixed bottom-28 right-8 z-[999] flex flex-col items-end gap-3">
+      <div className="hidden md:flex fixed bottom-28 right-8 z-[999] flex-col items-end gap-3">
         <AnimatePresence>
           {isLocationWidgetOpen && (
             <motion.div
@@ -379,6 +378,38 @@ const Layout: React.FC = () => {
             </motion.div>
           )}
         </motion.a>
+      </div>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="fixed bottom-6 left-4 right-4 z-[999] md:hidden bg-brand-navy/95 border border-brand-teal/20 rounded-full p-2 flex items-center justify-between shadow-2xl backdrop-blur-md shadow-brand-teal/5">
+        {/* Helpline */}
+        <a 
+          href="tel:05946223616" 
+          className="flex flex-col items-center justify-center flex-1 py-1 text-cream/70 active:text-brand-teal hover:text-brand-teal transition-colors"
+        >
+          <Phone className="w-5 h-5 mb-0.5 text-cream/80" />
+          <span className="text-[8px] tracking-wider uppercase font-black font-body">Helpline</span>
+        </a>
+
+        {/* BOOK Button */}
+        <Link 
+          to="/appointment" 
+          className="flex items-center justify-center gap-2 bg-red-600 active:bg-red-700 text-white font-black text-[11px] tracking-widest uppercase px-6 py-3.5 rounded-full shadow-lg transition-all transform active:scale-95 flex-shrink-0"
+        >
+          <Calendar className="w-3.5 h-3.5" />
+          <span>BOOK</span>
+        </Link>
+
+        {/* Location */}
+        <button 
+          onClick={() => setIsLocationWidgetOpen(!isLocationWidgetOpen)}
+          className={`flex flex-col items-center justify-center flex-1 py-1 transition-colors ${
+            isLocationWidgetOpen ? 'text-brand-teal' : 'text-cream/70 active:text-brand-teal hover:text-brand-teal'
+          }`}
+        >
+          <MapPin className="w-5 h-5 mb-0.5" />
+          <span className="text-[8px] tracking-wider uppercase font-black font-body">Location</span>
+        </button>
       </div>
 
       {/* Floating Web-Speech AI Chatbot */}

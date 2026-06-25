@@ -365,7 +365,7 @@ const Home: React.FC = () => {
               borderRadius: '16px',
               overflow: 'hidden'
             }}
-            className={`absolute flex items-end justify-center z-10 ${
+            className={`absolute left-0 right-0 mx-auto flex items-end justify-center z-10 ${
               isEditMode ? 'cursor-pointer pointer-events-auto' : 'pointer-events-none'
             }`}
           >
