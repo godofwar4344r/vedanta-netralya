@@ -5,7 +5,6 @@ import { ChevronDown, Menu, X, MapPin, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 import BackgroundEye from './BackgroundEye';
 import Chatbot from './Chatbot';
-import CustomCursor from './CustomCursor';
 import Footer from './Footer';
 import { useEdit } from '../context/EditContext';
 
@@ -60,7 +59,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-cream text-brand-navy selection:bg-brand-navy selection:text-cream flex flex-col overflow-x-hidden font-body">
-      <CustomCursor />
+
 
       {/* Background eyeball watermark */}
       <BackgroundEye />
