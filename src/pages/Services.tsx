@@ -77,7 +77,7 @@ const Services: React.FC = () => {
     {
       id: 's-refractive',
       title: 'Refractive Surgery (Glass Removal)',
-      desc: 'Advanced lens-based vision correction solutions including Implantable Collamer Lenses (ICL) and Refractive Lens Exchange to eliminate glasses.',
+      desc: 'Bladeless Femto-LASIK, SMILE, and advanced lens-based correction solutions (ICL, RLE) to eliminate glasses and restore crisp 20/20 vision.',
       iconName: 'Eye',
       path: '/refractive-surgery'
     },

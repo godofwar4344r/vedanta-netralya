@@ -34,6 +34,11 @@ const RefractiveSurgery: React.FC = () => {
 
   const defaultCorrectiveProcedures = [
     {
+      id: 'corr-lasik',
+      title: 'Femto-LASIK (Bladeless Laser)',
+      desc: 'Advanced bladeless laser vision correction using a high-precision femtosecond laser to create a corneal flap and an excimer laser to reshape the cornea with sub-micron accuracy.'
+    },
+    {
       id: 'corr-1',
       title: 'Implantable Collamer Lenses (ICL)',
       desc: 'Premium phakic lens implants for thin corneas or high prescriptions (up to -20.00D), providing permanent vision correction without altering or thinning the natural cornea.'
