@@ -217,24 +217,24 @@ const OpticalServices: React.FC = () => {
                 <span className="text-xs text-brand-teal font-black uppercase tracking-widest">Preventive & Safety Lenses</span>
                 <h3 className="text-2xl font-black text-brand-navy">Zeiss & Crizal Premium Lenses</h3>
                 <p className="text-sm font-lora text-brand-navy/70 leading-relaxed">
-                  Our optical showroom features premium protective lenses from global leaders **Zeiss** and **Crizal**, engineered to provide the highest wear comfort, optical transparency, and visual health protection.
+                  We dispense advanced lenses for the safety and preventive care of your eyes, featuring premium lenses from global leaders **Zeiss** and **Crizal** engineered with UV protection, night driving comfort, and sunlight protection.
                 </p>
                 <ul className="space-y-3.5 text-xs leading-relaxed text-brand-navy/80 font-lora">
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0 mt-1.5" />
-                    <span><strong>Advanced Safety & Preventive Care:</strong> Special lens structures that actively protect eye tissues and support visual acuity.</span>
+                    <span><strong>Safety & Preventive Care:</strong> Advanced lenses tailored to protect eye tissues from digital strain and progressive vision issues.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
-                    <span><strong>Complete UV Protection:</strong> Advanced UV-blocking technology guards against UV radiation damage to the cornea and lens.</span>
+                    <span><strong>Complete UV Protection:</strong> State-of-the-art coatings block harmful ultraviolet rays, safeguarding the cornea and retina.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
-                    <span><strong>High Wearing Comfort:</strong> Lightweight, thin lens designs with premium anti-smudge and anti-scratch coatings for daily durability.</span>
+                    <span><strong>Night Driving Comfort:</strong> Anti-reflective technology designed to minimize glare and halos from oncoming headlights.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
-                    <span><strong>Sunlight & Glare Protection:</strong> Smart tinting and polarization to shield eyes from bright, direct outdoor sunlight.</span>
+                    <span><strong>Sunlight & Glare Protection:</strong> Adaptive light-intelligent lenses that adjust seamlessly to bright outdoor sunlight.</span>
                   </li>
                 </ul>
               </div>
