@@ -386,8 +386,8 @@ const Home: React.FC = () => {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="absolute inset-0 w-full h-full object-cover select-none z-20 pointer-events-none mix-blend-multiply"
               style={{
-                scale: 1.0,
-                originY: 1,
+                scale: 1.55,
+                originY: 0,
                 originX: 0.5,
                 filter: 'contrast(1.15) brightness(1.12) saturate(1.05)'
               }}
