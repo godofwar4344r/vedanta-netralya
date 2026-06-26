@@ -38,8 +38,8 @@ const FAQ_DATABASE = [
     answer: "You can book your appointment instantly via our online page at `/appointment`, or by calling our helpdesk at 05946-223616 or +91 9068561971. Consultation hours are Monday to Saturday, 9:00 AM to 7:00 PM, and Sunday, 9:00 AM to 2:00 PM."
   },
   {
-    keywords: ['doctor', 'surgeon', 'sameer', 'singh', 'mittal', 'tyagi', 'varma', 'davinder', 'kanhaiya'],
-    answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant with 50+ years experience, Sitapur Eye Hospital Fellow), Dr. Kanhaiya Mittal (Chief Retina Consultant, MD AIIMS New Delhi), and clinical panel consultant Dr. Davinder Tyagi."
+    keywords: ['doctor', 'surgeon', 'sameer', 'singh', 'varma', 'aditya', 'bhardwaj'],
+    answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant, Sitapur Eye Hospital Fellow), and Dr. Aditya Bhardwaj (Chief Retina Consultant, MD AIIMS New Delhi)."
   },
   {
     keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where'],

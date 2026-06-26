@@ -23,8 +23,7 @@ import introVid from '../assets/about-video.mp4';
 // Doctor Images
 import drSameer from '../assets/dr-sameer-varma.png';
 import drRjk from '../assets/dr-rjk-singh.png';
-import drKanhaiya from '../assets/dr-kanhaiya-mittal.png';
-import drDavinder from '../assets/dr-davinder-tyagi.png';
+import drAditya from '../assets/dr-aditya-bhardwaj.png';
 
 const About: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -78,49 +77,34 @@ const About: React.FC = () => {
       ]
     },
     {
-      id: 'doc-kanhaiya',
-      name: 'Dr. Kanhaiya Mittal',
-      image: drKanhaiya,
+      id: 'doc-aditya',
+      name: 'Dr. Aditya Bhardwaj',
+      image: drAditya,
       role: 'Chief Retina Consultant & Surgeon',
       specialty: 'Vitreoretinal (VR) Surgery & Medical Retina',
-      edu: 'MBBS (Maulana Azad Medical College), MD (AIIMS New Delhi), DNB, FICO, MRCS',
+      edu: 'MD (AIIMS New Delhi), DNB, FICO, MRCS',
       exp: '10,000+',
-      desc: 'Completed MBBS from Maulana Azad Medical College in 2009, followed by MD from All India Institute of Medical Sciences (AIIMS) New Delhi in 2011. Completed 3 years of rigorous advanced Vitreo Retina training at AIIMS. Highly skilled in complex retinal detachments, macular surgeries, and diabetic retinopathy.',
+      desc: 'Completed graduation in MBBS and ophthalmology residency. Following this, he completed 3 years of rigorous advanced training in Vitreo Retina from AIIMS, New Delhi. He has performed more than 10,000 retinal micro-surgeries, solving complex cases, and has also worked as a consultant ophthalmologist internationally.',
       fellowships: [
         '3 years Vitreo Retina training at AIIMS New Delhi',
         'FICO & MRCS certified clinical specialist',
         'Over 10,000 successful Vitreoretinal micro-surgeries'
       ]
-    },
-    {
-      id: 'doc-davinder',
-      name: 'Dr. Davinder Tyagi',
-      image: drDavinder,
-      role: 'Co-Founder & Vitreoretinal Specialist',
-      specialty: 'Vitreoretinal Surgery, Retina & Uvea Care',
-      edu: 'M.D. (R.P. Centre, AIIMS New Delhi, 2006)',
-      exp: '4,000+',
-      desc: 'Finished post-graduation from R.P Centre, AIIMS in 2006 and completed specialized vitreo-retinal training at AIIMS. He pioneered vitreo-retinal surgery in Haldwani and Kumaon region starting in 2007. He serves as Vitreoretinal Consultant at Vedanta Netralya and Vardan Retina Centre.',
-      fellowships: [
-        'Post-Graduation from R.P. Centre, AIIMS New Delhi',
-        'Pioneered Vitreo-Retinal surgery in Haldwani & Kumaon in 2007',
-        'Over 4,000 successful Vitreoretinal procedures'
-      ]
     }
   ];
 
   const defaultCoreValues = [
-    { id: 'v1', iconName: 'Shield', title: 'Uncompromising Safety', desc: 'Adhering to strict NABH safety standards and sterile operating theater protocols.' },
-    { id: 'v2', iconName: 'Sparkles', title: 'Advanced Technology', desc: 'Deploying laser diagnostics and robotics from Carl Zeiss and Alcon.' },
-    { id: 'v3', iconName: 'Activity', title: 'Clinical Rigor', desc: 'Case consults managed by board-certified, AIIMS-trained surgeons.' },
-    { id: 'v4', iconName: 'Award', title: 'Patient Integrity', desc: 'Transparent billing packages and strictly ethical treatment decisions.' }
+    { id: 'v1', iconName: 'Shield', title: 'Uncompromising Safety', desc: 'Adhering to strict NABH safety standards and sterile operative theatre protocol.' },
+    { id: 'v2', iconName: 'Sparkles', title: 'Advanced Technology', desc: 'State-of-the-art, cutting-edge diagnostic and surgical technology from Alcon, Zeiss, and Johnson & Johnson.' },
+    { id: 'v3', iconName: 'Activity', title: 'Clinical Rigour', desc: 'Cases managed by board-certified, well-trained, and experienced surgeons.' },
+    { id: 'v4', iconName: 'Award', title: 'Patient Integrity', desc: 'Strict ethical treatment decisions and transparent billing packages.' }
   ];
 
   const defaultTimeline = [
-    { id: 'h1', year: '2017', title: 'Foundation', desc: 'Established our primary superspecialty clinic in Haldwani with dedicated outpatient care.' },
-    { id: 'h2', year: '2019', title: 'Retina & VR Wing', desc: 'Expanded to include advanced sutureless vitreoretinal surgery capabilities.' },
-    { id: 'h3', year: '2022', title: 'Modular O.T.', desc: 'Constructed state-of-the-art modular operating theatres for absolute sterility.' },
-    { id: 'h4', year: '2026', title: '15,000+ Smiles', desc: 'Celebrating vision restored across generations of Kumaun patients.' }
+    { id: 'h1', year: '2017', title: 'Foundation', desc: 'Established our primary clinic in Haldwani with dedicated outpatient care.' },
+    { id: 'h2', year: '2020', title: 'Retina & VR Wing', desc: 'Expanded to include advanced sutureless vitreoretinal surgery capabilities.' },
+    { id: 'h3', year: '2025', title: 'State-of-the-Art Centre', desc: 'State-of-the-art new centre with two modular OTs and advanced infrastructure for patient safety, comfort, and better facility.' },
+    { id: 'h4', year: '2026', title: '50,000+ Smiles', desc: 'Celebrating fifty thousand smiles restored across generations of Kumaun patients.' }
   ];
 
   return (
@@ -260,7 +244,7 @@ const About: React.FC = () => {
                         <EditableText id="about-facility-title-5">OPD & Consultation Stations</EditableText>
                       </h4>
                       <p className="text-xs text-brand-navy/70 mt-0.5 font-lora">
-                        <EditableText id="about-facility-desc-5">Features 2 diagnostic refraction stations, 2 doctor consult chambers, and a separate counseling room for patient guidance.</EditableText>
+                        <EditableText id="about-facility-desc-5">Features 2 diagnostic refraction stations, a 4-doctor consultation chamber, the specialized Mektron Kids Centre, and a separate counseling room for patient guidance.</EditableText>
                       </p>
                     </div>
                   </div>

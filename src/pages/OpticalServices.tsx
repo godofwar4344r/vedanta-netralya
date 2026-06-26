@@ -201,6 +201,62 @@ const OpticalServices: React.FC = () => {
           </div>
         </div>
 
+        {/* Lens / Product Spotlight Section */}
+        <div className="mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Product Spotlight</p>
+            <h2 className="section-text text-brand-navy mb-6">Premium Ophthalmic Lenses</h2>
+            <p className="text-base text-brand-navy/60 font-lora">
+              We dispense high-performance, advanced protective lenses to guard your eyes against radiation, glare, and fatigue.
+            </p>
+          </div>
+          
+          <div className="bg-white border border-brand-navy/10 rounded-[3rem] p-8 md:p-12 shadow-md hover:border-brand-teal/30 border-2 transition-all">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 flex flex-col gap-4">
+                <span className="text-xs text-brand-teal font-black uppercase tracking-widest">Preventive & Safety Lenses</span>
+                <h3 className="text-2xl font-black text-brand-navy">Zeiss & Crizal Premium Lenses</h3>
+                <p className="text-sm font-lora text-brand-navy/70 leading-relaxed">
+                  Our optical showroom features premium protective lenses from global leaders **Zeiss** and **Crizal**, engineered to provide the highest wear comfort, optical transparency, and visual health protection.
+                </p>
+                <ul className="space-y-3.5 text-xs leading-relaxed text-brand-navy/80 font-lora">
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0 mt-1.5" />
+                    <span><strong>Advanced Safety & Preventive Care:</strong> Special lens structures that actively protect eye tissues and support visual acuity.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    <span><strong>Complete UV Protection:</strong> Advanced UV-blocking technology guards against UV radiation damage to the cornea and lens.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    <span><strong>High Wearing Comfort:</strong> Lightweight, thin lens designs with premium anti-smudge and anti-scratch coatings for daily durability.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    <span><strong>Sunlight & Glare Protection:</strong> Smart tinting and polarization to shield eyes from bright, direct outdoor sunlight.</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="lg:col-span-5">
+                <div className="bg-brand-navy text-cream rounded-3xl p-6 border border-cream/10 relative overflow-hidden shadow-xl flex flex-col gap-4 h-full justify-between">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-teal/10 rounded-full blur-xl" />
+                  <div className="flex justify-between items-center border-b border-cream/10 pb-3">
+                    <span className="text-[9px] text-brand-teal font-black uppercase tracking-widest">Dispensing Partner</span>
+                    <span className="text-xs font-bold text-brand-teal">Premium Brands</span>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold mb-2">Zeiss SmartLife & Crizal Sapphire</h4>
+                    <p className="text-[11px] text-cream/70 leading-relaxed font-lora">
+                      Ask our optometric dispensers about smart lenses that adapt dynamically to your digital device usage and outdoor light changes, ensuring absolute safety, comfort, and prevention.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Showroom Trust Banner */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-brand-navy text-cream rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-xl">
           <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brand-teal/10 blur-3xl" />

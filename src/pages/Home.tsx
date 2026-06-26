@@ -268,7 +268,7 @@ const Home: React.FC = () => {
       title: 'Cataract Surgery', 
       num: '01',
       tag: 'Robotic FLACS Laser',
-      stat: '15,000+',
+      stat: '50k+',
       statLabel: 'Lens Implants',
       desc: 'Premium micro-incision phacoemulsification with foldable IOL technology. Recovery within 24 hours.',
       icon: <Sparkles className="w-8 h-8" />,
@@ -278,8 +278,8 @@ const Home: React.FC = () => {
       title: 'Retina & Vitreous', 
       num: '02',
       tag: 'Vitreoretinal Specialty',
-      stat: '6,000+',
-      statLabel: 'Procedures',
+      stat: '2000+',
+      statLabel: 'Retina Surgeries',
       desc: 'Specialized medical and surgical retinal care for diabetic retinopathy, macular degeneration, and retinal detachment.',
       icon: <Layers className="w-8 h-8" />,
       path: '/retina-services'
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
       title: 'Glaucoma Management', 
       num: '03',
       tag: 'Intraocular Pressure Control',
-      stat: '4,500+',
+      stat: '7000+',
       statLabel: 'Glaucoma Patients',
       desc: 'Advanced diagnostic imaging, micro-shunts, and selective laser trabeculoplasty (SLT) to manage intraocular pressure and protect your optic nerve.',
       icon: <Activity className="w-8 h-8" />,
@@ -298,8 +298,8 @@ const Home: React.FC = () => {
       title: 'Oculoplasty Services', 
       num: '04',
       tag: 'Eyelid & Orbit Surgery',
-      stat: '4,000+',
-      statLabel: 'Reconstructions',
+      stat: '8000+',
+      statLabel: 'Procedures',
       desc: 'Correction of drooping eyelids, tear duct blocks (DCR), ocular tumors, prosthetics, and cosmetic eye surgeries.',
       icon: <Scissors className="w-8 h-8" />,
       path: '/oculoplasty-services'
@@ -501,8 +501,17 @@ const Home: React.FC = () => {
             animate={isVideoDone ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{ y: textY, opacity: textOpacity }}
-            className="absolute top-[12%] md:top-auto md:bottom-[10%] left-6 md:left-[4%] sm:left-[8%] lg:left-[10%] right-6 md:right-auto z-30 pointer-events-none select-none text-center md:text-left"
+            className="absolute top-[12%] md:top-auto md:bottom-[10%] left-6 md:left-[4%] sm:left-[8%] lg:left-[10%] right-6 md:right-auto z-30 pointer-events-none select-none text-center md:text-left flex flex-col items-center md:items-start"
           >
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={isVideoDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="flex items-center gap-1.5 text-brand-teal text-[10px] tracking-[0.2em] font-black uppercase mb-3 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-brand-teal/20"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Tikonia Circle, Canal Road, Haldwani</span>
+            </motion.div>
             <h1 className="leading-[0.95] text-center md:text-left">
               <motion.span 
                 initial={{ opacity: 0, y: 40 }}
@@ -545,12 +554,11 @@ const Home: React.FC = () => {
       <EditableContainer id="stats-counter">
         <section className="pt-8 pb-16 bg-cream relative z-10">
           <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               {[
                 { value: 18, suffix: '+', label: 'Years Of Experience' },
-                { value: 25000, suffix: '+', label: 'Successful Eye Surgeries' },
-                { value: 120000, suffix: '+', label: 'Patients Treated' },
-                { value: 25, suffix: '+', label: 'Publications' }
+                { value: 50000, suffix: '+', label: 'Successful Surgeries' },
+                { value: 150000, suffix: '+', label: 'Patients Treated' }
               ].map((item, idx) => (
                 <EditableCard key={idx} id={`stat-card-${idx}`} className="h-full">
                   <div 

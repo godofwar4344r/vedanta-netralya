@@ -10,7 +10,7 @@ const Facilities: React.FC = () => {
     { id: 'f2', text: 'Indoor Ward facility with recovery beds and recliners' },
     { id: 'f3', text: 'Cardiac Monitoring & General Anesthesia (GA) facility for vulnerable patients' },
     { id: 'f4', text: 'Lid & Lacrimal surgery facility with ocular prosthesis support' },
-    { id: 'f5', text: 'Two refraction stations and two Doctor consultation chambers' },
+    { id: 'f5', text: 'Two refraction stations, 4-doctor consultation chambers, and the Mektron Kids Centre' },
     { id: 'f6', text: 'In-house Pharmacy & Medical store for convenient access' },
     { id: 'f7', text: 'In-house Optical store for customized lens fittings' },
     { id: 'f8', text: 'Separate Counselling Chamber with dedicated counselors' },

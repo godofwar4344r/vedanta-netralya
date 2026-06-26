@@ -259,10 +259,10 @@ const RetinaServices: React.FC = () => {
             <div className="text-center my-auto">
               <GraduationCap className="w-16 h-16 text-brand-teal mx-auto mb-4" />
               <h3 className="text-2xl font-black">
-                <EditableText id="retina-spotlight-doctor-name">Dr. Kanhaiya Mittal</EditableText>
+                <EditableText id="retina-spotlight-doctor-name">Dr. Aditya Bhardwaj</EditableText>
               </h3>
               <p className="text-xs text-cream/60 italic font-lora mt-1">
-                <EditableText id="retina-spotlight-doctor-edu">MBBS, MD (AIIMS), DNB, FICO, MRCS</EditableText>
+                <EditableText id="retina-spotlight-doctor-edu">MD (AIIMS), DNB, FICO, MRCS</EditableText>
               </p>
             </div>
             <div className="border-t border-cream/10 pt-4 text-center">
@@ -282,7 +282,7 @@ const RetinaServices: React.FC = () => {
               <EditableText id="retina-spotlight-title">Led by Elite Retina Surgeons</EditableText>
             </h2>
             <p className="text-base text-cream/70 font-lora leading-relaxed mb-8 max-w-xl">
-              <EditableText id="retina-spotlight-description">Our Vitreoretinal wing is headed by Dr. Kanhaiya Mittal, a highly experienced consultant with credentials from top-tier institutes including Maulana Azad Medical College and AIIMS New Delhi. With extensive training and international fellowships, he brings world-class medical and surgical retinal care directly to the Kumaun region.</EditableText>
+              <EditableText id="retina-spotlight-description">Our Vitreoretinal wing is headed by Dr. Aditya Bhardwaj, a highly experienced consultant with credentials from top-tier institutes including AIIMS New Delhi. With extensive training and international fellowships, he brings world-class medical and surgical retinal care directly to the Kumaun region.</EditableText>
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-cream">
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">

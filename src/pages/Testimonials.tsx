@@ -25,7 +25,7 @@ const Testimonials: React.FC = () => {
       name: 'Harbhajan Singh',
       location: 'Tallital, Nainital',
       treatment: 'Glaucoma Management & Laser',
-      quote: "I was diagnosed with high intraocular pressure. The selective laser trabeculoplasty (SLT) therapy did not hurt at all and successfully reduced my pressure, preserving my vision. Extremely grateful to Dr. Kanhaiya Mittal.",
+      quote: "I was diagnosed with high intraocular pressure. The selective laser trabeculoplasty (SLT) therapy did not hurt at all and successfully reduced my pressure, preserving my vision. Extremely grateful to Dr. Sameer Varma.",
       rating: 5
     }
   ];

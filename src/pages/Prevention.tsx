@@ -56,6 +56,11 @@ const Prevention: React.FC = () => {
       title: 'Text Scale & Warmth',
       desc: 'Adjust monitor settings: scale up text so reading feels effortless. Enable night filters (warm color temp) to minimize blue-light fatigue.',
       tip: 'Use black text on a light grey or cream background rather than high-contrast stark white.'
+    },
+    {
+      title: 'Photophobia & Light Sensitivity',
+      desc: 'Photophobia is discomfort or pain in the eyes caused by light exposure. It can indicate dry eyes, cataracts, refractive errors, or corneal stress. Self-care routines are essential to manage and minimize light sensitivity.',
+      tip: 'Self-Care: Wear high-quality polarized UV sunglasses outdoors. Adjust room lighting to soft, indirect sources, and avoid using screens in pitch-dark environments.'
     }
   ];
 
@@ -259,6 +264,72 @@ const Prevention: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Section: Community Eye Screening Camps & Outreach */}
+        <section className="mb-24 bg-cream-dark/50 border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-sm">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-8 flex flex-col justify-center">
+              <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">[ Outreach Campaigns ]</span>
+              <h2 className="text-3xl font-black text-brand-navy mb-6 font-body">Eye Screening Camps & Preventive Care</h2>
+              <p className="text-sm font-lora text-brand-navy/70 leading-relaxed mb-8">
+                Vedanta Netralya actively organizes community eye screening camps and preventive eye care campaigns to raise awareness and identify ocular issues early.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="bg-white border border-brand-navy/10 rounded-2xl p-5 shadow-sm hover:border-brand-teal/30 transition-all">
+                  <h3 className="font-bold text-xs text-brand-navy mb-2">Child Vision & Congenital Anomalies</h3>
+                  <p className="text-[10px] text-brand-navy/60 leading-normal font-lora">
+                    Early screening for children to detect pediatric cataracts, squints, refractive errors, and congenital ocular anomalies.
+                  </p>
+                </div>
+                <div className="bg-white border border-brand-navy/10 rounded-2xl p-5 shadow-sm hover:border-brand-teal/30 transition-all">
+                  <h3 className="font-bold text-xs text-brand-navy mb-2">Blood Sugar & Hypertension</h3>
+                  <p className="text-[10px] text-brand-navy/60 leading-normal font-lora">
+                    Comprehensive diabetic and hypertensive retinopathy screenings to detect silent microvascular retinal damage.
+                  </p>
+                </div>
+                <div className="bg-white border border-brand-navy/10 rounded-2xl p-5 shadow-sm hover:border-brand-teal/30 transition-all">
+                  <h3 className="font-bold text-xs text-brand-navy mb-2">Senior Citizen Day</h3>
+                  <p className="text-[10px] text-brand-navy/60 leading-normal font-lora">
+                    Dedicated geriatric check-ups focused on cataracts, glaucoma, and age-related macular degeneration (AMD).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 flex flex-col justify-center">
+              <div className="bg-brand-navy text-cream rounded-3xl p-6 border border-cream/10 relative overflow-hidden shadow-xl">
+                {/* 50% discount ribbon note */}
+                <div className="absolute top-3 right-3 bg-brand-teal text-brand-navy text-[8px] font-black uppercase px-2 py-0.5 rounded-full tracking-widest shadow-md">
+                  50% Discount
+                </div>
+                <span className="text-[8px] tracking-widest uppercase text-brand-teal font-black block mb-3">Campaign Programs</span>
+                <h3 className="text-base font-black text-cream mb-4 font-body">Upcoming Campaigns</h3>
+                <ul className="space-y-3.5 text-xs text-cream/80 font-lora mb-6">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    School Child Screening Camp
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    Retina Screening Day
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0" />
+                    Senior Citizen Day
+                  </li>
+                </ul>
+                <div className="border-t border-cream/10 pt-4 text-center">
+                  <p className="text-[9px] text-brand-teal-bright font-black uppercase tracking-widest leading-none mb-1">Campaign Special</p>
+                  <p className="text-[10px] text-cream/60 leading-normal font-lora">
+                    Benefit from a 50% discount on initial diagnostic workups and eye test scans during our camp programs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Section 3: Safe Eye Washing Guidelines */}
         <div className="mb-24">

@@ -59,10 +59,10 @@ const GlaucomaServices: React.FC = () => {
             <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Silent Sight Safeguard</span>
             <h1 className="section-text text-brand-navy mb-6">Glaucoma Care & Diagnostics</h1>
             <p className="text-lg font-lora text-brand-navy/70 leading-relaxed mb-6">
-              Detecting the silent threat early. We offer advanced structural diagnostics and therapeutic laser treatments to protect your optic nerve.
+              Elite care focused on managing intraocular pressure and protecting the optic nerve to safeguard your sight for life.
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              Glaucoma causes irreversible vision loss without early warning signs. By combining computerized visual field perimetry, gonioscopy, central pachymetry, and high-definition RNFL optical coherence tomography, we map and monitor every aspect of your nerve health.
+              Our comprehensive Glaucoma clinic offers **Advanced Diagnostic Imaging** (visual fields, gonioscopy, and high-definition RNFL OCT scans), **Glaucoma Laser Management** (SLT & YAG iridotomy), and specialized **Glaucoma Surgeries** (trabeculectomies & micro-shunts) to control intraocular pressure.
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               Book Glaucoma Screening

@@ -28,20 +28,28 @@ const PaediatricOphthalmology: React.FC = () => {
 
   const surgicalPediatricSuite = [
     {
-      title: 'Pediatric Cataract Phacoemulsification',
-      desc: 'Delicate microphaco extraction of congenital or developmental cataracts, combined with posterior capsulotomy and primary child-safe IOL implantation.'
+      title: 'Eye Care for Infants & Children',
+      desc: 'Dedicated pediatric screening, objective acuity tests using Teller Cards, cycloplegic refraction checks, and early childhood vision diagnostics.'
     },
     {
       title: 'Squint (Strabismus) Correction',
-      desc: 'Re-aligning misaligned eyes via precise rectus muscle recession or resection surgeries, promoting binocular vision and restoring natural alignment.'
+      desc: 'Precision surgical re-alignment of ocular muscles (recession/resection) to treat misaligned eyes and restore healthy binocular tracking.'
     },
     {
-      title: 'Lazy Eye (Amblyopia) Patching Therapy',
-      desc: 'Customized vision rehabilitation plans including structured occlusion (patching) protocols and active vision exercises to stimulate the lazy eye.'
+      title: 'Congenital Anomalies of the Lid',
+      desc: 'Specialized corrective surgery for drooping eyelids (ptosis), dermoid cysts, and congenital malformations of the eyelids.'
     },
     {
-      title: 'Congenital Duct Probing & Syringing',
-      desc: 'Outpatient probing and tear duct canaliculation to clear blockages in the nasolacrimal duct in infants suffering from persistent tearing and discharge.'
+      title: 'Tear Duct (Nasolacrimal) Treatment',
+      desc: 'Outpatient nasolacrimal probing, syringing, and dacryocystorhinostomy (DCR) to clear tear duct blockages and watery discharge in infants.'
+    },
+    {
+      title: 'Pediatric Cataract Management',
+      desc: 'Delicate microphaco cataract extraction with posterior capsulotomy and primary child-safe intraocular lens (IOL) implantation.'
+    },
+    {
+      title: 'Structural Vision Therapy Programmes',
+      desc: 'Orthoptics alignment training, customized binocular exercises, and lazy eye (amblyopia) patching therapy to build visual structure.'
     }
   ];
 

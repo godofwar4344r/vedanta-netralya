@@ -8,8 +8,7 @@ import FooterCTA from '../components/FooterCTA';
 // Doctor Images
 import drSameer from '../assets/dr-sameer-varma.png';
 import drRjk from '../assets/dr-rjk-singh.png';
-import drKanhaiya from '../assets/dr-kanhaiya-mittal.png';
-import drDavinder from '../assets/dr-davinder-tyagi.png';
+import drAditya from '../assets/dr-aditya-bhardwaj.png';
 
 const Doctors: React.FC = () => {
   const doctors = [
@@ -43,31 +42,17 @@ const Doctors: React.FC = () => {
       ]
     },
     {
-      name: 'Dr. Kanhaiya Mittal',
-      image: drKanhaiya,
+      name: 'Dr. Aditya Bhardwaj',
+      image: drAditya,
       role: 'Chief Retina Consultant & Surgeon',
       specialty: 'Vitreoretinal (VR) Surgery & Medical Retina',
-      edu: 'MBBS (Maulana Azad Medical College), MD (AIIMS New Delhi), DNB, FICO, MRCS',
+      edu: 'MD (AIIMS New Delhi), DNB, FICO, MRCS',
       exp: '10,000+',
-      desc: 'Completed graduation in MBBS from Maulana Azad Medical College, Delhi in 2009, and ophthalmology residency from AIIMS Delhi in 2011. Following this, he did 3 years of rigorous advanced training in Vitreo Retina from AIIMS, New Delhi. He has performed more than 10,000 retinal micro-surgeries, solving complex cases, and has also worked as consultant ophthalmologist internationally.',
+      desc: 'Completed graduation in MBBS and ophthalmology residency. Following this, he completed 3 years of rigorous advanced training in Vitreo Retina from AIIMS, New Delhi. He has performed more than 10,000 retinal micro-surgeries, solving complex cases, and has also worked as a consultant ophthalmologist internationally.',
       fellowships: [
         '3 years Vitreo Retina training at AIIMS New Delhi',
         'FICO & MRCS certified clinical specialist',
         'Over 10,000 successful Vitreoretinal micro-surgeries'
-      ]
-    },
-    {
-      name: 'Dr. Davinder Tyagi',
-      image: drDavinder,
-      role: 'Co-Founder & Vitreoretinal Specialist',
-      specialty: 'Vitreoretinal Surgery, Retina & Uvea Care',
-      edu: 'M.D. (R.P. Centre, AIIMS New Delhi, 2006)',
-      exp: '4,000+',
-      desc: 'Finished post-graduation from R.P Centre, AIIMS in 2006 and completed specialized vitreo-retinal training at AIIMS. He subsequently joined Vardan Retina Centre, Ghaziabad as a vitreoretinal consultant. With over 4,000 successful VR surgeries, he pioneered vitreo-retinal surgery in Haldwani and Kumaon region starting in 2007. He serves as Vitreoretinal Consultant at Vedanta Netralya and Vardan Retina Centre.',
-      fellowships: [
-        'Post-Graduation from R.P. Centre, AIIMS New Delhi',
-        'Pioneered Vitreo-Retinal surgery in Haldwani & Kumaon in 2007',
-        'Over 4,000 successful Vitreoretinal procedures'
       ]
     }
   ];
