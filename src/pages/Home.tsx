@@ -235,7 +235,7 @@ const Home: React.FC = () => {
 
   const handleIntroVideoLoaded = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
-    video.currentTime = 3.0;
+    video.currentTime = 0.0;
   };
 
   const handleIntroVideoSeeked = () => {
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
 
   const handleIntroVideoTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
-    if (video.currentTime >= 5.0) {
+    if (video.currentTime >= 2.0) {
       video.pause();
       setIsVideoDone(true);
       hasPlayedIntroVideo = true;
