@@ -14,8 +14,8 @@ const FAQ_DATABASE = [
     answer: "Hello! Welcome to Vedanta Netralya. How can I assist you with your eye care needs today?"
   },
   {
-    keywords: ['cataract', 'lens', 'flacs', 'cloudy', 'mics'],
-    answer: "We specialize in advanced Robotic FLACS (Femtoseconds Laser-Assisted Cataract Surgery) with premium foldable IOL implants (multifocal, trifocal, toric). Recovery is painless and takes under 24 hours. Would you like to schedule a cataract screening?"
+    keywords: ['cataract', 'lens', 'phaco', 'cloudy', 'mics'],
+    answer: "We specialize in advanced Micro-Incision Phacoemulsification (MICS) with premium foldable IOL implants (multifocal, trifocal, toric). Recovery is painless and takes under 24 hours. Would you like to schedule a cataract screening?"
   },
   {
     keywords: ['glaucoma', 'pressure', 'kala motia', 'nerve', 'optic'],
@@ -43,7 +43,7 @@ const FAQ_DATABASE = [
   },
   {
     keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where'],
-    answer: "Our main superspecialty center is located at Canal Road, Tikonia Circle, Haldwani, Uttarakhand. Visit `/centres` for maps and full directions."
+    answer: "Our main superspecialty center is located at Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139. Visit `/centres` for maps and full directions."
   },
   {
     keywords: ['cost', 'price', 'insurance', 'tpa', 'cashless', 'panel'],

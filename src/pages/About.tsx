@@ -21,9 +21,9 @@ import { EditableContainer, EditableText, EditableMedia, EditableList, EditableC
 import introVid from '../assets/about-video.mp4';
 
 // Doctor Images
-import drSameer from '../assets/dr-sameer-varma.png';
-import drRjk from '../assets/dr-rjk-singh.png';
-import drAditya from '../assets/dr-aditya-bhardwaj.png';
+import drSameer from '../assets/dr-sameer-varma-opd.jpeg';
+import drRjk from '../assets/dr-rjk-opd.jpeg';
+import drAditya from '../assets/dr-aditya-bhardwaj.jpeg';
 
 const About: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -49,6 +49,8 @@ const About: React.FC = () => {
       id: 'doc-sameer',
       name: 'Dr. Sameer Varma',
       image: drSameer,
+      imageZoom: 1.2,
+      objectPosition: '52% 20%',
       role: 'Founder & Senior Eye Specialist',
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
@@ -65,6 +67,8 @@ const About: React.FC = () => {
       id: 'doc-rjk',
       name: 'Dr. R.J.K. Singh',
       image: drRjk,
+      imageZoom: 1.9,
+      objectPosition: '85% 15%',
       role: 'Senior Consultant Ophthalmologist',
       specialty: 'Comprehensive Ophthalmology',
       edu: 'DOMS, Kanpur University (1972)',
@@ -80,6 +84,8 @@ const About: React.FC = () => {
       id: 'doc-aditya',
       name: 'Dr. Aditya Bhardwaj',
       image: drAditya,
+      imageZoom: 1.6,
+      objectPosition: 'center 35%',
       role: 'Chief Retina Consultant & Surgeon',
       specialty: 'Vitreoretinal (VR) Surgery & Medical Retina',
       edu: 'MD (AIIMS New Delhi), DNB, FICO, MRCS',
@@ -94,10 +100,10 @@ const About: React.FC = () => {
   ];
 
   const defaultCoreValues = [
-    { id: 'v1', iconName: 'Shield', title: 'Uncompromising Safety', desc: 'Adhering to strict NABH safety standards and sterile operative theatre protocol.' },
-    { id: 'v2', iconName: 'Sparkles', title: 'Advanced Technology', desc: 'State-of-the-art, cutting-edge diagnostic and surgical technology from Alcon, Zeiss, and Johnson & Johnson.' },
+    { id: 'v4', iconName: 'Award', title: 'Patient Integrity', desc: 'Strict ethical treatment decisions and transparent billing packages.' },
     { id: 'v3', iconName: 'Activity', title: 'Clinical Rigour', desc: 'Cases managed by board-certified, well-trained, and experienced surgeons.' },
-    { id: 'v4', iconName: 'Award', title: 'Patient Integrity', desc: 'Strict ethical treatment decisions and transparent billing packages.' }
+    { id: 'v2', iconName: 'Sparkles', title: 'Advanced Technology', desc: 'State-of-the-art, cutting-edge diagnostic and surgical technology from Alcon, Zeiss, and Johnson & Johnson.' },
+    { id: 'v1', iconName: 'Shield', title: 'Uncompromising Safety', desc: 'Adhering to strict NABH safety standards and sterile operative theatre protocol.' }
   ];
 
   const defaultTimeline = [
@@ -130,7 +136,7 @@ const About: React.FC = () => {
               <EditableText id="about-desc-1">Vedanta Netralya is Kumaun's premium eye care provider, blending advanced surgical technologies with ethical values.</EditableText>
             </p>
             <p className="text-base text-brand-navy/60 leading-relaxed mb-8">
-              <EditableText id="about-desc-2">Our modern facilities Tikonia Circle Canal Road are fully air-conditioned and patient-friendly.</EditableText>
+              <EditableText id="about-desc-2">Our modern facilities at Nawabi Road are fully air-conditioned and patient-friendly.</EditableText>
             </p>
             <div className="flex gap-4">
               <Link to="/appointment" className="bg-brand-navy text-cream px-6 py-4 rounded-full text-[10px] tracking-[0.25em] uppercase font-black hover:bg-brand-teal hover:text-brand-navy transition-all shadow-md">
@@ -244,7 +250,7 @@ const About: React.FC = () => {
                         <EditableText id="about-facility-title-5">OPD & Consultation Stations</EditableText>
                       </h4>
                       <p className="text-xs text-brand-navy/70 mt-0.5 font-lora">
-                        <EditableText id="about-facility-desc-5">Features 2 diagnostic refraction stations, a 4-doctor consultation chamber, the specialized Mektron Kids Centre, and a separate counseling room for patient guidance.</EditableText>
+                        <EditableText id="about-facility-desc-5">Features 2 diagnostic refraction stations, a 4-doctor consultation chamber, a dedicated paediatric clinic, and a separate counseling room for patient guidance.</EditableText>
                       </p>
                     </div>
                   </div>
@@ -396,7 +402,7 @@ const About: React.FC = () => {
           <EditableList
             id="about-doctors-list"
             defaultItems={defaultDoctors}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto"
             newItemTemplate={{
               name: 'Dr. New Doctor',
               role: 'Consulting Specialist',
@@ -423,7 +429,11 @@ const About: React.FC = () => {
                       id={`about-doc-image-${doc.id}`}
                       src={doc.image} 
                       alt={doc.name} 
-                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 pointer-events-none"
+                      style={{
+                        objectPosition: doc.objectPosition || 'center top',
+                        transform: `scale(${doc.imageZoom || 1})`
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent pointer-events-none" />
                   </div>

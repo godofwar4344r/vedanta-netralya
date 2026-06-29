@@ -12,7 +12,7 @@ import heroEye3d from '../assets/hero-eye-3d.png';
 import heroEyePrecision from '../assets/hero-eye-precision.png';
 import drSameerVerma from '../assets/dr-sameer-verma.png';
 import introVid from '../assets/intro-video.mp4';
-import gallery3 from '../assets/gallery-3.png';
+import hospitalFacade from '../assets/hospital-facade.jpeg';
 
 // Service Images
 import serviceLasik from '../assets/service-lasik.png';
@@ -58,8 +58,8 @@ const Counter: React.FC<{ value: number; suffix?: string; duration?: number }> =
 
 const services = [
   {
-    title: 'Femto-LASIK & SMILE',
-    description: 'Ultra-precise vision correction lasers for absolute freedom from spectacles and contact lenses.',
+    title: 'Cataract & Refractive Surgery',
+    description: 'Advanced micro-incision cataract removal and modern laser vision correction for spectacle-free clarity.',
     icon: <Eye className="w-6 h-6" />,
     path: '/refractive-surgery'
   },
@@ -105,8 +105,8 @@ const faqs = [
     answer: 'LASIK is a virtually painless procedure. Anesthetic eye drops are used to numb the eyes, so you will only feel mild pressure. The actual laser treatment takes under 20-30 seconds per eye, and the entire procedure is completed in about 15 minutes.'
   },
   {
-    question: 'What is the difference between standard and robotic laser Cataract surgery?',
-    answer: 'Standard cataract surgery is performed manually using hand-held blades, whereas Robotic FLACS (Femtosecond Laser-Assisted Cataract Surgery) uses a computer-guided laser to make ultra-precise incisions, fragment the cataract, and correct astigmatism, leading to faster healing and better visual outcomes.'
+    question: 'What is Micro-Incision Cataract Surgery (MICS) and how does it compare to older methods?',
+    answer: 'Older manual cataract surgery methods involved larger incisions and stitches. Modern Micro-Incision Cataract Surgery (MICS) uses high-frequency ultrasound energy (Phacoemulsification) to gently dissolve the cloudy lens through a tiny 1.8mm self-healing incision. It is completely sutureless, painless, and allows quick recovery in under 24 hours.'
   },
   {
     question: 'How often should I have a comprehensive eye check-up?',
@@ -269,7 +269,7 @@ const Home: React.FC = () => {
     { 
       title: 'Cataract Surgery', 
       num: '01',
-      tag: 'Robotic FLACS Laser',
+      tag: 'Advanced Micro-Incision',
       stat: '50k+',
       statLabel: 'Lens Implants',
       desc: 'Premium micro-incision phacoemulsification with foldable IOL technology. Recovery within 24 hours.',
@@ -512,7 +512,7 @@ const Home: React.FC = () => {
               className="flex items-center gap-1.5 text-brand-teal text-[10px] tracking-[0.2em] font-black uppercase mb-3 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-brand-teal/20"
             >
               <MapPin className="w-3.5 h-3.5" />
-              <span>Tikonia Circle, Canal Road, Haldwani</span>
+              <span>Nawabi Road, Subhash Nagar, Haldwani</span>
             </motion.div>
             <h1 className="leading-[0.95] text-center md:text-left">
               <motion.span 
@@ -589,7 +589,7 @@ const Home: React.FC = () => {
               <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden shadow-2xl relative group max-h-[500px]">
                 <EditableMedia
                   id="about-legacy-image"
-                  src={gallery3}
+                  src={hospitalFacade}
                   alt="Vedanta Netralya Legacy & Clinical Care"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -606,7 +606,7 @@ const Home: React.FC = () => {
                   </span>
                 </h2>
                 <p className="text-lg text-brand-navy/70 font-lora leading-relaxed">
-                  <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced robotic laser systems, high-definition diagnostics, and advanced micro-surgical wings to restore visual clarity.</EditableText>
+                  <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced state-of-the-art diagnostic systems, high-definition imaging, and advanced micro-surgical wings to restore visual clarity.</EditableText>
                 </p>
                 <p className="text-base text-brand-navy/60 font-lora leading-relaxed">
                   <EditableText id="about-legacy-desc-2">Under the leadership of a team of ophthalmic experts Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Kanhaiya Mittal, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.</EditableText>
@@ -1029,7 +1029,7 @@ const Home: React.FC = () => {
                 {
                   name: 'Rajesh Singhal',
                   location: 'Haldwani, Nainital',
-                  treatment: 'Robotic FLACS Cataract Surgery',
+                  treatment: 'Micro-Incision Cataract Surgery (MICS)',
                   quote: "My cataract surgery at Vedanta Netralya was completely painless. I was back home within hours, and the next morning my vision was perfectly clear. Dr. Sameer Varma explained the premium multifocal lens option beautifully.",
                   rating: 5
                 },
@@ -1099,14 +1099,14 @@ const Home: React.FC = () => {
               </p>
             </div>
 
-            <div className="max-w-xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Haldwani Card */}
               <div className="bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/5 hover:border-brand-teal/40 transition-all duration-300 flex flex-col justify-between">
                 <div>
                   <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Superspecialty Centre</span>
                   <h3 className="text-2xl font-black mb-4">Haldwani Centre</h3>
                   <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
-                    Canal Road, Tikonia Circle, Near Eye Q Hospital, Haldwani, Uttarakhand 263139
+                    Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139
                   </p>
                   <div className="space-y-2 text-xs text-cream/60 font-body mb-8">
                     <p><strong>OPD Hours:</strong> Mon - Sat: 9:00 AM - 7:00 PM</p>
@@ -1118,7 +1118,33 @@ const Home: React.FC = () => {
                   href="https://www.google.com/maps/place/Vedanta+Netralya+Haldwani/@29.2266568,79.5255779,642m/data=!3m1!1e3!4m10!1m2!2m1!1svedanta+netralya+haldwani!3m6!1s0x39a09b1779d2b223:0xccc4371f2e361808!8m2!3d29.2266493!4d79.5281364!15sChl2ZWRhbnRhIG5ldHJhbHlhIGhhbGR3YW5pkgEPZXllX2NhcmVfY2VudGVy4AEA!16s%2Fg%2F11n422c3lg!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-[0.2em] uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md"
+                  className="group bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Navigate on Google Maps
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+
+              {/* Kichha Card */}
+              <div className="bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/5 hover:border-brand-teal/40 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Specialist Outreach Clinic</span>
+                  <h3 className="text-2xl font-black mb-4">Kichha Centre</h3>
+                  <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
+                    Vedanta Netralya, Hotel Neelkamal, Bareilly Road, Kichha, Uttarakhand
+                  </p>
+                  <div className="space-y-2 text-xs text-cream/60 font-body mb-8">
+                    <p><strong>OPD Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                    <p><strong>Phone:</strong> +91-9068561971</p>
+                  </div>
+                </div>
+                <a 
+                  href="https://maps.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md"
                 >
                   <MapPin className="w-4 h-4" />
                   Navigate on Google Maps

@@ -25,7 +25,7 @@ const Terms: React.FC = () => {
 
       <h2 className="text-xl font-bold text-brand-navy font-body mt-8 mb-4">3. Medical Consent</h2>
       <p className="mb-6">
-        Definitive surgical procedures (such as FLACS laser cataract removal or Femto-LASIK correction) are only performed after in-person clinical consultations and obtaining written patient consent forms.
+        Definitive surgical procedures (such as micro-incision cataract removal (Phaco) or Femto-LASIK correction) are only performed after in-person clinical consultations and obtaining written patient consent forms.
       </p>
 
       <h2 className="text-xl font-bold text-brand-navy font-body mt-8 mb-4">4. Dispute Resolution</h2>

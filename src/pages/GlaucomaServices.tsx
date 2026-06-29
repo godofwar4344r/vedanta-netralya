@@ -4,7 +4,8 @@ import { Sparkles, ArrowUpRight, CheckCircle2, Search, Award, AlertTriangle, Shi
 import { Link } from 'react-router-dom';
 import { EditableText, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
-import serviceGlaucoma from '../assets/service-glaucoma.png';
+import drSameerSlitlamp2 from '../assets/dr-sameer-slitlamp-2.jpeg';
+import waitingLobby1 from '../assets/hospital-waiting-lobby-1.jpeg';
 
 const GlaucomaServices: React.FC = () => {
   const [isTunnelVision, setIsTunnelVision] = React.useState(false);
@@ -74,7 +75,7 @@ const GlaucomaServices: React.FC = () => {
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
             <EditableMedia
               id="glaucoma-image-hero"
-              src={serviceGlaucoma}
+              src={drSameerSlitlamp2}
               alt="Glaucoma Early Detection"
               className="w-full h-full object-cover opacity-90 pointer-events-none"
             />
@@ -192,7 +193,7 @@ const GlaucomaServices: React.FC = () => {
                   }`}
                 >
                   <img 
-                    src={serviceGlaucoma} 
+                    src={waitingLobby1} 
                     alt="Glaucoma Visual Simulator" 
                     className="w-full h-full object-cover opacity-90"
                   />

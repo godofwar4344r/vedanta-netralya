@@ -10,7 +10,7 @@ const Testimonials: React.FC = () => {
     {
       name: 'Rajesh Singhal',
       location: 'Haldwani, Nainital',
-      treatment: 'Robotic FLACS Cataract Surgery',
+      treatment: 'Micro-Incision Cataract Surgery (MICS)',
       quote: "My cataract surgery at Vedanta was completely painless. I was back home within hours, and the next morning my vision was perfectly clear. Dr. Sameer Varma explained the premium multifocal lens option beautifully.",
       rating: 5
     },
@@ -32,8 +32,8 @@ const Testimonials: React.FC = () => {
 
   const faqs = [
     {
-      q: "What is Robotic FLACS Laser Cataract Surgery and how does it compare to normal surgery?",
-      a: "Femtosecond Laser-Assisted Cataract Surgery (FLACS) replaces manual blade cuts with a computer-guided, high-precision laser. It ensures perfect circular openings for premium lens alignment, softens the cataract lens safely, and enables a sutureless, stitch-free recovery in under 24 hours."
+      q: "What is Micro-Incision Cataract Surgery (MICS) and how does it compare to older methods?",
+      a: "Micro-Incision Cataract Surgery (MICS) uses advanced ultrasound technology (Phacoemulsification) to gently dissolve the cataract through a tiny 1.8mm self-healing incision. It is entirely stitch-free and sutureless, ensuring a quick visual recovery in under 24 hours."
     },
     {
       q: "How long does a typical Femto-LASIK or SMILE procedure take, and is it painful?",

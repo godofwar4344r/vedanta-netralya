@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
                     <MapPin className="w-5 h-5 text-brand-teal shrink-0 mt-0.5" />
                     <div>
                       <p className="text-cream/80">
-                        <EditableText id="contact-haldwani-address">Canal Rd, Tikonia Circle, Haldwani, Uttarakhand 263139</EditableText>
+                        <EditableText id="contact-haldwani-address">Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139</EditableText>
                       </p>
                       <p className="text-cream/50 text-xs mt-1 italic">
                         <EditableText id="contact-haldwani-address-note">Also: Nawabi Road, Near Mahila Degree College, Haldwani — Daily Retina Consultation</EditableText>
@@ -205,7 +205,7 @@ const Contact: React.FC = () => {
                     <EditableText id="contact-emergency-title">Emergency Ophthalmic Care</EditableText>
                   </h3>
                   <p className="text-xs text-cream/70 leading-relaxed font-lora mb-4">
-                    <EditableText id="contact-emergency-desc">If you have experienced sudden trauma, severe chemical burns, or abrupt loss of vision, please head directly to our Haldwani centre at Canal Rd, Tikonia Circle.</EditableText>
+                    <EditableText id="contact-emergency-desc">If you have experienced sudden trauma, severe chemical burns, or abrupt loss of vision, please head directly to our Haldwani centre at Nawabi Rd, Subhash Nagar.</EditableText>
                   </p>
                   <p className="text-sm font-black text-red-400">
                     <EditableText id="contact-emergency-phone">Emergency: +91-9068561971</EditableText>
@@ -242,7 +242,7 @@ const Contact: React.FC = () => {
             />
           </div>
           <p className="text-center text-xs text-brand-navy/40 font-lora mt-4 italic">
-            <EditableText id="contact-map-caption">Canal Rd, Tikonia Circle, Haldwani, Uttarakhand 263139</EditableText>
+            <EditableText id="contact-map-caption">Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139</EditableText>
           </p>
         </div>
       </EditableContainer>

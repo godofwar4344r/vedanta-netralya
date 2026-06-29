@@ -6,15 +6,17 @@ import { EditableContainer, EditableText, EditableMedia, EditableCard } from '..
 import FooterCTA from '../components/FooterCTA';
 
 // Doctor Images
-import drSameer from '../assets/dr-sameer-varma.png';
-import drRjk from '../assets/dr-rjk-singh.png';
-import drAditya from '../assets/dr-aditya-bhardwaj.png';
+import drSameer from '../assets/dr-sameer-varma-opd.jpeg';
+import drRjk from '../assets/dr-rjk-opd.jpeg';
+import drAditya from '../assets/dr-aditya-bhardwaj.jpeg';
 
 const Doctors: React.FC = () => {
   const doctors = [
     {
       name: 'Dr. Sameer Varma',
       image: drSameer,
+      imageZoom: 1.2,
+      objectPosition: '52% 20%',
       role: 'Founder & Senior Eye Specialist',
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
@@ -30,6 +32,8 @@ const Doctors: React.FC = () => {
     {
       name: 'Dr. R.J.K. Singh',
       image: drRjk,
+      imageZoom: 1.9,
+      objectPosition: '85% 15%',
       role: 'Senior Consultant Ophthalmologist',
       specialty: 'Comprehensive Ophthalmology',
       edu: 'DOMS, Kanpur University (1972)',
@@ -44,6 +48,8 @@ const Doctors: React.FC = () => {
     {
       name: 'Dr. Aditya Bhardwaj',
       image: drAditya,
+      imageZoom: 1.6,
+      objectPosition: 'center 35%',
       role: 'Chief Retina Consultant & Surgeon',
       specialty: 'Vitreoretinal (VR) Surgery & Medical Retina',
       edu: 'MD (AIIMS New Delhi), DNB, FICO, MRCS',
@@ -79,7 +85,7 @@ const Doctors: React.FC = () => {
         </EditableContainer>
 
         <EditableContainer id="doctors-list">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
             {doctors.map((doc, idx) => (
               <EditableCard key={idx} id={`doctor-card-${idx}`} className="h-full">
                 <motion.div
@@ -96,7 +102,11 @@ const Doctors: React.FC = () => {
                       id={`doctor-image-${idx}`}
                       src={doc.image} 
                       alt={doc.name} 
-                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 pointer-events-none"
+                      style={{
+                        objectPosition: doc.objectPosition || 'center top',
+                        transform: `scale(${doc.imageZoom || 1})`
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent pointer-events-none" />
                     

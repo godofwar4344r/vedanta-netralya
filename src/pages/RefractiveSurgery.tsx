@@ -6,7 +6,7 @@ import { EditableContainer, EditableText, EditableMedia, EditableList } from '..
 import FooterCTA from '../components/FooterCTA';
 
 // Assets
-import serviceLasik from '../assets/service-lasik.png';
+import optometristRoom from '../assets/optometrist-room.jpeg';
 
 const RefractiveSurgery: React.FC = () => {
   const defaultDiagnosticChecks = [
@@ -92,7 +92,7 @@ const RefractiveSurgery: React.FC = () => {
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
             <EditableMedia 
               id="refractive-image-hero"
-              src={serviceLasik} 
+              src={optometristRoom} 
               alt="Painless. Precise. Ethical." 
               className="w-full h-full object-cover opacity-90 pointer-events-none"
             />

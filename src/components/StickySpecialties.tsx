@@ -16,7 +16,7 @@ interface Spec {
 }
 
 const SPECS: Spec[] = [
-  { num: '01', tag: 'Robotic FLACS Laser', title: 'Cataract Surgery', desc: 'Premium micro-incision phacoemulsification with foldable multifocal and toric IOLs. Painless, with visual recovery inside 24 hours.', stat: '50k+', statLabel: 'Lens implants', stat2: '24 hrs', stat2Label: 'Recovery', img: serviceCataract, path: '/cataract' },
+  { num: '01', tag: 'Advanced Micro-Incision', title: 'Cataract Surgery', desc: 'Premium micro-incision phacoemulsification with foldable multifocal and toric IOLs. Painless, with visual recovery inside 24 hours.', stat: '50k+', statLabel: 'Lens implants', stat2: '24 hrs', stat2Label: 'Recovery', img: serviceCataract, path: '/cataract' },
   { num: '02', tag: 'Vitreoretinal Specialty', title: 'Retina and Vitreous', desc: 'Sutureless micro-incision vitrectomy surgery for diabetic retinopathy, macular holes, and retinal detachment.', stat: '2000+', statLabel: 'Retina surgeries', stat2: '25G', stat2Label: 'Sutureless', img: serviceRetina, path: '/retina-services' },
   { num: '03', tag: 'Intraocular Pressure Control', title: 'Glaucoma Management', desc: 'Advanced imaging, micro-shunts, and selective laser trabeculoplasty to protect the optic nerve for life.', stat: '7000+', statLabel: 'Glaucoma patients', stat2: 'SLT', stat2Label: 'Laser therapy', img: serviceGlaucoma, path: '/glaucoma-services' },
   { num: '04', tag: 'Eyelid & Orbit Surgery', title: 'Oculoplasty Services', desc: 'Surgical correction of drooping eyelids, blocked tear ducts, and ocular reconstructive procedures.', stat: '8000+', statLabel: 'Procedures', stat2: 'DCR', stat2Label: 'Lacrimal', img: serviceOculoplasty, path: '/oculoplasty-services' },

@@ -4,7 +4,7 @@ import { CheckCircle2, ArrowUpRight, Award, Sparkles, Shield, User, AlertTriangl
 import { Link } from 'react-router-dom';
 import { EditableText, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
-import servicePaediatric from '../assets/service-paediatric.png';
+import drRjkOpd from '../assets/dr-rjk-opd.jpeg';
 
 const PaediatricOphthalmology: React.FC = () => {
   const visualAcuitySuite = [
@@ -81,7 +81,7 @@ const PaediatricOphthalmology: React.FC = () => {
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
             <EditableMedia
               id="paediatric-image-hero"
-              src={servicePaediatric}
+              src={drRjkOpd}
               alt="Paediatric Ophthalmology"
               className="w-full h-full object-cover opacity-90 pointer-events-none"
             />

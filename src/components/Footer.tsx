@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-col gap-4 text-xs font-lora">
               {[
                 {
-                  title: "femto-cataract: robotic precision",
+                  title: "mics cataract: sutureless recovery",
                   date: "Jun 12, 2026",
                   link: "/cataract"
                 },
@@ -152,7 +152,7 @@ const Footer: React.FC = () => {
                 <div>
                   <h4 className="font-body text-xs font-black uppercase text-cream tracking-wider mb-1">Haldwani Centre (Main)</h4>
                   <p className="text-xs leading-relaxed text-cream/75">
-                    <EditableText id="footer-haldwani-address">Canal Rd, Tikonia Circle, Haldwani, Uttarakhand 263139</EditableText>
+                    <EditableText id="footer-haldwani-address">Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139</EditableText>
                   </p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const Footer: React.FC = () => {
             <div className="rounded-2xl overflow-hidden h-48 border border-cream/10 relative">
               <iframe
                 title="Haldwani Branch Map"
-                src="https://maps.google.com/maps?q=Vedanta%20Netralya%20Haldwani%20Canal%20Road&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Vedanta%20Netralya%20Haldwani%20Nawabi%20Road&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full border-0 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                 allowFullScreen={false}
                 loading="lazy"

@@ -11,7 +11,7 @@ const Centres: React.FC = () => {
       id: 'haldwani-main',
       title: 'Haldwani Main Branch',
       tag: 'Super-Specialty Center',
-      address: 'Canal Road, Tikonia Circle, Haldwani, Nainital, Uttarakhand - 263139',
+      address: 'Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand - 263139',
       phones: ['05946-223616', '+91 9068561971'],
       email: 'info@vedantanetralya.com',
       hours: [
@@ -20,6 +20,19 @@ const Centres: React.FC = () => {
       ],
       mapUrl: 'https://www.google.com/maps/place/Vedanta+Netralya+Haldwani/@29.2266568,79.5255779,642m/data=!3m1!1e3!4m10!1m2!2m1!1svedanta+netralya+haldwani!3m6!1s0x39a09b1779d2b223:0xccc4371f2e361808!8m2!3d29.2266493!4d79.5281364!15sChl2ZWRhbnRhIG5ldHJhbHlhIGhhbGR3YW5pkgEPZXllX2NhcmVfY2VudGVy4AEA!16s%2Fg%2F11n422c3lg!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D',
       isMain: true
+    },
+    {
+      id: 'kichha-outreach',
+      title: 'Kichha Centre',
+      tag: 'Specialist Outreach Clinic',
+      address: 'Vedanta Netralya, Hotel Neelkamal, Bareilly Road, Kichha, Uttarakhand',
+      phones: ['+91 9068561971'],
+      email: 'info@vedantanetralya.com',
+      hours: [
+        { days: 'Monday — Saturday', time: '9:00 AM — 6:00 PM' }
+      ],
+      mapUrl: 'https://maps.google.com',
+      isMain: false
     }
   ];
 

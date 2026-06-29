@@ -274,7 +274,7 @@ const Layout: React.FC = () => {
               <div className="flex flex-col gap-1">
                 <span className="font-black text-[9px] text-brand-teal uppercase tracking-widest">Haldwani Centre</span>
                 <p className="text-cream/80 text-[11px] leading-tight font-lora">
-                  Canal Road, Tikonia Circle, Haldwani, Nainital, Uttarakhand - 263139
+                  Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand - 263139
                 </p>
                 <div className="flex gap-4 mt-1">
                   <a 

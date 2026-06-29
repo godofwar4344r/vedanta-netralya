@@ -4,7 +4,7 @@ import { CheckCircle2, GraduationCap, ArrowUpRight, Search, Activity, ShieldChec
 import { Link } from 'react-router-dom';
 import { EditableContainer, EditableText, EditableList, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
-import serviceRetina from '../assets/service-retina.png';
+import drAdityaBhardwaj from '../assets/dr-aditya-bhardwaj.jpeg';
 
 const RetinaServices: React.FC = () => {
   const defaultDiagnosticSuite = [
@@ -85,7 +85,7 @@ const RetinaServices: React.FC = () => {
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
             <EditableMedia
               id="retina-image-hero"
-              src={serviceRetina}
+              src={drAdityaBhardwaj}
               alt="Advanced Retinal Care"
               className="w-full h-full object-cover opacity-90 pointer-events-none"
             />

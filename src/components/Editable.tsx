@@ -187,9 +187,10 @@ interface MediaProps {
   className?: string;
   alt?: string;
   as?: 'img' | 'video';
+  style?: React.CSSProperties;
 }
 
-export const EditableMedia: React.FC<MediaProps> = ({ id, src: defaultSrc, className = '', alt = '', as = 'img' }) => {
+export const EditableMedia: React.FC<MediaProps> = ({ id, src: defaultSrc, className = '', alt = '', as = 'img', style = {} }) => {
   const { isEditMode, state, selectedElement, selectElement, updateMedia } = useEdit();
   const data = state.media[id] || {};
   const src = data.src !== undefined ? data.src : defaultSrc;
@@ -202,6 +203,7 @@ export const EditableMedia: React.FC<MediaProps> = ({ id, src: defaultSrc, class
     height: data.height || undefined,
     borderRadius: data.borderRadius || undefined,
     objectFit: (data.objectFit as any) || undefined,
+    ...style,
   };
 
   const inner = as === 'video'

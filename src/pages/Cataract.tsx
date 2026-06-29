@@ -64,16 +64,16 @@ const Cataract: React.FC = () => {
         <EditableContainer id="cataract-header" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
           <div className="lg:col-span-7">
             <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">
-              <EditableText id="cataract-eyebrow">Robotic Ophthalmology</EditableText>
+              <EditableText id="cataract-eyebrow">Advanced Ophthalmology</EditableText>
             </span>
             <h1 className="section-text text-brand-navy mb-6">
-              <EditableText id="cataract-title">Robotic FLACS Cataract Surgery</EditableText>
+              <EditableText id="cataract-title">Advanced Micro-Incision Cataract Surgery</EditableText>
             </h1>
             <p className="text-lg font-lora text-brand-navy/70 leading-relaxed mb-6">
-              <EditableText id="cataract-subtitle">Say goodbye to cloudy vision. We specialize in Femtosecond Laser-Assisted Cataract Surgery (FLACS), the most advanced, blade-free laser cataract technology available today.</EditableText>
+              <EditableText id="cataract-subtitle">Say goodbye to cloudy vision. We specialize in Advanced Phacoemulsification (MICS), a sutureless micro-incision technology designed for a quick, painless, and safe visual recovery.</EditableText>
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              <EditableText id="cataract-description">Using precision computer-guided lasers, our AIIMS-trained surgeons create perfect self-sealing incisions and gently soften the cataract for easy removal, achieving quick, painless recoveries.</EditableText>
+              <EditableText id="cataract-description">Using advanced micro-incision technology, our AIIMS-trained surgeons perform ultra-precise procedures to gently remove the cataract and restore crystal-clear vision with minimal downtime.</EditableText>
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               <EditableText id="cataract-btn">Schedule Screening</EditableText>
@@ -201,7 +201,7 @@ const Cataract: React.FC = () => {
               <ul className="space-y-3 text-xs leading-relaxed text-cream/80 font-lora list-disc pl-4">
                 <li><EditableText id="cataract-cure-item-1">Micro-Incision Cataract Surgery (MICS) using advanced Phaco technology</EditableText></li>
                 <li><EditableText id="cataract-cure-item-2">Implantation of premium intraocular lenses (IOLs) like Multifocal, Toric, or EDOF</EditableText></li>
-                <li><EditableText id="cataract-cure-item-3">Blade-free robotic laser cataract surgery for maximum precision</EditableText></li>
+                <li><EditableText id="cataract-cure-item-3">Advanced micro-surgical phacoemulsification for maximum safety</EditableText></li>
                 <li><EditableText id="cataract-cure-item-4">Quick 15-minute outpatient procedure under local anesthesia with rapid 24h recovery</EditableText></li>
               </ul>
             </div>
@@ -233,10 +233,10 @@ const Cataract: React.FC = () => {
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">
                 <Sparkles className="w-6 h-6 text-brand-teal mb-3" />
                 <h3 className="font-bold text-xs mb-1">
-                  <EditableText id="cataract-month-badge-1-title">Blade-Free Precision</EditableText>
+                  <EditableText id="cataract-month-badge-1-title">Micro-Incision Care</EditableText>
                 </h3>
                 <p className="text-[11px] text-cream/60 leading-normal">
-                  <EditableText id="cataract-month-badge-1-desc">Computer-guided femtosecond lasers.</EditableText>
+                  <EditableText id="cataract-month-badge-1-desc">Advanced sutureless phaco technology.</EditableText>
                 </p>
               </div>
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">

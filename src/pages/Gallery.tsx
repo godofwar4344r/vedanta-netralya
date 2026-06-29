@@ -3,21 +3,21 @@ import { motion } from 'framer-motion';
 import FooterCTA from '../components/FooterCTA';
 
 // Assets
-import gallery1 from '../assets/gallery-1.png';
-import gallery2 from '../assets/gallery-2.png';
-import gallery3 from '../assets/gallery-3.png';
-import gallery4 from '../assets/gallery-4.png';
-import gallery5 from '../assets/gallery-5.png';
-import heroSurgery from '../assets/hero-surgery.png';
+import drSameerSlitlamp1 from '../assets/dr-sameer-slitlamp-1.jpeg';
+import optometristRoom from '../assets/optometrist-room.jpeg';
+import drRjkOpd from '../assets/dr-rjk-opd.jpeg';
+import drSameerConsulting from '../assets/dr-sameer-consulting.jpeg';
+import waitingLobby1 from '../assets/hospital-waiting-lobby-1.jpeg';
+import hospitalFacade from '../assets/hospital-facade.jpeg';
 
 const Gallery: React.FC = () => {
   const images = [
-    { src: gallery1, title: 'Zeiss Diagnostic Suite', category: 'Ophthalmic Imaging', tagline: 'State-of-the-art optical coherence topography.' },
-    { src: gallery2, title: 'Femto-LASIK Sterile Wing', category: 'Refractive Center', tagline: 'Bladeless laser correction with absolute precision.' },
-    { src: gallery3, title: 'Pediatric Consult Room', category: 'Children Care', tagline: 'Specialized squint therapies and child screenings.' },
-    { src: gallery4, title: 'Advanced Phaco Theater', category: 'Cataract Wing', tagline: 'Micro-incision sutureless cataract surgery.' },
-    { src: gallery5, title: 'Patient Recovery Lounge', category: 'Post-Op Observation', tagline: 'Comfortable recovery environment under expert care.' },
-    { src: heroSurgery, title: 'NABH Certified Surgical Block', category: 'Operation Wing', tagline: 'Highest level of infection control and sterile support.' }
+    { src: hospitalFacade, title: 'Vedanta Netralya Front Facade', category: 'Hospital Building', tagline: 'Our state-of-the-art super-specialty eye care facility.' },
+    { src: drSameerSlitlamp1, title: 'Slit Lamp Examination (Dr. Sameer Varma)', category: 'Diagnostics', tagline: 'Real-time microscopic evaluation of eye structures.' },
+    { src: optometristRoom, title: 'Optometry & Refraction Room', category: 'Vision Testing', tagline: 'Advanced visual acuity assessment and objective refraction.' },
+    { src: drRjkOpd, title: 'OPD Consulting Chamber (Dr. R.J.K. Singh)', category: 'Consultation', tagline: 'Personal consultation chambers with senior specialists.' },
+    { src: drSameerConsulting, title: 'OPD Consulting Chamber (Dr. Sameer Varma)', category: 'Consultation', tagline: 'Comprehensive patient counseling and clinical assessment.' },
+    { src: waitingLobby1, title: 'Reception Desk & Main Lobby', category: 'Patient Care', tagline: 'Spacious, fully air-conditioned patient waiting lounge.' }
   ];
 
   return (

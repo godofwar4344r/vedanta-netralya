@@ -192,8 +192,8 @@ const VideoGallery: React.FC = () => {
     {
       id: 'reel-cataract',
       src: cataractVideo,
-      title: 'Cataract Flacs Technology',
-      caption: 'Experience blade-free Femtosecond Laser-Assisted Cataract Surgery (FLACS). The most precise cataract solution in modern ophthalmology. 👁️⚡ #cataract #eyecare #flacs #microphaco #lasersurgery',
+      title: 'Advanced Phacoemulsification (MICS)',
+      caption: 'Experience advanced Micro-Incision Cataract Surgery (MICS) utilizing sutureless Phaco technology. The safest, most precise cataract solution for rapid visual recovery. 👁️✨ #cataract #eyecare #phaco #microphaco #surgery',
       likes: '1.2K',
       comments: '42',
       shares: '188'
