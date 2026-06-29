@@ -10,20 +10,32 @@ interface Message {
 
 const FAQ_DATABASE = [
   {
-    keywords: ['hi', 'hello', 'hey', 'greetings'],
-    answer: "Hello! Welcome to Vedanta Netralya. How can I assist you with your eye care needs today?"
+    keywords: ['hi', 'hello', 'hey', 'greetings', 'namaste', 'नमस्ते', 'हैलो'],
+    answer: "Hello! Welcome to Vedanta Netralya. How can I assist you with your eye care needs today?\n\nनमस्ते! वेदांत नेत्रालय में आपका स्वागत है। आज मैं आपकी क्या मदद कर सकता हूँ?"
   },
   {
-    keywords: ['cataract', 'lens', 'phaco', 'cloudy', 'mics'],
-    answer: "We specialize in advanced Micro-Incision Phacoemulsification (MICS) with premium foldable IOL implants (multifocal, trifocal, toric). Recovery is painless and takes under 24 hours. Would you like to schedule a cataract screening?"
+    keywords: ['cataract', 'lens', 'phaco', 'cloudy', 'mics', 'मोतियाबिंद'],
+    answer: "We specialize in advanced Micro-Incision Phacoemulsification (MICS) with premium foldable IOL implants. Recovery is painless and takes under 24 hours.\n\nहिन्दी में: हम प्रीमियम फोल्डेबल लेंस के साथ सूक्ष्म-चीरा मोतियाबिंद सर्जरी (MICS) में विशेषज्ञ हैं। रिकवरी 24 घंटे में हो जाती है।"
   },
   {
-    keywords: ['glaucoma', 'pressure', 'kala motia', 'nerve', 'optic'],
-    answer: "Glaucoma (Kala Motia) is a progressive optic nerve disease, often linked to increased eye pressure. We offer advanced diagnostics (OCT, Perimetry) and treatments (eye drops, laser, surgery) headed by Dr. Sameer Varma. Try simulating it on our Glaucoma Services page!"
+    keywords: ['glaucoma', 'pressure', 'kala motia', 'nerve', 'optic', 'काला मोतिया'],
+    answer: "Glaucoma (Kala Motia) is a progressive optic nerve disease. We offer advanced diagnostics (OCT, Perimetry) and treatments headed by Dr. Sameer Varma.\n\nहिन्दी में: ग्लूकोमा (काला मोतिया) ऑप्टिक नर्व की बीमारी है। हम डॉक्टर समीर वर्मा के नेतृत्व में उन्नत जाँच और इलाज प्रदान करते हैं।"
   },
   {
-    keywords: ['refractive', 'specs', 'glasses', 'icl', 'rle', 'freedom'],
-    answer: "We offer advanced Refractive Surgery options like ICL (Implantable Collamer Lens) and RLE (Refractive Lens Exchange) for permanent freedom from glasses. Visit our Refractive Surgery page or ask me about booking a suitability check!"
+    keywords: ['refractive', 'specs', 'glasses', 'icl', 'rle', 'freedom', 'चश्मा', 'हटाना'],
+    answer: "We offer advanced Refractive Surgery options like ICL (Implantable Collamer Lens) and RLE (Refractive Lens Exchange) for permanent freedom from glasses.\n\nहिन्दी में: हम चश्मे से स्थाई मुक्ति के लिए आईसीएल (ICL) और आरएलई (RLE) जैसे उन्नत उपचार प्रदान करते हैं।"
+  },
+  {
+    keywords: ['lasik', 'myopia', 'shortsightedness', 'मायोपिया', 'निकट दृष्टि'],
+    answer: "LASIK (Laser-Assisted in Situ Keratomileusis) is an advanced vision correction procedure that reshapes the cornea to fix refractive errors. It is NOT medically necessary for myopia, but is a highly popular elective option to remove glasses.\n\nहिन्दी में: लेसिक (LASIK) मायोपिया के लिए चिकित्सकीय रूप से आवश्यक नहीं है, बल्कि यह चश्मे से छुटकारा पाने के लिए एक स्वैच्छिक प्रक्रिया है।"
+  },
+  {
+    keywords: ['prevention', 'preventive', 'screening', 'care', 'protect', 'बचाव', 'जाँच', 'स्क्रीनिंग'],
+    answer: "Preventive eye screenings are crucial. Silent conditions like Glaucoma (Kala Motia) or Diabetic Retinopathy can damage vision without early symptoms. Annual check-ups help detect issues early.\n\nहिन्दी में: नियमित आँखों की जाँच बहुत ज़रूरी है क्योंकि ग्लूकोमा जैसी बीमारियाँ बिना किसी लक्षण के धीरे-धीरे दृष्टि को नुकसान पहुँचाती हैं।"
+  },
+  {
+    keywords: ['screen', 'digital strain', 'computer', 'strain', 'dry', '20-20-20', 'मोबाइल', 'कंप्यूटर', 'थकान'],
+    answer: "Follow the 20-20-20 rule to prevent digital eye strain: every 20 minutes, take a 20-second break and look at something 20 feet away. Maintain screen distance and ensure good lighting.\n\nहिन्दी में: कंप्यूटर स्क्रीन की थकान से बचने के लिए 20-20-20 नियम का पालन करें (हर 20 मिनट में 20 सेकंड के लिए 20 फीट दूर देखें)।"
   },
   {
     keywords: ['miosis', 'mydriasis', 'pupil', 'constriction', 'dilation'],
@@ -34,19 +46,19 @@ const FAQ_DATABASE = [
     answer: "Night Blindness, or Nyctalopia, makes it difficult to see in relatively low light. Our specialists can diagnose and treat underlying causes like refractive errors, cataracts, or vitamin deficiencies. Try simulating it in our Sight Simulator!"
   },
   {
-    keywords: ['appointment', 'book', 'consultation', 'schedule', 'doctor slot', 'fee'],
+    keywords: ['appointment', 'book', 'consultation', 'schedule', 'doctor slot', 'fee', 'अपॉइंटमेंट', 'फीस'],
     answer: "You can book your appointment instantly via our online page at `/appointment`, or by calling our helpdesk at 05946-223616 or +91 9068561971. Consultation hours are Monday to Saturday, 9:00 AM to 7:00 PM, and Sunday, 9:00 AM to 2:00 PM."
   },
   {
-    keywords: ['doctor', 'surgeon', 'sameer', 'singh', 'varma', 'aditya', 'bhardwaj'],
+    keywords: ['doctor', 'surgeon', 'sameer', 'singh', 'varma', 'aditya', 'bhardwaj', 'डॉक्टर'],
     answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant, Sitapur Eye Hospital Fellow), and Dr. Aditya Bhardwaj (Chief Retina Consultant, MD AIIMS New Delhi)."
   },
   {
-    keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where'],
+    keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where', 'पता', 'कहाँ'],
     answer: "Our main superspecialty center is located at Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139. Visit `/centres` for maps and full directions."
   },
   {
-    keywords: ['cost', 'price', 'insurance', 'tpa', 'cashless', 'panel'],
+    keywords: ['cost', 'price', 'insurance', 'tpa', 'cashless', 'panel', 'खर्च', 'बीमा'],
     answer: "We offer transparent pricing and support all major TPA insurance networks for cashless hospitalization. We are also CGHS/ECHS panel friendly. Contact our billing desk at the hospital for details."
   },
   {
@@ -85,12 +97,43 @@ const Chatbot: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  const [language, setLanguage] = useState<'en' | 'hi'>('en');
   const [isMuted, setIsMuted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Speech Recognition setup
   const recognitionRef = useRef<any>(null);
+
+  const toggleLanguage = () => {
+    const newLang = language === 'en' ? 'hi' : 'en';
+    setLanguage(newLang);
+    window.speechSynthesis.cancel();
+    
+    if (newLang === 'hi') {
+      setMessages([
+        {
+          sender: 'bot',
+          text: "नमस्ते! मैं वेदांत नेत्रालय का एआई सहायक हूँ। मोतियाबिंद, आँखों के बचाव, जाँच, डॉक्टर या अपॉइंटमेंट के बारे में पूछें।",
+          timestamp: new Date()
+        }
+      ]);
+      if (recognitionRef.current) {
+        recognitionRef.current.lang = 'hi-IN';
+      }
+    } else {
+      setMessages([
+        {
+          sender: 'bot',
+          text: "Hello! I am your Vedanta Netralya voice assistant. Ask me anything about cataract, glaucoma, eye prevention, appointments, or our doctors.",
+          timestamp: new Date()
+        }
+      ]);
+      if (recognitionRef.current) {
+        recognitionRef.current.lang = 'en-IN';
+      }
+    }
+  };
 
   useEffect(() => {
     // Scroll to bottom on new message
@@ -104,7 +147,7 @@ const Chatbot: React.FC = () => {
       const rec = new SpeechRecognition();
       rec.continuous = false;
       rec.interimResults = false;
-      rec.lang = 'en-IN';
+      rec.lang = language === 'hi' ? 'hi-IN' : 'en-IN';
 
       rec.onstart = () => {
         setIsListening(true);
@@ -129,14 +172,25 @@ const Chatbot: React.FC = () => {
     if (isMuted) return;
     window.speechSynthesis.cancel(); // stop any current speech
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-IN';
+    
+    // Check if the response contains Hindi characters
+    const hasHindi = /[\u0900-\u097F]/.test(text);
+    
     utterance.rate = 1.0;
     
-    // Choose a friendly female voice if available
     const voices = window.speechSynthesis.getVoices();
-    const desiredVoice = voices.find(v => v.lang.includes('en') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('natural')));
-    if (desiredVoice) {
-      utterance.voice = desiredVoice;
+    if (hasHindi) {
+      utterance.lang = 'hi-IN';
+      const desiredVoice = voices.find(v => v.lang.includes('hi') || v.name.toLowerCase().includes('hindi') || v.name.toLowerCase().includes('lekha'));
+      if (desiredVoice) {
+        utterance.voice = desiredVoice;
+      }
+    } else {
+      utterance.lang = 'en-IN';
+      const desiredVoice = voices.find(v => v.lang.includes('en') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('india')));
+      if (desiredVoice) {
+        utterance.voice = desiredVoice;
+      }
     }
     
     window.speechSynthesis.speak(utterance);
@@ -263,7 +317,15 @@ const Chatbot: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
+                {/* Language Toggle */}
+                <button
+                  onClick={toggleLanguage}
+                  className="px-2 py-1 bg-brand-teal/15 border border-brand-teal/30 hover:border-brand-teal text-brand-teal hover:text-cream rounded-lg text-[9px] font-black tracking-wider transition-all"
+                  title="Toggle between English and Hindi / भाषा बदलें"
+                >
+                  {language === 'en' ? 'EN' : 'हिन्दी'}
+                </button>
                 {/* Mute Toggle */}
                 <button
                   onClick={toggleMute}

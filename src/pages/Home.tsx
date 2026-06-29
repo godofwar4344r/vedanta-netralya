@@ -101,8 +101,8 @@ const faqs = [
     answer: 'Most patients experience clearer vision within 24 to 48 hours. Complete stabilization of the eye and final prescription for reading glasses (if required) typically takes about 3 to 4 weeks. Standard activities can be resumed immediately, with minimal restrictions.'
   },
   {
-    question: 'Is LASIK surgery painful, and how long does it take?',
-    answer: 'LASIK is a virtually painless procedure. Anesthetic eye drops are used to numb the eyes, so you will only feel mild pressure. The actual laser treatment takes under 20-30 seconds per eye, and the entire procedure is completed in about 15 minutes.'
+    question: 'What is lasik surgery & is it necessary for myopia ?',
+    answer: 'LASIK (Laser-Assisted in Situ Keratomileusis) is an advanced vision correction procedure that reshapes the cornea to fix refractive errors. It is NOT medically necessary for myopia, but is a highly popular elective option for patients who want to reduce or eliminate their dependence on eyeglasses or contact lenses.'
   },
   {
     question: 'What is Micro-Incision Cataract Surgery (MICS) and how does it compare to older methods?',
@@ -115,6 +115,14 @@ const faqs = [
   {
     question: 'Do you accept medical insurance for surgical procedures?',
     answer: 'Yes, Vedanta Netralya is empanelled with all major TPA insurance providers, corporate panels, and government health schemes. Our dedicated TPA desk helps you coordinate pre-authorization and cashless claims seamlessly (including coverage for cataract, glaucoma, retina surgeries, and refractive procedures like Femto-LASIK as per policy terms).'
+  },
+  {
+    question: 'Why is preventive eye screening important even if my vision feels perfect?',
+    answer: 'Many serious eye conditions, such as Glaucoma (often called the silent thief of sight) and early diabetic retinopathy, develop gradually without any pain or noticeable warning signs. By the time vision loss is felt, permanent damage has occurred. Routine screening catches these conditions early when they are highly treatable.'
+  },
+  {
+    question: 'What is the best way to prevent digital eye strain during long screen hours?',
+    answer: 'Protect your eyes by practicing the 20-20-20 rule: every 20 minutes, take a 20-second break and look at something 20 feet away. Additionally, maintain proper monitor distance, use anti-glare screen filters, ensure adequate room lighting, and schedule annual preventive eye check-ups to monitor strain indicators.'
   }
 ];
 
