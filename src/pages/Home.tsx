@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowUpRight, Plus, Eye, Sparkles, ChevronDown, Activity, Heart, Shield, Layers, Quote, Star, Scissors, MapPin } from 'lucide-react';
+import { ArrowUpRight, Plus, Eye, Sparkles, ChevronDown, Activity, Heart, Shield, Layers, Quote, Star, Scissors, MapPin, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { EditableContainer, EditableText, EditableMedia, EditableCard } from '../components/Editable';
 import { useEdit } from '../context/EditContext';
@@ -206,6 +206,22 @@ let hasPlayedIntroVideo = false;
 const Home: React.FC = () => {
   const [activeSpec, setActiveSpec] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showPromoModal, setShowPromoModal] = useState(false);
+
+  useEffect(() => {
+    const hasSeenPromo = sessionStorage.getItem('hasSeenWednesdayPromo_2026');
+    if (!hasSeenPromo) {
+      const timer = setTimeout(() => {
+        setShowPromoModal(true);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closePromoModal = () => {
+    setShowPromoModal(false);
+    sessionStorage.setItem('hasSeenWednesdayPromo_2026', 'true');
+  };
 
   const { scrollY } = useScroll();
   const widgetOpacity = useTransform(scrollY, [0, 150], [1, 0]);
@@ -886,6 +902,98 @@ const Home: React.FC = () => {
         </section>
       </EditableContainer>
 
+      {/* === WEEKLY SPECIALS & OFFERS SECTION === */}
+      <EditableContainer id="weekly-specials-section">
+        <section className="py-24 bg-white relative z-10 border-t border-brand-navy/5 shadow-sm">
+          <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 font-body">
+                <EditableText id="offers-eyebrow">Weekly OPD Specials</EditableText>
+              </p>
+              <h2 className="section-text text-brand-navy mb-6 font-body">
+                <EditableText id="offers-title-1">Special OPD Days</EditableText> <br />
+                <span className="italic font-light text-brand-teal">
+                  <EditableText id="offers-title-2">& Patient Health Campaigns.</EditableText>
+                </span>
+              </h2>
+              <p className="text-base text-brand-navy/60 font-lora">
+                <EditableText id="offers-desc">Benefit from our dedicated health checkup programs, free pediatric screening camps, and special OPD discounts.</EditableText>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Tuesday offer */}
+              <motion.div
+                whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
+                className="bg-cream/10 border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full">Tuesday</span>
+                    <span className="text-2xl font-black text-brand-teal/20">01</span>
+                  </div>
+                  <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Retina Screening Day</h3>
+                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
+                  <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
+                    Get a comprehensive vitreoretinal screening, including fundus examination, macula assessment, and diabetic retinopathy checkups at half the standard OPD charges.
+                  </p>
+                </div>
+                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-navy text-cream group-hover:bg-brand-teal group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
+                  Book Special Slot
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </Link>
+              </motion.div>
+
+              {/* Wednesday offer */}
+              <motion.div
+                whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
+                className="bg-brand-navy text-cream border border-cream/5 rounded-[2.5rem] p-8 md:p-10 shadow-2xl flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+              >
+                <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal bg-brand-teal/25 px-3 py-1 rounded-full">Wednesday</span>
+                    <span className="text-2xl font-black text-brand-teal/30">02</span>
+                  </div>
+                  <h3 className="text-2xl font-black text-cream mb-2 font-body">Pediatric Eye Clinic</h3>
+                  <p className="text-[10px] tracking-widest uppercase font-black text-brand-teal mb-4">Infant & School Going</p>
+                  <div className="text-3xl font-black text-brand-teal mb-4">FREE CHECKUP</div>
+                  <p className="text-xs text-cream/70 leading-relaxed font-lora mb-6">
+                    Complimentary general ophthalmic screening and vision acuity checkups using child-friendly Teller cards and Snellen matching to support early detection in children.
+                  </p>
+                </div>
+                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-teal text-brand-navy group-hover:bg-cream group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
+                  Book Free Slot
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </Link>
+              </motion.div>
+
+              {/* Friday offer */}
+              <motion.div
+                whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
+                className="bg-cream/10 border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full">Friday</span>
+                    <span className="text-2xl font-black text-brand-teal/20">03</span>
+                  </div>
+                  <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Senior Citizen Day</h3>
+                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
+                  <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
+                    Special 50% discount on OPD consultations, slit-lamp examinations, and general eye screenings for elderly patients (60 years and above) to ensure healthy vision.
+                  </p>
+                </div>
+                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-navy text-cream group-hover:bg-brand-teal group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
+                  Book Special Slot
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </EditableContainer>
+
       {/* === EMBEDDED VISION SIMULATOR === */}
       <EditableContainer id="vision-simulator-home">
         <section id="simulator" className="py-24 bg-cream relative z-10 border-t border-brand-navy/5">
@@ -1187,6 +1295,93 @@ const Home: React.FC = () => {
         </section>
       </EditableContainer>
       </div>{/* end of z-40 content overlay wrapper */}
+
+      {/* === WEEKLY PROMOTIONAL MODAL POPUP === */}
+      <AnimatePresence>
+        {showPromoModal && (
+          <div className="fixed inset-0 z-[9999] bg-brand-navy/70 backdrop-blur-md flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 180 }}
+              className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] p-8 md:p-12 max-w-xl w-full shadow-2xl relative text-cream text-center overflow-hidden"
+            >
+              {/* Subtle background glow */}
+              <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
+
+              {/* Close Button */}
+              <button
+                onClick={closePromoModal}
+                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-cream transition-colors focus:outline-none"
+                aria-label="Close Announcement"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Icon / Tag */}
+              <div className="inline-flex items-center gap-1.5 bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase px-4 py-1.5 rounded-full mb-6">
+                <Sparkles className="w-3 h-3 animate-pulse" />
+                Special Announcement
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
+                Weekly Free Clinic
+              </h2>
+              <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
+                Infants & School-Going Children
+              </p>
+
+              {/* Highlight Box */}
+              <div className="bg-white/5 border border-cream/10 rounded-3xl p-6 mb-8 text-center">
+                <span className="text-[10px] tracking-widest uppercase font-black text-brand-teal bg-brand-teal/20 px-3 py-1 rounded-full inline-block mb-3">
+                  Every Wednesday
+                </span>
+                <p className="text-2xl font-black text-white mb-2 uppercase">
+                  Free Eye Checkup
+                </p>
+                <p className="text-xs text-cream/70 font-lora leading-relaxed">
+                  Help your child see clearly! Free general ophthalmic screening and vision assessments by our senior eye specialists every Wednesday.
+                </p>
+              </div>
+
+              {/* Other Weekly Offers Row */}
+              <div className="grid grid-cols-2 gap-4 mb-8 text-left">
+                <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                  <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
+                  <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-0.5">50% OFF</p>
+                </div>
+                <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                  <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
+                  <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-0.5">50% OFF</p>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <Link
+                  to="/appointment"
+                  onClick={closePromoModal}
+                  className="w-full sm:flex-1 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-lg"
+                >
+                  Book Special Slot
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+                <button
+                  onClick={closePromoModal}
+                  className="w-full sm:w-auto px-8 py-4 rounded-full border border-cream/20 text-cream/70 hover:text-white hover:border-cream/40 text-[10px] tracking-widest uppercase font-black transition-all"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
