@@ -925,7 +925,7 @@ const Home: React.FC = () => {
               {/* Tuesday offer */}
               <motion.div
                 whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
-                className="bg-cream/10 border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+                className="bg-white border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -938,40 +938,39 @@ const Home: React.FC = () => {
                     Get a comprehensive vitreoretinal screening, including fundus examination, macula assessment, and diabetic retinopathy checkups at half the standard OPD charges.
                   </p>
                 </div>
-                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-navy text-cream group-hover:bg-brand-teal group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
-                  Book Special Slot
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
+                  Book Slot
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
 
               {/* Wednesday offer */}
               <motion.div
                 whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
-                className="bg-brand-navy text-cream border border-cream/5 rounded-[2.5rem] p-8 md:p-10 shadow-2xl flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+                className="bg-white border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
               >
-                <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
                 <div>
                   <div className="flex justify-between items-start mb-6">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal bg-brand-teal/25 px-3 py-1 rounded-full">Wednesday</span>
-                    <span className="text-2xl font-black text-brand-teal/30">02</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full">Wednesday</span>
+                    <span className="text-2xl font-black text-brand-teal/20">02</span>
                   </div>
-                  <h3 className="text-2xl font-black text-cream mb-2 font-body">Pediatric Eye Clinic</h3>
-                  <p className="text-[10px] tracking-widest uppercase font-black text-brand-teal mb-4">Infant & School Going</p>
+                  <h3 className="text-2xl font-black text-brand-navy mb-2 font-body">Pediatric Eye Clinic</h3>
+                  <p className="text-[10px] tracking-widest uppercase font-black text-brand-teal mb-4 font-body">Infant & School Going</p>
                   <div className="text-3xl font-black text-brand-teal mb-4">FREE CHECKUP</div>
-                  <p className="text-xs text-cream/70 leading-relaxed font-lora mb-6">
+                  <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
                     Complimentary general ophthalmic screening and vision acuity checkups using child-friendly Teller cards and Snellen matching to support early detection in children.
                   </p>
                 </div>
-                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-teal text-brand-navy group-hover:bg-cream group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
+                <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
                   Book Free Slot
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
 
               {/* Friday offer */}
               <motion.div
                 whileHover={{ y: -6, borderColor: 'rgba(0, 171, 192, 0.4)' }}
-                className="bg-cream/10 border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
+                className="bg-white border border-brand-navy/10 rounded-[2.5rem] p-8 md:p-10 shadow-lg flex flex-col justify-between group transition-all duration-300 relative overflow-hidden"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -984,9 +983,9 @@ const Home: React.FC = () => {
                     Special 50% discount on OPD consultations, slit-lamp examinations, and general eye screenings for elderly patients (60 years and above) to ensure healthy vision.
                   </p>
                 </div>
-                <Link to="/appointment" className="group/btn inline-flex items-center justify-between bg-brand-navy text-cream group-hover:bg-brand-teal group-hover:text-brand-navy px-6 py-4.5 rounded-full text-[9px] tracking-wider uppercase font-black transition-all shadow-md mt-6">
-                  Book Special Slot
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
+                  Book Slot
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
             </div>
