@@ -16,9 +16,9 @@ const Appointment: React.FC = () => {
   });
 
   const doctors = [
-    { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive'] },
+    { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive', 'General'] },
     { name: 'Dr. Aditya Bhardwaj', specialties: ['Retina'] },
-    { name: 'Dr. R.J.K. Singh', specialties: ['Cataract'] }
+    { name: 'Dr. R.J.K. Singh', specialties: ['Cataract', 'General'] }
   ];
 
   const timeSlots = [
@@ -107,6 +107,7 @@ const Appointment: React.FC = () => {
                     className="bg-cream/5 border border-cream/15 rounded-2xl px-5 py-4 text-sm text-cream focus:outline-none focus:border-brand-teal"
                   >
                     <option value="" className="text-brand-navy">Choose Specialty...</option>
+                    <option value="General" className="text-brand-navy">General Ophthalmic Checkup</option>
                     <option value="Cataract" className="text-brand-navy">Cataract Surgery</option>
                     <option value="Retina" className="text-brand-navy">Retina & VR Surgery</option>
                     <option value="Glaucoma" className="text-brand-navy">Glaucoma Management</option>

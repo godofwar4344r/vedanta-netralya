@@ -46,7 +46,7 @@ const Facilities: React.FC = () => {
             <EditableText id="facilities-title">Hospital Facilities</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora max-w-3xl mx-auto leading-relaxed">
-            <EditableText id="facilities-description">Vedanta Netralya is a newly built, fully air-conditioned super-specialty eye care center in the Kumaun region of Uttarakhand. Equipped with premium modular suites, diagnostic equipment, and 24-hour backup.</EditableText>
+            <EditableText id="facilities-description">Vedanta Netralya is a newly built, fully air-conditioned superspeciality eye care centre in the Kumaun region of Uttarakhand. Equipped with two modular OTs, state-of-the-art diagnostic equipment, and 24-hour power backup.</EditableText>
           </p>
         </div>
       </EditableContainer>

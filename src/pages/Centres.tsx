@@ -25,7 +25,7 @@ const Centres: React.FC = () => {
       id: 'kichha-outreach',
       title: 'Kichha Centre',
       tag: 'Specialist Outreach Clinic',
-      address: 'Vedanta Netralya, Hotel Neelkamal, Bareilly Road, Kichha, Uttarakhand',
+      address: '1, Kichha, Uttarakhand 263148, India',
       phones: ['+91 9068561971'],
       email: 'info@vedantanetralya.com',
       hours: [

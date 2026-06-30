@@ -617,7 +617,7 @@ const Home: React.FC = () => {
                   <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced state-of-the-art diagnostic systems, high-definition imaging, and advanced micro-surgical wings to restore visual clarity.</EditableText>
                 </p>
                 <p className="text-base text-brand-navy/60 font-lora leading-relaxed">
-                  <EditableText id="about-legacy-desc-2">Under the leadership of a team of ophthalmic experts Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Kanhaiya Mittal, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.</EditableText>
+                  <EditableText id="about-legacy-desc-2">Under the leadership of a team of ophthalmic experts Dr. Sameer Varma, Dr. R.J.K. Singh, and Dr. Aditya Bhardwaj, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.</EditableText>
                 </p>
               </div>
             </div>
@@ -1140,7 +1140,7 @@ const Home: React.FC = () => {
                   <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Specialist Outreach Clinic</span>
                   <h3 className="text-2xl font-black mb-4">Kichha Centre</h3>
                   <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
-                    Vedanta Netralya, Hotel Neelkamal, Bareilly Road, Kichha, Uttarakhand
+                    1, Kichha, Uttarakhand 263148, India
                   </p>
                   <div className="space-y-2 text-xs text-cream/60 font-body mb-8">
                     <p><strong>OPD Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</p>
