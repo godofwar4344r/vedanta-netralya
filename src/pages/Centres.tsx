@@ -31,7 +31,7 @@ const Centres: React.FC = () => {
       hours: [
         { days: 'Monday — Saturday', time: '9:00 AM — 6:00 PM' }
       ],
-      mapUrl: 'https://maps.google.com',
+      mapUrl: 'https://www.google.com/maps?q=Vedanta+Netralya+Kichha,+1,+Kichha,+Uttarakhand+263148&ftid=0x39a07b005f4f3ee5:0x40618a7fc6385a24&entry=gps&shh=CAE',
       isMain: false
     }
   ];

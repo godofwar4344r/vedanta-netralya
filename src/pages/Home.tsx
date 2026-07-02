@@ -1256,7 +1256,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <a 
-                  href="https://maps.google.com"
+                  href="https://www.google.com/maps?q=Vedanta+Netralya+Kichha,+1,+Kichha,+Uttarakhand+263148&ftid=0x39a07b005f4f3ee5:0x40618a7fc6385a24&entry=gps&shh=CAE"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md"

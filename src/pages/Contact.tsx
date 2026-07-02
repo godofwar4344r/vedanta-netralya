@@ -163,7 +163,7 @@ const Contact: React.FC = () => {
 
                 <div className="pt-6 border-t border-cream/10 mt-6">
                   <a
-                    href="https://maps.google.com"
+                    href="https://www.google.com/maps?q=Vedanta+Netralya+Kichha,+1,+Kichha,+Uttarakhand+263148&ftid=0x39a07b005f4f3ee5:0x40618a7fc6385a24&entry=gps&shh=CAE"
                     target="_blank"
                     rel="noreferrer"
                     className="group w-full bg-cream/10 text-cream px-6 py-3.5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between hover:bg-cream hover:text-brand-navy"
@@ -279,30 +279,57 @@ const Contact: React.FC = () => {
       {/* Google Maps Embed */}
       <EditableContainer id="contact-map">
         <div className="max-w-[1800px] mx-auto px-6 lg:px-16 pb-20">
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-3 font-body">
               <EditableText id="contact-map-eyebrow">Find Us</EditableText>
             </p>
             <h2 className="section-text text-brand-navy font-body">
-              <EditableText id="contact-map-title">Haldwani Location</EditableText>
+              <EditableText id="contact-map-title">Our Locations</EditableText>
             </h2>
           </div>
-          <div className="rounded-[2.5rem] overflow-hidden border border-brand-navy/10 shadow-xl">
-            <iframe
-              title="Vedanta Netralya - Haldwani Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.9996614136424!2d79.52594777610022!3d29.2266539753177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09b1779d2b223%3A0xccc4371f2e361808!2sVedanta%20Netralya%20Haldwani!5e0!3m2!1sen!2sin!4v1717670000000!5m2!1sen!2sin"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full"
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Haldwani Map */}
+            <div>
+              <h3 className="text-base font-black text-brand-navy mb-4 font-body text-center">Haldwani Centre</h3>
+              <div className="rounded-[2.5rem] overflow-hidden border border-brand-navy/10 shadow-xl h-[400px]">
+                <iframe
+                  title="Vedanta Netralya - Haldwani Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.9996614136424!2d79.52594777610022!3d29.2266539753177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09b1779d2b223%3A0xccc4371f2e361808!2sVedanta%20Netralya%20Haldwani!5e0!3m2!1sen!2sin!4v1717670000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
+              </div>
+              <p className="text-center text-xs text-brand-navy/40 font-lora mt-4 italic">
+                Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139
+              </p>
+            </div>
+
+            {/* Kichha Map */}
+            <div>
+              <h3 className="text-base font-black text-brand-navy mb-4 font-body text-center">Kichha Centre</h3>
+              <div className="rounded-[2.5rem] overflow-hidden border border-brand-navy/10 shadow-xl h-[400px]">
+                <iframe
+                  title="Vedanta Netralya - Kichha Location"
+                  src="https://maps.google.com/maps?q=Vedanta%20Netralya%20Kichha,+1,+Kichha,+Uttarakhand%20263148&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
+              </div>
+              <p className="text-center text-xs text-brand-navy/40 font-lora mt-4 italic">
+                1, Kichha, Uttarakhand 263148, India
+              </p>
+            </div>
           </div>
-          <p className="text-center text-xs text-brand-navy/40 font-lora mt-4 italic">
-            <EditableText id="contact-map-caption">Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139</EditableText>
-          </p>
         </div>
       </EditableContainer>
 
