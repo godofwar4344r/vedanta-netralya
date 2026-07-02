@@ -933,13 +933,13 @@ const Home: React.FC = () => {
                     <span className="text-2xl font-black text-brand-teal/20">01</span>
                   </div>
                   <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Retina Screening Day</h3>
-                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
+                  <div className="text-3xl font-black text-brand-teal mb-4">FREE SCREENING</div>
                   <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
-                    Get a comprehensive vitreoretinal screening, including fundus examination, macula assessment, and diabetic retinopathy checkups at half the standard OPD charges.
+                    Retina screening for diabetics, hypertensives and ARMD. Complimentary fundus evaluation and vitreoretinal assessments.
                   </p>
                 </div>
                 <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
-                  Book Slot
+                  Book Free Slot
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
@@ -955,10 +955,10 @@ const Home: React.FC = () => {
                     <span className="text-2xl font-black text-brand-teal/20">02</span>
                   </div>
                   <h3 className="text-2xl font-black text-brand-navy mb-2 font-body">Pediatric Eye Clinic</h3>
-                  <p className="text-[10px] tracking-widest uppercase font-black text-brand-teal mb-4 font-body">Infant & School Going</p>
-                  <div className="text-3xl font-black text-brand-teal mb-4">FREE CHECKUP</div>
+                  <p className="text-[10px] tracking-widest uppercase font-black text-brand-teal mb-4 font-body">Below 5 Yrs (Infants, Toddlers & Pre-School)</p>
+                  <div className="text-3xl font-black text-brand-teal mb-4">FREE SCREENING</div>
                   <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
-                    Complimentary general ophthalmic screening and vision acuity checkups using child-friendly Teller cards and Snellen matching to support early detection in children.
+                    Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
                   </p>
                 </div>
                 <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
@@ -978,13 +978,13 @@ const Home: React.FC = () => {
                     <span className="text-2xl font-black text-brand-teal/20">03</span>
                   </div>
                   <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Senior Citizen Day</h3>
-                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
+                  <div className="text-3xl font-black text-brand-teal mb-4">FREE SCREENING</div>
                   <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
-                    Special 50% discount on OPD consultations, slit-lamp examinations, and general eye screenings for elderly patients (60 years and above) to ensure healthy vision.
+                    Complimentary eye examinations and screenings for senior citizens above 60 yr to detect cataracts, glaucoma, and macular changes.
                   </p>
                 </div>
                 <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
-                  Book Slot
+                  Book Free Slot
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
@@ -1330,7 +1330,7 @@ const Home: React.FC = () => {
                 Weekly Free Clinic
               </h2>
               <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
-                Infants & School-Going Children
+                Infants, Toddlers & Pre-School (Below 5 Yrs)
               </p>
 
               {/* Highlight Box */}
@@ -1339,10 +1339,10 @@ const Home: React.FC = () => {
                   Every Wednesday
                 </span>
                 <p className="text-2xl font-black text-white mb-2 uppercase">
-                  Free Eye Checkup
+                  Free Pediatric Screening
                 </p>
                 <p className="text-xs text-cream/70 font-lora leading-relaxed">
-                  Help your child see clearly! Free general ophthalmic screening and vision assessments by our senior eye specialists every Wednesday.
+                  Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
                 </p>
               </div>
 
@@ -1351,12 +1351,14 @@ const Home: React.FC = () => {
                 <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
                   <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
                   <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-0.5">50% OFF</p>
+                  <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-2">FREE SCREENING</p>
                 </div>
                 <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
                   <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
                   <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-0.5">50% OFF</p>
+                  <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-2">FREE SCREENING</p>
                 </div>
               </div>
 

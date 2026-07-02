@@ -4,13 +4,13 @@ import { CheckCircle2, ArrowUpRight, Award, Sparkles, Shield, User, AlertTriangl
 import { Link } from 'react-router-dom';
 import { EditableText, EditableMedia } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
-import drRjkOpd from '../assets/dr-rjk-opd.jpeg';
+import servicePaediatric from '../assets/service-paediatric.png';
 
 const PaediatricOphthalmology: React.FC = () => {
   const visualAcuitySuite = [
     {
-      title: 'Teller Acuity Cards',
-      desc: 'Specialized preferential-looking test cards designed to measure visual acuity in infants and non-verbal toddlers without requiring active letter matching.'
+      title: 'Lea Symbol Chart',
+      desc: 'Specialized pediatric visual testing chart designed to measure visual acuity in infants and pre-school children using recognizable shapes.'
     },
     {
       title: 'Gardiner & Snellen Matching Charts',
@@ -29,7 +29,7 @@ const PaediatricOphthalmology: React.FC = () => {
   const surgicalPediatricSuite = [
     {
       title: 'Eye Care for Infants & Children',
-      desc: 'Dedicated pediatric screening, objective acuity tests using Teller Cards, cycloplegic refraction checks, and early childhood vision diagnostics.'
+      desc: 'Dedicated pediatric screening, objective acuity tests using Lea Symbol Chart, cycloplegic refraction checks, and early childhood vision diagnostics.'
     },
     {
       title: 'Squint (Strabismus) Correction',
@@ -69,7 +69,7 @@ const PaediatricOphthalmology: React.FC = () => {
               Nurturing clear sight for a bright future. We provide comprehensive, child-friendly eye examinations and specialized surgical therapies.
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              Children\'s visual systems develop rapidly, requiring early identification of issues. By utilizing Teller acuity cards, Gardiner charts, and pediatric-focused orthoptic tools, we catch refractions and squint anomalies early. Our specialized pediatric surgery suite operates under full pediatric anesthetist backup to ensure highest safety standards.
+              Children\'s visual systems develop rapidly, requiring early identification of issues. By utilizing Lea symbol charts, Gardiner charts, and pediatric-focused orthoptic tools, we catch refractions and squint anomalies early. Our specialized pediatric surgery suite operates under full pediatric anesthetist backup to ensure highest safety standards.
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               Schedule Child Exam
@@ -81,7 +81,7 @@ const PaediatricOphthalmology: React.FC = () => {
           <div className="lg:col-span-5 relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-brand-navy aspect-[4/3] border border-cream/10">
             <EditableMedia
               id="paediatric-image-hero"
-              src={drRjkOpd}
+              src={servicePaediatric}
               alt="Paediatric Ophthalmology"
               className="w-full h-full object-cover opacity-90 pointer-events-none"
             />
@@ -91,7 +91,7 @@ const PaediatricOphthalmology: React.FC = () => {
                   <EditableText id="paediatric-visual-title">Child-Friendly Care</EditableText>
                 </span>
                 <p className="text-cream text-lg font-merriweather font-bold mt-1">
-                  <EditableText id="paediatric-visual-desc">Specialized screening using Teller cards and Snellen matching.</EditableText>
+                  <EditableText id="paediatric-visual-desc">Specialized screening using Lea symbol charts and Snellen matching.</EditableText>
                 </p>
               </div>
             </div>

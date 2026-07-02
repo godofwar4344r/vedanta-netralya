@@ -113,7 +113,66 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
+              {/* Kichha Outreach Centre */}
+              <div className="bg-brand-navy text-cream rounded-[2.5rem] p-10 shadow-xl border border-cream/10">
+                <div className="flex items-center gap-2 mb-1">
+                  <Building2 className="w-4 h-4 text-brand-teal" />
+                  <span className="text-[10px] text-brand-teal tracking-widest font-black uppercase font-body font-bold">
+                    <EditableText id="contact-kichha-tag">Specialist Outreach Clinic</EditableText>
+                  </span>
+                </div>
+                <h2 className="text-xl font-black mb-6 font-body">
+                  <EditableText id="contact-kichha-title">Kichha Centre</EditableText>
+                </h2>
+                <div className="space-y-6 text-sm font-lora">
+                  <div className="flex gap-4">
+                    <MapPin className="w-5 h-5 text-brand-teal shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-cream/80">
+                        <EditableText id="contact-kichha-address">1, Kichha, Uttarakhand 263148, India</EditableText>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <Phone className="w-5 h-5 text-brand-teal shrink-0" />
+                    <div className="text-cream/80">
+                      <p><EditableText id="contact-kichha-phone-1">+91-9068561971</EditableText></p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <Mail className="w-5 h-5 text-brand-teal shrink-0" />
+                    <div className="text-cream/80">
+                      <p><EditableText id="contact-kichha-email-1">info@vedantanetralya.com</EditableText></p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <Clock className="w-5 h-5 text-brand-teal shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold font-body text-cream">
+                        <EditableText id="contact-kichha-hours-label">OPD Hours:</EditableText>
+                      </p>
+                      <p className="text-xs text-cream/60 mt-1">
+                        <EditableText id="contact-kichha-hours-week">Mon — Sat: 9:00 AM — 6:00 PM</EditableText>
+                      </p>
+                      <p className="text-xs text-cream/60">
+                        <EditableText id="contact-kichha-hours-sun">Sun: Closed</EditableText>
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="pt-6 border-t border-cream/10 mt-6">
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group w-full bg-cream/10 text-cream px-6 py-3.5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between hover:bg-cream hover:text-brand-navy"
+                  >
+                    <span>Get Directions</span>
+                    <MapPin className="w-4 h-4 text-brand-teal shrink-0" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Contact Form & Emergency Column */}
