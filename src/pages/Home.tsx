@@ -933,13 +933,13 @@ const Home: React.FC = () => {
                     <span className="text-2xl font-black text-brand-teal/20">01</span>
                   </div>
                   <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Retina Screening Day</h3>
-                  <div className="text-3xl font-black text-brand-teal mb-4">FREE SCREENING</div>
+                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
                   <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
-                    Retina screening for diabetics, hypertensives and ARMD. Complimentary fundus evaluation and vitreoretinal assessments.
+                    Retina screening for diabetics, hypertensives and ARMD. Get a 50% discount on standard OPD consultation and fundus evaluation charges.
                   </p>
                 </div>
                 <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
-                  Book Free Slot
+                  Book Slot
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
@@ -978,13 +978,13 @@ const Home: React.FC = () => {
                     <span className="text-2xl font-black text-brand-teal/20">03</span>
                   </div>
                   <h3 className="text-2xl font-black text-brand-navy mb-4 font-body">Senior Citizen Day</h3>
-                  <div className="text-3xl font-black text-brand-teal mb-4">FREE SCREENING</div>
+                  <div className="text-3xl font-black text-brand-teal mb-4">50% OFF</div>
                   <p className="text-xs text-brand-navy/60 leading-relaxed font-lora mb-6">
-                    Complimentary eye examinations and screenings for senior citizens above 60 yr to detect cataracts, glaucoma, and macular changes.
+                    Get 50% off on OPD consultations, slit-lamp examinations, and general eye screenings for senior citizens above 60 yr.
                   </p>
                 </div>
                 <Link to="/appointment" className="w-full bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy py-4 rounded-full text-xs tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-md mt-8">
-                  Book Free Slot
+                  Book Slot
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
@@ -1352,13 +1352,13 @@ const Home: React.FC = () => {
                   <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
                   <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
                   <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-2">FREE SCREENING</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
                 </div>
                 <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
                   <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
                   <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
                   <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-2">FREE SCREENING</p>
+                  <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
                 </div>
               </div>
 
