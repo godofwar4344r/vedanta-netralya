@@ -16,9 +16,9 @@ const Appointment: React.FC = () => {
   });
 
   const doctors = [
-    { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive', 'General'] },
-    { name: 'Dr. Aditya Bhardwaj', specialties: ['Retina'] },
-    { name: 'Dr. R.J.K. Singh', specialties: ['Cataract', 'General'] }
+    { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive', 'General', 'ChildScreening', 'SeniorScreening'] },
+    { name: 'Dr. Aditya Bhardwaj', specialties: ['Retina', 'RetinaScreening'] },
+    { name: 'Dr. R.J.K. Singh', specialties: ['Cataract', 'General', 'SeniorScreening'] }
   ];
 
   const timeSlots = [
@@ -114,6 +114,9 @@ const Appointment: React.FC = () => {
                     <option value="Oculoplasty" className="text-brand-navy">Oculoplasty Services</option>
                     <option value="Pediatric" className="text-brand-navy">Pediatric Ophthalmology & Squint</option>
                     <option value="Refractive" className="text-brand-navy">Refractive Surgery (ICL / Glass Removal)</option>
+                    <option value="ChildScreening" className="text-brand-navy">Child Vision Screening</option>
+                    <option value="SeniorScreening" className="text-brand-navy">Senior Citizen Day</option>
+                    <option value="RetinaScreening" className="text-brand-navy">Retina Screening</option>
                   </select>
                 </div>
 
