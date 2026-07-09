@@ -1311,10 +1311,10 @@ const Home: React.FC = () => {
               {/* Close Button */}
               <button
                 onClick={closePromoModal}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-brand-navy/90 border border-brand-teal/30 hover:bg-brand-teal hover:text-brand-navy flex items-center justify-center text-white transition-all focus:outline-none z-50 shadow-md"
+                className="absolute top-3 right-3 md:top-4 md:right-4 w-11 h-11 rounded-full bg-brand-teal text-brand-navy hover:bg-cream active:scale-95 flex items-center justify-center transition-all focus:outline-none z-50 shadow-xl ring-2 ring-brand-navy/40"
                 aria-label="Close Announcement"
               >
-                <X className="w-5 h-5 stroke-[3]" />
+                <X className="w-6 h-6 stroke-[3]" />
               </button>
 
               {/* Scrollable container */}
