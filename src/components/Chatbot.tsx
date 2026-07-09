@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Mic, MicOff, Volume2, VolumeX, Phone, Calendar, MapPin } from 'lucide-react';
+import { MessageSquare, X, Send, Mic, MicOff, Volume2, VolumeX, Phone, Calendar, MapPin, Square } from 'lucide-react';
 
 interface QuickAction {
   label: string;
@@ -192,6 +192,7 @@ const Chatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [language, setLanguage] = useState<'en' | 'hi'>('en');
   const [isMuted, setIsMuted] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth < 768
@@ -215,6 +216,7 @@ const Chatbot: React.FC = () => {
       window.removeEventListener('open-chatbot', handleOpenBot);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', checkMobile);
+      window.speechSynthesis.cancel();
     };
   }, []);
 
@@ -257,6 +259,11 @@ const Chatbot: React.FC = () => {
     }
   }, []);
 
+  const stopSpeaking = () => {
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+  };
+
   const speakText = (text: string) => {
     if (isMuted) return;
     window.speechSynthesis.cancel();
@@ -277,6 +284,10 @@ const Chatbot: React.FC = () => {
       const desiredVoice = voices.find(v => v.lang.includes('en') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('india')));
       if (desiredVoice) utterance.voice = desiredVoice;
     }
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
 
     window.speechSynthesis.speak(utterance);
   };
@@ -374,7 +385,7 @@ const Chatbot: React.FC = () => {
     if (isListening) {
       recognitionRef.current.stop();
     } else {
-      window.speechSynthesis.cancel();
+      stopSpeaking();
       recognitionRef.current.start();
     }
   };
@@ -383,6 +394,7 @@ const Chatbot: React.FC = () => {
     setIsMuted(!isMuted);
     if (!isMuted) {
       window.speechSynthesis.cancel();
+      setIsSpeaking(false);
     }
   };
 
@@ -464,6 +476,17 @@ const Chatbot: React.FC = () => {
                 >
                   {language === 'en' ? 'EN' : 'हिन्दी'}
                 </button>
+                {/* Stop Speaking (only while bot is talking) */}
+                {isSpeaking && (
+                  <button
+                    onClick={stopSpeaking}
+                    className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 hover:text-red-300 rounded-full transition-colors animate-pulse"
+                    title={language === 'hi' ? 'आवाज़ रोकें' : 'Stop voice reply'}
+                    aria-label="Stop voice reply"
+                  >
+                    <Square className="w-3.5 h-3.5 fill-current" />
+                  </button>
+                )}
                 {/* Mute Toggle */}
                 <button
                   onClick={toggleMute}
@@ -474,7 +497,7 @@ const Chatbot: React.FC = () => {
                 </button>
                 {/* Close Button */}
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); stopSpeaking(); }}
                   className="p-2 hover:bg-cream/15 text-cream/70 hover:text-cream rounded-full transition-colors"
                   aria-label="Close chat"
                 >
