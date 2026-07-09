@@ -73,7 +73,7 @@ const Cataract: React.FC = () => {
               <EditableText id="cataract-subtitle">Say goodbye to cloudy vision. We specialize in Advanced Phacoemulsification (MICS), a sutureless micro-incision technology designed for a quick, painless, and safe visual recovery.</EditableText>
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              <EditableText id="cataract-description">Using advanced micro-incision technology, our AIIMS-trained surgeons perform ultra-precise procedures to gently remove the cataract and restore crystal-clear vision with minimal downtime.</EditableText>
+              <EditableText id="cataract-description">Using advanced micro-incision technology, our fellowship-trained surgeons perform ultra-precise procedures to gently remove the cataract and restore crystal-clear vision with minimal downtime.</EditableText>
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               <EditableText id="cataract-btn">Schedule Screening</EditableText>

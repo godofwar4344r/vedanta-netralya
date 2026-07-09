@@ -51,7 +51,7 @@ const FAQ_DATABASE = [
   },
   {
     keywords: ['doctor', 'surgeon', 'sameer', 'singh', 'varma', 'aditya', 'bhardwaj', 'डॉक्टर'],
-    answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant, Sitapur Eye Hospital Fellow), and Dr. Aditya Bhardwaj (Chief Retina Consultant, MD AIIMS New Delhi)."
+    answer: "Our senior surgeons include Dr. Sameer Varma (Founder, Cataract & Glaucoma Specialist), Dr. R.J.K. Singh (Senior Consultant, Sitapur Eye Hospital Fellow), and Dr. Maj Aditya Bhardwaj (Vitreo-Retinal & Cataract Surgeon, MS Army Hospital R&R, Fellow Vitreo-Retina Surgery)."
   },
   {
     keywords: ['location', 'address', 'branch', 'centres', 'haldwani', 'where', 'पता', 'कहाँ'],

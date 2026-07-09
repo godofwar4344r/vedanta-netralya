@@ -245,7 +245,7 @@ const VideoGallery: React.FC = () => {
               Video Reels Gallery
             </EditableText>
             <EditableText id="reels-desc" as="p" className="text-base text-brand-navy/60 font-lora block">
-              Follow our Instagram Reels feed for real-time surgical explanations, safety tips from AIIMS experts, and quick tours of our super-specialty chambers.
+              Follow our Instagram Reels feed for real-time surgical explanations, safety tips from senior experts, and quick tours of our super-specialty chambers.
             </EditableText>
           </div>
 

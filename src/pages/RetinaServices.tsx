@@ -73,7 +73,7 @@ const RetinaServices: React.FC = () => {
               <EditableText id="retina-subtitle">Protect your vision from the inside out. Our specialized retina department delivers advanced diagnostics and targeted therapies for complex posterior segment conditions.</EditableText>
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              <EditableText id="retina-description">Under the expert care of our AIIMS-trained VR specialist, we manage diabetic eye disease, age-related macular degeneration (AMD), vascular occlusions, and peripheral retinal degenerations using state-of-the-art technologies.</EditableText>
+              <EditableText id="retina-description">Under the expert care of our fellowship-trained VR specialist, we manage diabetic eye disease, age-related macular degeneration (AMD), vascular occlusions, and peripheral retinal degenerations using state-of-the-art technologies.</EditableText>
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               <EditableText id="retina-btn">Schedule Retina Screening</EditableText>
@@ -259,10 +259,10 @@ const RetinaServices: React.FC = () => {
             <div className="text-center my-auto">
               <GraduationCap className="w-16 h-16 text-brand-teal mx-auto mb-4" />
               <h3 className="text-2xl font-black">
-                <EditableText id="retina-spotlight-doctor-name">Dr. Aditya Bhardwaj</EditableText>
+                <EditableText id="retina-spotlight-doctor-name">Dr. Maj Aditya Bhardwaj</EditableText>
               </h3>
               <p className="text-xs text-cream/60 italic font-lora mt-1">
-                <EditableText id="retina-spotlight-doctor-edu">MD (AIIMS), DNB, FICO, MRCS</EditableText>
+                <EditableText id="retina-spotlight-doctor-edu">MBBS, MS (Ophth), Fellow Vitreo-Retina Surgery</EditableText>
               </p>
             </div>
             <div className="border-t border-cream/10 pt-4 text-center">
@@ -282,7 +282,7 @@ const RetinaServices: React.FC = () => {
               <EditableText id="retina-spotlight-title">Led by Elite Retina Surgeons</EditableText>
             </h2>
             <p className="text-base text-cream/70 font-lora leading-relaxed mb-8 max-w-xl">
-              <EditableText id="retina-spotlight-description">Our Vitreoretinal wing is headed by Dr. Aditya Bhardwaj, a highly experienced consultant with credentials from top-tier institutes including AIIMS New Delhi. With extensive training and international fellowships, he brings world-class medical and surgical retinal care directly to the Kumaun region.</EditableText>
+              <EditableText id="retina-spotlight-description">Our Vitreoretinal wing is headed by Dr. Maj Aditya Bhardwaj, a highly experienced Vitreo-Retinal Surgeon with extensive postgraduate credentials from the prestigious Army Hospital (R&R), New Delhi, and a Fellowship in Vitreo-Retina Surgery from ASG Eye Hospital, Varanasi. With a unique background in family medicine, diabetology, and the Indian Armed Forces, he brings a disciplined, holistic, and compassionate approach to advanced retinal care.</EditableText>
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-cream">
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">

@@ -17,7 +17,7 @@ const Appointment: React.FC = () => {
 
   const doctors = [
     { name: 'Dr. Sameer Varma', specialties: ['Cataract', 'Glaucoma', 'Oculoplasty', 'Pediatric', 'Refractive', 'General', 'ChildScreening', 'SeniorScreening'] },
-    { name: 'Dr. Aditya Bhardwaj', specialties: ['Retina', 'RetinaScreening'] },
+    { name: 'Dr. Maj Aditya Bhardwaj', specialties: ['Retina', 'RetinaScreening'] },
     { name: 'Dr. R.J.K. Singh', specialties: ['Cataract', 'General', 'SeniorScreening'] }
   ];
 

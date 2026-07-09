@@ -58,7 +58,7 @@ const VRSurgery: React.FC = () => {
               Restoring stability to the core of your vision. We perform high-complexity posterior segment micro-surgeries utilizing advanced vitrectomy platforms.
             </p>
             <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-              Led by our board-certified, AIIMS-trained retina surgeon, our modular operating theater is fully configured with specialized gas/air/fluid exchange controls, Boyle's apparatus, and cardiac monitoring systems to ensure safe outcomes even for compromised patients.
+              Led by our board-certified, fellowship-trained retina surgeon, our modular operating theater is fully configured with specialized gas/air/fluid exchange controls, Boyle's apparatus, and cardiac monitoring systems to ensure safe outcomes even for compromised patients.
             </p>
             <Link to="/appointment" className="group bg-brand-navy text-cream hover:bg-brand-teal hover:text-brand-navy px-8 py-5 rounded-full text-[10px] tracking-[0.25em] uppercase font-black transition-all flex items-center justify-between max-w-xs shadow-md">
               Request VR Consultation
@@ -192,7 +192,7 @@ const VRSurgery: React.FC = () => {
               </div>
               <div className="bg-cream/5 p-5 rounded-2xl border border-cream/10">
                 <Award className="w-6 h-6 text-brand-teal mb-3" />
-                <h3 className="font-bold text-xs mb-1">AIIMS-Trained Lead</h3>
+                <h3 className="font-bold text-xs mb-1">Fellowship-Trained Lead</h3>
                 <p className="text-[11px] text-cream/60 leading-normal">Direct oversight from highly experienced VR consultants.</p>
               </div>
             </div>

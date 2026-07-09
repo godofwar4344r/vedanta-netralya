@@ -82,19 +82,20 @@ const About: React.FC = () => {
     },
     {
       id: 'doc-aditya',
-      name: 'Dr. Aditya Bhardwaj',
+      name: 'Dr. Maj Aditya Bhardwaj',
       image: drAditya,
       imageZoom: 1.6,
       objectPosition: 'center 35%',
-      role: 'Chief Retina Consultant & Surgeon',
-      specialty: 'Vitreoretinal (VR) Surgery & Medical Retina',
-      edu: 'MD (AIIMS New Delhi), DNB, FICO, MRCS',
+      role: 'Vitreo-Retinal Surgeon | Medical Retina Specialist | Cataract Surgeon',
+      specialty: 'Vitreoretinal (VR) Surgery, Medical Retina & Cataract',
+      edu: 'MBBS, MS (Ophthalmology), Fellow Vitreo-Retina Surgery',
       exp: '10,000+',
-      desc: 'Completed graduation in MBBS and ophthalmology residency. Following this, he completed 3 years of rigorous advanced training in Vitreo Retina from AIIMS, New Delhi. He has performed more than 10,000 retinal micro-surgeries, solving complex cases, and has also worked as a consultant ophthalmologist internationally.',
+      desc: 'Dedicated Vitreo-Retinal Surgeon with extensive training in complex retinal disorders. Completed MS in Ophthalmology from the prestigious Army Hospital (R&R), New Delhi, and a Fellowship in Vitreo-Retina Surgery at ASG Eye Hospital, Varanasi.',
       fellowships: [
-        '3 years Vitreo Retina training at AIIMS New Delhi',
-        'FICO & MRCS certified clinical specialist',
-        'Over 10,000 successful Vitreoretinal micro-surgeries'
+        'MS Ophthalmology from Army Hospital (R&R), New Delhi',
+        'Fellowship in Vitreo-Retina Surgery (ASG Eye Hospital, Varanasi)',
+        'Former Vitreo-Retinal Surgeon & Deputy MS at KK Medical College & Hospital',
+        'Unique background in Family Medicine (CMC Vellore) & Diabetology'
       ]
     }
   ];
@@ -395,7 +396,7 @@ const About: React.FC = () => {
               <EditableText id="about-docs-title">Our Medical Experts</EditableText>
             </h2>
             <p className="text-base text-brand-navy/60 font-lora">
-              <EditableText id="about-docs-desc">Meet our board-certified, AIIMS-trained surgeons and consulting specialists leading our clinical teams.</EditableText>
+              <EditableText id="about-docs-desc">Meet our board-certified, fellowship-trained surgeons and consulting specialists leading our clinical teams.</EditableText>
             </p>
           </div>
 

@@ -56,7 +56,7 @@ const Services: React.FC = () => {
     {
       id: 's-retina',
       title: 'Retina Services',
-      desc: 'Comprehensive medical and surgical retina care for diabetic retinopathy, macular degeneration, retinal detachment, and vitreoretinal surgery by Dr. Aditya Bhardwaj (MD, AIIMS Delhi).',
+      desc: 'Comprehensive medical and surgical retina care for diabetic retinopathy, macular degeneration, retinal detachment, and vitreoretinal surgery by Dr. Maj Aditya Bhardwaj (MS, Fellow Vitreo-Retina Surgery).',
       iconName: 'Layers',
       path: '/retina-services'
     },
@@ -119,7 +119,7 @@ const Services: React.FC = () => {
             <EditableText id="services-title">Our Super-Specialty Services</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora">
-            <EditableText id="services-description">Vedanta Netralya is a superspeciality eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Aditya Bhardwaj.</EditableText>
+            <EditableText id="services-description">Vedanta Netralya is a superspeciality eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Maj Aditya Bhardwaj.</EditableText>
           </p>
         </div>
       </EditableContainer>
