@@ -73,10 +73,10 @@ const Layout: React.FC = () => {
         </h3>
         <button
           onClick={() => setIsLocationWidgetOpen(false)}
-          className="text-cream/40 hover:text-cream p-1 hover:bg-cream/5 rounded transition-all"
+          className="text-white hover:text-white p-2 bg-white/10 hover:bg-white/20 rounded-full transition-all flex items-center justify-center w-8 h-8"
           aria-label="Close Location Widget"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="w-4 h-4 stroke-[3]" />
         </button>
       </div>
 

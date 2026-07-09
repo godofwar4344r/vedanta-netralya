@@ -533,10 +533,12 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={isVideoDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex items-center gap-1.5 text-brand-teal text-[10px] tracking-[0.2em] font-black uppercase mb-3 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-brand-teal/20"
+              className="flex items-center gap-2 text-brand-teal text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.2em] font-black uppercase mb-3 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-2xl sm:rounded-full border border-brand-teal/20 max-w-[300px] sm:max-w-none"
             >
-              <MapPin className="w-3.5 h-3.5" />
-              <span>Nawabi Road, Subhash Nagar, Haldwani</span>
+              <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+              <span className="leading-snug normal-case sm:uppercase text-left">
+                Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139
+              </span>
             </motion.div>
             <h1 className="leading-[0.95] text-center md:text-left">
               <motion.span 
@@ -1304,80 +1306,85 @@ const Home: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
               transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-              className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] p-8 md:p-12 max-w-xl w-full shadow-2xl relative text-cream text-center overflow-hidden"
+              className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] max-w-xl w-full shadow-2xl relative text-cream text-center flex flex-col max-h-[90vh] overflow-hidden"
             >
-              {/* Subtle background glow */}
-              <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
-
               {/* Close Button */}
               <button
                 onClick={closePromoModal}
-                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-cream transition-colors focus:outline-none"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-brand-navy/90 border border-brand-teal/30 hover:bg-brand-teal hover:text-brand-navy flex items-center justify-center text-white transition-all focus:outline-none z-50 shadow-md"
                 aria-label="Close Announcement"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 stroke-[3]" />
               </button>
 
-              {/* Icon / Tag */}
-              <div className="inline-flex items-center gap-1.5 bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase px-4 py-1.5 rounded-full mb-6">
-                <Sparkles className="w-3 h-3 animate-pulse" />
-                Special Announcement
-              </div>
+              {/* Scrollable container */}
+              <div className="overflow-y-auto p-6 md:p-12 custom-scrollbar flex-1 flex flex-col justify-between">
+                {/* Subtle background glow */}
+                <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
 
-              {/* Main Heading */}
-              <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
-                Weekly Free Clinic
-              </h2>
-              <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
-                Infants, Toddlers & Pre-School (Below 5 Yrs)
-              </p>
+                <div>
+                  {/* Icon / Tag */}
+                  <div className="inline-flex items-center gap-1.5 bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase px-4 py-1.5 rounded-full mb-6">
+                    <Sparkles className="w-3 h-3 animate-pulse" />
+                    Special Announcement
+                  </div>
 
-              {/* Highlight Box */}
-              <div className="bg-white/5 border border-cream/10 rounded-3xl p-6 mb-8 text-center">
-                <span className="text-[10px] tracking-widest uppercase font-black text-brand-teal bg-brand-teal/20 px-3 py-1 rounded-full inline-block mb-3">
-                  Every Wednesday
-                </span>
-                <p className="text-2xl font-black text-white mb-2 uppercase">
-                  Free Pediatric Screening
-                </p>
-                <p className="text-xs text-cream/70 font-lora leading-relaxed">
-                  Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
-                </p>
-              </div>
+                  {/* Main Heading */}
+                  <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
+                    Weekly Free Clinic
+                  </h2>
+                  <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
+                    Infants, Toddlers & Pre-School (Below 5 Yrs)
+                  </p>
 
-              {/* Other Weekly Offers Row */}
-              <div className="grid grid-cols-2 gap-4 mb-8 text-left">
-                <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
-                  <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
-                  <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
-                  <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
+                  {/* Highlight Box */}
+                  <div className="bg-white/5 border border-cream/10 rounded-3xl p-6 mb-8 text-center">
+                    <span className="text-[10px] tracking-widest uppercase font-black text-brand-teal bg-brand-teal/20 px-3 py-1 rounded-full inline-block mb-3">
+                      Every Wednesday
+                    </span>
+                    <p className="text-2xl font-black text-white mb-2 uppercase">
+                      Free Pediatric Screening
+                    </p>
+                    <p className="text-xs text-cream/70 font-lora leading-relaxed">
+                      Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
+                    </p>
+                  </div>
+
+                  {/* Other Weekly Offers Row */}
+                  <div className="grid grid-cols-2 gap-4 mb-8 text-left">
+                    <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                      <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
+                      <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
+                      <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
+                      <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
+                    </div>
+                    <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                      <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
+                      <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
+                      <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
+                      <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
-                  <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
-                  <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
-                  <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
-                  <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
-                </div>
-              </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-3">
-                <Link
-                  to="/appointment"
-                  onClick={closePromoModal}
-                  className="w-full sm:flex-1 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-lg"
-                >
-                  Book Special Slot
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-                <button
-                  onClick={closePromoModal}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full border border-cream/20 text-cream/70 hover:text-white hover:border-cream/40 text-[10px] tracking-widest uppercase font-black transition-all"
-                >
-                  Dismiss
-                </button>
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center gap-3 mt-4">
+                  <Link
+                    to="/appointment"
+                    onClick={closePromoModal}
+                    className="w-full sm:flex-1 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-lg"
+                  >
+                    Book Special Slot
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                  <button
+                    onClick={closePromoModal}
+                    className="w-full sm:w-auto px-8 py-4 rounded-full border border-cream/20 text-cream/70 hover:text-white hover:border-cream/40 text-[10px] tracking-widest uppercase font-black transition-all"
+                  >
+                    Dismiss
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>
