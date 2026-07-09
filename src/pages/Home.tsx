@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowUpRight, Plus, Eye, Sparkles, ChevronDown, Activity, Heart, Shield, Layers, Quote, Star, Scissors, MapPin, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -1299,7 +1300,7 @@ const Home: React.FC = () => {
 
       {/* === WEEKLY PROMOTIONAL MODAL POPUP === */}
       <AnimatePresence>
-        {showPromoModal && (
+        {showPromoModal && createPortal(
           <div className="fixed inset-0 z-[9999] bg-brand-navy/70 backdrop-blur-md flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -1388,7 +1389,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-          </div>
+          </div>,
+          document.body
         )}
       </AnimatePresence>
     </div>
