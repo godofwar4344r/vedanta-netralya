@@ -1308,14 +1308,21 @@ const Home: React.FC = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 180 }}
               className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] max-w-xl w-full shadow-2xl relative text-cream text-center flex flex-col max-h-[90vh] overflow-hidden"
             >
-              {/* Close Button */}
-              <button
-                onClick={closePromoModal}
-                className="absolute top-3 right-3 md:top-4 md:right-4 w-11 h-11 rounded-full bg-brand-teal text-brand-navy hover:bg-cream active:scale-95 flex items-center justify-center transition-all focus:outline-none z-50 shadow-xl ring-2 ring-brand-navy/40"
-                aria-label="Close Announcement"
-              >
-                <X className="w-6 h-6 stroke-[3]" />
-              </button>
+              {/* Fixed header bar — always visible, holds the close button */}
+              <div className="flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-4 border-b border-brand-teal/20 bg-brand-navy flex-shrink-0 z-50">
+                <div className="inline-flex items-center gap-1.5 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase">
+                  <Sparkles className="w-3 h-3 animate-pulse" />
+                  Special Announcement
+                </div>
+                <button
+                  onClick={closePromoModal}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-teal text-brand-navy hover:bg-cream active:scale-95 px-4 py-2.5 text-[10px] tracking-widest font-black uppercase transition-all focus:outline-none shadow-lg flex-shrink-0"
+                  aria-label="Close Announcement"
+                >
+                  <X className="w-4 h-4 stroke-[3]" />
+                  Close
+                </button>
+              </div>
 
               {/* Scrollable container */}
               <div className="overflow-y-auto p-6 md:p-12 custom-scrollbar flex-1 flex flex-col justify-between">
@@ -1324,12 +1331,6 @@ const Home: React.FC = () => {
                 <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
 
                 <div>
-                  {/* Icon / Tag */}
-                  <div className="inline-flex items-center gap-1.5 bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase px-4 py-1.5 rounded-full mb-6">
-                    <Sparkles className="w-3 h-3 animate-pulse" />
-                    Special Announcement
-                  </div>
-
                   {/* Main Heading */}
                   <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
                     Weekly Free Clinic
