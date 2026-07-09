@@ -11,7 +11,7 @@ const Centres: React.FC = () => {
       id: 'haldwani-main',
       title: 'Haldwani Main Branch',
       tag: 'Super-Specialty Center',
-      address: 'Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand - 263139',
+      address: 'Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139',
       phones: ['05946-223616', '+91 9068561971'],
       email: 'info@vedantanetralya.com',
       hours: [

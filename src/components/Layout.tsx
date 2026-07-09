@@ -13,7 +13,9 @@ const Layout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
-  const [isLocationWidgetOpen, setIsLocationWidgetOpen] = useState(true);
+  const [isLocationWidgetOpen, setIsLocationWidgetOpen] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= 768
+  );
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
   const { isEditMode } = useEdit();
@@ -56,6 +58,51 @@ const Layout: React.FC = () => {
     setIsMoreDropdownOpen(false);
     window.scrollTo(0, 0);
   }, [location]);
+
+  const locationCard = (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 15 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9, y: 15 }}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full md:w-[290px] bg-brand-navy/95 border border-brand-teal/30 rounded-3xl p-5 shadow-2xl text-cream flex flex-col gap-3.5 backdrop-blur-md glow-navy"
+    >
+      <div className="flex justify-between items-center border-b border-cream/10 pb-2">
+        <h3 className="font-body text-[10px] font-black uppercase text-brand-teal tracking-wider flex items-center gap-1.5">
+          <MapPin className="w-3.5 h-3.5" /> Hospital Location
+        </h3>
+        <button
+          onClick={() => setIsLocationWidgetOpen(false)}
+          className="text-cream/40 hover:text-cream p-1 hover:bg-cream/5 rounded transition-all"
+          aria-label="Close Location Widget"
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
+      {/* Haldwani Main Branch */}
+      <div className="flex flex-col gap-1">
+        <span className="font-black text-[9px] text-brand-teal uppercase tracking-widest">Haldwani Centre</span>
+        <p className="text-cream/80 text-[11px] leading-tight font-lora">
+          Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139
+        </p>
+        <div className="flex gap-4 mt-1">
+          <a
+            href="https://www.google.com/maps/place/Vedanta+Netralya+Haldwani/@29.2266568,79.5255779,642m/data=!3m1!1e3!4m10!1m2!2m1!1svedanta+netralya+haldwani!3m6!1s0x39a09b1779d2b223:0xccc4371f2e361808!8m2!3d29.2266493!4d79.5281364!15sChl2ZWRhbnRhIG5ldHJhbHlhIGhhbGR3YW5pkgEPZXllX2NhcmVfY2VudGVy4AEA!16s%2Fg%2F11n422c3lg!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-[9px] tracking-wider uppercase font-black text-brand-teal hover:text-brand-teal-bright transition-colors"
+          >
+            Directions <ArrowUpRight className="w-3 h-3" />
+          </a>
+          <span className="text-cream/20">|</span>
+          <a href="tel:05946223616" className="text-[9px] tracking-wider uppercase font-black text-cream/70 hover:text-brand-teal transition-colors">
+            Call Center
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
     <div className="relative min-h-screen bg-cream text-brand-navy selection:bg-brand-navy selection:text-cream flex flex-col overflow-x-hidden font-body">
@@ -246,53 +293,17 @@ const Layout: React.FC = () => {
       {/* === FOOTER === */}
       <Footer />
 
+      {/* Mobile Location Popover (opens from bottom nav Location button) */}
+      <div className="md:hidden fixed bottom-24 left-4 right-4 z-[998]">
+        <AnimatePresence>
+          {isMobile && isLocationWidgetOpen && locationCard}
+        </AnimatePresence>
+      </div>
+
       {/* Floating Google Maps Location Widget & Button */}
       <div className="hidden md:flex fixed bottom-28 right-8 z-[999] flex-col items-end gap-3">
         <AnimatePresence>
-          {isLocationWidgetOpen && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 15 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-1 w-[290px] bg-brand-navy/95 border border-brand-teal/30 rounded-3xl p-5 shadow-2xl text-cream flex flex-col gap-3.5 backdrop-blur-md glow-navy"
-            >
-              <div className="flex justify-between items-center border-b border-cream/10 pb-2">
-                <h3 className="font-body text-[10px] font-black uppercase text-brand-teal tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" /> Hospital Location
-                </h3>
-                <button 
-                  onClick={() => setIsLocationWidgetOpen(false)} 
-                  className="text-cream/40 hover:text-cream p-1 hover:bg-cream/5 rounded transition-all"
-                  aria-label="Close Location Widget"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              {/* Haldwani Main Branch */}
-              <div className="flex flex-col gap-1">
-                <span className="font-black text-[9px] text-brand-teal uppercase tracking-widest">Haldwani Centre</span>
-                <p className="text-cream/80 text-[11px] leading-tight font-lora">
-                  Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand - 263139
-                </p>
-                <div className="flex gap-4 mt-1">
-                  <a 
-                    href="https://www.google.com/maps/place/Vedanta+Netralya+Haldwani/@29.2266568,79.5255779,642m/data=!3m1!1e3!4m10!1m2!2m1!1svedanta+netralya+haldwani!3m6!1s0x39a09b1779d2b223:0xccc4371f2e361808!8m2!3d29.2266493!4d79.5281364!15sChl2ZWRhbnRhIG5ldHJhbHlhIGhhbGR3YW5pkgEPZXllX2NhcmVfY2VudGVy4AEA!16s%2Fg%2F11n422c3lg!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[9px] tracking-wider uppercase font-black text-brand-teal hover:text-brand-teal-bright transition-colors"
-                  >
-                    Directions <ArrowUpRight className="w-3 h-3" />
-                  </a>
-                  <span className="text-cream/20">|</span>
-                  <a href="tel:05946223616" className="text-[9px] tracking-wider uppercase font-black text-cream/70 hover:text-brand-teal transition-colors">
-                    Call Center
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
+          {isLocationWidgetOpen && locationCard}
         </AnimatePresence>
 
         <motion.button

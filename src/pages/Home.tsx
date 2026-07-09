@@ -486,8 +486,8 @@ const Home: React.FC = () => {
                 <div className="absolute inset-0 bg-brand-teal/15 animate-pulse" />
               </div>
               <div className="min-w-0">
-                <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">AI Vision Bot</p>
-                <p className="text-xs font-bold text-brand-navy">Ocular Assistant</p>
+                <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">AI Assistant</p>
+                <p className="text-xs font-bold text-brand-navy">Ask Drishti</p>
                 <span className="text-[8px] text-green-600 font-bold flex items-center gap-1 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" /> Online Now
                 </span>

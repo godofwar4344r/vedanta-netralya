@@ -26,6 +26,12 @@
     @apply bg-[#f5f1ea] text-[#0a2640] overflow-x-hidden;
     font-family: 'General Sans', 'Inter', sans-serif;
   }
+  a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+}
+
+/* Mobile: keep form fields at 16px so iOS Safari doesn't zoom in on focus */
+@media (max-width: 767px) {
+  input, select, textarea { font-size: 16px !important; }
 }
 
 /* === Typography === */
