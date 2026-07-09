@@ -10,6 +10,8 @@ import { EditableContainer, EditableText, EditableList } from '../components/Edi
 import introVideo from '../assets/about-video.mp4';
 import eyeDropVideo from '../assets/eye-drop-bottle.mp4';
 import cataractVideo from '../assets/reel-cataract.mp4';
+import teamDoctorOtVideo from '../assets/team-doctor-facility-ot.mp4';
+import infrastructureVideo from '../assets/infrastructure.mp4';
 
 interface ReelData {
   src: string;
@@ -199,6 +201,15 @@ const VideoGallery: React.FC = () => {
       shares: '188'
     },
     {
+      id: 'reel-team-ot',
+      src: teamDoctorOtVideo,
+      title: 'Clinical Team & Modular OT Tour',
+      caption: 'Meet our dedicated team of surgical experts and tour our modular operating theaters. Built for absolute safety, sterility, and advanced precision. 👁️⚕️ #surgicalteam #eyedoctor #clinicalteam #operationtheater #vedantanetralya',
+      likes: '950',
+      comments: '36',
+      shares: '112'
+    },
+    {
       id: 'reel-intro',
       src: introVideo,
       title: 'NABH Certified Surgical Wing Tour',
@@ -206,6 +217,15 @@ const VideoGallery: React.FC = () => {
       likes: '840',
       comments: '29',
       shares: '105'
+    },
+    {
+      id: 'reel-infrastructure',
+      src: infrastructureVideo,
+      title: 'Vedanta Netralya Infrastructure Tour',
+      caption: 'Take a virtual tour of the premium clinical space, advanced diagnostics wing, and patient lobby at Vedanta Netralya. High-end eye care made accessible. 🏥✨ #hospitaltour #clinicalspace #medicaltechnology #vedantanetralya',
+      likes: '1.1K',
+      comments: '48',
+      shares: '135'
     },
     {
       id: 'reel-eyedrop',
@@ -261,7 +281,7 @@ const VideoGallery: React.FC = () => {
               comments: '5',
               shares: '10'
             }}
-            className="flex flex-col md:flex-row gap-8 justify-center items-center max-w-5xl mx-auto mb-20"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto mb-20"
             itemAs="div"
           >
             {(reel, idx) => (
