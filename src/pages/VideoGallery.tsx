@@ -192,15 +192,6 @@ const VideoGallery: React.FC = () => {
 
   const defaultReels: (ReelData & { id: string })[] = [
     {
-      id: 'reel-cataract',
-      src: cataractVideo,
-      title: 'Advanced Phacoemulsification (MICS)',
-      caption: 'Experience advanced Micro-Incision Cataract Surgery (MICS) utilizing sutureless Phaco technology. The safest, most precise cataract solution for rapid visual recovery. 👁️✨ #cataract #eyecare #phaco #microphaco #surgery',
-      likes: '1.2K',
-      comments: '42',
-      shares: '188'
-    },
-    {
       id: 'reel-team-ot',
       src: teamDoctorOtVideo,
       title: 'Clinical Team & Modular OT Tour',
