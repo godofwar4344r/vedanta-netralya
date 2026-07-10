@@ -81,7 +81,6 @@ const Contact: React.FC = () => {
                     <Mail className="w-5 h-5 text-brand-teal shrink-0" />
                     <div className="text-cream/80">
                       <p><EditableText id="contact-haldwani-email-1">admin@vedantanetralya.com</EditableText></p>
-                      <p><EditableText id="contact-haldwani-email-2">info@vedantanetralya.com</EditableText></p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -136,13 +135,13 @@ const Contact: React.FC = () => {
                   <div className="flex gap-4">
                     <Phone className="w-5 h-5 text-brand-teal shrink-0" />
                     <div className="text-cream/80">
-                      <p><EditableText id="contact-kichha-phone-1">+91-9068561971</EditableText></p>
+                      <p><EditableText id="contact-kichha-phone-1">+91 79007 77709</EditableText></p>
                     </div>
                   </div>
                   <div className="flex gap-4">
                     <Mail className="w-5 h-5 text-brand-teal shrink-0" />
                     <div className="text-cream/80">
-                      <p><EditableText id="contact-kichha-email-1">info@vedantanetralya.com</EditableText></p>
+                      <p><EditableText id="contact-kichha-email-1">admin@vedantanetralya.com</EditableText></p>
                     </div>
                   </div>
                   <div className="flex gap-4">

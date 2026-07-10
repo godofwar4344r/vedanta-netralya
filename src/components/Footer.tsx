@@ -174,7 +174,7 @@ const Footer: React.FC = () => {
                 <div>
                   <h4 className="font-body text-xs font-black uppercase text-cream tracking-wider mb-1">Email Desk</h4>
                   <p className="text-xs text-cream/75 hover:text-brand-teal-bright transition-colors">
-                    <EditableText id="footer-haldwani-email">info@vedantanetralya.com</EditableText>
+                    <EditableText id="footer-haldwani-email">admin@vedantanetralya.com</EditableText>
                   </p>
                 </div>
               </div>

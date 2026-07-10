@@ -54,13 +54,13 @@ const About: React.FC = () => {
       role: 'Founder & Senior Eye Specialist',
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
-      exp: '16,000+',
+      exp: '50,000+',
       desc: 'Highly experienced eye surgeon. Completed fellowship at Sadguru Netra Chikitsalaya, Chitrakoot. Served as Clinical Incharge at Eye Q Superspeciality Eye Hospital, Haldwani from 2007 to 2017 before founding Vedanta Netralya. Expert in micro-incision cataract surgeries, lid and tear duct reconstructions, and glaucoma management.',
       fellowships: [
         'Fellowship in Sadguru Netra Chikitsalaya, Chitrakoot',
         '2,000+ Lacrimal (tear duct) surgeries performed',
         '4,000+ Eyelid reconstruction surgeries performed',
-        '16,000+ Cataract surgeries performed'
+        '50,000+ Cataract surgeries performed'
       ]
     },
     {
@@ -72,10 +72,10 @@ const About: React.FC = () => {
       role: 'Senior Consultant Ophthalmologist',
       specialty: 'Comprehensive Ophthalmology',
       edu: 'DOMS, Kanpur University (1972)',
-      exp: '38+',
-      desc: 'Completed post-graduation from Kanpur University in 1972. Completed senior fellowship training at the legendary Sitapur Eye Hospital. Dedicated over 35 years as a senior eye surgeon and clinical lead across multiple branches of Sitapur Eye Hospital. Previously senior consultant at Eye Q Eye Hospital.',
+      exp: '',
+      desc: 'DOMS, Kanpur University (1972). Completed senior fellowship training at Sitapur Eye Hospital. He started his career as an ophthalmic surgeon at Sitapur Eye Hospital, Allahabad, and worked in different capacities across multiple branches of Sitapur Eye Hospital in Uttarakhand for 35 years. He subsequently served as senior consultant at Eye Q Eye Hospital for three years.',
       fellowships: [
-        'Fellowship at Sitapur Eye Hospital',
+        'Senior Fellowship at Sitapur Eye Hospital',
         '35+ years clinical career with Sitapur Eye Hospital branches',
         'Senior clinical consultant at Eye Q Eye Hospital'
       ]

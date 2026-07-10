@@ -1255,7 +1255,7 @@ const Home: React.FC = () => {
                   <div className="space-y-2 text-xs text-cream/60 font-body mb-8">
                     <p><strong>OPD Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</p>
                     <p><strong>Sunday:</strong> Closed</p>
-                    <p><strong>Phone:</strong> +91-9068561971</p>
+                    <p><strong>Phone:</strong> +91 79007 77709</p>
                   </div>
                 </div>
                 <a 
@@ -1299,100 +1299,102 @@ const Home: React.FC = () => {
       </div>{/* end of z-40 content overlay wrapper */}
 
       {/* === WEEKLY PROMOTIONAL MODAL POPUP === */}
-      <AnimatePresence>
-        {showPromoModal && createPortal(
-          <div className="fixed inset-0 z-[9999] bg-brand-navy/70 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-              className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] max-w-xl w-full shadow-2xl relative text-cream text-center flex flex-col max-h-[90vh] overflow-hidden"
-            >
-              {/* Fixed header bar — always visible, holds the close button */}
-              <div className="flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-4 border-b border-brand-teal/20 bg-brand-navy flex-shrink-0 z-50">
-                <div className="inline-flex items-center gap-1.5 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase">
-                  <Sparkles className="w-3 h-3 animate-pulse" />
-                  Special Announcement
-                </div>
-                <button
-                  onClick={closePromoModal}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-teal text-brand-navy hover:bg-cream active:scale-95 px-4 py-2.5 text-[10px] tracking-widest font-black uppercase transition-all focus:outline-none shadow-lg flex-shrink-0"
-                  aria-label="Close Announcement"
-                >
-                  <X className="w-4 h-4 stroke-[3]" />
-                  Close
-                </button>
-              </div>
-
-              {/* Scrollable container */}
-              <div className="overflow-y-auto p-6 md:p-12 custom-scrollbar flex-1 flex flex-col justify-between">
-                {/* Subtle background glow */}
-                <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
-
-                <div>
-                  {/* Main Heading */}
-                  <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
-                    Weekly Free Clinic
-                  </h2>
-                  <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
-                    Infants, Toddlers & Pre-School (Below 5 Yrs)
-                  </p>
-
-                  {/* Highlight Box */}
-                  <div className="bg-white/5 border border-cream/10 rounded-3xl p-6 mb-8 text-center">
-                    <span className="text-[10px] tracking-widest uppercase font-black text-brand-teal bg-brand-teal/20 px-3 py-1 rounded-full inline-block mb-3">
-                      Every Wednesday
-                    </span>
-                    <p className="text-2xl font-black text-white mb-2 uppercase">
-                      Free Pediatric Screening
-                    </p>
-                    <p className="text-xs text-cream/70 font-lora leading-relaxed">
-                      Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
-                    </p>
+      {createPortal(
+        <AnimatePresence>
+          {showPromoModal && (
+            <div className="fixed inset-0 z-[9999] bg-brand-navy/70 backdrop-blur-md flex items-center justify-center p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 180 }}
+                className="bg-brand-navy border border-brand-teal/30 rounded-[2.5rem] max-w-xl w-full shadow-2xl relative text-cream text-center flex flex-col max-h-[90vh] overflow-hidden"
+              >
+                {/* Fixed header bar — always visible, holds the close button */}
+                <div className="flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-4 border-b border-brand-teal/20 bg-brand-navy flex-shrink-0 z-50">
+                  <div className="inline-flex items-center gap-1.5 text-brand-teal text-[9px] tracking-[0.25em] font-black uppercase">
+                    <Sparkles className="w-3 h-3 animate-pulse" />
+                    Special Announcement
                   </div>
-
-                  {/* Other Weekly Offers Row */}
-                  <div className="grid grid-cols-2 gap-4 mb-8 text-left">
-                    <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
-                      <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
-                      <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
-                      <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
-                      <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
-                    </div>
-                    <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
-                      <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
-                      <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
-                      <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
-                      <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center gap-3 mt-4">
-                  <Link
-                    to="/appointment"
-                    onClick={closePromoModal}
-                    className="w-full sm:flex-1 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-lg"
-                  >
-                    Book Special Slot
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
                   <button
                     onClick={closePromoModal}
-                    className="w-full sm:w-auto px-8 py-4 rounded-full border border-cream/20 text-cream/70 hover:text-white hover:border-cream/40 text-[10px] tracking-widest uppercase font-black transition-all"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-teal text-brand-navy hover:bg-cream active:scale-95 px-4 py-2.5 text-[10px] tracking-widest font-black uppercase transition-all focus:outline-none shadow-lg flex-shrink-0"
+                    aria-label="Close Announcement"
                   >
-                    Dismiss
+                    <X className="w-4 h-4 stroke-[3]" />
+                    Close
                   </button>
                 </div>
-              </div>
-            </motion.div>
-          </div>,
-          document.body
-        )}
-      </AnimatePresence>
+
+                {/* Scrollable container */}
+                <div className="overflow-y-auto p-6 md:p-12 custom-scrollbar flex-1 flex flex-col justify-between">
+                  {/* Subtle background glow */}
+                  <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
+
+                  <div>
+                    {/* Main Heading */}
+                    <h2 className="text-3xl md:text-4xl font-black mb-2 text-white font-body leading-none">
+                      Weekly Free Clinic
+                    </h2>
+                    <p className="text-brand-teal text-[11px] tracking-widest uppercase font-black mb-6">
+                      Infants, Toddlers & Pre-School (Below 5 Yrs)
+                    </p>
+
+                    {/* Highlight Box */}
+                    <div className="bg-white/5 border border-cream/10 rounded-3xl p-6 mb-8 text-center">
+                      <span className="text-[10px] tracking-widest uppercase font-black text-brand-teal bg-brand-teal/20 px-3 py-1 rounded-full inline-block mb-3">
+                        Every Wednesday
+                      </span>
+                      <p className="text-2xl font-black text-white mb-2 uppercase">
+                        Free Pediatric Screening
+                      </p>
+                      <p className="text-xs text-cream/70 font-lora leading-relaxed">
+                        Free general ophthalmic examination, vision screening & refraction for children below 5 yrs (infants, toddlers & pre-school children).
+                      </p>
+                    </div>
+
+                    {/* Other Weekly Offers Row */}
+                    <div className="grid grid-cols-2 gap-4 mb-8 text-left">
+                      <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                        <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Tuesday Specials</p>
+                        <p className="text-sm font-bold text-white mt-1">Retina Screening</p>
+                        <p className="text-[9px] text-cream/60 mt-1 font-lora">For diabetics, hypertensives & ARMD</p>
+                        <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
+                      </div>
+                      <div className="border border-cream/10 rounded-2xl p-4 bg-white/5">
+                        <p className="text-[8px] tracking-wider uppercase font-black text-brand-teal">Friday Specials</p>
+                        <p className="text-sm font-bold text-white mt-1">Senior Citizens</p>
+                        <p className="text-[9px] text-cream/60 mt-1 font-lora">For patients above 60 yr</p>
+                        <p className="text-[10px] font-black text-brand-teal mt-2">50% OFF ON OPD CHARGES</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row items-center gap-3 mt-4">
+                    <Link
+                      to="/appointment"
+                      onClick={closePromoModal}
+                      className="w-full sm:flex-1 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy py-4 rounded-full text-[10px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-lg"
+                    >
+                      Book Special Slot
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                    <button
+                      onClick={closePromoModal}
+                      className="w-full sm:w-auto px-8 py-4 rounded-full border border-cream/20 text-cream/70 hover:text-white hover:border-cream/40 text-[10px] tracking-widest uppercase font-black transition-all"
+                    >
+                      Dismiss
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };

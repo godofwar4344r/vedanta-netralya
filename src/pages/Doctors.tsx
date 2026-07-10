@@ -20,13 +20,13 @@ const Doctors: React.FC = () => {
       role: 'Founder & Senior Eye Specialist',
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
-      exp: '16,000+',
-      desc: 'Completed comprehensive ophthalmology fellowship at Chitrakoot. Working as a high volume surgeon, he has performed over sixteen thousand cataract surgeries with significant exposure in pediatric cataract and glaucoma surgeries. He also performed approximately two thousand DCR/dacryocystectomy surgeries and four thousand eyelid reconstructions. After his fellowship, he joined Eye Q Superspeciality Eye Hospital and worked as Haldwani\'s In-charge of clinical operations from 2007 to 2017 before founding Vedanta Netralya.',
+      exp: '50,000+',
+      desc: 'Completed comprehensive ophthalmology fellowship at Chitrakoot. Working as a high volume surgeon, he has performed over fifty thousand cataract surgeries with significant exposure in pediatric cataract and glaucoma surgeries. He also performed approximately two thousand DCR/dacryocystectomy surgeries and four thousand eyelid reconstructions. After his fellowship, he joined Eye Q Superspeciality Eye Hospital and worked as Haldwani\'s In-charge of clinical operations from 2007 to 2017 before founding Vedanta Netralya.',
       fellowships: [
         'Fellowship in Sadguru Netra Chikitsalaya, Chitrakoot',
         '2,000+ Lacrimal (tear duct) surgeries performed',
         '4,000+ Eyelid reconstruction surgeries performed',
-        '16,000+ Cataract surgeries performed'
+        '50,000+ Cataract surgeries performed'
       ]
     },
     {
@@ -37,7 +37,7 @@ const Doctors: React.FC = () => {
       role: 'Senior Consultant Ophthalmologist',
       specialty: 'Comprehensive Ophthalmology',
       edu: 'DOMS, Kanpur University (1972)',
-      exp: '38+',
+      exp: '',
       desc: 'Completed his post-graduation from Kanpur University in the year 1972. Completed senior fellowship training at Sitapur Eye Hospital. He started his career as an ophthalmic surgeon at Sitapur Eye Hospital, Allahabad, and worked in different capacities across multiple branches of Sitapur Eye Hospital in Uttarakhand for 35 years. He subsequently served as senior consultant at Eye Q Eye Hospital for three years.',
       fellowships: [
         'Senior Fellowship at Sitapur Eye Hospital',
@@ -112,12 +112,14 @@ const Doctors: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent pointer-events-none" />
                     
                     {/* Floating Experience Badge */}
-                    <div className="absolute bottom-6 right-6 bg-brand-teal/90 backdrop-blur-sm text-brand-navy px-4 py-2 rounded-2xl shadow-lg flex flex-col items-center pointer-events-none">
-                      <span className="text-xl font-black leading-none font-body">
-                        <EditableText id={`doctor-exp-${idx}`}>{doc.exp}</EditableText>
-                      </span>
-                      <span className="text-[8px] tracking-wider uppercase font-black font-body">Surgeries</span>
-                    </div>
+                    {doc.exp && (
+                      <div className="absolute bottom-6 right-6 bg-brand-teal/90 backdrop-blur-sm text-brand-navy px-4 py-2 rounded-2xl shadow-lg flex flex-col items-center pointer-events-none">
+                        <span className="text-xl font-black leading-none font-body">
+                          <EditableText id={`doctor-exp-${idx}`}>{doc.exp}</EditableText>
+                        </span>
+                        <span className="text-[8px] tracking-wider uppercase font-black font-body">Surgeries</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Doctor Info Details */}

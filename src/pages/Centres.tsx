@@ -13,7 +13,7 @@ const Centres: React.FC = () => {
       tag: 'Super-Specialty Center',
       address: 'Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139',
       phones: ['05946-223616', '+91 9068561971'],
-      email: 'info@vedantanetralya.com',
+      email: 'admin@vedantanetralya.com',
       hours: [
         { days: 'Monday — Saturday', time: '9:00 AM — 7:00 PM' },
         { days: 'Sunday', time: '9:00 AM — 2:00 PM' }
@@ -26,8 +26,8 @@ const Centres: React.FC = () => {
       title: 'Kichha Centre',
       tag: 'Specialist Outreach Clinic',
       address: '1, Kichha, Uttarakhand 263148, India',
-      phones: ['+91 9068561971'],
-      email: 'info@vedantanetralya.com',
+      phones: ['+91 79007 77709'],
+      email: 'admin@vedantanetralya.com',
       hours: [
         { days: 'Monday — Saturday', time: '9:00 AM — 6:00 PM' }
       ],
@@ -64,7 +64,7 @@ const Centres: React.FC = () => {
             tag: 'Specialist Outreach Clinic',
             address: 'Clinic Address line here...',
             phones: ['+91 9999999999'],
-            email: 'info@vedantanetralya.com',
+            email: 'admin@vedantanetralya.com',
             hours: [
               { days: 'Monday — Saturday', time: '9:00 AM — 6:00 PM' }
             ],
@@ -104,7 +104,7 @@ const Centres: React.FC = () => {
                   <div className="flex gap-4">
                     <Mail className="w-5 h-5 text-brand-teal shrink-0" />
                     <p className="font-lora text-cream/80">
-                      <EditableText id={`centre-email-${centre.id}`}>{centre.email || 'info@vedantanetralya.com'}</EditableText>
+                      <EditableText id={`centre-email-${centre.id}`}>{centre.email || 'admin@vedantanetralya.com'}</EditableText>
                     </p>
                   </div>
                   <div className="flex gap-4">

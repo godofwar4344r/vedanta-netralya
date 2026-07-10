@@ -49,7 +49,7 @@ const Services: React.FC = () => {
     {
       id: 's-cataract',
       title: 'Cataract Surgery',
-      desc: 'Sutureless micro-incision phacoemulsification with premium foldable IOL, aspheric, multifocal, and EDOF (Symphony) lenses. Over 16,000+ cataract surgeries performed.',
+      desc: 'Sutureless micro-incision phacoemulsification with premium foldable IOL, aspheric, multifocal, and EDOF (Symphony) lenses. Over 50,000+ cataract surgeries performed.',
       iconName: 'Sparkles',
       path: '/cataract'
     },
