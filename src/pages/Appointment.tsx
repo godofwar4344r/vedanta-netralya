@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ChevronRight } from 'lucide-react';
+import { CheckCircle2, ChevronRight, Loader2 } from 'lucide-react';
+import { submitAppointment } from '../lib/appointments';
 
 const Appointment: React.FC = () => {
   const [step, setStep] = useState(1);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     specialty: '',
     doctor: '',
@@ -43,13 +46,25 @@ const Appointment: React.FC = () => {
     setStep(prev => prev + 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
       alert("Please fill in your Name and Contact Phone Number.");
       return;
     }
-    setStep(4);
+
+    setSubmitting(true);
+    setSubmitError('');
+    try {
+      await submitAppointment(formData);
+      setStep(4);
+    } catch (err) {
+      setSubmitError(
+        'We could not record your booking just now. Please try again, or call us directly and we will book your slot.'
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -269,19 +284,28 @@ const Appointment: React.FC = () => {
                   />
                 </div>
 
+                {submitError && (
+                  <p className="text-xs text-red-300 bg-red-500/10 border border-red-400/30 rounded-2xl px-5 py-4 font-lora">
+                    {submitError}
+                  </p>
+                )}
+
                 <div className="pt-4 flex justify-between">
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="border border-cream/20 text-cream px-8 py-4 rounded-full text-[10px] tracking-widest uppercase font-black hover:bg-cream hover:text-brand-navy transition-all"
+                    disabled={submitting}
+                    className="border border-cream/20 text-cream px-8 py-4 rounded-full text-[10px] tracking-widest uppercase font-black hover:bg-cream hover:text-brand-navy transition-all disabled:opacity-40"
                   >
                     Back
                   </button>
                   <button
                     type="submit"
-                    className="bg-brand-teal text-brand-navy px-8 py-4 rounded-full text-[10px] tracking-widest uppercase font-black hover:bg-cream hover:text-brand-navy transition-all shadow-md"
+                    disabled={submitting}
+                    className="bg-brand-teal text-brand-navy px-8 py-4 rounded-full text-[10px] tracking-widest uppercase font-black hover:bg-cream hover:text-brand-navy transition-all shadow-md flex items-center gap-2 disabled:opacity-60 disabled:hover:bg-brand-teal disabled:hover:text-brand-navy"
                   >
-                    Confirm Booking
+                    {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                    {submitting ? 'Booking...' : 'Confirm Booking'}
                   </button>
                 </div>
               </motion.div>
@@ -310,6 +334,7 @@ const Appointment: React.FC = () => {
                   type="button"
                   onClick={() => {
                     setStep(1);
+                    setSubmitError('');
                     setFormData({
                       specialty: '',
                       doctor: '',
