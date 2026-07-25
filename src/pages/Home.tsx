@@ -488,7 +488,7 @@ const Home: React.FC = () => {
               </div>
               <div className="min-w-0">
                 <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">AI Assistant</p>
-                <p className="text-xs font-bold text-brand-navy">Ask Drishti</p>
+                <p className="text-xs font-bold text-brand-navy">Ask Naina</p>
                 <span className="text-[8px] text-green-600 font-bold flex items-center gap-1 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" /> Online Now
                 </span>

@@ -10,6 +10,7 @@ import Centres from './pages/Centres';
 import Appointment from './pages/Appointment';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
+import Reviews from './pages/Reviews';
 import VideoGallery from './pages/VideoGallery';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -48,6 +49,7 @@ function App() {
         <Route path="appointment" element={<Appointment />} />
         <Route path="contact" element={<Contact />} />
         <Route path="testimonials" element={<Testimonials />} />
+        <Route path="reviews" element={<Reviews />} />
         <Route path="gallery" element={<VideoGallery />} />
         <Route path="gallery/images" element={<VideoGallery />} />
         <Route path="gallery/videos" element={<VideoGallery />} />

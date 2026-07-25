@@ -13,6 +13,8 @@
 
 var SPREADSHEET_ID = '1kibirmpATHUHCfL2ykmsbZXeFZViUDUEe76uWOpCiB0';
 var SHEET_NAME = 'Patient Data on Website';
+var REVIEWS_SHEET = 'Website Reviews';
+var REVIEW_HEADERS = ['Timestamp', 'Name', 'Location', 'Treatment', 'Rating', 'Review', 'Status', 'Source'];
 
 // Columns A-D pre-existed in the clinic's sheet; E onwards were added by setupSheet().
 var HEADERS = [
@@ -50,6 +52,21 @@ function setupSheet() {
   return 'Headers written to ' + SHEET_NAME;
 }
 
+function getReviewsSheet_() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName(REVIEWS_SHEET);
+  if (!sheet) {
+    sheet = ss.insertSheet(REVIEWS_SHEET);
+  }
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(REVIEW_HEADERS);
+    sheet.getRange(1, 1, 1, REVIEW_HEADERS.length).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+    sheet.setColumnWidth(6, 320); // Review
+  }
+  return sheet;
+}
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(30000);
@@ -62,6 +79,24 @@ function doPost(e) {
         p = JSON.parse(e.postData.contents);
       } catch (err) {
       }
+    }
+
+    // Patient reviews go to a separate tab and start as "Pending".
+    if (p.type === 'review') {
+      if (!p.name || !p.review) {
+        return json_({ ok: false, error: 'Name and review are required.' });
+      }
+      getReviewsSheet_().appendRow([
+        new Date(),
+        p.name || '',
+        p.location || '',
+        p.treatment || '',
+        p.rating || '',
+        p.review || '',
+        'Pending',
+        p.source || ''
+      ]);
+      return json_({ ok: true });
     }
 
     if (!p.name || !p.phone) {
@@ -95,7 +130,32 @@ function doPost(e) {
   }
 }
 
-function doGet() {
+function doGet(e) {
+  var params = (e && e.parameter) || {};
+
+  // Return approved reviews for the website's Reviews page.
+  if (params.type === 'reviews') {
+    var sheet = getReviewsSheet_();
+    var last = sheet.getLastRow();
+    var reviews = [];
+    if (last > 1) {
+      var rows = sheet.getRange(2, 1, last - 1, REVIEW_HEADERS.length).getValues();
+      for (var i = rows.length - 1; i >= 0; i--) { // newest first
+        var r = rows[i];
+        if (String(r[6]).toLowerCase() === 'approved') {
+          reviews.push({
+            name: r[1],
+            location: r[2],
+            treatment: r[3],
+            rating: Number(r[4]) || 5,
+            review: r[5]
+          });
+        }
+      }
+    }
+    return json_({ ok: true, reviews: reviews });
+  }
+
   return json_({ ok: true, service: 'vedanta-appointments' });
 }
 

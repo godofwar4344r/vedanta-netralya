@@ -145,13 +145,13 @@ const BYE_KEYWORDS = ['bye', 'goodbye', 'good bye', 'alvida', 'अलविद�
 const IDENTITY_KEYWORDS = ['who are you', 'your name', 'what are you', 'तुम कौन', 'आप कौन', 'तुम्हारा नाम'];
 
 const GREETINGS_EN = [
-  "Namaste! 🙏 So glad you stopped by. I'm Drishti, Vedanta Netralya's virtual assistant. Whether it's about a treatment, our doctors, timings, or booking a visit — just ask away!",
-  "Hello there! 😊 I'm Drishti, and I'm here to make your visit to Vedanta Netralya easier. What can I help you with today?",
+  "Namaste! 🙏 So glad you stopped by. I'm Naina, Vedanta Netralya's virtual assistant. Whether it's about a treatment, our doctors, timings, or booking a visit — just ask away!",
+  "Hello there! 😊 I'm Naina, and I'm here to make your visit to Vedanta Netralya easier. What can I help you with today?",
   "Namaste! 🙏 Welcome to Vedanta Netralya. How are your eyes treating you today? Ask me anything — treatments, doctors, timings, or offers."
 ];
 const GREETINGS_HI = [
-  "नमस्ते! 🙏 वेदांत नेत्रालय में आपका हार्दिक स्वागत है। मैं दृष्टि हूँ, आपकी सहायक। इलाज, डॉक्टर, समय या अपॉइंटमेंट — कुछ भी पूछिए!",
-  "नमस्ते! 😊 मैं दृष्टि हूँ। आज मैं आपकी आँखों की देखभाल में कैसे मदद कर सकती हूँ?",
+  "नमस्ते! 🙏 वेदांत नेत्रालय में आपका हार्दिक स्वागत है। मैं नैना हूँ, आपकी सहायक। इलाज, डॉक्टर, समय या अपॉइंटमेंट — कुछ भी पूछिए!",
+  "नमस्ते! 😊 मैं नैना हूँ। आज मैं आपकी आँखों की देखभाल में कैसे मदद कर सकती हूँ?",
   "नमस्कार! 🙏 वेदांत नेत्रालय में आपका स्वागत है। आपकी आँखों का हाल कैसा है? कुछ भी पूछें — इलाज, डॉक्टर, समय या ऑफर।"
 ];
 
@@ -184,7 +184,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: "Namaste! 🙏 I'm Drishti, your personal guide at Vedanta Netralya.\n\nAsk me anything — cataract surgery, specs removal, our doctors, timings, or this week's special OPD offers. I'm happy to help in English or हिन्दी.",
+      text: "Namaste! 🙏 I'm Naina, your personal guide at Vedanta Netralya.\n\nAsk me anything — cataract surgery, specs removal, our doctors, timings, or this week's special OPD offers. I'm happy to help in English or हिन्दी.",
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -302,8 +302,8 @@ const Chatbot: React.FC = () => {
       return {
         sender: 'bot',
         text: inHindi
-          ? "मैं दृष्टि हूँ 😊 — वेदांत नेत्रालय की वर्चुअल सहायक। मेरा काम है आपके सवालों के जवाब देना और अस्पताल आने से पहले आपकी हर छोटी-बड़ी मदद करना। बताइए, क्या जानना चाहेंगे?"
-          : "I'm Drishti 😊 — Vedanta Netralya's virtual assistant. My job is to answer your questions and make things easier before you even step into the hospital. What would you like to know?",
+          ? "मैं नैना हूँ 😊 — वेदांत नेत्रालय की वर्चुअल सहायक। मेरा काम है आपके सवालों के जवाब देना और अस्पताल आने से पहले आपकी हर छोटी-बड़ी मदद करना। बताइए, क्या जानना चाहेंगे?"
+          : "I'm Naina 😊 — Vedanta Netralya's virtual assistant. My job is to answer your questions and make things easier before you even step into the hospital. What would you like to know?",
       };
     }
 
@@ -417,7 +417,7 @@ const Chatbot: React.FC = () => {
           className={`fixed bottom-28 md:bottom-8 right-4 md:right-8 z-[999] p-2.5 md:p-3 rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border border-brand-teal/30 bg-brand-navy/95 text-cream hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all duration-300 select-none text-left glow-navy ${
             (isMobile || isScrolled) ? 'w-10 h-10 md:w-12 md:h-12 justify-center p-0 rounded-full' : 'w-[170px] md:w-[200px] pr-4 md:pr-5'
           }`}
-          aria-label="Chat with Drishti, our virtual assistant"
+          aria-label="Chat with Naina, our virtual assistant"
         >
           <div className={`rounded-xl flex items-center justify-center flex-shrink-0 bg-brand-teal/10 text-brand-teal relative ${
             (isMobile || isScrolled) ? 'w-8 h-8 md:w-10 md:h-10 rounded-full' : 'w-8 h-8 md:w-10 md:h-10'
@@ -437,7 +437,7 @@ const Chatbot: React.FC = () => {
                 Vedanta Netralya
               </span>
               <span className="text-[10px] md:text-xs font-black uppercase font-body mt-0.5 truncate">
-                Ask Drishti
+                Ask Naina
               </span>
               <span className="text-[7px] md:text-[8px] font-bold text-green-400 block mt-0.5">
                 Online · Replies Instantly
@@ -462,7 +462,7 @@ const Chatbot: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-brand-teal rounded-full animate-pulse" />
                 <div>
-                  <h3 className="font-merriweather text-sm font-bold text-cream tracking-wider">Drishti · Eye Care Assistant</h3>
+                  <h3 className="font-merriweather text-sm font-bold text-cream tracking-wider">Naina · Eye Care Assistant</h3>
                   <p className="text-[9px] tracking-widest text-brand-teal uppercase font-black">Vedanta Netralya · Here to Help</p>
                 </div>
               </div>

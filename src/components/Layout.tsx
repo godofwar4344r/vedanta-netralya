@@ -228,6 +228,8 @@ const Layout: React.FC = () => {
 
             <Link to="/gallery" className={`hover:text-brand-teal transition-colors ${location.pathname === '/gallery' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Gallery</Link>
 
+            <Link to="/reviews" className={`hover:text-brand-teal transition-colors ${location.pathname === '/reviews' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Reviews</Link>
+
             <Link to="/contact" className={`hover:text-brand-teal transition-colors ${location.pathname === '/contact' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Contact</Link>
           </div>
 
@@ -275,6 +277,7 @@ const Layout: React.FC = () => {
               <Link to="/centres" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/centres' ? 'text-brand-teal font-black' : ''}>Centres</Link>
               <hr className="border-cream/10" />
               <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/gallery' ? 'text-brand-teal font-black' : ''}>Gallery</Link>
+              <Link to="/reviews" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/reviews' ? 'text-brand-teal font-black' : ''}>Reviews</Link>
               <hr className="border-cream/10" />
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/contact' ? 'text-brand-teal font-black' : ''}>Contact Us</Link>
               <hr className="border-cream/10" />

@@ -47,6 +47,15 @@ const Footer: React.FC = () => {
                 </a>
               ))}
             </div>
+
+            {/* Mobile Scan QR Code Card */}
+            <div className="mt-2 bg-cream/5 border border-cream/10 rounded-2xl p-3 flex items-center gap-3">
+              <img src="/qr-website.png" alt="Scan to open website" className="w-14 h-14 rounded-xl bg-white p-1 shrink-0" />
+              <div>
+                <p className="text-[10px] font-black uppercase text-brand-teal tracking-wider font-body">Scan with Phone</p>
+                <p className="text-[11px] text-cream/70 font-lora leading-tight mt-0.5">Point camera to open site on mobile</p>
+              </div>
+            </div>
           </div>
 
           {/* Column 2: Specialties & Services (col-span-2) */}
@@ -93,6 +102,7 @@ const Footer: React.FC = () => {
               <Link to="/doctors" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Doctors</Link>
               <Link to="/centres" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Centres</Link>
               <Link to="/gallery" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Media Gallery</Link>
+              <Link to="/reviews" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Patient Reviews</Link>
               <Link to="/test-eye" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300 font-extrabold text-brand-teal">Digital Eye Test</Link>
               <Link to="/prevention" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300 font-extrabold text-brand-teal">Eye Prevention</Link>
               <Link to="/contact" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Contact Us</Link>
