@@ -54,13 +54,13 @@ const FAQ_DATABASE: FaqEntry[] = [
     actions: [BOOK_ACTION, { label: 'Refractive Surgery Options', labelHi: 'रिफ्रैक्टिव सर्जरी विकल्प', to: '/refractive-surgery' }]
   },
   {
-    keywords: ['retina', 'diabetic', 'retinopathy', 'armd', 'macular', 'parda', 'injection', 'vitreo', 'पर्दा', 'रेटिना', 'डायबिटीज', 'शुगर'],
+    keywords: ['retina', 'retinal', 'diabetic', 'retinopathy', 'armd', 'amd', 'macular', 'parda', 'injection', 'anti-vegf', 'vegf', 'vitreo', 'पर्दा', 'रेटिना', 'डायबिटीज', 'शुगर'],
     en: "Retina care is very close to our heart. If you have diabetes or high blood pressure, your retina needs a check-up at least once a year — diabetic retinopathy can quietly damage vision long before you notice anything.\n\nOur retina clinic is led by Dr. Maj Aditya Bhardwaj, a fellowship-trained vitreo-retinal surgeon (Army Hospital R&R, Delhi). And here's a helpful tip: every Tuesday is our Retina Screening Day with 50% off on consultation and fundus evaluation. 🙌",
     hi: "अगर आपको डायबिटीज़ (शुगर) या हाई ब्लड प्रेशर है, तो साल में कम से कम एक बार रेटिना (पर्दे) की जाँच ज़रूर करवाएँ — डायबिटिक रेटिनोपैथी बिना लक्षण के नज़र को नुकसान पहुँचा सकती है।\n\nहमारा रेटिना क्लिनिक डॉ. मेजर आदित्य भारद्वाज (आर्मी हॉस्पिटल R&R, दिल्ली से प्रशिक्षित विट्रियो-रेटिनल सर्जन) के नेतृत्व में चलता है। और हाँ — हर मंगलवार को रेटिना स्क्रीनिंग डे पर जाँच शुल्क में 50% छूट मिलती है। 🙌",
     actions: [BOOK_ACTION, { label: 'Retina Services', labelHi: 'रेटिना सेवाएँ', to: '/retina-services' }]
   },
   {
-    keywords: ['child', 'kid', 'baby', 'squint', 'lazy eye', 'amblyopia', 'paediatric', 'pediatric', 'school', 'बच्चे', 'बच्चा', 'भेंगापन'],
+    keywords: ['child', 'children', 'kid', 'baby', 'infant', 'toddler', 'newborn', 'squint', 'strabismus', 'lazy eye', 'amblyopia', 'paediatric', 'pediatric', 'school', 'बच्चे', 'बच्चा', 'भेंगापन'],
     en: "Children's eyes deserve extra gentle care — and catching problems early makes all the difference for their learning and confidence.\n\nWe treat squint (crossed eyes), lazy eye (amblyopia), and childhood refractive errors. A lovely thing to know: every Wednesday we run a FREE eye screening clinic for children below 5 years — infants, toddlers, and pre-schoolers are all welcome, at no charge. 💙",
     hi: "बच्चों की आँखों को खास देखभाल चाहिए — और समय पर जाँच से उनकी पढ़ाई और आत्मविश्वास दोनों सुरक्षित रहते हैं।\n\nहम भेंगापन (squint), लेज़ी आई (amblyopia) और बच्चों के चश्मे के नंबर का इलाज करते हैं। एक अच्छी बात: हर बुधवार को 5 साल से छोटे बच्चों की आँखों की जाँच बिल्कुल मुफ़्त होती है। 💙",
     actions: [BOOK_ACTION, { label: 'Paediatric Eye Care', labelHi: 'बच्चों की नेत्र देखभाल', to: '/paediatric-ophthalmology' }]
@@ -79,20 +79,53 @@ const FAQ_DATABASE: FaqEntry[] = [
   },
   {
     keywords: ['appointment', 'book', 'booking', 'consult', 'consultation', 'schedule', 'slot', 'visit', 'अपॉइंटमेंट', 'बुक'],
-    en: "Booking a visit is quick and easy — I can point you right to it. 😊\n\nYou can book online in under a minute, or simply call our helpdesk at 05946-223616 / +91 90685 61971. We're open Monday to Saturday, 9 AM – 7 PM, and Sunday, 9 AM – 2 PM.",
-    hi: "अपॉइंटमेंट बुक करना बहुत आसान है। 😊\n\nआप एक मिनट में ऑनलाइन बुक कर सकते हैं, या हमारे हेल्पडेस्क पर कॉल करें: 05946-223616 / +91 90685 61971। समय: सोमवार से शनिवार सुबह 9 से शाम 7 बजे, रविवार सुबह 9 से दोपहर 2 बजे।",
+    en: "Booking a visit is quick and easy — I can point you right to it. 😊\n\nYou can book online in under a minute (just your name, phone, preferred doctor, date and slot), or simply call our helpdesk at 05946-223616 / +91 90685 61971.\n\n🕘 Consultation slots: 9:30, 10:30, 11:30 AM and 2:30, 3:30, 4:30, 5:30 PM\n👨‍⚕️ Choose your doctor — Dr. Sameer Varma (cataract, glaucoma, oculoplasty, paediatric, refractive), Dr. Maj Aditya Bhardwaj (retina), or Dr. R.J.K. Singh (cataract & general).",
+    hi: "अपॉइंटमेंट बुक करना बहुत आसान है। 😊\n\nआप एक मिनट में ऑनलाइन बुक कर सकते हैं (सिर्फ नाम, फोन, डॉक्टर, तारीख और समय चुनें), या हेल्पडेस्क पर कॉल करें: 05946-223616 / +91 90685 61971।\n\n🕘 परामर्श समय: सुबह 9:30, 10:30, 11:30 और दोपहर 2:30, 3:30, 4:30, 5:30\n👨‍⚕️ डॉक्टर चुनें — डॉ. समीर वर्मा (मोतियाबिंद, ग्लूकोमा, ऑक्यूलोप्लास्टी, बच्चे), डॉ. मेजर आदित्य भारद्वाज (रेटिना), या डॉ. आर.जे.के. सिंह (मोतियाबिंद व सामान्य)।",
     actions: [BOOK_ACTION, CALL_ACTION]
   },
   {
-    keywords: ['doctor', 'surgeon', 'sameer', 'varma', 'rjk', 'singh', 'aditya', 'bhardwaj', 'specialist', 'team', 'डॉक्टर'],
-    en: "We're proud of our team — let me introduce them:\n\n👨‍⚕️ Dr. Sameer Varma — Founder, and our Cataract & Glaucoma specialist\n👨‍⚕️ Dr. R.J.K. Singh — Senior Consultant, Fellow of Sitapur Eye Hospital\n👨‍⚕️ Dr. Maj Aditya Bhardwaj — Vitreo-Retinal & Cataract surgeon, trained at Army Hospital R&R, Delhi\n\nEach of them believes in taking time with every patient — you'll never feel rushed here.",
-    hi: "हमें अपनी टीम पर गर्व है — मिलिए हमारे डॉक्टरों से:\n\n👨‍⚕️ डॉ. समीर वर्मा — संस्थापक, मोतियाबिंद और ग्लूकोमा विशेषज्ञ\n👨‍⚕️ डॉ. आर.जे.के. सिंह — वरिष्ठ सलाहकार, सीतापुर आँख अस्पताल फेलो\n👨‍⚕️ डॉ. मेजर आदित्य भारद्वाज — विट्रियो-रेटिनल और मोतियाबिंद सर्जन, आर्मी हॉस्पिटल R&R दिल्ली से प्रशिक्षित\n\nहर डॉक्टर हर मरीज़ को पूरा समय देने में विश्वास रखता है।",
-    actions: [{ label: 'Meet Our Doctors', labelHi: 'हमारे डॉक्टरों से मिलें', to: '/about' }, BOOK_ACTION]
+    keywords: ['sameer', 'varma', 'founder', 'समीर', 'वर्मा', 'संस्थापक'],
+    en: "Dr. Sameer Varma is our Founder & Senior Eye Specialist. 😊\n\n🎓 M.S., Fellow — Sadguru Netra Chikitsalaya (SNC), Chitrakoot\n👁️ Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma & Paediatric Cataract\n\nHe is a high-volume surgeon with 50,000+ cataract surgeries, 4,000+ eyelid reconstructions and 2,000+ lacrimal (tear duct) surgeries to his name. Before founding Vedanta Netralya, he was Clinical In-charge at Eye Q Superspeciality Eye Hospital, Haldwani, from 2007 to 2017.",
+    hi: "डॉ. समीर वर्मा हमारे संस्थापक और वरिष्ठ नेत्र विशेषज्ञ हैं। 😊\n\n🎓 M.S., फेलो — सद्गुरु नेत्र चिकित्सालय (SNC), चित्रकूट\n👁️ कम्प्रिहेंसिव ऑप्थैल्मोलॉजी, मोतियाबिंद, ऑक्यूलोप्लास्टी, ग्लूकोमा और बच्चों का मोतियाबिंद\n\nउन्होंने 50,000+ मोतियाबिंद सर्जरी, 4,000+ पलक पुनर्निर्माण और 2,000+ आँसू नली (लैक्रिमल) सर्जरी की हैं। वेदांत नेत्रालय की स्थापना से पहले वे 2007 से 2017 तक Eye Q सुपरस्पेशलिटी हॉस्पिटल, हल्द्वानी में क्लिनिकल इंचार्ज रहे।",
+    actions: [{ label: 'Doctor Profiles', labelHi: 'डॉक्टर प्रोफ़ाइल', to: '/doctors' }, BOOK_ACTION]
   },
   {
-    keywords: ['location', 'address', 'branch', 'centre', 'center', 'haldwani', 'kichha', 'where', 'reach', 'directions', 'पता', 'कहाँ', 'हल्द्वानी'],
-    en: "You'll find us at:\n\n📍 Nawabi Road, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139\n\nWe're easy to reach from anywhere in Haldwani — and if you're coming from out of town, just tap 'Get Directions' below and Google Maps will bring you straight to our door.",
-    hi: "हमारा पता है:\n\n📍 नवाबी रोड, DPS जूनियर स्कूल के पास, सुभाष नगर, हल्द्वानी, उत्तराखंड 263139\n\nहल्द्वानी में कहीं से भी पहुँचना आसान है — नीचे 'रास्ता देखें' दबाएँ और Google Maps आपको सीधे हम तक पहुँचा देगा।",
+    keywords: ['rjk', 'r.j.k', 'sitapur', 'kanpur', 'doms', 'सिंह', 'सीतापुर'],
+    en: "Dr. R.J.K. Singh is our Senior Consultant Ophthalmologist — one of the most experienced eye surgeons in the region.\n\n🎓 DOMS, Kanpur University (1972); Senior Fellowship at Sitapur Eye Hospital\n👁️ Comprehensive Ophthalmology\n\nHe spent 35+ years with Sitapur Eye Hospital across its Uttarakhand branches, and later served three years as senior consultant at Eye Q Eye Hospital before joining us.",
+    hi: "डॉ. आर.जे.के. सिंह हमारे वरिष्ठ सलाहकार नेत्र रोग विशेषज्ञ हैं — इस क्षेत्र के सबसे अनुभवी नेत्र सर्जनों में से एक।\n\n🎓 DOMS, कानपुर विश्वविद्यालय (1972); सीतापुर आँख अस्पताल से सीनियर फेलोशिप\n👁️ कम्प्रिहेंसिव ऑप्थैल्मोलॉजी\n\nउन्होंने सीतापुर आँख अस्पताल की उत्तराखंड शाखाओं में 35+ वर्ष कार्य किया, और उसके बाद तीन वर्ष Eye Q आई हॉस्पिटल में वरिष्ठ सलाहकार रहे।",
+    actions: [{ label: 'Doctor Profiles', labelHi: 'डॉक्टर प्रोफ़ाइल', to: '/doctors' }, BOOK_ACTION]
+  },
+  {
+    keywords: ['aditya', 'bhardwaj', 'maj', 'major', 'army', 'आदित्य', 'भारद्वाज'],
+    en: "Dr. Maj Aditya Bhardwaj is our Vitreo-Retinal Surgeon, Medical Retina Specialist & Cataract Surgeon.\n\n🎓 MBBS, MS (Ophthalmology) — Army Hospital (R&R), New Delhi\n🎓 Fellowship in Vitreo-Retina Surgery — ASG Eye Hospital, Varanasi\n👁️ 10,000+ surgeries\n\nHe was formerly Vitreo-Retinal Surgeon & Deputy MS at KK Medical College & Hospital, and brings an unusual extra strength — a background in Family Medicine (CMC Vellore) and Diabetology, which matters a great deal in diabetic retina care.",
+    hi: "डॉ. मेजर आदित्य भारद्वाज हमारे विट्रियो-रेटिनल सर्जन, मेडिकल रेटिना विशेषज्ञ और मोतियाबिंद सर्जन हैं।\n\n🎓 MBBS, MS (ऑप्थैल्मोलॉजी) — आर्मी हॉस्पिटल (R&R), नई दिल्ली\n🎓 विट्रियो-रेटिना सर्जरी में फेलोशिप — ASG आई हॉस्पिटल, वाराणसी\n👁️ 10,000+ सर्जरी\n\nवे पहले KK मेडिकल कॉलेज में विट्रियो-रेटिनल सर्जन और डिप्टी MS रह चुके हैं। उनके पास फैमिली मेडिसिन (CMC वेल्लोर) और डायबिटोलॉजी का भी अनुभव है, जो डायबिटिक रेटिना के इलाज में बहुत काम आता है।",
+    actions: [{ label: 'Doctor Profiles', labelHi: 'डॉक्टर प्रोफ़ाइल', to: '/doctors' }, { label: 'Retina Services', labelHi: 'रेटिना सेवाएँ', to: '/retina-services' }]
+  },
+  {
+    keywords: [
+      'doctor', 'doc', 'dr', 'surgeon', 'ophthalmologist', 'opthalmologist', 'optometrist',
+      'eye specialist', 'eye doctor', 'specialist', 'consultant', 'physician', 'profile', 'qualification',
+      'experience', 'team', 'staff', 'panel', 'faculty', 'singh',
+      'डॉक्टर', 'डाक्टर', 'सर्जन', 'नेत्र रोग विशेषज्ञ', 'विशेषज्ञ', 'चिकित्सक', 'टीम'
+    ],
+    en: "We're proud of our team — let me introduce them:\n\n👨‍⚕️ Dr. Sameer Varma — Founder & Senior Eye Specialist (M.S., Fellow SNC Chitrakoot). Cataract, Glaucoma, Oculoplasty & Paediatric Cataract. 50,000+ surgeries.\n👨‍⚕️ Dr. R.J.K. Singh — Senior Consultant Ophthalmologist (DOMS, Kanpur 1972). 35+ years with Sitapur Eye Hospital.\n👨‍⚕️ Dr. Maj Aditya Bhardwaj — Vitreo-Retinal & Cataract Surgeon (MS from Army Hospital R&R, Delhi). 10,000+ surgeries.\n\nOur panel also includes consulting surgeons and clinical support staff working in rotation. Ask me about any doctor by name and I'll share their full profile. 😊",
+    hi: "हमें अपनी टीम पर गर्व है — मिलिए हमारे डॉक्टरों से:\n\n👨‍⚕️ डॉ. समीर वर्मा — संस्थापक और वरिष्ठ नेत्र विशेषज्ञ (M.S., फेलो SNC चित्रकूट)। मोतियाबिंद, ग्लूकोमा, ऑक्यूलोप्लास्टी। 50,000+ सर्जरी।\n👨‍⚕️ डॉ. आर.जे.के. सिंह — वरिष्ठ सलाहकार (DOMS, कानपुर 1972)। सीतापुर आँख अस्पताल में 35+ वर्ष।\n👨‍⚕️ डॉ. मेजर आदित्य भारद्वाज — विट्रियो-रेटिनल और मोतियाबिंद सर्जन (MS, आर्मी हॉस्पिटल R&R दिल्ली)। 10,000+ सर्जरी।\n\nहमारे पैनल में रोटेशन पर कंसल्टिंग सर्जन और क्लिनिकल स्टाफ भी हैं। किसी भी डॉक्टर का नाम लेकर पूछें — मैं उनकी पूरी जानकारी दूँगी। 😊",
+    actions: [{ label: 'Meet Our Doctors', labelHi: 'हमारे डॉक्टरों से मिलें', to: '/doctors' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'speciality', 'specialty', 'specialities', 'specialties', 'service', 'department', 'ophthalmology',
+      'what do you treat', 'what do you offer', 'what do you do', 'opd', 'all services',
+      'विशेषता', 'सेवा', 'सेवाएँ', 'विभाग', 'इलाज'
+    ],
+    en: "We're a full-service eye hospital — here's what we look after:\n\n👁️ Cataract Surgery (MICS phaco, premium lenses)\n👁️ Glaucoma (Kala Motia) diagnosis & management\n👁️ Retina & Vitreo-Retinal Surgery\n👁️ Specs Removal — ICL & RLE\n👁️ Paediatric Ophthalmology & Squint\n👁️ Oculoplasty (eyelids, watering eyes)\n👁️ Optical Services & Contact Lenses\n\nWhich one would you like to know more about?",
+    hi: "हम एक पूर्ण नेत्र चिकित्सालय हैं — हमारी विशेषताएँ:\n\n👁️ मोतियाबिंद सर्जरी (MICS फेको, प्रीमियम लेंस)\n👁️ ग्लूकोमा (काला मोतिया) की जाँच व इलाज\n👁️ रेटिना और विट्रियो-रेटिनल सर्जरी\n👁️ चश्मा हटाना — ICL और RLE\n👁️ बच्चों की नेत्र चिकित्सा व भेंगापन\n👁️ ऑक्यूलोप्लास्टी (पलकें, आँख से पानी आना)\n👁️ ऑप्टिकल सेवाएँ और कॉन्टैक्ट लेंस\n\nआप किसके बारे में और जानना चाहेंगे?",
+    actions: [{ label: 'All Specialities', labelHi: 'सभी विशेषताएँ', to: '/services' }, BOOK_ACTION]
+  },
+  {
+    keywords: ['location', 'address', 'branch', 'centre', 'center', 'haldwani', 'kichha', 'where', 'reach', 'directions', 'नवाबी', 'पता', 'कहाँ', 'हल्द्वानी', 'किच्छा'],
+    en: "We have two centres:\n\n📍 **Haldwani (Main, Super-Specialty)**\nNawabi Road, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139\n☎️ 05946-223616 / +91 90685 61971\n🕘 Mon–Sat 9 AM–7 PM · Sun 9 AM–2 PM\n\n📍 **Kichha (Specialist Outreach Clinic)**\n1, Kichha, Uttarakhand 263148\n☎️ +91 79007 77709\n🕘 Mon–Sat 9 AM–6 PM\n\nTap 'Get Directions' below and Google Maps will bring you straight to our door.",
+    hi: "हमारे दो केंद्र हैं:\n\n📍 **हल्द्वानी (मुख्य, सुपर-स्पेशलिटी)**\nनवाबी रोड, DPS जूनियर स्कूल के पास, सुभाष नगर, हल्द्वानी, उत्तराखंड 263139\n☎️ 05946-223616 / +91 90685 61971\n🕘 सोम–शनि सुबह 9 – शाम 7 · रवि सुबह 9 – दोपहर 2\n\n📍 **किच्छा (आउटरीच क्लिनिक)**\n1, किच्छा, उत्तराखंड 263148\n☎️ +91 79007 77709\n🕘 सोम–शनि सुबह 9 – शाम 6\n\nनीचे 'रास्ता देखें' दबाएँ — Google Maps आपको सीधे हम तक पहुँचा देगा।",
     actions: [DIRECTIONS_ACTION, { label: 'View All Centres', labelHi: 'सभी केंद्र देखें', to: '/centres' }]
   },
   {
@@ -102,7 +135,11 @@ const FAQ_DATABASE: FaqEntry[] = [
     actions: [BOOK_ACTION, CALL_ACTION]
   },
   {
-    keywords: ['cost', 'price', 'fee', 'fees', 'charge', 'insurance', 'tpa', 'cashless', 'cghs', 'echs', 'ayushman', 'panel', 'खर्च', 'बीमा', 'फीस'],
+    keywords: [
+      'cost', 'price', 'fee', 'fees', 'charge', 'how much', 'surgery cost', 'operation cost',
+      'treatment cost', 'package', 'estimate', 'bill', 'billing', 'payment', 'insurance', 'tpa',
+      'cashless', 'cghs', 'echs', 'ayushman', 'खर्च', 'बीमा', 'फीस', 'कीमत', 'कितना'
+    ],
     en: "We believe good eye care shouldn't come with surprise bills — our pricing is fully transparent.\n\nWe support all major TPA insurance networks for cashless treatment, and we're CGHS/ECHS panel friendly too. For exact costs for your specific treatment, our billing desk will give you a clear estimate before anything begins — just call or visit.",
     hi: "हम मानते हैं कि अच्छे इलाज में छुपे हुए खर्च नहीं होने चाहिए — हमारी कीमतें पूरी तरह पारदर्शी हैं।\n\nसभी प्रमुख TPA बीमा नेटवर्क से कैशलेस इलाज उपलब्ध है, और हम CGHS/ECHS पैनल से भी जुड़े हैं। आपके इलाज का सटीक खर्च जानने के लिए हमारे बिलिंग डेस्क पर कॉल करें या आएँ — इलाज से पहले पूरा अनुमान दिया जाता है।",
     actions: [CALL_ACTION, BOOK_ACTION]
@@ -114,7 +151,7 @@ const FAQ_DATABASE: FaqEntry[] = [
     actions: [BOOK_ACTION]
   },
   {
-    keywords: ['emergency', 'urgent', 'injury', 'accident', 'chemical', 'sudden', 'vision loss', 'severe pain', 'red eye', 'चोट', 'दर्द', 'इमरजेंसी'],
+    keywords: ['emergency', 'urgent', 'injury', 'injured', 'trauma', 'accident', 'chemical', 'acid', 'burn', 'sudden', 'vision loss', 'severe pain', 'red eye', 'चोट', 'दर्द', 'इमरजेंसी', 'आपातकाल'],
     en: "⚠️ If this is an eye emergency — an injury, chemical splash, sudden vision loss, or severe pain — please don't wait. Call us right away at 05946-223616 or +91 90685 61971, or come straight to the hospital.\n\nFor chemical splashes: rinse the eye gently with clean water for 10–15 minutes while you're on your way. Quick action can save vision.",
     hi: "⚠️ अगर यह आँख की इमरजेंसी है — चोट, केमिकल गिरना, अचानक दिखना बंद होना, या तेज़ दर्द — तो कृपया इंतज़ार न करें। तुरंत कॉल करें: 05946-223616 या +91 90685 61971, या सीधे अस्पताल आ जाएँ।\n\nकेमिकल गिरने पर: रास्ते में आते समय आँख को साफ पानी से 10–15 मिनट तक धीरे-धीरे धोएँ। जल्दी किया गया इलाज नज़र बचा सकता है।",
     actions: [CALL_ACTION, DIRECTIONS_ACTION]
@@ -126,7 +163,7 @@ const FAQ_DATABASE: FaqEntry[] = [
     actions: [{ label: 'Take the Eye Test', labelHi: 'आई टेस्ट करें', to: '/test-eye' }]
   },
   {
-    keywords: ['night blindness', 'nyctalopia', 'night vision', 'ratondhi', 'रतौंधी'],
+    keywords: ['night blindness', 'nyctalopia', 'night vision', 'night driving', 'driving at night', 'dim light', 'ratondhi', 'रतौंधी', 'रात में'],
     en: "Night blindness (nyctalopia) makes it hard to see in dim light — driving at night often becomes the first struggle. It usually has an underlying cause: uncorrected eye power, early cataract, or sometimes a vitamin A deficiency.\n\nThe good news? Most causes are very treatable once identified. A simple examination will tell us exactly what's going on.",
     hi: "रतौंधी में कम रोशनी में देखना मुश्किल हो जाता है — अक्सर रात में गाड़ी चलाने में सबसे पहले परेशानी होती है। इसके पीछे कोई कारण होता है: चश्मे का नंबर, शुरुआती मोतियाबिंद, या कभी-कभी विटामिन A की कमी।\n\nअच्छी खबर? कारण पता चलने पर ज़्यादातर मामलों का इलाज आसानी से हो जाता है। एक सामान्य जाँच से सब साफ हो जाएगा।",
     actions: [BOOK_ACTION]
@@ -136,6 +173,118 @@ const FAQ_DATABASE: FaqEntry[] = [
     en: "Our oculoplasty department cares for everything around the eye — droopy eyelids (ptosis), constantly watering eyes, styes, chalazion, and cosmetic eyelid concerns.\n\nThese issues are often brushed off as 'minor', but they affect comfort and confidence every single day — and most have simple, effective treatments.",
     hi: "हमारा ऑक्यूलोप्लास्टी विभाग आँख के आसपास की हर समस्या का इलाज करता है — झुकी हुई पलकें (ptosis), लगातार पानी आना, गुहेरी (stye), और पलकों से जुड़ी कॉस्मेटिक समस्याएँ।\n\nइन्हें अक्सर 'छोटी बात' समझ लिया जाता है, पर ये रोज़ की तकलीफ देती हैं — और ज़्यादातर का इलाज आसान और असरदार है।",
     actions: [{ label: 'Oculoplasty Services', labelHi: 'ऑक्यूलोप्लास्टी सेवाएँ', to: '/oculoplasty-services' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'vitrectomy', 'mivs', 'retinal detachment', 'detachment', 'detached', 'macular hole', 'erm', 'epiretinal', 'vitreous',
+      'floater', 'sfiol', 'sf-iol', 'scleral', 'vr surgery', 'dislocated lens', 'sutureless',
+      'विट्रेक्टमी', 'रेटिनल डिटैचमेंट'
+    ],
+    en: "Vitreo-Retinal (VR) surgery is among the most delicate work we do, and it's led by Dr. Maj Aditya Bhardwaj.\n\nWhat we handle:\n• Sutureless Vitrectomy (MIVS)\n• Retinal Detachment repair\n• Macular Hole & ERM peeling\n• Diabetic Vitrectomy\n• Secondary & Scleral-Fixated IOL (SF-IOL)\n• Ocular trauma & subretinal surgery\n• Dislocated lens / nucleus retrieval\n\nA retinal detachment is time-sensitive — if you're seeing a sudden shower of floaters, flashes, or a curtain across your vision, please come in the same day.",
+    hi: "विट्रियो-रेटिनल (VR) सर्जरी हमारे सबसे नाज़ुक कामों में से है, जिसकी अगुवाई डॉ. मेजर आदित्य भारद्वाज करते हैं।\n\nहम करते हैं:\n• बिना टाँके की विट्रेक्टमी (MIVS)\n• रेटिनल डिटैचमेंट (पर्दा उखड़ना) की सर्जरी\n• मैक्युलर होल और ERM पीलिंग\n• डायबिटिक विट्रेक्टमी\n• सेकेंडरी और स्क्लेरल-फिक्सेटेड IOL (SF-IOL)\n• आँख की चोट और सबरेटिनल सर्जरी\n• खिसके हुए लेंस को निकालना\n\nरेटिनल डिटैचमेंट में देर नहीं करनी चाहिए — अगर अचानक बहुत सारे काले धब्बे, चमक, या नज़र पर पर्दा जैसा दिखे तो उसी दिन दिखाएँ।",
+    actions: [{ label: 'VR Surgery Details', labelHi: 'VR सर्जरी जानकारी', to: '/vr-surgery' }, CALL_ACTION]
+  },
+  {
+    keywords: [
+      'iol', 'intraocular', 'monofocal', 'multifocal', 'trifocal', 'toric', 'edof', 'symphony',
+      'foldable', 'aspheric', 'premium lens', 'lens type', 'lens option', 'which lens', 'lens quality',
+      'कौन सा लेंस', 'लेंस विकल्प'
+    ],
+    en: "Great question — the lens (IOL) choice really shapes your result after cataract surgery.\n\nWhat we offer:\n• Foldable Aspheric monofocal — excellent clarity, glasses usually needed for reading\n• Multifocal — distance and near together, far less dependence on glasses\n• EDOF (Symphony) — smooth continuous range of vision\n• Toric — corrects astigmatism (cylindrical power) at the same time\n• SF-IOL / AC IOL — for eyes without capsule support\n\nWe use lenses from Alcon, Zeiss and Johnson & Johnson. Our counsellors will honestly explain which suits your eye and budget — no upselling.",
+    hi: "बढ़िया सवाल — मोतियाबिंद सर्जरी का नतीजा काफी हद तक लेंस (IOL) की पसंद पर निर्भर करता है।\n\nहमारे विकल्प:\n• फोल्डेबल एस्फेरिक मोनोफोकल — बेहतरीन साफ नज़र, पढ़ने के लिए चश्मा लगेगा\n• मल्टीफोकल — दूर और पास दोनों, चश्मे पर निर्भरता बहुत कम\n• EDOF (सिम्फनी) — लगातार बढ़िया रेंज\n• टोरिक — सिलिंड्रिकल नंबर (एस्टिग्मेटिज़्म) भी ठीक करता है\n• SF-IOL / AC IOL — जिन आँखों में सपोर्ट नहीं बचा हो\n\nहम Alcon, Zeiss और Johnson & Johnson के लेंस उपयोग करते हैं। हमारे काउंसलर ईमानदारी से बताएँगे कि आपकी आँख और बजट के लिए क्या सही है।",
+    actions: [{ label: 'Cataract & Lenses', labelHi: 'मोतियाबिंद और लेंस', to: '/cataract' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'facility', 'infrastructure', 'operation theatre', 'operation theater', 'modular', 'ward', 'bed',
+      'admission', 'admit', 'anesthesia', 'anaesthesia', 'pharmacy', 'medical store', 'power backup',
+      'generator', 'air conditioned', 'counselling', 'counseling', 'hygiene', 'sterile', 'nabh',
+      'सुविधा', 'ऑपरेशन थिएटर', 'भर्ती', 'वार्ड', 'दवा'
+    ],
+    en: "Vedanta Netralya is a newly built, fully air-conditioned super-specialty eye centre. Here's what's inside:\n\n🏥 Two modular Operation Theatres\n🛏️ Indoor ward with recovery beds & recliners\n💓 Cardiac monitoring + General Anaesthesia facility for vulnerable patients\n👁️ Lid & lacrimal surgery suite with ocular prosthesis support\n🧒 Dedicated paediatric clinic\n💊 In-house pharmacy and optical store\n🗣️ Separate counselling chamber with dedicated counsellors\n⚡ 24-hour generator power backup\n\nWe follow strict NABH safety standards and sterile OT protocol.",
+    hi: "वेदांत नेत्रालय एक नया बना, पूरी तरह वातानुकूलित सुपर-स्पेशलिटी नेत्र केंद्र है। अंदर क्या है:\n\n🏥 दो मॉड्यूलर ऑपरेशन थिएटर\n🛏️ रिकवरी बेड और रिक्लाइनर के साथ इनडोर वार्ड\n💓 कार्डियक मॉनिटरिंग और जनरल एनेस्थीसिया की सुविधा\n👁️ पलक और आँसू नली सर्जरी सुइट, कृत्रिम आँख की सुविधा सहित\n🧒 बच्चों के लिए अलग क्लिनिक\n💊 अपनी फार्मेसी और ऑप्टिकल स्टोर\n🗣️ अलग काउंसलिंग चैंबर\n⚡ 24 घंटे जनरेटर बैकअप\n\nहम NABH सुरक्षा मानकों और स्टेराइल OT प्रोटोकॉल का सख्ती से पालन करते हैं।",
+    actions: [{ label: 'Hospital Facilities', labelHi: 'अस्पताल सुविधाएँ', to: '/facilities' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'ambulance', 'ambulance charge', 'ambulance cost', 'ambulance fee', 'pick up', 'pickup', 'drop',
+      'transport', 'vehicle', 'rudrapur', 'kashipur', 'moradabad', 'bareilly', 'gadarpur', 'pant nagar',
+      'एम्बुलेंस', 'गाड़ी', 'रुद्रपुर'
+    ],
+    en: "Yes, we have an ambulance service for patients travelling to us. Current charges:\n\n🚑 Haldwani local (up to 10 km one way) — ₹300\n🚑 Kichha / Gadarpur / Pant Nagar — ₹900\n🚑 Rudrapur — ₹900\n🚑 Kashipur — ₹1,400\n🚑 Moradabad — ₹1,800\n🚑 Bareilly — ₹2,000\n\nTo arrange a pick-up, please call 05946-223616 and our helpdesk will organise it for you.",
+    hi: "जी हाँ, मरीज़ों के लिए हमारी एम्बुलेंस सेवा उपलब्ध है। मौजूदा शुल्क:\n\n🚑 हल्द्वानी लोकल (10 किमी तक, एक तरफ) — ₹300\n🚑 किच्छा / गदरपुर / पंतनगर — ₹900\n🚑 रुद्रपुर — ₹900\n🚑 काशीपुर — ₹1,400\n🚑 मुरादाबाद — ₹1,800\n🚑 बरेली — ₹2,000\n\nएम्बुलेंस बुक करने के लिए 05946-223616 पर कॉल करें, हमारी हेल्पडेस्क व्यवस्था कर देगी।",
+    actions: [CALL_ACTION, { label: 'Hospital Facilities', labelHi: 'अस्पताल सुविधाएँ', to: '/facilities' }]
+  },
+  {
+    keywords: [
+      'optical', 'spectacle', 'frame', 'eyewear', 'lens', 'contact lens', 'blue cut', 'blue-cut',
+      'blue light', 'computer glasses', 'progressive', 'bifocal', 'high index', 'showroom',
+      'optical store', 'power check', 'refraction', 'goggles',
+      'ऑप्टिकल', 'फ्रेम', 'कॉन्टैक्ट लेंस', 'दुकान'
+    ],
+    en: "Vedanta Optical is our in-house showroom — so you can get your eyes checked and your glasses made in one visit. 😊\n\n👓 Premium progressive & bifocal lenses (no visible lines)\n💻 Therapeutic blue-cut computer lenses for screen strain\n👁️ Contact lens clinic — soft, disposable, toric, RGP and cosmetic colour lenses\n🪶 High-index ultra-thin lenses for high powers\n🔬 Computerized auto-refraction stations\n🕶️ Open-display selection of Indian and imported frames for every budget\n\nEvery lens is verified for power and alignment before it's handed to you.",
+    hi: "वेदांत ऑप्टिकल हमारा अपना शोरूम है — एक ही विज़िट में जाँच भी और चश्मा भी। 😊\n\n👓 प्रीमियम प्रोग्रेसिव और बाइफोकल लेंस (बिना लाइन के)\n💻 स्क्रीन की थकान के लिए ब्लू-कट कंप्यूटर लेंस\n👁️ कॉन्टैक्ट लेंस क्लिनिक — सॉफ्ट, डिस्पोजेबल, टोरिक, RGP और कलर लेंस\n🪶 ज़्यादा नंबर के लिए हाई-इंडेक्स पतले लेंस\n🔬 कंप्यूटराइज़्ड ऑटो-रिफ्रैक्शन जाँच\n🕶️ हर बजट के लिए भारतीय और इम्पोर्टेड फ्रेम्स का खुला डिस्प्ले\n\nहर लेंस का नंबर और अलाइनमेंट देने से पहले जाँचा जाता है।",
+    actions: [{ label: 'Optical Services', labelHi: 'ऑप्टिकल सेवाएँ', to: '/optical-services' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'oct', 'perimetry', 'tonometry', 'gonioscopy', 'pachymetry', 'topography', 'biometry', 'aladin',
+      'b scan', 'b-scan', 'ultrasonography', 'ffa', 'fundus', 'angiography', 'machine', 'equipment',
+      'technology', 'diagnostic', 'zeiss', 'alcon', 'yag', 'मशीन', 'तकनीक', 'जाँच'
+    ],
+    en: "We've invested heavily in diagnostics, because the right treatment starts with the right diagnosis.\n\n🔬 OCT (retina & optic nerve head)\n🔬 Perimetry / visual field analysis\n🔬 Tonometry (NCT & applanation) and gonioscopy\n🔬 Pachymetry & corneal topography\n🔬 Optical biometry (ALADIN) for lens power calculation\n🔬 B-scan ultrasonography\n🔬 Fundus photography & FFA\n💡 YAG laser (capsulotomy, iridotomy), SLT and green laser photocoagulation\n\nOur equipment is from Alcon, Zeiss and Johnson & Johnson — all in-house, so you're rarely sent elsewhere for a test.",
+    hi: "हमने जाँच उपकरणों पर बहुत निवेश किया है, क्योंकि सही इलाज सही जाँच से ही शुरू होता है।\n\n🔬 OCT (रेटिना और ऑप्टिक नर्व)\n🔬 पेरीमेट्री / विज़ुअल फील्ड जाँच\n🔬 टोनोमेट्री (NCT और अप्लनेशन), गोनियोस्कोपी\n🔬 पैकीमेट्री और कॉर्नियल टोपोग्राफी\n🔬 ऑप्टिकल बायोमेट्री (ALADIN) — लेंस पावर की गणना\n🔬 B-स्कैन अल्ट्रासोनोग्राफी\n🔬 फंडस फोटोग्राफी और FFA\n💡 YAG लेज़र, SLT और ग्रीन लेज़र फोटोकोएगुलेशन\n\nहमारे उपकरण Alcon, Zeiss और Johnson & Johnson के हैं — सब अस्पताल में ही, इसलिए जाँच के लिए बाहर भेजने की ज़रूरत नहीं पड़ती।",
+    actions: [{ label: 'Hospital Facilities', labelHi: 'अस्पताल सुविधाएँ', to: '/facilities' }, BOOK_ACTION]
+  },
+  {
+    keywords: [
+      'about', 'history', 'founded', 'established', 'story', 'why choose', 'choose', 'why vedanta', 'legacy',
+      'hospital', 'years', 'patients treated', 'how many surgeries', 'how many patients',
+      'statistic', 'track record', 'success rate', 'award', 'reputation',
+      'इतिहास', 'स्थापना', 'के बारे में', 'अस्पताल'
+    ],
+    en: "Vedanta Netralya was founded in 2017 by Dr. Sameer Varma, and has grown from a local eye clinic into a super-specialty eye institute for the Kumaon region. 💙\n\n📈 18+ years of surgical experience\n📈 50,000+ successful surgeries\n📈 1,50,000+ patients treated\n\nOur journey: 2017 foundation in Haldwani → 2020 retina & VR wing → 2025 new state-of-the-art centre with two modular OTs → 2026, celebrating 50,000 smiles restored.\n\nWhat we hold ourselves to: ethical treatment decisions, transparent billing, board-certified surgeons, and technology from Alcon, Zeiss and Johnson & Johnson.",
+    hi: "वेदांत नेत्रालय की स्थापना 2017 में डॉ. समीर वर्मा ने की थी। एक स्थानीय क्लिनिक से यह कुमाऊँ क्षेत्र का सुपर-स्पेशलिटी नेत्र संस्थान बन चुका है। 💙\n\n📈 18+ वर्षों का सर्जिकल अनुभव\n📈 50,000+ सफल सर्जरी\n📈 1,50,000+ मरीज़ों का इलाज\n\nहमारा सफ़र: 2017 हल्द्वानी में स्थापना → 2020 रेटिना और VR विंग → 2025 दो मॉड्यूलर OT के साथ नया आधुनिक केंद्र → 2026, 50,000 मुस्कानें।\n\nहमारे सिद्धांत: ईमानदार इलाज, पारदर्शी बिलिंग, अनुभवी सर्जन, और Alcon, Zeiss व Johnson & Johnson की तकनीक।",
+    actions: [{ label: 'About Vedanta Netralya', labelHi: 'हमारे बारे में', to: '/about' }, { label: 'Vision & Mission', labelHi: 'विज़न और मिशन', to: '/vision-mission' }]
+  },
+  {
+    keywords: ['mission', 'motto', 'core value', 'philosophy', 'purpose', 'ethic', 'मिशन', 'उद्देश्य', 'मूल्य'],
+    en: "Our motto says it best: \"Premium, Personal, Comprehensive and Ethical eye care through the best experts with the highest level of quality and technology.\"\n\nOur mission is to provide premium and comprehensive eye care from the most experienced experts in the field — and the four values we're judged by are patient integrity, clinical rigour, advanced technology, and uncompromising safety.",
+    hi: "हमारा ध्येय वाक्य: \"सर्वोत्तम विशेषज्ञों द्वारा उच्चतम गुणवत्ता और तकनीक के साथ प्रीमियम, व्यक्तिगत, व्यापक और नैतिक नेत्र चिकित्सा।\"\n\nहमारा मिशन है — क्षेत्र के सबसे अनुभवी विशेषज्ञों से प्रीमियम और संपूर्ण नेत्र देखभाल देना। हमारे चार मूल्य हैं: मरीज़ के प्रति ईमानदारी, क्लिनिकल कठोरता, आधुनिक तकनीक, और बिना समझौते की सुरक्षा।",
+    actions: [{ label: 'Vision & Mission', labelHi: 'विज़न और मिशन', to: '/vision-mission' }]
+  },
+  {
+    keywords: ['review', 'testimonial', 'rating', 'feedback', 'patient story', 'google review', 'समीक्षा', 'रिव्यू', 'अनुभव'],
+    en: "We'd rather let our patients speak for us. 😊 We have a whole page of patient reviews and video testimonials — real people from Haldwani, Kichha and across Kumaon sharing how their surgery went.\n\nIt's honestly the best way to judge us before you visit.",
+    hi: "हमारी बात से बेहतर है हमारे मरीज़ों की बात। 😊 हमारे पास मरीज़ों की समीक्षाओं और वीडियो टेस्टिमोनियल का पूरा पेज है — हल्द्वानी, किच्छा और पूरे कुमाऊँ के असली लोग अपना अनुभव बता रहे हैं।\n\nआने से पहले हमें परखने का यही सबसे अच्छा तरीका है।",
+    actions: [{ label: 'Patient Reviews', labelHi: 'मरीज़ों की समीक्षा', to: '/reviews' }, { label: 'Testimonials', labelHi: 'प्रशंसापत्र', to: '/testimonials' }]
+  },
+  {
+    keywords: ['gallery', 'video', 'photo', 'picture', 'image', 'tour', 'youtube', 'reel', 'गैलरी', 'वीडियो', 'फोटो', 'तस्वीर'],
+    en: "You can take a proper look around before you come. 😊 Our gallery has videos of the hospital, the operation theatre, our team and our infrastructure, plus photos of the centre.",
+    hi: "आने से पहले आप अस्पताल को अच्छे से देख सकते हैं। 😊 हमारी गैलरी में अस्पताल, ऑपरेशन थिएटर, हमारी टीम और इंफ्रास्ट्रक्चर के वीडियो और फोटो हैं।",
+    actions: [{ label: 'View Gallery', labelHi: 'गैलरी देखें', to: '/gallery' }]
+  },
+  {
+    keywords: [
+      'contact', 'phone number', 'contact number', 'mobile number', 'email', 'email address', 'mail', 'whatsapp',
+      'helpline', 'helpdesk', 'enquiry', 'inquiry', 'reception', 'संपर्क', 'फोन नंबर', 'ईमेल'
+    ],
+    en: "Here's how to reach us:\n\n☎️ Haldwani: 05946-223616 / +91 90685 61971\n☎️ Kichha: +91 79007 77709\n🚨 Emergency: +91 90685 61971\n✉️ admin@vedantanetralya.com\n\nOur helpdesk is happiest to help between 9 AM and 7 PM (Mon–Sat).",
+    hi: "हमसे संपर्क करने के तरीके:\n\n☎️ हल्द्वानी: 05946-223616 / +91 90685 61971\n☎️ किच्छा: +91 79007 77709\n🚨 इमरजेंसी: +91 90685 61971\n✉️ admin@vedantanetralya.com\n\nहमारी हेल्पडेस्क सोम–शनि सुबह 9 से शाम 7 बजे तक उपलब्ध है।",
+    actions: [CALL_ACTION, { label: 'Contact Page', labelHi: 'संपर्क पेज', to: '/contact' }]
+  },
+  {
+    keywords: ['conjunctivitis', 'eye flu', 'pink eye', 'infection', 'first aid', 'flush', 'dust', 'आँख आना', 'संक्रमण'],
+    en: "If something has gone into your eye, here's the safe way to flush it:\n\n1️⃣ Wash your hands thoroughly first\n2️⃣ Use sterile saline or clean lukewarm drinking water\n3️⃣ Tilt your head to the side and pour gently from the inner corner (near the nose) outward — this stops debris washing into the other eye\n4️⃣ Blink softly while flushing\n\nPlease don't rub the eye. For eye flu / conjunctivitis, avoid sharing towels and see us if there's pain, light sensitivity or blurring — those need examination, not just drops.",
+    hi: "अगर आँख में कुछ चला गया है, तो धोने का सही तरीका:\n\n1️⃣ पहले हाथ अच्छी तरह धोएँ\n2️⃣ स्टेराइल सलाइन या साफ गुनगुना पीने का पानी लें\n3️⃣ सिर एक तरफ झुकाएँ और नाक की तरफ वाले कोने से बाहर की ओर धीरे-धीरे डालें — इससे गंदगी दूसरी आँख में नहीं जाती\n4️⃣ धोते समय हल्के से पलकें झपकाएँ\n\nआँख को रगड़ें नहीं। आँख आना (कंजंक्टिवाइटिस) में तौलिया साझा न करें, और अगर दर्द, रोशनी से चुभन या धुंधलापन हो तो ज़रूर दिखाएँ — सिर्फ ड्रॉप्स काफी नहीं।",
+    actions: [{ label: 'Prevention Guide', labelHi: 'बचाव गाइड', to: '/prevention' }, CALL_ACTION]
+  },
+  {
+    keywords: ['what can you do', 'help me', 'options', 'menu', 'topics', 'guide me', 'क्या कर सकती', 'मदद'],
+    en: "Happy to help! Here's what I can tell you about:\n\n👁️ Treatments — cataract, glaucoma, retina, VR surgery, specs removal, children's eyes, oculoplasty, dry eye\n👨‍⚕️ Our doctors — ask by name for a full profile\n🔬 Diagnostics, lens (IOL) options and optical/eyewear\n🏥 Facilities, ambulance charges, both our centres\n📅 Appointments, timings, weekly offers, insurance & fees\n🚨 Eye emergencies and first aid\n\nJust ask in English or हिन्दी — whatever is comfortable. 😊",
+    hi: "ज़रूर! मैं इन सब के बारे में बता सकती हूँ:\n\n👁️ इलाज — मोतियाबिंद, ग्लूकोमा, रेटिना, VR सर्जरी, चश्मा हटाना, बच्चों की आँखें, ऑक्यूलोप्लास्टी, ड्राई आई\n👨‍⚕️ हमारे डॉक्टर — नाम लेकर पूछें, पूरी जानकारी दूँगी\n🔬 जाँच मशीनें, लेंस (IOL) विकल्प और ऑप्टिकल/चश्मा\n🏥 सुविधाएँ, एम्बुलेंस शुल्क, दोनों केंद्र\n📅 अपॉइंटमेंट, समय, साप्ताहिक ऑफर, बीमा और फीस\n🚨 आँख की इमरजेंसी और प्राथमिक उपचार\n\nअंग्रेज़ी या हिन्दी — जिसमें सहज हों, पूछिए। 😊",
+    actions: [BOOK_ACTION, CALL_ACTION]
   }
 ];
 
@@ -156,12 +305,12 @@ const GREETINGS_HI = [
 ];
 
 const FALLBACKS_EN = [
-  "Hmm, that's a bit outside what I know — but I don't want to leave you without an answer! Our helpdesk team would love to help you personally at 05946-223616.\n\nMeanwhile, you can ask me about cataract, glaucoma, specs removal, our doctors, timings, or this week's offers. 😊",
-  "That's a good question — and honestly, our team at the hospital can answer it much better than I can! Give them a ring at 05946-223616.\n\nI'm great with things like treatments, doctor profiles, appointment booking, insurance, and our weekly special OPD days — try me!"
+  "Hmm, that's a bit outside what I know — but I don't want to leave you without an answer! Our helpdesk team would love to help you personally at 05946-223616.\n\nMeanwhile, I can tell you about treatments (cataract, glaucoma, retina, VR surgery, specs removal, children's eyes, oculoplasty), our doctors, lens options, diagnostics, facilities, ambulance charges, both our centres, timings, fees and weekly offers. 😊",
+  "That's a good question — and honestly, our team at the hospital can answer it much better than I can! Give them a ring at 05946-223616.\n\nTry me on any of these: doctor profiles, appointment booking, our specialities, hospital facilities, optical & eyewear, insurance, or our weekly special OPD days."
 ];
 const FALLBACKS_HI = [
-  "माफ़ कीजिए, यह मेरी जानकारी से थोड़ा बाहर है — लेकिन आपको बिना जवाब के नहीं छोड़ूँगी! हमारी हेल्पडेस्क टीम आपकी मदद करेगी: 05946-223616।\n\nआप मुझसे मोतियाबिंद, ग्लूकोमा, चश्मा हटाना, डॉक्टर, समय या इस हफ्ते के ऑफर के बारे में पूछ सकते हैं। 😊",
-  "अच्छा सवाल है — इसका जवाब हमारे अस्पताल की टीम बेहतर दे पाएगी! कृपया कॉल करें: 05946-223616।\n\nमैं इलाज, डॉक्टर, अपॉइंटमेंट, बीमा और साप्ताहिक ऑफर के बारे में अच्छी जानकारी दे सकती हूँ — पूछ कर देखिए!"
+  "माफ़ कीजिए, यह मेरी जानकारी से थोड़ा बाहर है — लेकिन आपको बिना जवाब के नहीं छोड़ूँगी! हमारी हेल्पडेस्क टीम आपकी मदद करेगी: 05946-223616।\n\nमैं आपको इलाज (मोतियाबिंद, ग्लूकोमा, रेटिना, VR सर्जरी, चश्मा हटाना, बच्चों की आँखें, ऑक्यूलोप्लास्टी), डॉक्टर, लेंस विकल्प, जाँच मशीनें, सुविधाएँ, एम्बुलेंस शुल्क, दोनों केंद्र, समय, फीस और ऑफर के बारे में बता सकती हूँ। 😊",
+  "अच्छा सवाल है — इसका जवाब हमारे अस्पताल की टीम बेहतर दे पाएगी! कृपया कॉल करें: 05946-223616।\n\nमुझसे ये पूछ सकते हैं: डॉक्टर की जानकारी, अपॉइंटमेंट, हमारी विशेषताएँ, अस्पताल की सुविधाएँ, ऑप्टिकल और चश्मा, बीमा, या साप्ताहिक स्पेशल OPD दिन।"
 ];
 
 const QUICK_REPLIES = [
@@ -170,13 +319,56 @@ const QUICK_REPLIES = [
   { en: '🎁 Weekly offers', hi: '🎁 साप्ताहिक ऑफर', query: { en: 'What offers do you have?', hi: 'क्या ऑफर हैं?' } },
   { en: '🕘 Timings', hi: '🕘 समय', query: { en: 'What are your timings?', hi: 'आपका समय क्या है?' } },
   { en: '💳 Insurance & fees', hi: '💳 बीमा और फीस', query: { en: 'Do you accept insurance?', hi: 'क्या बीमा चलता है?' } },
+  { en: '👁️ Our specialities', hi: '👁️ हमारी विशेषताएँ', query: { en: 'What specialities do you have?', hi: 'आपकी विशेषताएँ क्या हैं?' } },
+  { en: '🏥 Facilities', hi: '🏥 सुविधाएँ', query: { en: 'What facilities does the hospital have?', hi: 'अस्पताल में क्या सुविधाएँ हैं?' } },
+  { en: '📍 Our centres', hi: '📍 हमारे केंद्र', query: { en: 'Where are you located?', hi: 'आपका पता कहाँ है?' } },
 ];
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const containsKeyword = (query: string, keyword: string): boolean => {
   if (/[ऀ-ॿ]/.test(keyword)) return query.includes(keyword);
-  return new RegExp(`\\b${escapeRegExp(keyword)}\\b`, 'i').test(query);
+  // Allow plurals: "doctors"/"branches" match "doctor"/"branch", and "facilities" matches "facility"
+  const stem = /y$/i.test(keyword)
+    ? `${escapeRegExp(keyword.slice(0, -1))}(?:y|ies)`
+    : `${escapeRegExp(keyword)}(?:e?s)?`;
+  return new RegExp(`\\b${stem}\\b`, 'i').test(query);
+};
+
+// Naina is a feminine persona, so she should speak with a female voice wherever the browser offers one.
+// NOTE: check the female list first — "female" itself contains "male".
+const FEMALE_VOICE_HINTS = [
+  'female', 'neerja', 'heera', 'kalpana', 'swara', 'lekha', 'veena', 'aditi', 'raveena', 'kajal',
+  'zira', 'aria', 'jenny', 'michelle', 'samantha', 'susan', 'catherine', 'sonia', 'joanna', 'salli',
+];
+const MALE_VOICE_HINTS = [
+  'male', 'rishi', 'ravi', 'madhur', 'hemant', 'prabhat', 'kabir', 'arjun',
+  'david', 'mark', 'george', 'guy', 'daniel', 'alex', 'fred', 'rishabh',
+];
+
+const pickFemaleVoice = (
+  voices: SpeechSynthesisVoice[],
+  lang: 'hi' | 'en'
+): SpeechSynthesisVoice | null => {
+  if (!voices.length) return null;
+  const prefix = lang === 'hi' ? 'hi' : 'en';
+  const pool = voices.filter(v => v.lang.toLowerCase().startsWith(prefix));
+  if (!pool.length) return null;
+
+  const scoreOf = (v: SpeechSynthesisVoice) => {
+    const name = v.name.toLowerCase();
+    const isFemale = FEMALE_VOICE_HINTS.some(h => name.includes(h));
+    const isMale = !isFemale && MALE_VOICE_HINTS.some(h => name.includes(h));
+    let score = 0;
+    if (isFemale) score += 10;
+    if (isMale) score -= 10;
+    if (/-in$/i.test(v.lang)) score += 3;                       // en-IN / hi-IN accent feels local
+    if (/google|natural|neural|online/.test(name)) score += 2;  // higher-quality engines
+    return score;
+  };
+
+  const best = pool.reduce((a, b) => (scoreOf(b) > scoreOf(a) ? b : a));
+  return scoreOf(best) > 0 ? best : null;
 };
 
 const Chatbot: React.FC = () => {
@@ -201,6 +393,15 @@ const Chatbot: React.FC = () => {
   const recognitionRef = useRef<any>(null);
   const languageRef = useRef<'en' | 'hi'>('en');
   const variantCounter = useRef(0);
+  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+
+  // Voices load asynchronously in most browsers, so keep a fresh copy around
+  useEffect(() => {
+    const loadVoices = () => { voicesRef.current = window.speechSynthesis.getVoices(); };
+    loadVoices();
+    window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', loadVoices);
+  }, []);
 
   useEffect(() => {
     const handleOpenBot = () => setIsOpen(true);
@@ -273,16 +474,18 @@ const Chatbot: React.FC = () => {
 
     const hasHindi = /[ऀ-ॿ]/.test(speakable);
     utterance.rate = 1.0;
+    utterance.lang = hasHindi ? 'hi-IN' : 'en-IN';
 
-    const voices = window.speechSynthesis.getVoices();
-    if (hasHindi) {
-      utterance.lang = 'hi-IN';
-      const desiredVoice = voices.find(v => v.lang.includes('hi') || v.name.toLowerCase().includes('hindi') || v.name.toLowerCase().includes('lekha'));
-      if (desiredVoice) utterance.voice = desiredVoice;
+    const voices = voicesRef.current.length ? voicesRef.current : window.speechSynthesis.getVoices();
+    const femaleVoice = pickFemaleVoice(voices, hasHindi ? 'hi' : 'en');
+    if (femaleVoice) {
+      utterance.voice = femaleVoice;
+      utterance.pitch = 1.0;
     } else {
-      utterance.lang = 'en-IN';
-      const desiredVoice = voices.find(v => v.lang.includes('en') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('india')));
-      if (desiredVoice) utterance.voice = desiredVoice;
+      // No female voice installed — lift the pitch so Naina still reads as feminine
+      const fallback = voices.find(v => v.lang.toLowerCase().startsWith(hasHindi ? 'hi' : 'en'));
+      if (fallback) utterance.voice = fallback;
+      utterance.pitch = 1.25;
     }
 
     utterance.onstart = () => setIsSpeaking(true);
