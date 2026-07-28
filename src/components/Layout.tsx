@@ -155,7 +155,7 @@ const Layout: React.FC = () => {
                       {location.pathname === '/about' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <Link to="/doctors" className={`hover:text-brand-teal transition-colors py-1 flex items-center justify-between ${location.pathname === '/doctors' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
-                      <span>Our Doctors &amp; Team</span>
+                      <span>Our Doctors</span>
                       {location.pathname === '/doctors' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <Link to="/team" className={`hover:text-brand-teal transition-colors py-1 flex items-center justify-between ${location.pathname === '/team' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
@@ -269,7 +269,7 @@ const Layout: React.FC = () => {
               <hr className="border-cream/10" />
               <p className="text-[10px] text-brand-teal font-black tracking-widest uppercase">About Us</p>
               <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/about' ? 'text-brand-teal font-black' : ''}`}>About Hospital</Link>
-              <Link to="/doctors" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/doctors' ? 'text-brand-teal font-black' : ''}`}>Our Doctors &amp; Team</Link>
+              <Link to="/doctors" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/doctors' ? 'text-brand-teal font-black' : ''}`}>Our Doctors</Link>
               <Link to="/team" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/team' ? 'text-brand-teal font-black' : ''}`}>Our Team</Link>
               <Link to="/facilities" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/facilities' ? 'text-brand-teal font-black' : ''}`}>Facilities</Link>
               <hr className="border-cream/10" />
