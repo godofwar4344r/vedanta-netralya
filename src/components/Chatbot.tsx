@@ -14,6 +14,8 @@ interface QuickAction {
 interface Message {
   sender: 'bot' | 'user';
   text: string;
+  /** Short conversational version read aloud. Falls back to `text` when absent. */
+  speech?: string;
   actions?: QuickAction[];
 }
 
@@ -288,6 +290,153 @@ const FAQ_DATABASE: FaqEntry[] = [
   }
 ];
 
+// Replies are written to be READ — bullet lists, addresses, phone numbers, opening hours.
+// Spoken aloud that sounds mechanical no matter how good the voice is, so each answer gets a
+// short conversational version. The full detail stays on screen; Naina just talks you through it.
+// Keyed by the entry's first keyword, which is unique across FAQ_DATABASE.
+const SPOKEN_SUMMARIES: Record<string, { en: string; hi: string }> = {
+  cataract: {
+    en: "Cataract care is what we're best known for. Our surgeons use micro-incision phaco surgery with premium foldable lenses — no injections, no stitches — and most patients are back to daily life within a day.",
+    hi: "मोतियाबिंद का इलाज हमारी सबसे बड़ी पहचान है। हमारे सर्जन बिना टाँके, बिना इंजेक्शन के माइक्रो-इंसीज़न फेको सर्जरी करते हैं, और ज़्यादातर मरीज़ एक दिन में सामान्य जीवन में लौट आते हैं।",
+  },
+  glaucoma: {
+    en: "Glaucoma, or kala motia, takes sight away slowly without any warning signs, so early detection really matters. Our glaucoma clinic is headed by Doctor Sameer Varma, with advanced testing available in house.",
+    hi: "ग्लूकोमा यानी काला मोतिया बिना किसी लक्षण के धीरे-धीरे नज़र छीन लेता है, इसलिए समय पर जाँच बहुत ज़रूरी है। हमारा ग्लूकोमा क्लिनिक डॉक्टर समीर वर्मा के नेतृत्व में चलता है।",
+  },
+  'specs removal': {
+    en: "Yes, we offer permanent freedom from glasses through options like I C L and refractive lens exchange. Which one suits you depends on your eye power and corneal health, and our surgeons will guide you honestly after a detailed check.",
+    hi: "जी हाँ, चश्मे से स्थायी छुटकारे के लिए हमारे पास आई सी एल और आर एल ई जैसे विकल्प हैं। आपके लिए कौन सा सही है, यह विस्तृत जाँच के बाद हमारे डॉक्टर ईमानदारी से बताएँगे।",
+  },
+  lasik: {
+    en: "LASIK is a laser procedure that reshapes the cornea to correct your power. Honestly, it isn't medically necessary — glasses work just as well — but if you'd love the freedom, we can check whether it suits your eyes.",
+    hi: "लेसिक एक लेज़र प्रक्रिया है जो कॉर्निया को रीशेप करके आपका नंबर ठीक करती है। यह ज़रूरी नहीं है, पर अगर आप चश्मे से आज़ादी चाहते हैं तो हम पूरी जाँच करके सही सलाह देंगे।",
+  },
+  retina: {
+    en: "If you have diabetes or high blood pressure, please get your retina checked at least once a year. Our retina clinic is led by Doctor Major Aditya Bhardwaj, and every Tuesday is our retina screening day with half off consultation.",
+    hi: "अगर आपको शुगर या हाई ब्लड प्रेशर है तो साल में एक बार रेटिना की जाँच ज़रूर करवाएँ। हमारा रेटिना क्लिनिक डॉक्टर मेजर आदित्य भारद्वाज के नेतृत्व में चलता है, और हर मंगलवार जाँच शुल्क में पचास प्रतिशत छूट मिलती है।",
+  },
+  child: {
+    en: "Children's eyes deserve gentle, early care. We treat squint, lazy eye and childhood power problems — and every Wednesday, eye screening for children under five is completely free.",
+    hi: "बच्चों की आँखों को समय पर और कोमल देखभाल चाहिए। हम भेंगापन, लेज़ी आई और बच्चों के नंबर का इलाज करते हैं, और हर बुधवार पाँच साल से छोटे बच्चों की जाँच बिल्कुल मुफ़्त है।",
+  },
+  dry: {
+    en: "Tired, dry or burning eyes after long screen time is one of the commonest things we see. Try the twenty twenty twenty rule — every twenty minutes, look at something far away for twenty seconds. If it persists, do come in.",
+    hi: "स्क्रीन के बाद आँखों में थकान, सूखापन या जलन बहुत आम है। बीस-बीस-बीस नियम आज़माएँ — हर बीस मिनट में बीस सेकंड के लिए दूर देखें। अगर परेशानी बनी रहे तो एक बार दिखा लें।",
+  },
+  prevention: {
+    en: "Prevention really is the best medicine for your eyes. Everyone over forty, anyone with diabetes or blood pressure, and every child before starting school should have their eyes examined once a year.",
+    hi: "आँखों के लिए बचाव ही सबसे अच्छा इलाज है। चालीस से ऊपर हर व्यक्ति, शुगर या बीपी वाले मरीज़, और स्कूल जाने से पहले हर बच्चे की जाँच साल में एक बार ज़रूर होनी चाहिए।",
+  },
+  appointment: {
+    en: "Booking is quick and easy. You can book online in under a minute, or simply call our helpdesk. I've put the slot timings and the doctor choices on screen for you.",
+    hi: "अपॉइंटमेंट बुक करना बहुत आसान है। आप एक मिनट में ऑनलाइन बुक कर सकते हैं, या हेल्पडेस्क पर कॉल करें। समय और डॉक्टर के विकल्प मैंने स्क्रीन पर दिखा दिए हैं।",
+  },
+  sameer: {
+    en: "Doctor Sameer Varma is our founder and senior eye specialist, trained at Sadguru Netra Chikitsalaya in Chitrakoot. He has performed over fifty thousand cataract surgeries. His full profile is on screen.",
+    hi: "डॉक्टर समीर वर्मा हमारे संस्थापक और वरिष्ठ नेत्र विशेषज्ञ हैं, जिन्होंने चित्रकूट के सद्गुरु नेत्र चिकित्सालय से प्रशिक्षण लिया। उन्होंने पचास हज़ार से ज़्यादा मोतियाबिंद सर्जरी की हैं। पूरी जानकारी स्क्रीन पर है।",
+  },
+  rjk: {
+    en: "Doctor R J K Singh is our senior consultant ophthalmologist, with more than thirty five years at Sitapur Eye Hospital. His full profile is on screen.",
+    hi: "डॉक्टर आर जे के सिंह हमारे वरिष्ठ सलाहकार नेत्र रोग विशेषज्ञ हैं, जिन्हें सीतापुर आँख अस्पताल में पैंतीस वर्ष से अधिक का अनुभव है। पूरी जानकारी स्क्रीन पर है।",
+  },
+  aditya: {
+    en: "Doctor Major Aditya Bhardwaj is our vitreo-retinal surgeon, trained at the Army Hospital in New Delhi, with a fellowship in retina surgery. His full profile is on screen.",
+    hi: "डॉक्टर मेजर आदित्य भारद्वाज हमारे विट्रियो-रेटिनल सर्जन हैं, जिन्होंने नई दिल्ली के आर्मी हॉस्पिटल से प्रशिक्षण और रेटिना सर्जरी में फेलोशिप की है। पूरी जानकारी स्क्रीन पर है।",
+  },
+  doctor: {
+    en: "We have three senior eye surgeons — Doctor Sameer Varma, Doctor R J K Singh, and Doctor Major Aditya Bhardwaj. Their profiles are on screen, and you can ask me about any of them by name.",
+    hi: "हमारे तीन वरिष्ठ नेत्र सर्जन हैं — डॉक्टर समीर वर्मा, डॉक्टर आर जे के सिंह, और डॉक्टर मेजर आदित्य भारद्वाज। उनकी जानकारी स्क्रीन पर है, और आप किसी का भी नाम लेकर पूछ सकते हैं।",
+  },
+  speciality: {
+    en: "We're a full service eye hospital — cataract, glaucoma, retina, specs removal, children's eye care, oculoplasty and optical services. The full list is on screen. Which one would you like to know more about?",
+    hi: "हम एक पूर्ण नेत्र चिकित्सालय हैं — मोतियाबिंद, ग्लूकोमा, रेटिना, चश्मा हटाना, बच्चों की देखभाल, ऑक्यूलोप्लास्टी और ऑप्टिकल सेवाएँ। पूरी सूची स्क्रीन पर है। आप किसके बारे में जानना चाहेंगे?",
+  },
+  location: {
+    en: "We have two centres — our main super-specialty hospital in Haldwani, and an outreach clinic in Kichha. I've put both addresses, phone numbers and timings on screen, and you can tap get directions below.",
+    hi: "हमारे दो केंद्र हैं — हल्द्वानी में मुख्य सुपर-स्पेशलिटी अस्पताल, और किच्छा में आउटरीच क्लिनिक। दोनों के पते, फोन नंबर और समय स्क्रीन पर हैं, और नीचे रास्ता देखें दबा सकते हैं।",
+  },
+  timing: {
+    en: "We're open Monday to Saturday, nine in the morning to seven in the evening, and Sunday morning until two. Mornings are usually the quietest. Shall I help you book a slot?",
+    hi: "हम सोमवार से शनिवार सुबह नौ से शाम सात बजे तक, और रविवार सुबह नौ से दोपहर दो बजे तक खुले रहते हैं। सुबह सबसे कम भीड़ होती है। क्या मैं अपॉइंटमेंट बुक करने में मदद करूँ?",
+  },
+  cost: {
+    en: "Our pricing is fully transparent, with no surprise bills. We support all major cashless insurance networks, and we're C G H S and E C H S panel friendly. Our billing desk will give you a clear estimate before anything begins.",
+    hi: "हमारी कीमतें पूरी तरह पारदर्शी हैं, कोई छुपा हुआ खर्च नहीं। सभी प्रमुख कैशलेस बीमा नेटवर्क उपलब्ध हैं, और हम सी जी एच एस और ई सी एच एस पैनल से भी जुड़े हैं। इलाज से पहले बिलिंग डेस्क पूरा अनुमान दे देगी।",
+  },
+  offer: {
+    en: "Yes! Tuesday is retina screening day with half off, Wednesday is free eye screening for children under five, and Friday is senior citizen day with half off O P D. The details are on screen — pick your day and I'll help you book.",
+    hi: "जी हाँ! मंगलवार रेटिना स्क्रीनिंग डे है जिसमें आधी छूट है, बुधवार को पाँच साल से छोटे बच्चों की जाँच मुफ़्त है, और शुक्रवार वरिष्ठ नागरिक दिवस है जिसमें ओ पी डी पर आधी छूट है। अपना दिन चुनें, मैं बुकिंग में मदद करूँगी।",
+  },
+  emergency: {
+    en: "If this is an eye emergency, please don't wait — call us right away, or come straight to the hospital. For a chemical splash, rinse the eye gently with clean water for ten to fifteen minutes while you're on your way. Quick action can save vision.",
+    hi: "अगर यह आँख की इमरजेंसी है तो इंतज़ार न करें — तुरंत कॉल करें या सीधे अस्पताल आ जाएँ। केमिकल गिरने पर रास्ते में आते समय आँख को साफ पानी से दस से पंद्रह मिनट धोएँ। जल्दी किया गया इलाज नज़र बचा सकता है।",
+  },
+  test: {
+    en: "Here's something fun — you can test your vision right on our website. The digital eye test takes about two minutes, and there's a sight simulator on our home page. Nothing replaces a real check-up, but it's a great starting point.",
+    hi: "एक मज़ेदार बात — आप हमारी वेबसाइट पर ही अपनी नज़र जाँच सकते हैं। डिजिटल आई टेस्ट सिर्फ दो मिनट का है, और होम पेज पर साइट सिम्युलेटर भी है। असली जाँच की जगह कुछ नहीं, पर शुरुआत के लिए बढ़िया है।",
+  },
+  'night blindness': {
+    en: "Night blindness makes it hard to see in dim light, and driving at night is often the first struggle. It usually has a treatable cause — uncorrected power, an early cataract, or sometimes a vitamin deficiency.",
+    hi: "रतौंधी में कम रोशनी में देखना मुश्किल हो जाता है, और अक्सर रात में गाड़ी चलाने में सबसे पहले परेशानी होती है। इसका कारण आमतौर पर ठीक हो सकता है — चश्मे का नंबर, शुरुआती मोतियाबिंद, या विटामिन की कमी।",
+  },
+  oculoplasty: {
+    en: "Our oculoplasty department cares for everything around the eye — droopy eyelids, constantly watering eyes, styes and eyelid concerns. These are often brushed off as minor, but most have simple, effective treatments.",
+    hi: "हमारा ऑक्यूलोप्लास्टी विभाग आँख के आसपास की हर समस्या देखता है — झुकी पलकें, लगातार पानी आना, गुहेरी और पलकों की समस्याएँ। इन्हें छोटी बात समझ लिया जाता है, पर ज़्यादातर का इलाज आसान है।",
+  },
+  vitrectomy: {
+    en: "Vitreo-retinal surgery is led by Doctor Major Aditya Bhardwaj, covering retinal detachment, macular hole and diabetic vitrectomy. The full list is on screen. A detachment is urgent — if you're seeing sudden floaters, flashes, or a curtain across your vision, please come in the same day.",
+    hi: "विट्रियो-रेटिनल सर्जरी डॉक्टर मेजर आदित्य भारद्वाज करते हैं — रेटिनल डिटैचमेंट, मैक्युलर होल और डायबिटिक विट्रेक्टमी। पूरी सूची स्क्रीन पर है। डिटैचमेंट में देर न करें — अगर अचानक काले धब्बे, चमक या पर्दा दिखे तो उसी दिन आएँ।",
+  },
+  iol: {
+    en: "The lens choice really shapes your result after cataract surgery. We offer monofocal, multifocal, extended depth of focus and toric lenses, from Alcon, Zeiss and Johnson and Johnson. The options are on screen, and our counsellors will honestly explain what suits your eye and your budget.",
+    hi: "मोतियाबिंद सर्जरी का नतीजा काफी हद तक लेंस पर निर्भर करता है। हमारे पास मोनोफोकल, मल्टीफोकल, ई डी ओ एफ और टोरिक लेंस हैं। विकल्प स्क्रीन पर हैं, और हमारे काउंसलर ईमानदारी से बताएँगे कि आपकी आँख और बजट के लिए क्या सही है।",
+  },
+  facility: {
+    en: "We're a newly built, fully air-conditioned super-specialty centre — two modular operation theatres, an indoor ward, general anaesthesia facility, an in-house pharmacy and optical store, and round the clock power backup. The full list is on screen.",
+    hi: "हम एक नया बना, पूरी तरह वातानुकूलित सुपर-स्पेशलिटी केंद्र हैं — दो मॉड्यूलर ऑपरेशन थिएटर, इनडोर वार्ड, जनरल एनेस्थीसिया, अपनी फार्मेसी और ऑप्टिकल स्टोर, और चौबीस घंटे पावर बैकअप। पूरी सूची स्क्रीन पर है।",
+  },
+  ambulance: {
+    en: "Yes, we have an ambulance service for patients travelling to us. The charge depends on the distance — I've put the full list on screen. To arrange a pick-up, just call our helpdesk and they'll organise it.",
+    hi: "जी हाँ, हमारी एम्बुलेंस सेवा उपलब्ध है। शुल्क दूरी पर निर्भर करता है — पूरी सूची स्क्रीन पर है। एम्बुलेंस बुक करने के लिए हेल्पडेस्क पर कॉल करें, वे व्यवस्था कर देंगे।",
+  },
+  optical: {
+    en: "Vedanta Optical is our in-house showroom, so you can get your eyes checked and your glasses made in one visit. We do progressive and bifocal lenses, blue-cut computer lenses, contact lenses, and a wide range of frames for every budget.",
+    hi: "वेदांत ऑप्टिकल हमारा अपना शोरूम है, इसलिए एक ही विज़िट में जाँच भी और चश्मा भी। प्रोग्रेसिव और बाइफोकल लेंस, ब्लू-कट कंप्यूटर लेंस, कॉन्टैक्ट लेंस, और हर बजट के फ्रेम उपलब्ध हैं।",
+  },
+  oct: {
+    en: "We've invested heavily in diagnostics, because the right treatment starts with the right diagnosis. O C T, perimetry, corneal topography, optical biometry, ultrasound and laser systems — all in house, so you're rarely sent elsewhere for a test.",
+    hi: "हमने जाँच उपकरणों पर बहुत निवेश किया है, क्योंकि सही इलाज सही जाँच से शुरू होता है। ओ सी टी, पेरीमेट्री, टोपोग्राफी, बायोमेट्री, अल्ट्रासाउंड और लेज़र — सब अस्पताल में ही, इसलिए बाहर जाने की ज़रूरत नहीं पड़ती।",
+  },
+  about: {
+    en: "Vedanta Netralya was founded in twenty seventeen by Doctor Sameer Varma, and has grown from a local clinic into a super-specialty eye institute for the Kumaon region, with over fifty thousand successful surgeries. Our full story is on screen.",
+    hi: "वेदांत नेत्रालय की स्थापना दो हज़ार सत्रह में डॉक्टर समीर वर्मा ने की थी। एक छोटे क्लिनिक से यह कुमाऊँ का सुपर-स्पेशलिटी नेत्र संस्थान बन चुका है, जहाँ पचास हज़ार से ज़्यादा सफल सर्जरी हो चुकी हैं। पूरी कहानी स्क्रीन पर है।",
+  },
+  mission: {
+    en: "Our motto says it best — premium, personal, comprehensive and ethical eye care, through the best experts, with the highest level of quality and technology.",
+    hi: "हमारा ध्येय वाक्य ही सब कह देता है — सर्वोत्तम विशेषज्ञों द्वारा, उच्चतम गुणवत्ता और तकनीक के साथ, प्रीमियम, व्यक्तिगत, व्यापक और नैतिक नेत्र चिकित्सा।",
+  },
+  review: {
+    en: "We'd rather let our patients speak for us. There's a whole page of patient reviews and video testimonials from across Kumaon — honestly, it's the best way to judge us before you visit.",
+    hi: "हमारी बात से बेहतर है हमारे मरीज़ों की बात। पूरे कुमाऊँ के मरीज़ों की समीक्षाओं और वीडियो का एक पूरा पेज है — आने से पहले हमें परखने का यही सबसे अच्छा तरीका है।",
+  },
+  gallery: {
+    en: "You can take a proper look around before you come. Our gallery has videos of the hospital, the operation theatre, our team and our infrastructure, plus photos of the centre.",
+    hi: "आने से पहले आप अस्पताल को अच्छे से देख सकते हैं। हमारी गैलरी में अस्पताल, ऑपरेशन थिएटर, टीम और इंफ्रास्ट्रक्चर के वीडियो और फोटो हैं।",
+  },
+  contact: {
+    en: "You can reach our Haldwani hospital, our Kichha clinic, or our emergency line — I've put all the numbers and our email address on screen. Our helpdesk is available nine to seven, Monday to Saturday.",
+    hi: "आप हमारे हल्द्वानी अस्पताल, किच्छा क्लिनिक, या इमरजेंसी लाइन पर संपर्क कर सकते हैं — सभी नंबर और ईमेल स्क्रीन पर हैं। हमारी हेल्पडेस्क सोमवार से शनिवार, सुबह नौ से शाम सात बजे तक उपलब्ध है।",
+  },
+  conjunctivitis: {
+    en: "If something has gone into your eye, wash your hands first, then flush gently with clean water from the inner corner outward, blinking softly. Please don't rub the eye. The full steps are on screen — and if there's pain, light sensitivity or blurring, do come in.",
+    hi: "अगर आँख में कुछ चला गया है तो पहले हाथ धोएँ, फिर साफ पानी से नाक की तरफ वाले कोने से बाहर की ओर धीरे-धीरे धोएँ, और हल्के से पलकें झपकाएँ। आँख रगड़ें नहीं। पूरे चरण स्क्रीन पर हैं — दर्द, चुभन या धुंधलापन हो तो ज़रूर दिखाएँ।",
+  },
+  'what can you do': {
+    en: "Happy to help! I can tell you about our treatments, our doctors, lens options, diagnostics, facilities, both our centres, appointments, timings, fees and weekly offers — and what to do in an eye emergency. Just ask in English or Hindi, whichever is comfortable.",
+    hi: "ज़रूर! मैं इलाज, डॉक्टर, लेंस विकल्प, जाँच, सुविधाएँ, दोनों केंद्र, अपॉइंटमेंट, समय, फीस और साप्ताहिक ऑफर के बारे में बता सकती हूँ — और इमरजेंसी में क्या करें, वो भी। अंग्रेज़ी या हिन्दी, जिसमें सहज हों, पूछिए।",
+  },
+};
+
 const GREETING_KEYWORDS = ['hi', 'hello', 'hey', 'namaste', 'namaskar', 'good morning', 'good afternoon', 'good evening', 'नमस्ते', 'नमस्कार', 'हैलो', 'हेलो'];
 const THANKS_KEYWORDS = ['thank', 'thanks', 'thankyou', 'dhanyavad', 'shukriya', 'धन्यवाद', 'शुक्रिया'];
 const BYE_KEYWORDS = ['bye', 'goodbye', 'good bye', 'alvida', 'अलविदा'];
@@ -345,6 +494,11 @@ const MALE_VOICE_HINTS = [
   'male', 'rishi', 'ravi', 'madhur', 'hemant', 'prabhat', 'kabir', 'arjun',
   'david', 'mark', 'george', 'guy', 'daniel', 'alex', 'fred', 'rishabh',
 ];
+// Modern neural engines. These sound dramatically smoother than the legacy
+// system voices below, so quality outranks having a local accent.
+const SMOOTH_VOICE_HINTS = ['google', 'natural', 'neural', 'enhanced', 'premium', 'siri', 'online'];
+// Legacy SAPI/eSpeak voices — intelligible, but flat and robotic.
+const ROBOTIC_VOICE_HINTS = ['heera', 'kalpana', 'zira', 'hazel', 'susan', 'espeak', 'microsoft'];
 
 const pickFemaleVoice = (
   voices: SpeechSynthesisVoice[],
@@ -361,9 +515,11 @@ const pickFemaleVoice = (
     const isMale = !isFemale && MALE_VOICE_HINTS.some(h => name.includes(h));
     let score = 0;
     if (isFemale) score += 10;
-    if (isMale) score -= 10;
-    if (/-in$/i.test(v.lang)) score += 3;                       // en-IN / hi-IN accent feels local
-    if (/google|natural|neural|online/.test(name)) score += 2;  // higher-quality engines
+    if (isMale) score -= 20;
+    // Smoothness first: a neural voice in a non-local accent beats a robotic local one
+    if (SMOOTH_VOICE_HINTS.some(h => name.includes(h))) score += 8;
+    if (ROBOTIC_VOICE_HINTS.some(h => name.includes(h))) score -= 4;
+    if (/-in$/i.test(v.lang)) score += 2;   // a local accent is a tie-breaker, not a priority
     return score;
   };
 
@@ -373,7 +529,7 @@ const pickFemaleVoice = (
 
 // Browsers truncate or stall on long utterances, so replies are read out in short pieces.
 // Keep this well under ~15s of speech per chunk.
-const MAX_SPEECH_CHUNK = 150;
+const MAX_SPEECH_CHUNK = 200;
 
 // Chat replies are written to be *read*, not spoken — strip the visual furniture first.
 const toSpeechText = (text: string): string =>
@@ -547,7 +703,7 @@ const Chatbot: React.FC = () => {
         } else {
           utterance.lang = hasHindi ? 'hi-IN' : 'en-IN';
         }
-        utterance.rate = 0.95;
+        utterance.rate = 1.0;
         // Only nudge the pitch when we had to settle for a non-female voice
         utterance.pitch = femaleVoice ? 1.0 : 1.1;
 
@@ -623,7 +779,13 @@ const Chatbot: React.FC = () => {
     }
 
     if (best) {
-      return { sender: 'bot', text: inHindi ? best.hi : best.en, actions: best.actions };
+      const spoken = SPOKEN_SUMMARIES[best.keywords[0]];
+      return {
+        sender: 'bot',
+        text: inHindi ? best.hi : best.en,
+        speech: spoken && (inHindi ? spoken.hi : spoken.en),
+        actions: best.actions,
+      };
     }
 
     const pool = inHindi ? FALLBACKS_HI : FALLBACKS_EN;
@@ -648,7 +810,7 @@ const Chatbot: React.FC = () => {
       const botMsg = getBotResponse(text);
       setIsTyping(false);
       setMessages(prev => [...prev, botMsg]);
-      speakText(botMsg.text);
+      speakText(botMsg.speech || botMsg.text);
     }, delay);
   };
 
