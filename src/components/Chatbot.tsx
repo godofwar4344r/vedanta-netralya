@@ -371,6 +371,56 @@ const pickFemaleVoice = (
   return scoreOf(best) > 0 ? best : null;
 };
 
+// Browsers truncate or stall on long utterances, so replies are read out in short pieces.
+// Keep this well under ~15s of speech per chunk.
+const MAX_SPEECH_CHUNK = 150;
+
+// Chat replies are written to be *read*, not spoken — strip the visual furniture first.
+const toSpeechText = (text: string): string =>
+  text
+    .replace(/\*\*/g, '')                                  // markdown bold marks
+    .replace(/₹\s?([\d,]+)/g, '$1 rupees')                 // ₹300 → "300 rupees"
+    .replace(/\s+\/\s+/g, ', ')                            // "05946-223616 / +91..." reads as "slash"
+    .replace(/\s*–\s*/g, ' to ')                           // en dash: "Mon–Sat", "9 AM–7 PM"
+    .replace(/\s*—\s*/g, ', ')                             // em dash: a spoken pause, not a word
+    // emoji, keycaps, bullets, arrows and other decorative glyphs
+    .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{20E3}\u{2022}\u{00B7}]/gu, ' ')
+    .replace(/[^\S\n]+/g, ' ')                             // collapse spaces, keep line breaks
+    .trim();
+
+const toSpeechChunks = (text: string): string[] => {
+  const chunks: string[] = [];
+
+  const pushWrapped = (piece: string) => {
+    let rest = piece.trim();
+    while (rest.length > MAX_SPEECH_CHUNK) {            // last resort: a sentence with no punctuation
+      let cut = rest.lastIndexOf(' ', MAX_SPEECH_CHUNK);
+      if (cut <= 0) cut = MAX_SPEECH_CHUNK;
+      chunks.push(rest.slice(0, cut).trim());
+      rest = rest.slice(cut).trim();
+    }
+    if (rest) chunks.push(rest);
+  };
+
+  for (const line of toSpeechText(text).split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;                              // blank lines become natural gaps
+    if (trimmed.length <= MAX_SPEECH_CHUNK) { chunks.push(trimmed); continue; }
+
+    // Group whole sentences together until they'd overflow a chunk
+    const sentences = trimmed.match(/[^.!?।]+[.!?।]*/g) || [trimmed];
+    let buffer = '';
+    for (const sentence of sentences) {
+      const merged = `${buffer} ${sentence}`.trim();
+      if (merged.length > MAX_SPEECH_CHUNK && buffer) { pushWrapped(buffer); buffer = sentence.trim(); }
+      else buffer = merged;
+    }
+    if (buffer) pushWrapped(buffer);
+  }
+
+  return chunks;
+};
+
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -394,6 +444,7 @@ const Chatbot: React.FC = () => {
   const languageRef = useRef<'en' | 'hi'>('en');
   const variantCounter = useRef(0);
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+  const speechRunRef = useRef(0);
 
   // Voices load asynchronously in most browsers, so keep a fresh copy around
   useEffect(() => {
@@ -425,7 +476,7 @@ const Chatbot: React.FC = () => {
     const newLang = language === 'en' ? 'hi' : 'en';
     setLanguage(newLang);
     languageRef.current = newLang;
-    window.speechSynthesis.cancel();
+    stopSpeaking();
 
     const switchMsg: Message = newLang === 'hi'
       ? { sender: 'bot', text: "बहुत बढ़िया, अब हम हिन्दी में बात करेंगे! 😊 बताइए, मैं आपकी क्या मदद कर सकती हूँ?" }
@@ -461,38 +512,60 @@ const Chatbot: React.FC = () => {
   }, []);
 
   const stopSpeaking = () => {
+    speechRunRef.current++;   // invalidates any chunks still queued from the previous reply
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
   };
 
   const speakText = (text: string) => {
     if (isMuted) return;
+
+    const run = ++speechRunRef.current;
     window.speechSynthesis.cancel();
-    // Strip emojis and decorative symbols so speech sounds natural
-    const speakable = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, '').replace(/\s+/g, ' ').trim();
-    const utterance = new SpeechSynthesisUtterance(speakable);
 
-    const hasHindi = /[ऀ-ॿ]/.test(speakable);
-    utterance.rate = 1.0;
-    utterance.lang = hasHindi ? 'hi-IN' : 'en-IN';
+    const chunks = toSpeechChunks(text);
+    if (!chunks.length) return;
 
+    const hasHindi = /[ऀ-ॿ]/.test(text);
     const voices = voicesRef.current.length ? voicesRef.current : window.speechSynthesis.getVoices();
     const femaleVoice = pickFemaleVoice(voices, hasHindi ? 'hi' : 'en');
-    if (femaleVoice) {
-      utterance.voice = femaleVoice;
-      utterance.pitch = 1.0;
-    } else {
-      // No female voice installed — lift the pitch so Naina still reads as feminine
-      const fallback = voices.find(v => v.lang.toLowerCase().startsWith(hasHindi ? 'hi' : 'en'));
-      if (fallback) utterance.voice = fallback;
-      utterance.pitch = 1.25;
-    }
+    const voice = femaleVoice
+      || voices.find(v => v.lang.toLowerCase().startsWith(hasHindi ? 'hi' : 'en'))
+      || null;
 
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+    // Queue every chunk up front and let the engine play them back to back. Chaining each
+    // chunk off the previous one's `onend` would be tidier, but browsers drop that event
+    // often enough that the rest of the reply would go silent.
+    const speakAll = () => {
+      if (run !== speechRunRef.current) return;   // a newer reply took over while we waited
 
-    window.speechSynthesis.speak(utterance);
+      chunks.forEach((chunk, index) => {
+        const utterance = new SpeechSynthesisUtterance(chunk);
+        if (voice) {
+          utterance.voice = voice;
+          utterance.lang = voice.lang;   // a lang/voice mismatch drops engines to a robotic default
+        } else {
+          utterance.lang = hasHindi ? 'hi-IN' : 'en-IN';
+        }
+        utterance.rate = 0.95;
+        // Only nudge the pitch when we had to settle for a non-female voice
+        utterance.pitch = femaleVoice ? 1.0 : 1.1;
+
+        if (index === 0) {
+          utterance.onstart = () => { if (run === speechRunRef.current) setIsSpeaking(true); };
+        }
+        if (index === chunks.length - 1) {
+          const finish = () => { if (run === speechRunRef.current) setIsSpeaking(false); };
+          utterance.onend = finish;
+          utterance.onerror = finish;
+        }
+
+        window.speechSynthesis.speak(utterance);
+      });
+    };
+
+    // Chrome drops an utterance queued in the same tick as cancel()
+    setTimeout(speakAll, 60);
   };
 
   const getBotResponse = (query: string): Message => {
@@ -595,10 +668,7 @@ const Chatbot: React.FC = () => {
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    if (!isMuted) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-    }
+    if (!isMuted) stopSpeaking();
   };
 
   const ActionIcon = ({ icon }: { icon?: QuickAction['icon'] }) => {
