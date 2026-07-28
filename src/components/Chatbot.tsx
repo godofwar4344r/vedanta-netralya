@@ -105,10 +105,20 @@ const FAQ_DATABASE: FaqEntry[] = [
   },
   {
     keywords: [
+      'team', 'staff', 'support staff', 'administrative', 'admin', 'counsellor', 'counselor',
+      'receptionist', 'manager', 'employee', 'directory', 'extension', 'who works',
+      'टीम', 'स्टाफ', 'कर्मचारी', 'प्रबंधक'
+    ],
+    en: "Behind every surgery there's a whole team, and we're proud of ours. 💙\n\nOur Team page brings everyone together in one place:\n\n👨‍⚕️ **Medical Specialists** — our ophthalmologists and surgeons\n🧑‍💼 **Support & Administrative Team** — counsellors, optical and pharmacy staff, accounts, administration and support services\n\nYou can search by name or designation, or filter by department. If you need a specific person, our helpdesk on 05946-223616 will put you straight through.",
+    hi: "हर सर्जरी के पीछे एक पूरी टीम होती है, और हमें अपनी टीम पर गर्व है। 💙\n\nहमारे टीम पेज पर सब एक जगह मिलेंगे:\n\n👨‍⚕️ **मेडिकल विशेषज्ञ** — हमारे नेत्र रोग विशेषज्ञ और सर्जन\n🧑‍💼 **सहायक और प्रशासनिक टीम** — काउंसलर, ऑप्टिकल और फार्मेसी स्टाफ, अकाउंट्स, प्रशासन और सहायक सेवाएँ\n\nआप नाम या पद से खोज सकते हैं, या विभाग से छाँट सकते हैं। किसी खास व्यक्ति से बात करनी हो तो 05946-223616 पर कॉल करें।",
+    actions: [{ label: 'Meet the Team', labelHi: 'टीम से मिलें', to: '/team' }, { label: 'Doctor Profiles', labelHi: 'डॉक्टर प्रोफ़ाइल', to: '/doctors' }]
+  },
+  {
+    keywords: [
       'doctor', 'doc', 'dr', 'surgeon', 'ophthalmologist', 'opthalmologist', 'optometrist',
       'eye specialist', 'eye doctor', 'specialist', 'consultant', 'physician', 'profile', 'qualification',
-      'experience', 'team', 'staff', 'panel', 'faculty', 'singh',
-      'डॉक्टर', 'डाक्टर', 'सर्जन', 'नेत्र रोग विशेषज्ञ', 'विशेषज्ञ', 'चिकित्सक', 'टीम'
+      'experience', 'panel', 'faculty', 'singh',
+      'डॉक्टर', 'डाक्टर', 'सर्जन', 'नेत्र रोग विशेषज्ञ', 'विशेषज्ञ', 'चिकित्सक'
     ],
     en: "We're proud of our team — let me introduce them:\n\n👨‍⚕️ Dr. Sameer Varma — Founder & Senior Eye Specialist (M.S., Fellow SNC Chitrakoot). Cataract, Glaucoma, Oculoplasty & Paediatric Cataract. 50,000+ surgeries.\n👨‍⚕️ Dr. R.J.K. Singh — Senior Consultant Ophthalmologist (DOMS, Kanpur 1972). 35+ years with Sitapur Eye Hospital.\n👨‍⚕️ Dr. Maj Aditya Bhardwaj — Vitreo-Retinal & Cataract Surgeon (MS from Army Hospital R&R, Delhi). 10,000+ surgeries.\n\nOur panel also includes consulting surgeons and clinical support staff working in rotation. Ask me about any doctor by name and I'll share their full profile. 😊",
     hi: "हमें अपनी टीम पर गर्व है — मिलिए हमारे डॉक्टरों से:\n\n👨‍⚕️ डॉ. समीर वर्मा — संस्थापक और वरिष्ठ नेत्र विशेषज्ञ (M.S., फेलो SNC चित्रकूट)। मोतियाबिंद, ग्लूकोमा, ऑक्यूलोप्लास्टी। 50,000+ सर्जरी।\n👨‍⚕️ डॉ. आर.जे.के. सिंह — वरिष्ठ सलाहकार (DOMS, कानपुर 1972)। सीतापुर आँख अस्पताल में 35+ वर्ष।\n👨‍⚕️ डॉ. मेजर आदित्य भारद्वाज — विट्रियो-रेटिनल और मोतियाबिंद सर्जन (MS, आर्मी हॉस्पिटल R&R दिल्ली)। 10,000+ सर्जरी।\n\nहमारे पैनल में रोटेशन पर कंसल्टिंग सर्जन और क्लिनिकल स्टाफ भी हैं। किसी भी डॉक्टर का नाम लेकर पूछें — मैं उनकी पूरी जानकारी दूँगी। 😊",
@@ -342,6 +352,10 @@ const SPOKEN_SUMMARIES: Record<string, { en: string; hi: string }> = {
   aditya: {
     en: "Doctor Major Aditya Bhardwaj is our vitreo-retinal surgeon, trained at the Army Hospital in New Delhi, with a fellowship in retina surgery. His full profile is on screen.",
     hi: "डॉक्टर मेजर आदित्य भारद्वाज हमारे विट्रियो-रेटिनल सर्जन हैं, जिन्होंने नई दिल्ली के आर्मी हॉस्पिटल से प्रशिक्षण और रेटिना सर्जरी में फेलोशिप की है। पूरी जानकारी स्क्रीन पर है।",
+  },
+  team: {
+    en: "Behind every surgery there's a whole team, and we're proud of ours. Our team page has both our medical specialists and our support and administrative staff — counsellors, optical, pharmacy, accounts and administration. You can search by name or designation, or filter by department.",
+    hi: "हर सर्जरी के पीछे एक पूरी टीम होती है, और हमें अपनी टीम पर गर्व है। हमारे टीम पेज पर मेडिकल विशेषज्ञ और सहायक व प्रशासनिक स्टाफ दोनों हैं — काउंसलर, ऑप्टिकल, फार्मेसी, अकाउंट्स और प्रशासन। आप नाम या पद से खोज सकते हैं, या विभाग से छाँट सकते हैं।",
   },
   doctor: {
     en: "We have three senior eye surgeons — Doctor Sameer Varma, Doctor R J K Singh, and Doctor Major Aditya Bhardwaj. Their profiles are on screen, and you can ask me about any of them by name.",

@@ -6,6 +6,7 @@ import Services from './pages/Services';
 import Cataract from './pages/Cataract';
 import RefractiveSurgery from './pages/RefractiveSurgery';
 import Doctors from './pages/Doctors';
+import Team from './pages/Team';
 import Centres from './pages/Centres';
 import Appointment from './pages/Appointment';
 import Contact from './pages/Contact';
@@ -45,6 +46,7 @@ function App() {
         <Route path="vr-surgery" element={<VRSurgery />} />
         <Route path="facilities" element={<Facilities />} />
         <Route path="doctors" element={<Doctors />} />
+        <Route path="team" element={<Team />} />
         <Route path="centres" element={<Centres />} />
         <Route path="appointment" element={<Appointment />} />
         <Route path="contact" element={<Contact />} />
