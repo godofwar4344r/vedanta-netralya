@@ -29,6 +29,7 @@ const Layout: React.FC = () => {
 
   const isAboutActive = [
     '/about',
+    '/doctors',
     '/facilities'
   ].includes(location.pathname);
 
@@ -152,6 +153,10 @@ const Layout: React.FC = () => {
                       <span>About Hospital</span>
                       {location.pathname === '/about' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
+                    <Link to="/doctors" className={`hover:text-brand-teal transition-colors py-1 flex items-center justify-between ${location.pathname === '/doctors' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
+                      <span>Our Doctors &amp; Team</span>
+                      {location.pathname === '/doctors' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
+                    </Link>
                     <Link to="/facilities" className={`hover:text-brand-teal transition-colors py-1 flex items-center justify-between ${location.pathname === '/facilities' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
                       <span>Hospital Facilities</span>
                       {location.pathname === '/facilities' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
@@ -259,6 +264,7 @@ const Layout: React.FC = () => {
               <hr className="border-cream/10" />
               <p className="text-[10px] text-brand-teal font-black tracking-widest uppercase">About Us</p>
               <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/about' ? 'text-brand-teal font-black' : ''}`}>About Hospital</Link>
+              <Link to="/doctors" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/doctors' ? 'text-brand-teal font-black' : ''}`}>Our Doctors &amp; Team</Link>
               <Link to="/facilities" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/facilities' ? 'text-brand-teal font-black' : ''}`}>Facilities</Link>
               <hr className="border-cream/10" />
               <p className="text-[10px] text-brand-teal font-black tracking-widest uppercase">Eye Services</p>
