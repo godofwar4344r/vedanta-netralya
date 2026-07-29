@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Award, GraduationCap, Users, Search, Phone } from 'lucide-react';
+import { ArrowUpRight, Award, GraduationCap, Users, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { EditableContainer, EditableText, EditableMedia, EditableCard } from '../components/Editable';
 import FooterCTA from '../components/FooterCTA';
@@ -543,32 +543,14 @@ const Doctors: React.FC = () => {
                         )}
                       </div>
 
-                      {/* Info details */}
+                      {/* Name and role only — no personal details or contact block */}
                       <h3 className="text-lg font-black text-cream leading-tight mb-1 font-body group-hover:text-brand-teal transition-colors">
                         {staff.name}
                       </h3>
-                      <p className="text-[10px] text-brand-teal font-black uppercase tracking-wider mb-4 font-body">
+                      <p className="text-[10px] text-brand-teal font-black uppercase tracking-wider font-body">
                         {staff.designation}
                       </p>
-
-                      <hr className="border-cream/10 my-4" />
-
-                      <div className="space-y-2.5 text-xs font-lora text-cream/65 mb-6">
-                        <div className="flex justify-between items-center">
-                          <span>Department:</span>
-                          <span className="text-cream/80 text-[11px] text-right">{staff.department}</span>
-                        </div>
-                      </div>
                     </div>
-
-                    {/* Routed through the hospital helpdesk rather than staff personal numbers */}
-                    <a
-                      href="tel:05946223616"
-                      className="bg-brand-teal hover:bg-cream text-brand-navy hover:text-brand-navy py-3 rounded-2xl text-[9px] tracking-widest uppercase font-black transition-all flex items-center justify-center gap-2 shadow-sm w-full font-body"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
-                      Contact Helpdesk
-                    </a>
                   </motion.div>
                 ))}
               </div>
