@@ -10,8 +10,8 @@ import drSameer from '../assets/dr-sameer-varma-opd.jpeg';
 import drRjk from '../assets/dr-rjk-opd.jpeg';
 import drAditya from '../assets/dr-aditya-bhardwaj.jpeg';
 
-/** The ID-card scans leak neighbouring cards' personal details — see the portrait block below. */
-const SHOW_ID_CARD_SCANS = false;
+/** ID-card scans are shown on the staff cards. */
+const SHOW_ID_CARD_SCANS = true;
 
 const initialsOf = (name: string) =>
   name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
