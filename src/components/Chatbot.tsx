@@ -23,6 +23,8 @@ interface FaqEntry {
   keywords: string[];
   en: string;
   hi: string;
+  /** Deeper detail, offered after the basic answer and sent when the user asks for more. */
+  more?: { en: string; hi: string };
   actions?: QuickAction[];
 }
 
@@ -35,12 +37,20 @@ const FAQ_DATABASE: FaqEntry[] = [
     keywords: ['cataract', 'motiyabind', 'phaco', 'cloudy', 'mics', 'lens replacement', 'safed motia', 'मोतियाबिंद', 'सफेद मोतिया'],
     en: "Cataract care is truly our home ground — it's what Vedanta Netralya is best known for in the Kumaon region. 😊\n\nOur surgeons perform Micro-Incision (MICS) phaco surgery with premium foldable lenses. There are no injections and no stitches, and most patients see clearly and return to daily life within 24 hours.\n\nIf you or a loved one has been noticing cloudy or dim vision, it's worth getting checked — we'd be glad to take a look.",
     hi: "मोतियाबिंद का इलाज वेदांत नेत्रालय की सबसे बड़ी पहचान है। 😊\n\nहमारे सर्जन बिना टांके, बिना इंजेक्शन के माइक्रो-इंसीज़न (MICS) फेको सर्जरी करते हैं, वो भी प्रीमियम फोल्डेबल लेंस के साथ। ज़्यादातर मरीज़ 24 घंटे में सामान्य जीवन में लौट आते हैं।\n\nअगर आपको या परिवार में किसी को धुंधला दिखता है, तो एक बार जाँच ज़रूर करवाएँ।",
+    more: {
+      en: "Here's the fuller picture on cataract surgery with us:\n\n🔬 **The procedure** — Micro-Incision Cataract Surgery (MICS) through a tiny opening, no stitches, no injection, usually under 15 minutes\n🔍 **Before surgery** — optical biometry on our ALADIN system calculates your exact lens power, plus a full retina and pressure check\n👁️ **Lens choice** — monofocal, multifocal, EDOF or toric, from Alcon, Zeiss and Johnson & Johnson\n🏥 **On the day** — day-care procedure, cardiac monitoring available, and general anaesthesia for patients who need it\n🔄 **Recovery** — most people see clearly within 24 hours; drops for a few weeks and avoid dust, rubbing and swimming\n🧒 **Children** — Dr. Sameer Varma also handles paediatric cataract, which needs a different approach entirely\n\nWe've done over 50,000 of these. Shall I help you book an evaluation?",
+      hi: "मोतियाबिंद सर्जरी की पूरी जानकारी:\n\n🔬 **प्रक्रिया** — माइक्रो-इंसीज़न सर्जरी (MICS), बहुत छोटे छेद से, बिना टाँके, बिना इंजेक्शन, आमतौर पर 15 मिनट में\n🔍 **सर्जरी से पहले** — ALADIN बायोमेट्री से लेंस का सही नंबर, साथ में रेटिना और प्रेशर की जाँच\n👁️ **लेंस के विकल्प** — मोनोफोकल, मल्टीफोकल, EDOF या टोरिक — Alcon, Zeiss और Johnson & Johnson के\n🏥 **सर्जरी के दिन** — डे-केयर प्रक्रिया, कार्डियक मॉनिटरिंग और ज़रूरत पड़ने पर जनरल एनेस्थीसिया\n🔄 **रिकवरी** — ज़्यादातर लोग 24 घंटे में साफ देखने लगते हैं; कुछ हफ्ते ड्रॉप्स, और धूल, रगड़ने व तैराकी से बचें\n🧒 **बच्चों में** — डॉ. समीर वर्मा बच्चों का मोतियाबिंद भी करते हैं, जिसका तरीका अलग होता है\n\nहम 50,000 से ज़्यादा सर्जरी कर चुके हैं। क्या मैं जाँच के लिए अपॉइंटमेंट बुक करूँ?",
+    },
     actions: [BOOK_ACTION, { label: 'Learn About Cataract', labelHi: 'मोतियाबिंद के बारे में जानें', to: '/cataract' }]
   },
   {
     keywords: ['glaucoma', 'kala motia', 'eye pressure', 'optic nerve', 'perimetry', 'काला मोतिया', 'ग्लूकोमा'],
     en: "Glaucoma (Kala Motia) is often called the 'silent thief of sight' because it damages vision gradually, without any warning signs. That's why early detection matters so much.\n\nAt Vedanta Netralya, our glaucoma clinic is headed by Dr. Sameer Varma, with advanced diagnostics like OCT and Perimetry available in-house. If glaucoma runs in your family or you're over 40, an annual pressure check is a very wise habit.",
     hi: "ग्लूकोमा (काला मोतिया) को 'नज़र का खामोश चोर' कहा जाता है — यह बिना किसी लक्षण के धीरे-धीरे दृष्टि छीन लेता है। इसलिए समय पर जाँच बहुत ज़रूरी है।\n\nवेदांत नेत्रालय में डॉ. समीर वर्मा के नेतृत्व में OCT और पेरीमेट्री जैसी आधुनिक जाँचें उपलब्ध हैं। अगर परिवार में किसी को ग्लूकोमा रहा है या आपकी उम्र 40 से ऊपर है, तो साल में एक बार जाँच ज़रूर करवाएँ।",
+    more: {
+      en: "More on how we handle glaucoma:\n\n🔍 **Diagnosis** — tonometry (both NCT and applanation) for eye pressure, perimetry for your visual field, gonioscopy to assess the drainage angle, and OCT of the optic nerve head with pachymetry\n💊 **Medical therapy** — pressure-lowering drops with nerve protection, reviewed regularly\n💡 **Laser** — YAG laser iridotomy for narrow angles, and Selective Laser Trabeculoplasty (SLT) to improve drainage\n🔪 **Surgery** — filtration trabeculectomy when drops and laser aren't enough\n\nThe important thing to understand: glaucoma damage can't be reversed, only halted. That's why we're firm about annual checks if you're over 40 or have family history.",
+      hi: "ग्लूकोमा के इलाज की विस्तृत जानकारी:\n\n🔍 **जाँच** — प्रेशर के लिए टोनोमेट्री (NCT और अप्लनेशन), दृष्टि क्षेत्र के लिए पेरीमेट्री, गोनियोस्कोपी, और ऑप्टिक नर्व की OCT व पैकीमेट्री\n💊 **दवा** — प्रेशर कम करने वाली ड्रॉप्स, नियमित जाँच के साथ\n💡 **लेज़र** — संकरे एंगल के लिए YAG इरिडोटॉमी, और ड्रेनेज सुधारने के लिए SLT\n🔪 **सर्जरी** — जब दवा और लेज़र काफी न हों तो ट्रैबेक्युलेक्टमी\n\nसमझने वाली अहम बात: ग्लूकोमा से हुआ नुकसान वापस नहीं आता, सिर्फ रोका जा सकता है। इसलिए 40 के बाद या पारिवारिक इतिहास होने पर सालाना जाँच ज़रूरी है।",
+    },
     actions: [BOOK_ACTION, { label: 'Glaucoma Services', labelHi: 'ग्लूकोमा सेवाएँ', to: '/glaucoma-services' }]
   },
   {
@@ -59,6 +69,10 @@ const FAQ_DATABASE: FaqEntry[] = [
     keywords: ['retina', 'retinal', 'diabetic', 'retinopathy', 'armd', 'amd', 'macular', 'parda', 'injection', 'anti-vegf', 'vegf', 'vitreo', 'पर्दा', 'रेटिना', 'डायबिटीज', 'शुगर'],
     en: "Retina care is very close to our heart. If you have diabetes or high blood pressure, your retina needs a check-up at least once a year — diabetic retinopathy can quietly damage vision long before you notice anything.\n\nOur retina clinic is led by Dr. Maj Aditya Bhardwaj, a fellowship-trained vitreo-retinal surgeon (Army Hospital R&R, Delhi). And here's a helpful tip: every Tuesday is our Retina Screening Day with 50% off on consultation and fundus evaluation. 🙌",
     hi: "अगर आपको डायबिटीज़ (शुगर) या हाई ब्लड प्रेशर है, तो साल में कम से कम एक बार रेटिना (पर्दे) की जाँच ज़रूर करवाएँ — डायबिटिक रेटिनोपैथी बिना लक्षण के नज़र को नुकसान पहुँचा सकती है।\n\nहमारा रेटिना क्लिनिक डॉ. मेजर आदित्य भारद्वाज (आर्मी हॉस्पिटल R&R, दिल्ली से प्रशिक्षित विट्रियो-रेटिनल सर्जन) के नेतृत्व में चलता है। और हाँ — हर मंगलवार को रेटिना स्क्रीनिंग डे पर जाँच शुल्क में 50% छूट मिलती है। 🙌",
+    more: {
+      en: "The full picture on our retina care:\n\n🔬 **Diagnostics** — OCT, B-scan ultrasonography, fundus photography with FFA, and 78D/90D clinical examination\n💉 **Treatments** — Anti-VEGF and corticosteroid injections, green laser photocoagulation, laser indirect ophthalmoscopy, PDT and cryotherapy\n🔪 **Surgery** — sutureless vitrectomy, retinal detachment repair, macular hole and ERM peeling, diabetic vitrectomy\n🩺 **Conditions** — diabetic retinopathy, ARMD, retinal vein occlusion, retinal tears and detachment\n\nDr. Maj Aditya Bhardwaj leads this, and his background in diabetology is a real advantage for diabetic eye disease. Every Tuesday is Retina Screening Day with 50% off consultation and fundus evaluation.",
+      hi: "रेटिना देखभाल की पूरी जानकारी:\n\n🔬 **जाँच** — OCT, B-स्कैन अल्ट्रासोनोग्राफी, फंडस फोटोग्राफी व FFA, और 78D/90D जाँच\n💉 **इलाज** — एंटी-VEGF व स्टेरॉयड इंजेक्शन, ग्रीन लेज़र फोटोकोएगुलेशन, LIO, PDT और क्रायोथेरेपी\n🔪 **सर्जरी** — बिना टाँके की विट्रेक्टमी, रेटिनल डिटैचमेंट, मैक्युलर होल व ERM पीलिंग, डायबिटिक विट्रेक्टमी\n🩺 **बीमारियाँ** — डायबिटिक रेटिनोपैथी, ARMD, रेटिनल वेन ऑक्लूज़न, रेटिनल टियर व डिटैचमेंट\n\nडॉ. मेजर आदित्य भारद्वाज इसकी अगुवाई करते हैं, और डायबिटोलॉजी का उनका अनुभव बहुत काम आता है। हर मंगलवार रेटिना स्क्रीनिंग डे पर 50% छूट।",
+    },
     actions: [BOOK_ACTION, { label: 'Retina Services', labelHi: 'रेटिना सेवाएँ', to: '/retina-services' }]
   },
   {
@@ -109,9 +123,13 @@ const FAQ_DATABASE: FaqEntry[] = [
       'receptionist', 'manager', 'employee', 'directory', 'extension', 'who works',
       'टीम', 'स्टाफ', 'कर्मचारी', 'प्रबंधक'
     ],
-    en: "Behind every surgery there's a whole team, and we're proud of ours. 💙\n\nOur Team page brings everyone together in one place:\n\n👨‍⚕️ **Medical Specialists** — our ophthalmologists and surgeons\n🧑‍💼 **Support & Administrative Team** — counsellors, optical and pharmacy staff, accounts, administration and support services\n\nYou can search by name or designation, or filter by department. If you need a specific person, our helpdesk on 05946-223616 will put you straight through.",
-    hi: "हर सर्जरी के पीछे एक पूरी टीम होती है, और हमें अपनी टीम पर गर्व है। 💙\n\nहमारे टीम पेज पर सब एक जगह मिलेंगे:\n\n👨‍⚕️ **मेडिकल विशेषज्ञ** — हमारे नेत्र रोग विशेषज्ञ और सर्जन\n🧑‍💼 **सहायक और प्रशासनिक टीम** — काउंसलर, ऑप्टिकल और फार्मेसी स्टाफ, अकाउंट्स, प्रशासन और सहायक सेवाएँ\n\nआप नाम या पद से खोज सकते हैं, या विभाग से छाँट सकते हैं। किसी खास व्यक्ति से बात करनी हो तो 05946-223616 पर कॉल करें।",
-    actions: [{ label: 'Meet the Team', labelHi: 'टीम से मिलें', to: '/team' }, { label: 'Doctor Profiles', labelHi: 'डॉक्टर प्रोफ़ाइल', to: '/doctors' }]
+    en: "Behind every surgery there's a whole team — 3 doctors and 26 support and administrative staff. 💙\n\nOur team works across six departments: Administration & Management, Optometry & Clinical, Front Office & Billing, Pharmacy & Optical, Marketing, and Support Services.\n\nYou can see everyone on our Team page, search by name or designation, and filter by department.",
+    hi: "हर सर्जरी के पीछे एक पूरी टीम होती है — 3 डॉक्टर और 26 सहायक व प्रशासनिक कर्मचारी। 💙\n\nहमारी टीम छह विभागों में काम करती है: प्रशासन एवं प्रबंधन, ऑप्टोमेट्री एवं क्लिनिकल, फ्रंट ऑफिस एवं बिलिंग, फार्मेसी एवं ऑप्टिकल, मार्केटिंग, और सहायक सेवाएँ।\n\nआप टीम पेज पर सबको देख सकते हैं, नाम या पद से खोज सकते हैं, और विभाग से छाँट सकते हैं।",
+    more: {
+      en: "Here's how our team is organised:\n\n🧑‍💼 **Administration & Management** — Counselling Manager, Account Manager, Admin Incharge, Maintenance Manager and Clinical Manager\n👁️ **Optometry & Clinical** — Senior Optometrists, OT Technician, Nurse, OT Assistant and OT Runner\n🏢 **Front Office & Billing** — Receptionist, PROs and Billing Executives\n💊 **Pharmacy & Optical** — Optical Manager, Pharmacist, Pharmacy Executive, Optical and Sales Executives, and a Fitter\n📣 **Marketing** — Marketing Executive\n🛡️ **Support Services** — Security Guards and Driver\n\nFor privacy we don't share staff personal numbers here — our helpdesk on 05946-223616 will connect you to the right person.",
+      hi: "हमारी टीम इस तरह संगठित है:\n\n🧑‍💼 **प्रशासन एवं प्रबंधन** — काउंसलिंग मैनेजर, अकाउंट मैनेजर, एडमिन इंचार्ज, मेंटेनेंस मैनेजर और क्लिनिकल मैनेजर\n👁️ **ऑप्टोमेट्री एवं क्लिनिकल** — सीनियर ऑप्टोमेट्रिस्ट, OT टेक्नीशियन, नर्स, OT असिस्टेंट और OT रनर\n🏢 **फ्रंट ऑफिस एवं बिलिंग** — रिसेप्शनिस्ट, PRO और बिलिंग एग्ज़ीक्यूटिव\n💊 **फार्मेसी एवं ऑप्टिकल** — ऑप्टिकल मैनेजर, फार्मासिस्ट, फार्मेसी एग्ज़ीक्यूटिव, ऑप्टिकल व सेल्स एग्ज़ीक्यूटिव, और फिटर\n📣 **मार्केटिंग** — मार्केटिंग एग्ज़ीक्यूटिव\n🛡️ **सहायक सेवाएँ** — सुरक्षा गार्ड और ड्राइवर\n\nनिजता के लिए हम स्टाफ के व्यक्तिगत नंबर साझा नहीं करते — 05946-223616 पर कॉल करें, हम आपको सही व्यक्ति से जोड़ देंगे।",
+    },
+    actions: [{ label: 'Our Doctors & Team', labelHi: 'हमारे डॉक्टर और टीम', to: '/doctors' }]
   },
   {
     keywords: [
@@ -154,6 +172,10 @@ const FAQ_DATABASE: FaqEntry[] = [
     ],
     en: "We believe good eye care shouldn't come with surprise bills — our pricing is fully transparent.\n\nWe support all major TPA insurance networks for cashless treatment, and we're CGHS/ECHS panel friendly too. For exact costs for your specific treatment, our billing desk will give you a clear estimate before anything begins — just call or visit.",
     hi: "हम मानते हैं कि अच्छे इलाज में छुपे हुए खर्च नहीं होने चाहिए — हमारी कीमतें पूरी तरह पारदर्शी हैं।\n\nसभी प्रमुख TPA बीमा नेटवर्क से कैशलेस इलाज उपलब्ध है, और हम CGHS/ECHS पैनल से भी जुड़े हैं। आपके इलाज का सटीक खर्च जानने के लिए हमारे बिलिंग डेस्क पर कॉल करें या आएँ — इलाज से पहले पूरा अनुमान दिया जाता है।",
+    more: {
+      en: "More detail on costs and insurance:\n\n💳 **Cashless** — we work with all major TPA insurance networks, so approved treatment can be cashless. Bring your insurance card and a photo ID\n🏛️ **Government panels** — we're CGHS and ECHS panel friendly\n🧾 **Estimates** — our billing desk gives you a written estimate before anything begins, so there are no surprises\n💰 **What changes the price** — for cataract, the lens you choose is the biggest factor; a monofocal is considerably less than a multifocal or toric\n🗣️ **Counselling** — we have a separate counselling chamber with dedicated counsellors who'll walk you through the options honestly\n\nI can't quote exact figures — they depend on your eyes and your chosen lens. Please call 05946-223616 for a proper estimate.",
+      hi: "खर्च और बीमा की विस्तृत जानकारी:\n\n💳 **कैशलेस** — सभी प्रमुख TPA बीमा नेटवर्क से कैशलेस इलाज उपलब्ध है। बीमा कार्ड और फोटो ID साथ लाएँ\n🏛️ **सरकारी पैनल** — हम CGHS और ECHS पैनल से जुड़े हैं\n🧾 **अनुमान** — इलाज से पहले बिलिंग डेस्क लिखित अनुमान देती है, कोई छुपा खर्च नहीं\n💰 **कीमत किस पर निर्भर** — मोतियाबिंद में सबसे बड़ा फर्क लेंस से पड़ता है; मोनोफोकल, मल्टीफोकल या टोरिक से काफी सस्ता होता है\n🗣️ **काउंसलिंग** — अलग काउंसलिंग चैंबर है जहाँ काउंसलर आपको ईमानदारी से सब समझाएँगे\n\nमैं सटीक राशि नहीं बता सकती — यह आपकी आँख और चुने गए लेंस पर निर्भर है। सही अनुमान के लिए 05946-223616 पर कॉल करें।",
+    },
     actions: [CALL_ACTION, BOOK_ACTION]
   },
   {
@@ -455,6 +477,16 @@ const GREETING_KEYWORDS = ['hi', 'hello', 'hey', 'namaste', 'namaskar', 'good mo
 const THANKS_KEYWORDS = ['thank', 'thanks', 'thankyou', 'dhanyavad', 'shukriya', 'धन्यवाद', 'शुक्रिया'];
 const BYE_KEYWORDS = ['bye', 'goodbye', 'good bye', 'alvida', 'अलविदा'];
 const IDENTITY_KEYWORDS = ['who are you', 'your name', 'what are you', 'तुम कौन', 'आप कौन', 'तुम्हारा नाम'];
+// Follow-ups that mean "expand on what you just told me"
+const MORE_KEYWORDS = [
+  'more', 'tell me more', 'more detail', 'more details', 'more info', 'detail', 'details',
+  'explain', 'elaborate', 'go deeper', 'full detail', 'in detail', 'know more', 'yes please',
+  'और बताएं', 'और बताइए', 'विस्तार', 'विस्तार से', 'ज्यादा जानकारी', 'पूरी जानकारी', 'और जानकारी',
+];
+
+/** Invitation appended to a basic answer when deeper detail is available. */
+const MORE_HINT_EN = "\n\nThere's quite a bit more I can tell you about this — just say \"tell me more\" and I'll go into detail. 😊";
+const MORE_HINT_HI = "\n\nइस बारे में मैं और भी बहुत कुछ बता सकती हूँ — बस \"और बताइए\" कहें, मैं विस्तार से समझाऊँगी। 😊";
 
 const GREETINGS_EN = [
   "Namaste! 🙏 So glad you stopped by. I'm Naina, Vedanta Netralya's virtual assistant. Whether it's about a treatment, our doctors, timings, or booking a visit — just ask away!",
@@ -615,6 +647,7 @@ const Chatbot: React.FC = () => {
   const variantCounter = useRef(0);
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
   const speechRunRef = useRef(0);
+  const lastTopicRef = useRef<FaqEntry | null>(null);
 
   // Voices load asynchronously in most browsers, so keep a fresh copy around
   useEffect(() => {
@@ -743,6 +776,30 @@ const Chatbot: React.FC = () => {
     const inHindi = languageRef.current === 'hi' || /[ऀ-ॿ]/.test(query);
     const variant = variantCounter.current++;
 
+    // "tell me more" expands whatever we just answered, rather than starting a fresh search
+    if (MORE_KEYWORDS.some(k => containsKeyword(cleanQuery, k))) {
+      const previous = lastTopicRef.current;
+      if (previous?.more) {
+        return {
+          sender: 'bot',
+          text: inHindi ? previous.more.hi : previous.more.en,
+          speech: inHindi
+            ? 'ज़रूर, विस्तार से बताती हूँ। पूरी जानकारी मैंने स्क्रीन पर लिख दी है।'
+            : "Of course — here's the detail. I've written it all out on screen for you.",
+          actions: previous.actions,
+        };
+      }
+      if (previous) {
+        return {
+          sender: 'bot',
+          text: inHindi
+            ? "इस बारे में मेरे पास बस इतनी ही जानकारी है। 😊 इससे आगे की बात हमारी टीम बेहतर बता पाएगी — 05946-223616 पर कॉल करें, या मुझसे कोई और सवाल पूछें।"
+            : "That's about as far as my notes go on this one. 😊 For anything deeper our team will answer it better — call 05946-223616, or ask me about something else.",
+          actions: [CALL_ACTION, BOOK_ACTION],
+        };
+      }
+    }
+
     // Small-talk first, so "hi" doesn't get swallowed by keyword search
     if (IDENTITY_KEYWORDS.some(k => cleanQuery.includes(k))) {
       return {
@@ -794,10 +851,15 @@ const Chatbot: React.FC = () => {
 
     if (best) {
       const spoken = SPOKEN_SUMMARIES[best.keywords[0]];
+      lastTopicRef.current = best;   // so a following "tell me more" knows what to expand
+      const basic = inHindi ? best.hi : best.en;
+      // Give the basics first, then say there's more rather than dumping everything at once
+      const hint = best.more ? (inHindi ? MORE_HINT_HI : MORE_HINT_EN) : '';
       return {
         sender: 'bot',
-        text: inHindi ? best.hi : best.en,
-        speech: spoken && (inHindi ? spoken.hi : spoken.en),
+        text: basic + hint,
+        speech: spoken && (inHindi ? spoken.hi : spoken.en) +
+          (best.more ? (inHindi ? ' और जानना चाहें तो कहिए और बताइए।' : " If you'd like more detail, just say tell me more.") : ''),
         actions: best.actions,
       };
     }

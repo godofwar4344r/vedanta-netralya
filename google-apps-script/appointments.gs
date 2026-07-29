@@ -16,6 +16,13 @@ var SHEET_NAME = 'Patient Data on Website';
 var REVIEWS_SHEET = 'Website Reviews';
 var REVIEW_HEADERS = ['Timestamp', 'Name', 'Location', 'Treatment', 'Rating', 'Review', 'Status', 'Source'];
 
+var UPDATES_SHEET = 'Website Updates';
+var UPDATE_HEADERS = ['Timestamp', 'Title', 'Category', 'Content', 'Posted By', 'Status'];
+
+// Posting code for the /updates page. Change this string to rotate the code —
+// no website redeploy needed, just a new Apps Script version.
+var UPDATE_CODE = '####';
+
 // Columns A-D pre-existed in the clinic's sheet; E onwards were added by setupSheet().
 var HEADERS = [
   'Sr. No.',
@@ -67,6 +74,21 @@ function getReviewsSheet_() {
   return sheet;
 }
 
+function getUpdatesSheet_() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName(UPDATES_SHEET);
+  if (!sheet) {
+    sheet = ss.insertSheet(UPDATES_SHEET);
+  }
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(UPDATE_HEADERS);
+    sheet.getRange(1, 1, 1, UPDATE_HEADERS.length).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+    sheet.setColumnWidth(4, 480); // Content
+  }
+  return sheet;
+}
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(30000);
@@ -79,6 +101,26 @@ function doPost(e) {
         p = JSON.parse(e.postData.contents);
       } catch (err) {
       }
+    }
+
+    // Clinic updates. Gated by UPDATE_CODE — this server-side check is the real gate;
+    // the website's code prompt is only a convenience.
+    if (p.type === 'update') {
+      if (String(p.code || '') !== UPDATE_CODE) {
+        return json_({ ok: false, error: 'That posting code is not valid.' });
+      }
+      if (!p.title || !p.body) {
+        return json_({ ok: false, error: 'Title and content are required.' });
+      }
+      getUpdatesSheet_().appendRow([
+        new Date(),
+        p.title || '',
+        p.category || 'General',
+        p.body || '',
+        p.author || '',
+        'Published'
+      ]);
+      return json_({ ok: true });
     }
 
     // Patient reviews go to a separate tab and start as "Pending".
@@ -132,6 +174,36 @@ function doPost(e) {
 
 function doGet(e) {
   var params = (e && e.parameter) || {};
+
+  // Confirm a posting code without writing anything, so the website can unlock its form.
+  // `verified` is a dedicated field: the generic fallback response below also carries
+  // ok:true, so the website must not treat that as a successful code check.
+  if (params.type === 'update_verify') {
+    return json_({ ok: true, verified: String(params.code || '') === UPDATE_CODE });
+  }
+
+  // Published clinic updates, newest first.
+  if (params.type === 'updates') {
+    var usheet = getUpdatesSheet_();
+    var ulast = usheet.getLastRow();
+    var updates = [];
+    if (ulast > 1) {
+      var urows = usheet.getRange(2, 1, ulast - 1, UPDATE_HEADERS.length).getValues();
+      for (var u = urows.length - 1; u >= 0; u--) {
+        var row = urows[u];
+        if (String(row[5]).toLowerCase() === 'published') {
+          updates.push({
+            date: row[0] ? new Date(row[0]).toISOString() : '',
+            title: row[1],
+            category: row[2] || 'General',
+            body: row[3],
+            author: row[4] || ''
+          });
+        }
+      }
+    }
+    return json_({ ok: true, updates: updates });
+  }
 
   // Return approved reviews for the website's Reviews page.
   if (params.type === 'reviews') {

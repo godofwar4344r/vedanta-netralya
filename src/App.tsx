@@ -7,6 +7,7 @@ import Cataract from './pages/Cataract';
 import RefractiveSurgery from './pages/RefractiveSurgery';
 import Doctors from './pages/Doctors';
 import Team from './pages/Team';
+import Updates from './pages/Updates';
 import Centres from './pages/Centres';
 import Appointment from './pages/Appointment';
 import Contact from './pages/Contact';
@@ -47,6 +48,8 @@ function App() {
         <Route path="facilities" element={<Facilities />} />
         <Route path="doctors" element={<Doctors />} />
         <Route path="team" element={<Team />} />
+        {/* Unlisted on purpose — reachable at /updates, posting gated by a code */}
+        <Route path="updates" element={<Updates />} />
         <Route path="centres" element={<Centres />} />
         <Route path="appointment" element={<Appointment />} />
         <Route path="contact" element={<Contact />} />

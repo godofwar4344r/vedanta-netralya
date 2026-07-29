@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-col gap-3 font-merriweather text-[10px] tracking-wider uppercase font-bold text-cream/70">
               <Link to="/about" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">About Hospital</Link>
               <Link to="/facilities" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Facilities</Link>
-              <Link to="/doctors" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Doctors</Link>
+              <Link to="/doctors" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Doctors & Team</Link>
               <Link to="/centres" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Our Centres</Link>
               <Link to="/gallery" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Media Gallery</Link>
               <Link to="/reviews" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300">Patient Reviews</Link>
