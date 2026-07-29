@@ -230,6 +230,7 @@ const Layout: React.FC = () => {
 
             <Link to="/test-eye" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/test-eye' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Digital Eye Test</Link>
             <Link to="/prevention" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/prevention' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Eye Prevention</Link>
+            <Link to="/updates" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/updates' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Offers &amp; Updates</Link>
             <Link to="/centres" className={`hover:text-brand-teal transition-colors ${location.pathname === '/centres' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Centres</Link>
 
             <Link to="/gallery" className={`hover:text-brand-teal transition-colors ${location.pathname === '/gallery' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Gallery</Link>
@@ -281,6 +282,7 @@ const Layout: React.FC = () => {
               <hr className="border-cream/10" />
               <Link to="/test-eye" onClick={() => setIsMobileMenuOpen(false)} className={`text-brand-teal font-black ${location.pathname === '/test-eye' ? 'underline' : ''}`}>Digital Eye Test</Link>
               <Link to="/prevention" onClick={() => setIsMobileMenuOpen(false)} className={`text-brand-teal font-black ${location.pathname === '/prevention' ? 'underline' : ''}`}>Eye Prevention</Link>
+              <Link to="/updates" onClick={() => setIsMobileMenuOpen(false)} className={`text-brand-teal font-black ${location.pathname === '/updates' ? 'underline' : ''}`}>Offers &amp; Updates</Link>
               <Link to="/centres" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/centres' ? 'text-brand-teal font-black' : ''}>Centres</Link>
               <hr className="border-cream/10" />
               <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={location.pathname === '/gallery' ? 'text-brand-teal font-black' : ''}>Gallery</Link>

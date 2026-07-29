@@ -182,7 +182,7 @@ const FAQ_DATABASE: FaqEntry[] = [
     keywords: ['offer', 'offers', 'discount', 'free', 'special', 'camp', 'senior', 'tuesday', 'wednesday', 'friday', 'छूट', 'मुफ्त', 'ऑफर'],
     en: "Yes! We run special OPD days every week — here's what's on:\n\n🗓️ Tuesday — Retina Screening Day: 50% off consultation & fundus evaluation (great for diabetics & BP patients)\n🗓️ Wednesday — FREE eye screening for children below 5 years\n🗓️ Friday — Senior Citizen Day: 50% off OPD for everyone above 60\n\nPick your day and I'll help you book!",
     hi: "जी हाँ! हर हफ्ते हमारे स्पेशल OPD दिन होते हैं:\n\n🗓️ मंगलवार — रेटिना स्क्रीनिंग डे: जाँच शुल्क में 50% छूट (डायबिटीज़/बीपी के मरीज़ों के लिए)\n🗓️ बुधवार — 5 साल से छोटे बच्चों की मुफ़्त आँखों की जाँच\n🗓️ शुक्रवार — वरिष्ठ नागरिक दिवस: 60+ उम्र के लिए OPD में 50% छूट\n\nअपना दिन चुनें, मैं बुकिंग में मदद करता हूँ!",
-    actions: [BOOK_ACTION]
+    actions: [{ label: 'Offers & Updates', labelHi: 'ऑफर और अपडेट', to: '/updates' }, BOOK_ACTION]
   },
   {
     keywords: ['emergency', 'urgent', 'injury', 'injured', 'trauma', 'accident', 'chemical', 'acid', 'burn', 'sudden', 'vision loss', 'severe pain', 'red eye', 'चोट', 'दर्द', 'इमरजेंसी', 'आपातकाल'],

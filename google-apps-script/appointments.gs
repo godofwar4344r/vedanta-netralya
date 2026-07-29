@@ -17,7 +17,7 @@ var REVIEWS_SHEET = 'Website Reviews';
 var REVIEW_HEADERS = ['Timestamp', 'Name', 'Location', 'Treatment', 'Rating', 'Review', 'Status', 'Source'];
 
 var UPDATES_SHEET = 'Website Updates';
-var UPDATE_HEADERS = ['Timestamp', 'Title', 'Category', 'Content', 'Posted By', 'Status'];
+var UPDATE_HEADERS = ['Timestamp', 'Title', 'Category', 'Content', 'Posted By', 'Status', 'Image URL'];
 
 // Posting code for the /updates page. Change this string to rotate the code —
 // no website redeploy needed, just a new Apps Script version.
@@ -118,7 +118,8 @@ function doPost(e) {
         p.category || 'General',
         p.body || '',
         p.author || '',
-        'Published'
+        'Published',
+        p.imageUrl || ''
       ]);
       return json_({ ok: true });
     }
@@ -197,7 +198,8 @@ function doGet(e) {
             title: row[1],
             category: row[2] || 'General',
             body: row[3],
-            author: row[4] || ''
+            author: row[4] || '',
+            imageUrl: row[6] || ''
           });
         }
       }

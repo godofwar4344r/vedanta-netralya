@@ -4,7 +4,7 @@ import { Lock, Plus, Megaphone, Calendar, X, Loader2, AlertCircle } from 'lucide
 import FooterCTA from '../components/FooterCTA';
 import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode } from '../lib/updates';
 
-const CATEGORIES = ['General', 'Announcement', 'OPD Schedule', 'Camp', 'Offer', 'Notice'];
+const CATEGORIES = ['Offer', 'Announcement', 'OPD Schedule', 'Camp', 'Notice', 'General'];
 
 const formatDate = (iso: string) => {
   if (!iso) return '';
@@ -29,6 +29,7 @@ const Updates: React.FC = () => {
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState('');
 
@@ -59,8 +60,8 @@ const Updates: React.FC = () => {
     setPostError('');
     setPosting(true);
     try {
-      await postUpdate({ code, title, category, body, author });
-      setTitle(''); setBody(''); setAuthor(''); setCategory(CATEGORIES[0]);
+      await postUpdate({ code, title, category, body, author, imageUrl });
+      setTitle(''); setBody(''); setAuthor(''); setImageUrl(''); setCategory(CATEGORIES[0]);
       await load();
     } catch (err) {
       setPostError(err instanceof Error ? err.message : 'Your update could not be saved.');
@@ -74,9 +75,9 @@ const Updates: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6 lg:px-16 py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">Notice Board</p>
-          <h1 className="section-text text-brand-navy mb-6">Clinic Updates</h1>
+          <h1 className="section-text text-brand-navy mb-6">Offers &amp; Updates</h1>
           <p className="text-base text-brand-navy/60 font-lora leading-relaxed">
-            Announcements, schedule changes and notices from Vedanta Netralya.
+            Current offers, camps, OPD schedule changes and announcements from Vedanta Netralya.
           </p>
         </div>
 
@@ -150,9 +151,27 @@ const Updates: React.FC = () => {
             </div>
             <textarea
               value={body} onChange={e => setBody(e.target.value)} rows={5}
-              placeholder="Write the update…" aria-label="Update content" required
+              placeholder="Write the offer or update…" aria-label="Update content" required
               className="w-full bg-cream/60 border border-brand-navy/10 rounded-2xl px-5 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:border-brand-teal resize-y"
             />
+            <div>
+              <input
+                type="url" value={imageUrl} onChange={e => setImageUrl(e.target.value)}
+                placeholder="Poster image link (optional)" aria-label="Poster image link"
+                className="w-full bg-cream/60 border border-brand-navy/10 rounded-2xl px-5 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:border-brand-teal"
+              />
+              <p className="text-[11px] text-brand-navy/45 font-lora mt-1.5 px-1">
+                Paste a direct image link to show a poster above the text.
+              </p>
+              {imageUrl.trim() && (
+                <img
+                  src={imageUrl}
+                  alt="Poster preview"
+                  className="mt-3 max-h-56 rounded-2xl border border-brand-navy/10 object-contain bg-cream/40"
+                  onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                />
+              )}
+            </div>
             {postError && (
               <p className="text-xs text-rose-600 font-lora flex items-start gap-1.5">
                 <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" /> {postError}
@@ -193,6 +212,15 @@ const Updates: React.FC = () => {
                     </span>
                   )}
                 </div>
+                {u.imageUrl && (
+                  <img
+                    src={u.imageUrl}
+                    alt={u.title}
+                    loading="lazy"
+                    className="w-full max-h-[26rem] object-contain rounded-2xl border border-cream/10 bg-brand-navy-deep mb-4"
+                    onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
+                )}
                 <h2 className="text-lg md:text-xl font-black mb-2 font-body">{u.title}</h2>
                 <p className="text-sm text-cream/75 font-lora leading-relaxed whitespace-pre-line">{u.body}</p>
                 {u.author && (

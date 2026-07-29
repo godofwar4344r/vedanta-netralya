@@ -4,6 +4,8 @@ export interface ClinicUpdate {
   category: string;
   body: string;
   author: string;
+  /** Optional poster/photo shown above the text. */
+  imageUrl?: string;
 }
 
 export interface UpdatePayload {
@@ -12,6 +14,7 @@ export interface UpdatePayload {
   category: string;
   body: string;
   author: string;
+  imageUrl: string;
 }
 
 // Same Google Apps Script Web App that stores appointments and reviews; updates
@@ -47,6 +50,7 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
     category: data.category,
     body: data.body,
     author: data.author,
+    imageUrl: data.imageUrl,
   });
 
   const res = await fetch(ENDPOINT, { method: 'POST', body });
