@@ -21,7 +21,7 @@ var UPDATE_HEADERS = ['Timestamp', 'Title', 'Category', 'Content', 'Posted By', 
 
 // Posting code for the /updates page. Change this string to rotate the code —
 // no website redeploy needed, just a new Apps Script version.
-var UPDATE_CODE = '####';
+var UPDATE_CODE = '0000';
 
 // Columns A-D pre-existed in the clinic's sheet; E onwards were added by setupSheet().
 var HEADERS = [
