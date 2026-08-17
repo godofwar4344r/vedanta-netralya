@@ -150,7 +150,7 @@ const FAQ_DATABASE: FaqEntry[] = [
     ],
     en: "We're a full-service eye hospital — here's what we look after:\n\n👁️ Cataract Surgery (MICS phaco, premium lenses)\n👁️ Glaucoma (Kala Motia) diagnosis & management\n👁️ Retina & Vitreo-Retinal Surgery\n👁️ Specs Removal — ICL & RLE\n👁️ Paediatric Ophthalmology & Squint\n👁️ Oculoplasty (eyelids, watering eyes)\n👁️ Optical Services & Contact Lenses\n\nWhich one would you like to know more about?",
     hi: "हम एक पूर्ण नेत्र चिकित्सालय हैं — हमारी विशेषताएँ:\n\n👁️ मोतियाबिंद सर्जरी (MICS फेको, प्रीमियम लेंस)\n👁️ ग्लूकोमा (काला मोतिया) की जाँच व इलाज\n👁️ रेटिना और विट्रियो-रेटिनल सर्जरी\n👁️ चश्मा हटाना — ICL और RLE\n👁️ बच्चों की नेत्र चिकित्सा व भेंगापन\n👁️ ऑक्यूलोप्लास्टी (पलकें, आँख से पानी आना)\n👁️ ऑप्टिकल सेवाएँ और कॉन्टैक्ट लेंस\n\nआप किसके बारे में और जानना चाहेंगे?",
-    actions: [{ label: 'All Specialities', labelHi: 'सभी विशेषताएँ', to: '/services' }, BOOK_ACTION]
+    actions: [{ label: 'All Specialties', labelHi: 'सभी विशेषताएँ', to: '/services' }, BOOK_ACTION]
   },
   {
     keywords: ['location', 'address', 'branch', 'centre', 'center', 'haldwani', 'kichha', 'where', 'reach', 'directions', 'नवाबी', 'पता', 'कहाँ', 'हल्द्वानी', 'किच्छा'],
@@ -501,7 +501,7 @@ const GREETINGS_HI = [
 
 const FALLBACKS_EN = [
   "Hmm, that's a bit outside what I know — but I don't want to leave you without an answer! Our helpdesk team would love to help you personally at 05946-223616.\n\nMeanwhile, I can tell you about treatments (cataract, glaucoma, retina, VR surgery, specs removal, children's eyes, oculoplasty), our doctors, lens options, diagnostics, facilities, ambulance charges, both our centres, timings, fees and weekly offers. 😊",
-  "That's a good question — and honestly, our team at the hospital can answer it much better than I can! Give them a ring at 05946-223616.\n\nTry me on any of these: doctor profiles, appointment booking, our specialities, hospital facilities, optical & eyewear, insurance, or our weekly special OPD days."
+  "That's a good question — and honestly, our team at the hospital can answer it much better than I can! Give them a ring at 05946-223616.\n\nTry me on any of these: doctor profiles, appointment booking, our specialties, hospital facilities, optical & eyewear, insurance, or our weekly special OPD days."
 ];
 const FALLBACKS_HI = [
   "माफ़ कीजिए, यह मेरी जानकारी से थोड़ा बाहर है — लेकिन आपको बिना जवाब के नहीं छोड़ूँगी! हमारी हेल्पडेस्क टीम आपकी मदद करेगी: 05946-223616।\n\nमैं आपको इलाज (मोतियाबिंद, ग्लूकोमा, रेटिना, VR सर्जरी, चश्मा हटाना, बच्चों की आँखें, ऑक्यूलोप्लास्टी), डॉक्टर, लेंस विकल्प, जाँच मशीनें, सुविधाएँ, एम्बुलेंस शुल्क, दोनों केंद्र, समय, फीस और ऑफर के बारे में बता सकती हूँ। 😊",
@@ -514,7 +514,7 @@ const QUICK_REPLIES = [
   { en: '🎁 Weekly offers', hi: '🎁 साप्ताहिक ऑफर', query: { en: 'What offers do you have?', hi: 'क्या ऑफर हैं?' } },
   { en: '🕘 Timings', hi: '🕘 समय', query: { en: 'What are your timings?', hi: 'आपका समय क्या है?' } },
   { en: '💳 Insurance & fees', hi: '💳 बीमा और फीस', query: { en: 'Do you accept insurance?', hi: 'क्या बीमा चलता है?' } },
-  { en: '👁️ Our specialities', hi: '👁️ हमारी विशेषताएँ', query: { en: 'What specialities do you have?', hi: 'आपकी विशेषताएँ क्या हैं?' } },
+  { en: '👁️ Our specialties', hi: '👁️ हमारी विशेषताएँ', query: { en: 'What specialties do you have?', hi: 'आपकी विशेषताएँ क्या हैं?' } },
   { en: '🏥 Facilities', hi: '🏥 सुविधाएँ', query: { en: 'What facilities does the hospital have?', hi: 'अस्पताल में क्या सुविधाएँ हैं?' } },
   { en: '📍 Our centres', hi: '📍 हमारे केंद्र', query: { en: 'Where are you located?', hi: 'आपका पता कहाँ है?' } },
 ];

@@ -18,7 +18,7 @@ const FooterCTA: React.FC = () => {
               Curious About Your Vision Status?
             </h2>
             <p className="text-sm text-cream/70 font-lora max-w-xl leading-relaxed">
-              Take our interactive digital eye test online in 2 minutes, or schedule a comprehensive in-person screening at our Haldwani superspecialty centre.
+              Take our interactive digital eye test online in 2 minutes, or schedule a comprehensive in-person screening at our Haldwani super-specialty centre.
             </p>
           </div>
 

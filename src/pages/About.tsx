@@ -55,7 +55,7 @@ const About: React.FC = () => {
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
       exp: '50,000+',
-      desc: 'Highly experienced eye surgeon. Completed fellowship at Sadguru Netra Chikitsalaya, Chitrakoot. Served as Clinical Incharge at Eye Q Superspeciality Eye Hospital, Haldwani from 2007 to 2017 before founding Vedanta Netralya. Expert in micro-incision cataract surgeries, lid and tear duct reconstructions, and glaucoma management.',
+      desc: 'Highly experienced eye surgeon. Completed fellowship at Sadguru Netra Chikitsalaya, Chitrakoot. Served as Clinical Incharge at Eye Q Super-specialty Eye Hospital, Haldwani from 2007 to 2017 before founding Vedanta Netralya. Expert in micro-incision cataract surgeries, lid and tear duct reconstructions, and glaucoma management.',
       fellowships: [
         'Fellowship in Sadguru Netra Chikitsalaya, Chitrakoot',
         '2,000+ Lacrimal (tear duct) surgeries performed',
@@ -178,7 +178,7 @@ const About: React.FC = () => {
               )}
             </div>
             <p className="text-[11px] text-center text-brand-navy/40 italic mt-4 font-lora">
-              <EditableText id="about-video-caption">Take a virtual walkthrough of our Haldwani superspecialty hospital</EditableText>
+              <EditableText id="about-video-caption">Take a virtual walkthrough of our Haldwani super-specialty hospital</EditableText>
             </p>
           </div>
         </EditableContainer>

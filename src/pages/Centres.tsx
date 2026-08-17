@@ -48,7 +48,7 @@ const Centres: React.FC = () => {
             <EditableText id="centres-eyebrow">Location Network</EditableText>
           </p>
           <h1 className="section-text text-brand-navy mb-6">
-            <EditableText id="centres-title">Our Superspecialty Centres</EditableText>
+            <EditableText id="centres-title">Our Super-Specialty Centres</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora">
             <EditableText id="centres-description">Vedanta Netralya operates primary and consultation locations across Uttarakhand to deliver expert ophthalmic diagnostic scan and surgery suites.</EditableText>

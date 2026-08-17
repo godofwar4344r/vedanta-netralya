@@ -9,9 +9,9 @@ import VisionSimulator from '../components/VisionSimulator';
 
 
 // Assets
-import heroEye3d from '../assets/hero-eye-3d.png';
-import heroEyePrecision from '../assets/hero-eye-precision.png';
 import drSameerVerma from '../assets/dr-sameer-verma.png';
+import heroDoctorLeft from '../assets/hero-doctor-left.png';
+import heroDoctorRight from '../assets/hero-doctor-right.png';
 import introVid from '../assets/intro-video.mp4';
 import hospitalFacade from '../assets/hospital-facade.jpeg';
 
@@ -225,7 +225,6 @@ const Home: React.FC = () => {
   };
 
   const { scrollY } = useScroll();
-  const widgetOpacity = useTransform(scrollY, [0, 150], [1, 0]);
   const scrollIndicatorOpacity = useTransform(scrollY, [0, 100], [1, 0]);
   const doctorOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
@@ -353,10 +352,6 @@ const Home: React.FC = () => {
     }
   ];
 
-  const scrollToSimulator = () => {
-    document.getElementById('simulator')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="overflow-hidden bg-transparent">
 
@@ -368,8 +363,49 @@ const Home: React.FC = () => {
             <div className="w-[500px] h-[500px] rounded-full bg-brand-teal/6 blur-[100px] mb-0" />
           </div>
 
+          {/* Supporting doctors, flanking the lead portrait.
+              They sit behind it (z-[5] vs z-10) and only appear once the intro
+              video has finished, so nothing competes with it while it plays.
+              Hidden below md — the hero is already tight on phones. */}
+          {[
+            { src: heroDoctorLeft, side: 'left' as const, offset: -21, alt: 'Consultant ophthalmologist, Vedanta Netralya' },
+            { src: heroDoctorRight, side: 'right' as const, offset: 21, alt: 'Consultant eye surgeon, Vedanta Netralya' },
+          ].map(({ src, side, offset, alt }) => (
+            <motion.div
+              key={side}
+              style={{
+                opacity: doctorOpacity,
+                bottom: '0px',
+                // Same height + scale + origin as the lead portrait, so all
+                // three render at an identical size.
+                height: heroHeight,
+                aspectRatio: '682/1024',
+                scale: 1.34,
+                // Centred symmetrically around the lead doctor.
+                x: `${offset}vw`,
+                originY: 1,
+                originX: 0.5,
+              }}
+              className="hidden md:flex absolute left-0 right-0 mx-auto items-end justify-center z-[5] pointer-events-none"
+            >
+              <motion.img
+                src={src}
+                alt={alt}
+                initial={{ opacity: 0, x: side === 'left' ? -40 : 40 }}
+                animate={
+                  isVideoDone
+                    ? { opacity: 1, x: 0 }
+                    : { opacity: 0, x: side === 'left' ? -40 : 40 }
+                }
+                transition={{ delay: 0.25, duration: 0.8, ease: 'easeOut' }}
+                className="absolute inset-0 h-full w-full select-none object-contain object-bottom"
+                style={{ filter: 'contrast(1.12) brightness(1.1) saturate(1.02)' }}
+              />
+            </motion.div>
+          ))}
+
           {/* Doctor Portrait / Intro Video - centered, smooth cross-fade */}
-          <motion.div 
+          <motion.div
             onMouseEnter={() => setIsPortraitHovered(true)}
             onMouseLeave={() => setIsPortraitHovered(false)}
             onClick={(e) => {
@@ -384,7 +420,7 @@ const Home: React.FC = () => {
               width: heroWidth === 'auto' ? undefined : heroWidth,
               aspectRatio: heroWidth === 'auto' ? '682/1024' : undefined,
               scale: isMobile ? 1.0 : 1.34,
-              x: isMobile ? "0px" : "4vw",
+              x: "0px",
               originY: 1,
               originX: 0.5,
               outline: isEditMode ? (isSelected ? '3px solid #00abc0' : isPortraitHovered ? '2px dashed rgba(0,171,192,0.55)' : undefined) : undefined,
@@ -440,87 +476,10 @@ const Home: React.FC = () => {
             )}
           </motion.div>
 
-          {/* Floating Widget 1: Digital Eye Test — Right */}
-          <motion.div
-            style={{ opacity: widgetOpacity }}
-            initial={{ opacity: 0, x: 70 }}
-            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
-            transition={{ delay: 0.1, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[25%] z-20"
-          >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-              className="bg-white/90 backdrop-blur-lg border border-brand-navy/8 p-3 rounded-2xl shadow-2xl flex items-center gap-3 cursor-pointer group w-[195px] select-none"
-            >
-              <Link to="/test-eye" className="flex items-center gap-3 w-full">
-                <div className="w-11 h-11 rounded-xl overflow-hidden bg-brand-navy flex-shrink-0">
-                  <img src={heroEyePrecision} alt="Digital Eye Test" className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">Digital Test</p>
-                  <p className="text-xs font-bold text-brand-navy">Eye Acuity Check</p>
-                  <span className="text-[8px] text-brand-navy/45 font-medium block mt-0.5">2-Min Snellen Chart</span>
-                </div>
-              </Link>
-            </motion.div>
-          </motion.div>
- 
-          {/* Floating Widget 2: AI Vision Bot — Right */}
-          <motion.div
-            style={{ opacity: widgetOpacity }}
-            initial={{ opacity: 0, x: 70 }}
-            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
-            transition={{ delay: 0.3, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[45%] z-20"
-          >
-            <motion.div
-              animate={{ y: [0, -9, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-              className="bg-white/90 backdrop-blur-lg border border-brand-navy/8 p-3 rounded-2xl shadow-2xl flex items-center gap-3 cursor-pointer group w-[195px] select-none"
-              onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-            >
-              <div className="w-11 h-11 rounded-xl overflow-hidden bg-brand-navy flex-shrink-0 relative">
-                <img src={heroEye3d} alt="AI Bot" className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-brand-teal/15 animate-pulse" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">AI Assistant</p>
-                <p className="text-xs font-bold text-brand-navy">Ask Naina</p>
-                <span className="text-[8px] text-green-600 font-bold flex items-center gap-1 mt-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" /> Online Now
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
- 
-          {/* Floating Widget 3: Sight Simulator — Right */}
-          <motion.div
-            style={{ opacity: widgetOpacity }}
-            initial={{ opacity: 0, x: 70 }}
-            animate={isVideoDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 70 }}
-            transition={{ delay: 0.5, duration: 0.7, type: 'spring', stiffness: 80 }}
-            className="hidden md:block absolute right-[4%] sm:right-[6%] lg:right-[8%] top-[65%] z-20"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-              className="bg-white/90 backdrop-blur-lg border border-brand-navy/8 p-3 rounded-2xl shadow-2xl flex items-center gap-3 cursor-pointer group w-[195px] select-none"
-              onClick={scrollToSimulator}
-            >
-              <div className="w-11 h-11 rounded-xl overflow-hidden bg-brand-navy flex-shrink-0">
-                <img src={heroEyePrecision} alt="Sight Simulator" className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[8px] tracking-widest text-brand-teal font-black uppercase">Vision Simulator</p>
-                <p className="text-xs font-bold text-brand-navy">See Like Patients</p>
-                <span className="text-[8px] text-brand-navy/45 font-medium block mt-0.5">5 Eye Conditions</span>
-              </div>
-            </motion.div>
-          </motion.div>
+          {/* Floating hero widgets (Digital Eye Test / Ask Naina / Vision
+              Simulator) were removed: they sat on top of the doctor portraits.
+              The same destinations remain reachable from the main navigation,
+              the chatbot launcher and the Vision Simulator section below. */}
 
           {/* "The Clarity You Deserve." — scroll responsive alignment */}
           <motion.div
@@ -528,7 +487,7 @@ const Home: React.FC = () => {
             animate={isVideoDone ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{ y: textY, opacity: textOpacity }}
-            className="absolute top-[12%] md:top-auto md:bottom-[10%] left-6 md:left-[4%] sm:left-[8%] lg:left-[10%] right-6 md:right-auto z-30 pointer-events-none select-none text-center md:text-left flex flex-col items-center md:items-start"
+            className="absolute top-[12%] md:top-auto md:bottom-[8%] left-6 md:left-[3%] sm:left-[6%] lg:left-[4%] xl:left-[5%] right-6 md:right-auto z-30 pointer-events-none select-none text-center md:text-left flex flex-col items-center md:items-start max-w-sm lg:max-w-md"
           >
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -1213,7 +1172,7 @@ const Home: React.FC = () => {
               <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Our Locations</span>
               <h2 className="section-text text-brand-navy mb-6">Find Our Centres</h2>
               <p className="text-base text-brand-navy/60 font-lora">
-                Visit our superspecialty eye hospitals. Select a branch below to view its location, clinical timings, and get instant driving directions.
+                Visit our super-specialty eye hospitals. Select a branch below to view its location, clinical timings, and get instant driving directions.
               </p>
             </div>
 
@@ -1221,7 +1180,7 @@ const Home: React.FC = () => {
               {/* Haldwani Card */}
               <div className="bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/5 hover:border-brand-teal/40 transition-all duration-300 flex flex-col justify-between">
                 <div>
-                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Superspecialty Centre</span>
+                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Super-Specialty Centre</span>
                   <h3 className="text-2xl font-black mb-4">Haldwani Centre</h3>
                   <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
                     Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139
@@ -1267,6 +1226,47 @@ const Home: React.FC = () => {
                   <MapPin className="w-4 h-4" />
                   Navigate on Google Maps
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+
+            {/* Google Review QR Banner Card */}
+            <div className="mt-12 max-w-5xl mx-auto bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex flex-col gap-2 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-1 text-amber-400 text-xs font-black tracking-widest uppercase">
+                  <span>★★★★★</span>
+                  <span className="text-cream/80 ml-1">4.9 Star Google Rating</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-black">Visited Vedanta Netralya Recently?</h3>
+                <p className="text-xs text-cream/70 font-lora max-w-xl leading-relaxed">
+                  Scan the QR code with your smartphone or tap the button to share your review on Google Maps. Your feedback helps families across Uttarakhand find trusted eye care.
+                </p>
+                <div className="pt-2 flex items-center justify-center md:justify-start gap-4">
+                  <a
+                    href="https://www.google.com/maps?cid=14754978886231398408"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-brand-teal text-brand-navy hover:bg-cream px-5 py-2.5 rounded-full text-[9px] font-black uppercase tracking-wider transition-all shadow-md hover:scale-105"
+                  >
+                    Rate on Google <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                  <Link
+                    to="/reviews"
+                    className="text-[10px] text-cream/70 hover:text-brand-teal uppercase font-bold tracking-wider underline underline-offset-4 transition-colors"
+                  >
+                    Read All Patient Stories
+                  </Link>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 shrink-0">
+                <a
+                  href="https://www.google.com/maps?cid=14754978886231398408"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-3 rounded-2xl shadow-xl border border-brand-teal/30 flex flex-col items-center hover:scale-105 transition-transform"
+                >
+                  <img src="/qr-review.png" alt="Google Review QR Code" className="w-24 h-24 md:w-28 md:h-28 object-contain" />
+                  <span className="text-[8px] font-black uppercase text-brand-navy mt-1 tracking-wider">Scan to Review</span>
                 </a>
               </div>
             </div>

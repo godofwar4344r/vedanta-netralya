@@ -48,14 +48,25 @@ const Footer: React.FC = () => {
               ))}
             </div>
 
-            {/* Mobile Scan QR Code Card */}
-            <div className="mt-2 bg-cream/5 border border-cream/10 rounded-2xl p-3 flex items-center gap-3">
-              <img src="/qr-website.png" alt="Scan to open website" className="w-14 h-14 rounded-xl bg-white p-1 shrink-0" />
-              <div>
-                <p className="text-[10px] font-black uppercase text-brand-teal tracking-wider font-body">Scan with Phone</p>
-                <p className="text-[11px] text-cream/70 font-lora leading-tight mt-0.5">Point camera to open site on mobile</p>
+            {/* Google Review QR Code Card */}
+            <a 
+              href="https://www.google.com/maps?cid=14754978886231398408"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 bg-white/5 border border-amber-400/20 hover:border-amber-400/50 rounded-2xl p-3 flex items-center gap-3 group transition-all duration-300 hover:bg-white/10"
+              title="Review Vedanta Netralya on Google"
+            >
+              <img src="/qr-review.png" alt="Scan to review on Google" className="w-14 h-14 rounded-xl bg-white p-1 shrink-0 shadow-md group-hover:scale-105 transition-transform" />
+              <div className="min-w-0">
+                <div className="flex items-center gap-1 text-amber-400 text-[10px] font-black tracking-wider uppercase font-body">
+                  <span>★ 4.9 on Google</span>
+                </div>
+                <p className="text-[11px] text-cream font-bold leading-tight mt-0.5">Scan to Review Us</p>
+                <p className="text-[9px] text-cream/60 font-lora leading-tight mt-0.5 group-hover:text-brand-teal transition-colors flex items-center gap-1">
+                  Point camera or tap here <ArrowUpRight className="w-2.5 h-2.5" />
+                </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Column 2: Specialties & Services (col-span-2) */}

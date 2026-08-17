@@ -224,7 +224,7 @@ const Doctors: React.FC = () => {
       specialty: 'Comprehensive Ophthalmology, Cataract, Oculoplasty, Glaucoma, Paediatric Cataract',
       edu: 'M.S., Fellow Sadguru Netra Chikitsalaya (SNC), Chitrakoot',
       exp: '50,000+',
-      desc: 'Completed comprehensive ophthalmology fellowship at Chitrakoot. Working as a high volume surgeon, he has performed over fifty thousand cataract surgeries with significant exposure in pediatric cataract and glaucoma surgeries. He also performed approximately two thousand DCR/dacryocystectomy surgeries and four thousand eyelid reconstructions. After his fellowship, he joined Eye Q Superspeciality Eye Hospital and worked as Haldwani\'s In-charge of clinical operations from 2007 to 2017 before founding Vedanta Netralya.',
+      desc: 'Completed comprehensive ophthalmology fellowship at Chitrakoot. Working as a high volume surgeon, he has performed over fifty thousand cataract surgeries with significant exposure in pediatric cataract and glaucoma surgeries. He also performed approximately two thousand DCR/dacryocystectomy surgeries and four thousand eyelid reconstructions. After his fellowship, he joined Eye Q Super-specialty Eye Hospital and worked as Haldwani\'s In-charge of clinical operations from 2007 to 2017 before founding Vedanta Netralya.',
       fellowships: [
         'Fellowship in Sadguru Netra Chikitsalaya, Chitrakoot',
         '2,000+ Lacrimal (tear duct) surgeries performed',

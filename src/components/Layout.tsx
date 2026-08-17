@@ -123,13 +123,13 @@ const Layout: React.FC = () => {
           isScrolled ? 'bg-brand-navy/95 backdrop-blur-md py-3 shadow-lg border-b border-cream/5' : 'bg-brand-navy py-5'
         }`}
       >
-        <div className="max-w-[1800px] mx-auto px-6 lg:px-16 flex justify-between items-center">
+        <div className="max-w-[1800px] mx-auto px-4 lg:px-8 xl:px-12 flex justify-between items-center gap-4">
           {/* Logo wrapper */}
-          <Logo className="h-10 md:h-12" withGlow={true} />
+          <Logo className="h-9 md:h-11" withGlow={true} />
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex gap-8 items-center font-merriweather text-[10px] tracking-[0.25em] uppercase font-bold text-cream/80">
-            <Link to="/" className={`hover:text-brand-teal transition-colors ${location.pathname === '/' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Home</Link>
+          <div className="hidden lg:flex gap-4 xl:gap-6 2xl:gap-8 items-center font-merriweather text-[9px] xl:text-[10px] tracking-[0.16em] xl:tracking-[0.22em] uppercase font-bold text-cream/80 flex-shrink-0">
+            <Link to="/" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/' ? 'text-brand-teal' : 'text-brand-teal'}`}>HOME</Link>
 
             {/* About Dropdown / Links */}
             <div className="relative">
@@ -187,7 +187,7 @@ const Layout: React.FC = () => {
                     className="absolute top-8 left-0 w-72 bg-brand-navy border border-cream/10 rounded-2xl p-4 flex flex-col gap-3 shadow-xl backdrop-blur-md z-[100] max-h-[80vh] overflow-y-auto"
                   >
                     <Link to="/services" className={`hover:text-brand-teal transition-colors py-1 font-black flex items-center justify-between ${location.pathname === '/services' ? 'text-brand-teal' : 'text-cream/90'}`}>
-                      <span>All Offerings</span>
+                      <span>All Specialties</span>
                       {location.pathname === '/services' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <hr className="border-cream/10" />
@@ -196,7 +196,7 @@ const Layout: React.FC = () => {
                       {location.pathname === '/cataract' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <Link to="/refractive-surgery" className={`hover:text-brand-teal transition-colors py-0.5 flex items-center justify-between ${location.pathname === '/refractive-surgery' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
-                      <span>Refractive Surgery</span>
+                      <span>Refractive Surgery (LASIK/ICL)</span>
                       {location.pathname === '/refractive-surgery' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <Link to="/retina-services" className={`hover:text-brand-teal transition-colors py-0.5 flex items-center justify-between ${location.pathname === '/retina-services' ? 'text-brand-teal font-black' : 'text-cream/90'}`}>
@@ -228,16 +228,13 @@ const Layout: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            <Link to="/test-eye" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/test-eye' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Digital Eye Test</Link>
-            <Link to="/prevention" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/prevention' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Eye Prevention</Link>
-            <Link to="/updates" className={`hover:text-brand-teal transition-colors font-black ${location.pathname === '/updates' ? 'text-brand-teal font-black' : 'text-brand-teal'}`}>Offers &amp; Updates</Link>
-            <Link to="/centres" className={`hover:text-brand-teal transition-colors ${location.pathname === '/centres' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Centres</Link>
-
-            <Link to="/gallery" className={`hover:text-brand-teal transition-colors ${location.pathname === '/gallery' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Gallery</Link>
-
-            <Link to="/reviews" className={`hover:text-brand-teal transition-colors ${location.pathname === '/reviews' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Reviews</Link>
-
-            <Link to="/contact" className={`hover:text-brand-teal transition-colors ${location.pathname === '/contact' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>Contact</Link>
+            <Link to="/test-eye" className="text-brand-teal font-black hover:text-brand-teal-bright transition-colors">DIGITAL EYE TEST</Link>
+            <Link to="/prevention" className="text-brand-teal font-black hover:text-brand-teal-bright transition-colors">EYE PREVENTION</Link>
+            <Link to="/updates" className="text-brand-teal font-black hover:text-brand-teal-bright transition-colors">OFFERS &amp; UPDATES</Link>
+            <Link to="/centres" className={`hover:text-brand-teal transition-colors ${location.pathname === '/centres' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>CENTRES</Link>
+            <Link to="/gallery" className={`hover:text-brand-teal transition-colors ${location.pathname === '/gallery' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>GALLERY</Link>
+            <Link to="/reviews" className={`hover:text-brand-teal transition-colors ${location.pathname === '/reviews' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>REVIEWS</Link>
+            <Link to="/contact" className={`hover:text-brand-teal transition-colors ${location.pathname === '/contact' ? 'text-brand-teal font-black' : 'text-cream/80'}`}>CONTACT</Link>
           </div>
 
           {/* Mobile Menu Toggle */}

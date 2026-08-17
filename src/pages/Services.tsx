@@ -119,7 +119,7 @@ const Services: React.FC = () => {
             <EditableText id="services-title">Our Super-Specialty Services</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora">
-            <EditableText id="services-description">Vedanta Netralya is a superspeciality eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Maj Aditya Bhardwaj.</EditableText>
+            <EditableText id="services-description">Vedanta Netralya is a super-specialty eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Maj Aditya Bhardwaj.</EditableText>
           </p>
         </div>
       </EditableContainer>

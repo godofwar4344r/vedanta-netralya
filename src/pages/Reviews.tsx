@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Quote, Star, CheckCircle2, Loader2 } from 'lucide-react';
+import { Quote, Star, CheckCircle2, Loader2, ArrowUpRight, QrCode } from 'lucide-react';
 import { submitReview, fetchApprovedReviews, ApprovedReview } from '../lib/reviews';
 
 // Always-on featured reviews so the page never looks empty.
@@ -130,19 +130,64 @@ const Reviews: React.FC = () => {
       animate={{ opacity: 1 }}
       className="max-w-[1800px] mx-auto px-6 lg:px-16 py-20"
     >
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-14">
         <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4">
           Patient Reviews
         </p>
         <h1 className="section-text text-brand-navy mb-6">What Our Patients Say</h1>
         <p className="text-base text-brand-navy/60 font-lora">
-          Real experiences from the people who matter most. Read their stories, and share your own
-          visit to Vedanta Netralya below.
+          Real experiences from the people who matter most. Read their stories, review us on Google,
+          or share your feedback below.
         </p>
       </div>
 
+      {/* Google Review QR Hero Card */}
+      <div className="max-w-4xl mx-auto mb-14 bg-gradient-to-br from-brand-navy via-brand-navy-deep to-brand-navy rounded-[3rem] p-8 md:p-12 border border-brand-teal/30 shadow-2xl relative overflow-hidden text-cream">
+        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-brand-teal/10 blur-3xl pointer-events-none" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <div className="md:col-span-8 flex flex-col gap-4 text-left">
+            <div className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-400 px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest self-start">
+              <span>★★★★★</span>
+              <span>Google Verified Reviews</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black leading-tight">
+              Review Us On Google Maps
+            </h2>
+            <p className="text-sm text-cream/80 font-lora leading-relaxed">
+              Your review helps families across Haldwani and Uttarakhand discover trusted, advanced eye care. Scan the QR code with your phone camera or tap below to post your review on Google.
+            </p>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <a
+                href="https://www.google.com/maps?cid=14754978886231398408"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-brand-teal text-brand-navy hover:bg-cream hover:text-brand-navy px-6 py-3.5 rounded-full text-[10px] tracking-widest uppercase font-black transition-all shadow-lg hover:scale-105"
+              >
+                Open Google Maps Review <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <span className="text-[11px] text-cream/60 font-lora">4.9 ★ Average · 500+ Reviews</span>
+            </div>
+          </div>
+
+          <div className="md:col-span-4 flex flex-col items-center justify-center">
+            <div className="bg-white p-4 rounded-3xl shadow-2xl border-2 border-brand-teal/40 flex flex-col items-center group transition-transform hover:scale-105">
+              <img 
+                src="/qr-review.png" 
+                alt="Scan to review Vedanta Netralya on Google" 
+                className="w-36 h-36 md:w-40 md:h-40 object-contain rounded-xl"
+              />
+              <span className="text-[9px] font-black tracking-widest uppercase text-brand-navy mt-2 font-body flex items-center gap-1">
+                <QrCode className="w-3 h-3 text-brand-teal" /> Scan with Phone
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       {/* Review submission form */}
-      <div className="max-w-3xl mx-auto bg-brand-navy text-cream rounded-[3.5rem] border border-cream/10 p-10 md:p-16 shadow-2xl relative overflow-hidden mb-24">
+      <div className="max-w-4xl mx-auto bg-brand-navy text-cream rounded-[3.5rem] border border-cream/10 p-10 md:p-16 shadow-2xl relative overflow-hidden mb-24">
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-teal/10 blur-3xl" />
 
         {submitted ? (
