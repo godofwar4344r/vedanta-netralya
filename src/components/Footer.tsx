@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           {/* Column 2: Specialties & Services (col-span-2) */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <h3 className="text-[10px] tracking-[0.25em] font-black uppercase text-brand-teal font-body">
-              <EditableText id="footer-services-title">Eye Specialties</EditableText>
+              <EditableText id="footer-services-title">Eye Specialities</EditableText>
             </h3>
             <div className="flex flex-col gap-3 font-merriweather text-[10px] tracking-wider uppercase font-bold text-cream/70">
               <Link to="/cataract" className="hover:text-brand-teal-bright hover:translate-x-1 transition-all duration-300 flex items-center gap-1.5">

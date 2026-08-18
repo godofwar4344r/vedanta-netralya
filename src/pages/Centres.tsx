@@ -10,7 +10,7 @@ const Centres: React.FC = () => {
     {
       id: 'haldwani-main',
       title: 'Haldwani Main Branch',
-      tag: 'Super-Specialty Center',
+      tag: 'Super-Speciality Centre',
       address: 'Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139',
       phones: ['05946-223616', '+91 9068561971'],
       email: 'admin@vedantanetralya.com',
@@ -48,7 +48,7 @@ const Centres: React.FC = () => {
             <EditableText id="centres-eyebrow">Location Network</EditableText>
           </p>
           <h1 className="section-text text-brand-navy mb-6">
-            <EditableText id="centres-title">Our Super-Specialty Centres</EditableText>
+            <EditableText id="centres-title">Our Super-Speciality Centres</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora">
             <EditableText id="centres-description">Vedanta Netralya operates primary and consultation locations across Uttarakhand to deliver expert ophthalmic diagnostic scan and surgery suites.</EditableText>
@@ -82,7 +82,7 @@ const Centres: React.FC = () => {
               
               <div>
                 <span className="text-[10px] text-brand-teal tracking-widest font-black uppercase">
-                  <EditableText id={`centre-tag-${centre.id}`}>{centre.tag || 'Specialty Centre'}</EditableText>
+                  <EditableText id={`centre-tag-${centre.id}`}>{centre.tag || 'Speciality Centre'}</EditableText>
                 </span>
                 <h2 className="text-3xl font-black mt-2 mb-6 font-body">
                   <EditableText id={`centre-title-${centre.id}`}>{centre.title || 'Clinic Title'}</EditableText>

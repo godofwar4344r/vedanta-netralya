@@ -187,7 +187,7 @@ const Layout: React.FC = () => {
                     className="absolute top-8 left-0 w-72 bg-brand-navy border border-cream/10 rounded-2xl p-4 flex flex-col gap-3 shadow-xl backdrop-blur-md z-[100] max-h-[80vh] overflow-y-auto"
                   >
                     <Link to="/services" className={`hover:text-brand-teal transition-colors py-1 font-black flex items-center justify-between ${location.pathname === '/services' ? 'text-brand-teal' : 'text-cream/90'}`}>
-                      <span>All Specialties</span>
+                      <span>All Specialities</span>
                       {location.pathname === '/services' && <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />}
                     </Link>
                     <hr className="border-cream/10" />
@@ -267,7 +267,7 @@ const Layout: React.FC = () => {
               <Link to="/facilities" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/facilities' ? 'text-brand-teal font-black' : ''}`}>Facilities</Link>
               <hr className="border-cream/10" />
               <p className="text-[10px] text-brand-teal font-black tracking-widest uppercase">Eye Services</p>
-              <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/services' ? 'text-brand-teal font-black' : ''}`}>All Specialties</Link>
+              <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/services' ? 'text-brand-teal font-black' : ''}`}>All Specialities</Link>
               <Link to="/cataract" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/cataract' ? 'text-brand-teal font-black' : ''}`}>Cataract Surgery</Link>
               <Link to="/refractive-surgery" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/refractive-surgery' ? 'text-brand-teal font-black' : ''}`}>Refractive Surgery</Link>
               <Link to="/retina-services" onClick={() => setIsMobileMenuOpen(false)} className={`pl-4 text-xs ${location.pathname === '/retina-services' ? 'text-brand-teal font-black' : ''}`}>Retina Services</Link>

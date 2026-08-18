@@ -15,7 +15,7 @@ import opticalStore from '../assets/optical-pharmacy-store.jpeg';
 
 const ImageGallery: React.FC = () => {
   const images = [
-    { src: hospitalFacade, title: 'Vedanta Netralya Front Facade', category: 'Hospital Building', tagline: 'Our state-of-the-art super-specialty eye care facility.' },
+    { src: hospitalFacade, title: 'Vedanta Netralya Front Facade', category: 'Hospital Building', tagline: 'Our state-of-the-art super-speciality eye care facility.' },
     { src: drSameerSlitlamp1, title: 'Slit Lamp Examination (Dr. Sameer Varma)', category: 'Diagnostics', tagline: 'Real-time microscopic evaluation of eye structures.' },
     { src: optometristRoom, title: 'Optometry & Refraction Room', category: 'Vision Testing', tagline: 'Advanced visual acuity assessment and objective refraction.' },
     { src: drRjkOpd, title: 'OPD Consulting Chamber (Dr. R.J.K. Singh)', category: 'Consultation', tagline: 'Personal consultation chambers with senior specialists.' },
@@ -37,7 +37,7 @@ const ImageGallery: React.FC = () => {
           <p className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 font-body">Clinical Showcase</p>
           <h1 className="section-text text-brand-navy mb-6 font-body">Image Registry Gallery</h1>
           <p className="text-base text-brand-navy/60 font-lora">
-            A comprehensive tour of our super-specialty diagnostic imaging labs, sterile operation theaters, and patient consultative facilities.
+            A comprehensive tour of our super-speciality diagnostic imaging labs, sterile operation theaters, and patient consultative facilities.
           </p>
         </div>
 

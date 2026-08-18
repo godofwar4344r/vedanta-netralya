@@ -171,16 +171,22 @@ const Reviews: React.FC = () => {
           </div>
 
           <div className="md:col-span-4 flex flex-col items-center justify-center">
-            <div className="bg-white p-4 rounded-3xl shadow-2xl border-2 border-brand-teal/40 flex flex-col items-center group transition-transform hover:scale-105">
+            <a
+              href="https://www.google.com/maps?cid=14754978886231398408"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-navy-deep/80 p-2.5 rounded-3xl shadow-2xl border-2 border-brand-teal/40 flex flex-col items-center group transition-transform hover:scale-105 max-w-[210px]"
+              title="Click to open Google Review page or scan with phone"
+            >
               <img 
-                src="/qr-review.png" 
+                src="/qr-review-card.png" 
                 alt="Scan to review Vedanta Netralya on Google" 
-                className="w-36 h-36 md:w-40 md:h-40 object-contain rounded-xl"
+                className="w-full h-auto object-contain rounded-2xl shadow-inner"
               />
-              <span className="text-[9px] font-black tracking-widest uppercase text-brand-navy mt-2 font-body flex items-center gap-1">
-                <QrCode className="w-3 h-3 text-brand-teal" /> Scan with Phone
+              <span className="text-[9px] font-black tracking-widest uppercase text-brand-teal mt-2 font-body flex items-center gap-1">
+                <QrCode className="w-3 h-3 text-brand-teal" /> Tap or Scan with Phone
               </span>
-            </div>
+            </a>
           </div>
 
         </div>

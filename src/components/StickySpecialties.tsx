@@ -17,7 +17,7 @@ interface Spec {
 
 const SPECS: Spec[] = [
   { num: '01', tag: 'Advanced Micro-Incision', title: 'Cataract Surgery', desc: 'Premium micro-incision phacoemulsification with foldable multifocal and toric IOLs. Painless, with visual recovery inside 24 hours.', stat: '50k+', statLabel: 'Lens implants', stat2: '24 hrs', stat2Label: 'Recovery', img: serviceCataract, path: '/cataract' },
-  { num: '02', tag: 'Vitreoretinal Specialty', title: 'Retina and Vitreous', desc: 'Sutureless micro-incision vitrectomy surgery for diabetic retinopathy, macular holes, and retinal detachment.', stat: '2000+', statLabel: 'Retina surgeries', stat2: '25G', stat2Label: 'Sutureless', img: serviceRetina, path: '/retina-services' },
+  { num: '02', tag: 'Vitreoretinal Speciality', title: 'Retina and Vitreous', desc: 'Sutureless micro-incision vitrectomy surgery for diabetic retinopathy, macular holes, and retinal detachment.', stat: '2000+', statLabel: 'Retina surgeries', stat2: '25G', stat2Label: 'Sutureless', img: serviceRetina, path: '/retina-services' },
   { num: '03', tag: 'Intraocular Pressure Control', title: 'Glaucoma Management', desc: 'Advanced imaging, micro-shunts, and selective laser trabeculoplasty to protect the optic nerve for life.', stat: '7000+', statLabel: 'Glaucoma patients', stat2: 'SLT', stat2Label: 'Laser therapy', img: serviceGlaucoma, path: '/glaucoma-services' },
   { num: '04', tag: 'Eyelid & Orbit Surgery', title: 'Oculoplasty Services', desc: 'Surgical correction of drooping eyelids, blocked tear ducts, and ocular reconstructive procedures.', stat: '8000+', statLabel: 'Procedures', stat2: 'DCR', stat2Label: 'Lacrimal', img: serviceOculoplasty, path: '/oculoplasty-services' },
   { num: '05', tag: 'Squint and Orthoptics', title: 'Pediatric Ophthalmology', desc: 'Gentle, specialised eye care for infants and children, squint correction and structured vision-therapy programs.', stat: '5,000+', statLabel: 'Children treated', stat2: '0-16', stat2Label: 'Age range', img: servicePaediatric, path: '/paediatric-ophthalmology' },
@@ -68,7 +68,7 @@ const StickySpecialties: React.FC = () => {
       <div className="lg:sticky lg:top-0 lg:h-screen flex items-center py-20 lg:py-0">
         <div className="max-w-[1800px] mx-auto px-6 lg:px-16 w-full">
           <div className="mb-10 lg:mb-12">
-            <p className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black mb-4">Our Specialties</p>
+            <p className="text-brand-teal text-[10px] tracking-[0.3em] uppercase font-black mb-4">Our Specialities</p>
             <h2 className="text-4xl lg:text-6xl font-black text-brand-navy leading-[1.02] tracking-tight">
               Six wings of <span className="italic font-light text-brand-teal">ophthalmic excellence.</span>
             </h2>

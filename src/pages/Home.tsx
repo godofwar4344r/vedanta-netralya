@@ -303,7 +303,7 @@ const Home: React.FC = () => {
     { 
       title: 'Retina & Vitreous', 
       num: '02',
-      tag: 'Vitreoretinal Specialty',
+      tag: 'Vitreoretinal Speciality',
       stat: '2000+',
       statLabel: 'Retina Surgeries',
       desc: 'Specialized medical and surgical retinal care for diabetic retinopathy, macular degeneration, and retinal detachment.',
@@ -592,7 +592,7 @@ const Home: React.FC = () => {
                   </span>
                 </h2>
                 <p className="text-lg text-brand-navy/70 font-lora leading-relaxed">
-                  <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-specialty eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced state-of-the-art diagnostic systems, high-definition imaging, and advanced micro-surgical wings to restore visual clarity.</EditableText>
+                  <EditableText id="about-legacy-desc-1">Founded in 2017, Vedanta Netralya has evolved from a premier local eye clinic into North India's elite super-speciality eye care institute. Driven by the mission of providing ethical, world-class ophthalmic care, we have introduced state-of-the-art diagnostic systems, high-definition imaging, and advanced micro-surgical wings to restore visual clarity.</EditableText>
                 </p>
                 <p className="text-base text-brand-navy/60 font-lora leading-relaxed">
                   <EditableText id="about-legacy-desc-2">Under the leadership of a team of ophthalmic experts Dr. Sameer Varma, Dr. R.J.K. Singh, and Dr. Maj Aditya Bhardwaj, the hospital strives to provide premium and comprehensive eye care. Vedanta Netralya is a newly built, air-conditioned hospital which is a leading eye hospital in the Kumaun region of Uttarakhand.</EditableText>
@@ -605,16 +605,24 @@ const Home: React.FC = () => {
 
       {/* === MARQUEE SPECIALTIES === */}
       <EditableContainer id="marquee-specialties">
-        <div className="bg-brand-navy py-6 overflow-hidden relative z-10">
-          <div className="flex marquee-track whitespace-nowrap">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex items-center gap-16 mr-16">
-                {['CATARACT', 'RETINA', 'GLAUCOMA', 'OCULOPLASTY', 'PEDIATRIC', 'REFRACTIVE'].map((item, j) => (
-                  <div key={j} className="flex items-center gap-16">
-                    <span className="text-cream text-2xl font-black tracking-wider">{item}</span>
-                    <span className="text-brand-teal text-xl">✦</span>
-                  </div>
-                ))}
+        <div className="py-6 border-y border-brand-navy/10 overflow-hidden select-none bg-brand-navy-light/30">
+          <div className="flex w-fit animate-marquee">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="flex items-center shrink-0">
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Cataract</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Retina</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Glaucoma</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">LASIK &amp; ICL</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Paediatric</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Oculoplasty</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
+                <span className="font-serif italic text-2xl md:text-3xl text-brand-navy/80 tracking-wide px-8">Optical</span>
+                <span className="text-brand-teal text-xl font-light">✦</span>
               </div>
             ))}
           </div>
@@ -636,7 +644,7 @@ const Home: React.FC = () => {
                 <h2 className="section-text text-brand-navy leading-tight">
                   <EditableText id="specialties-title-1">vedanta</EditableText><br/>
                   <span className="italic font-light text-brand-teal">
-                    <EditableText id="specialties-title-2">specialties.</EditableText>
+                    <EditableText id="specialties-title-2">specialities.</EditableText>
                   </span>
                 </h2>
               </div>
@@ -803,7 +811,7 @@ const Home: React.FC = () => {
                 <h2 className="section-text">
                   <EditableText id="services-title-1">World-Class</EditableText> <br/>
                   <span className="italic font-light text-brand-teal">
-                    <EditableText id="services-title-2">Clinical Specialties.</EditableText>
+                    <EditableText id="services-title-2">Clinical Specialities.</EditableText>
                   </span>
                 </h2>
               </div>
@@ -1172,7 +1180,7 @@ const Home: React.FC = () => {
               <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">Our Locations</span>
               <h2 className="section-text text-brand-navy mb-6">Find Our Centres</h2>
               <p className="text-base text-brand-navy/60 font-lora">
-                Visit our super-specialty eye hospitals. Select a branch below to view its location, clinical timings, and get instant driving directions.
+                Visit our super-speciality eye hospitals. Select a branch below to view its location, clinical timings, and get instant driving directions.
               </p>
             </div>
 
@@ -1180,7 +1188,7 @@ const Home: React.FC = () => {
               {/* Haldwani Card */}
               <div className="bg-brand-navy text-cream rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-cream/5 hover:border-brand-teal/40 transition-all duration-300 flex flex-col justify-between">
                 <div>
-                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Super-Specialty Centre</span>
+                  <span className="text-brand-teal text-[10px] tracking-widest font-black uppercase mb-2 block">Main Super-Speciality Centre</span>
                   <h3 className="text-2xl font-black mb-4">Haldwani Centre</h3>
                   <p className="text-xs text-cream/70 leading-relaxed mb-6 font-lora">
                     Nawabi Rd, near DPS Junior School, Subhash Nagar, Haldwani, Uttarakhand 263139

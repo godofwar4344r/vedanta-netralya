@@ -116,10 +116,10 @@ const Services: React.FC = () => {
             <EditableText id="services-eyebrow">Eye Services</EditableText>
           </p>
           <h1 className="section-text text-brand-navy mb-6">
-            <EditableText id="services-title">Our Super-Specialty Services</EditableText>
+            <EditableText id="services-title">Our Super-Speciality Services</EditableText>
           </h1>
           <p className="text-base text-brand-navy/60 font-lora">
-            <EditableText id="services-description">Vedanta Netralya is a super-specialty eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Maj Aditya Bhardwaj.</EditableText>
+            <EditableText id="services-description">Vedanta Netralya is a super-speciality eye hospital providing premium and comprehensive eye care including Retina, Glaucoma, Oculoplasty, Cataract, and Refractive care under the able leadership of Dr. R.J.K. Singh, Dr. Sameer Varma, and Dr. Maj Aditya Bhardwaj.</EditableText>
           </p>
         </div>
       </EditableContainer>
@@ -130,7 +130,7 @@ const Services: React.FC = () => {
           defaultItems={defaultDepartments}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-24"
           newItemTemplate={{
-            title: 'New Service Specialty',
+            title: 'New Service Speciality',
             desc: 'Describe clinical focus, treatments, and technologies here...',
             iconName: 'Eye',
             path: '/services'

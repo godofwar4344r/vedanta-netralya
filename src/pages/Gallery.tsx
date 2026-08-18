@@ -12,7 +12,7 @@ import hospitalFacade from '../assets/hospital-facade.jpeg';
 
 const Gallery: React.FC = () => {
   const images = [
-    { src: hospitalFacade, title: 'Vedanta Netralya Front Facade', category: 'Hospital Building', tagline: 'Our state-of-the-art super-specialty eye care facility.' },
+    { src: hospitalFacade, title: 'Vedanta Netralya Front Facade', category: 'Hospital Building', tagline: 'Our state-of-the-art super-speciality eye care facility.' },
     { src: drSameerSlitlamp1, title: 'Slit Lamp Examination (Dr. Sameer Varma)', category: 'Diagnostics', tagline: 'Real-time microscopic evaluation of eye structures.' },
     { src: optometristRoom, title: 'Optometry & Refraction Room', category: 'Vision Testing', tagline: 'Advanced visual acuity assessment and objective refraction.' },
     { src: drRjkOpd, title: 'OPD Consulting Chamber (Dr. R.J.K. Singh)', category: 'Consultation', tagline: 'Personal consultation chambers with senior specialists.' },

@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
     },
     {
       q: "What are the outpatient consulting hours of the Haldwani centre?",
-      a: "Our Haldwani super-specialty registry operates from Monday to Saturday, between 9:00 AM and 7:00 PM, and on Sunday from 9:00 AM to 2:00 PM. We advise scheduling an appointment online at `/appointment` or by calling our clinical helpline."
+      a: "Our Haldwani super-speciality registry operates from Monday to Saturday, between 9:00 AM and 7:00 PM, and on Sunday from 9:00 AM to 2:00 PM. We advise scheduling an appointment online at `/appointment` or by calling our clinical helpline."
     }
   ];
 

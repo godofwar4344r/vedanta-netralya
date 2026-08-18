@@ -64,7 +64,7 @@ const RetinaServices: React.FC = () => {
         <EditableContainer id="retina-header" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
           <div className="lg:col-span-7">
             <span className="text-brand-teal text-[10px] tracking-[0.4em] uppercase font-black mb-4 block">
-              <EditableText id="retina-eyebrow">Super-Specialty Care</EditableText>
+              <EditableText id="retina-eyebrow">Super-Speciality Care</EditableText>
             </span>
             <h1 className="section-text text-brand-navy mb-6">
               <EditableText id="retina-title">Retina & Vitreous Services</EditableText>
