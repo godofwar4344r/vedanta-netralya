@@ -23,6 +23,7 @@ const ENDPOINT =
   'https://script.google.com/macros/s/AKfycbwE5JvRRUD9rufqUYU2_dR3uLiLNMhlQX4CW0Ak-pUSAyTsr8lfV5pHeynscw1bqOvq/exec';
 
 const LOCAL_STORAGE_KEY = 'vedanta_clinic_updates';
+const DELETED_STORAGE_KEY = 'vedanta_deleted_updates';
 
 /** Default published updates that show immediately on the live site */
 export const DEFAULT_UPDATES: ClinicUpdate[] = [
@@ -68,6 +69,22 @@ export function normalizeImageUrl(url: string): string {
   return trimmed;
 }
 
+export function getUpdateKey(u: ClinicUpdate): string {
+  return `${(u.title || '').trim().toLowerCase()}--${(u.body || '').trim().slice(0, 40).toLowerCase()}`;
+}
+
+function getDeletedKeys(): Set<string> {
+  if (typeof window === 'undefined') return new Set();
+  try {
+    const raw = localStorage.getItem(DELETED_STORAGE_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  } catch {
+    return new Set();
+  }
+}
+
 function getLocalUpdates(): ClinicUpdate[] {
   if (typeof window === 'undefined') return [];
   try {
@@ -80,15 +97,17 @@ function getLocalUpdates(): ClinicUpdate[] {
   }
 }
 
-/** Synchronously returns initial updates (defaults + localStorage) for instant 0ms rendering */
+/** Synchronously returns initial updates (defaults + localStorage) filtered for deleted items */
 export function getInitialUpdates(): ClinicUpdate[] {
   const local = getLocalUpdates();
+  const deletedKeys = getDeletedKeys();
   const seen = new Set<string>();
   const combined: ClinicUpdate[] = [];
 
   for (const item of [...local, ...DEFAULT_UPDATES]) {
     if (!item || !item.title) continue;
-    const key = `${item.title.trim().toLowerCase()}-${(item.body || '').slice(0, 30).toLowerCase()}`;
+    const key = getUpdateKey(item);
+    if (deletedKeys.has(key)) continue;
     if (!seen.has(key)) {
       seen.add(key);
       combined.push(item);
@@ -115,8 +134,15 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
     imageUrl: cleanImageUrl,
   };
 
-  // 1. Immediately store in localStorage so it appears in the live UI instantly
+  const key = getUpdateKey(newUpdate);
+
+  // 1. Immediately store in localStorage & un-delete if previously deleted
   try {
+    const deleted = getDeletedKeys();
+    if (deleted.has(key)) {
+      deleted.delete(key);
+      localStorage.setItem(DELETED_STORAGE_KEY, JSON.stringify(Array.from(deleted)));
+    }
     const local = getLocalUpdates();
     local.unshift(newUpdate);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(local));
@@ -124,7 +150,7 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
     console.error('Error saving update locally:', e);
   }
 
-  // 2. Sync to Google Apps Script in background without throwing legacy validation errors
+  // 2. Sync to Google Apps Script in background
   try {
     const body = new URLSearchParams({
       type: 'update',
@@ -145,9 +171,43 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
   }
 }
 
+/** Deletes an update permanently from view and storage. */
+export async function deleteUpdate(update: ClinicUpdate, code: string): Promise<void> {
+  const key = getUpdateKey(update);
+
+  // 1. Record deletion locally
+  try {
+    const deleted = getDeletedKeys();
+    deleted.add(key);
+    localStorage.setItem(DELETED_STORAGE_KEY, JSON.stringify(Array.from(deleted)));
+
+    const local = getLocalUpdates().filter(u => getUpdateKey(u) !== key);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(local));
+  } catch (e) {
+    console.error('Error recording deletion locally:', e);
+  }
+
+  // 2. Sync deletion to Google Apps Script if available
+  try {
+    const body = new URLSearchParams({
+      type: 'update_delete',
+      code: code || '0000',
+      title: update.title,
+      date: update.date,
+    });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 3500);
+    await fetch(ENDPOINT, { method: 'POST', body, signal: controller.signal });
+    clearTimeout(timer);
+  } catch (err) {
+    console.warn('Apps Script delete sync notice:', err);
+  }
+}
+
 /** Fetches published updates, newest first. Merges built-in, local, and remote updates. */
 export async function fetchUpdates(): Promise<ClinicUpdate[]> {
   const local = getLocalUpdates();
+  const deletedKeys = getDeletedKeys();
   let remote: ClinicUpdate[] = [];
 
   try {
@@ -171,7 +231,8 @@ export async function fetchUpdates(): Promise<ClinicUpdate[]> {
 
   for (const item of [...local, ...remote, ...DEFAULT_UPDATES]) {
     if (!item || !item.title) continue;
-    const key = `${item.title.trim().toLowerCase()}-${(item.body || '').slice(0, 30).toLowerCase()}`;
+    const key = getUpdateKey(item);
+    if (deletedKeys.has(key)) continue;
     if (!seen.has(key)) {
       seen.add(key);
       combined.push(item);

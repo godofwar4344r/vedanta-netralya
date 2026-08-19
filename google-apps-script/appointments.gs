@@ -124,6 +124,24 @@ function doPost(e) {
       return json_({ ok: true });
     }
 
+    if (p.type === 'update_delete') {
+      if (String(p.code || '') !== UPDATE_CODE) {
+        return json_({ ok: false, error: 'That posting code is not valid.' });
+      }
+      var usheet = getUpdatesSheet_();
+      var ulast = usheet.getLastRow();
+      if (ulast > 1) {
+        var urows = usheet.getRange(2, 1, ulast - 1, UPDATE_HEADERS.length).getValues();
+        for (var u = urows.length - 1; u >= 0; u--) {
+          if (String(urows[u][1]).trim() === String(p.title || '').trim()) {
+            usheet.deleteRow(u + 2);
+            break;
+          }
+        }
+      }
+      return json_({ ok: true });
+    }
+
     // Patient reviews go to a separate tab and start as "Pending".
     if (p.type === 'review') {
       if (!p.name || !p.review) {

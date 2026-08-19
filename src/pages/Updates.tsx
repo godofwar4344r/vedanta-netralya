@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Plus, Megaphone, Calendar, X, Loader2, AlertCircle } from 'lucide-react';
+import { Lock, Plus, Megaphone, Calendar, X, Loader2, AlertCircle, Trash2 } from 'lucide-react';
 import FooterCTA from '../components/FooterCTA';
-import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode, normalizeImageUrl, getInitialUpdates } from '../lib/updates';
+import { ClinicUpdate, fetchUpdates, postUpdate, deleteUpdate, getUpdateKey, verifyUpdateCode, normalizeImageUrl, getInitialUpdates } from '../lib/updates';
 
 const CATEGORIES = ['Offer', 'Announcement', 'OPD Schedule', 'Camp', 'Notice', 'General'];
 
@@ -67,6 +67,24 @@ const Updates: React.FC = () => {
       setPostError(err instanceof Error ? err.message : 'Your update could not be saved.');
     } finally {
       setPosting(false);
+    }
+  };
+
+  const [deletingKey, setDeletingKey] = useState<string | null>(null);
+
+  const handleDelete = async (u: ClinicUpdate) => {
+    if (!window.confirm(`Are you sure you want to delete "${u.title}"?`)) {
+      return;
+    }
+    const key = getUpdateKey(u);
+    setDeletingKey(key);
+    try {
+      await deleteUpdate(u, code);
+      setUpdates(prev => prev.filter(item => getUpdateKey(item) !== key));
+    } catch {
+      alert('Could not delete update. Please try again.');
+    } finally {
+      setDeletingKey(null);
     }
   };
 
@@ -202,14 +220,32 @@ const Updates: React.FC = () => {
                 transition={{ delay: Math.min(i * 0.05, 0.3) }}
                 className="bg-brand-navy text-cream rounded-[2rem] p-6 md:p-8 border border-cream/10 shadow-xl"
               >
-                <div className="flex flex-wrap items-center gap-3 mb-3">
-                  <span className="text-[9px] tracking-[0.2em] uppercase font-black text-brand-teal px-3 py-1 bg-brand-teal/15 rounded-full">
-                    {u.category}
-                  </span>
-                  {u.date && (
-                    <span className="text-[10px] text-cream/50 font-lora flex items-center gap-1.5">
-                      <Calendar className="w-3 h-3" /> {formatDate(u.date)}
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-[9px] tracking-[0.2em] uppercase font-black text-brand-teal px-3 py-1 bg-brand-teal/15 rounded-full">
+                      {u.category}
                     </span>
+                    {u.date && (
+                      <span className="text-[10px] text-cream/50 font-lora flex items-center gap-1.5">
+                        <Calendar className="w-3 h-3" /> {formatDate(u.date)}
+                      </span>
+                    )}
+                  </div>
+                  {unlocked && (
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(u)}
+                      disabled={deletingKey === getUpdateKey(u)}
+                      title="Delete this update"
+                      aria-label="Delete this update"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 hover:bg-rose-600 border border-rose-400/40 text-rose-200 hover:text-white text-[10px] font-black uppercase tracking-wider transition-all disabled:opacity-50"
+                    >
+                      {deletingKey === getUpdateKey(u) ? (
+                        <><Loader2 className="w-3 h-3 animate-spin" /> Deleting…</>
+                      ) : (
+                        <><Trash2 className="w-3 h-3" /> Delete</>
+                      )}
+                    </button>
                   )}
                 </div>
                 {u.imageUrl && (
