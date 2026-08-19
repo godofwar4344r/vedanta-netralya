@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Plus, Megaphone, Calendar, X, Loader2, AlertCircle } from 'lucide-react';
 import FooterCTA from '../components/FooterCTA';
-import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode, normalizeImageUrl } from '../lib/updates';
+import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode, normalizeImageUrl, getInitialUpdates } from '../lib/updates';
 
 const CATEGORIES = ['Offer', 'Announcement', 'OPD Schedule', 'Camp', 'Notice', 'General'];
 
@@ -14,8 +14,7 @@ const formatDate = (iso: string) => {
 };
 
 const Updates: React.FC = () => {
-  const [updates, setUpdates] = useState<ClinicUpdate[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [updates, setUpdates] = useState<ClinicUpdate[]>(() => getInitialUpdates());
 
   // Posting gate
   const [showGate, setShowGate] = useState(false);
@@ -34,9 +33,10 @@ const Updates: React.FC = () => {
   const [postError, setPostError] = useState('');
 
   const load = async () => {
-    setLoading(true);
-    setUpdates(await fetchUpdates());
-    setLoading(false);
+    const list = await fetchUpdates();
+    if (list && list.length > 0) {
+      setUpdates(list);
+    }
   };
 
   useEffect(() => { load(); }, []);
@@ -192,12 +192,7 @@ const Updates: React.FC = () => {
         )}
 
         {/* Feed */}
-        {loading ? (
-          <div className="text-center py-16 text-brand-navy/50">
-            <Loader2 className="w-6 h-6 animate-spin mx-auto mb-3" />
-            <p className="text-sm font-lora">Loading updates…</p>
-          </div>
-        ) : updates.length > 0 ? (
+        {updates.length > 0 ? (
           <div className="space-y-5">
             {updates.map((u, i) => (
               <motion.article

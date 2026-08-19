@@ -43,7 +43,12 @@ export async function verifyUpdateCode(code: string): Promise<boolean> {
   const trimmed = code.trim();
   if (trimmed === '0000' || trimmed === '1234') return true;
   try {
-    const res = await fetch(`${ENDPOINT}?type=update_verify&code=${encodeURIComponent(trimmed)}`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 3000);
+    const res = await fetch(`${ENDPOINT}?type=update_verify&code=${encodeURIComponent(trimmed)}`, {
+      signal: controller.signal,
+    });
+    clearTimeout(timer);
     if (!res.ok) return trimmed === '0000';
     const data = JSON.parse(await res.text());
     return data.verified === true || trimmed === '0000';
@@ -73,6 +78,28 @@ function getLocalUpdates(): ClinicUpdate[] {
   } catch {
     return [];
   }
+}
+
+/** Synchronously returns initial updates (defaults + localStorage) for instant 0ms rendering */
+export function getInitialUpdates(): ClinicUpdate[] {
+  const local = getLocalUpdates();
+  const seen = new Set<string>();
+  const combined: ClinicUpdate[] = [];
+
+  for (const item of [...local, ...DEFAULT_UPDATES]) {
+    if (!item || !item.title) continue;
+    const key = `${item.title.trim().toLowerCase()}-${(item.body || '').slice(0, 30).toLowerCase()}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      combined.push(item);
+    }
+  }
+
+  return combined.sort((a, b) => {
+    const timeA = new Date(a.date).getTime() || 0;
+    const timeB = new Date(b.date).getTime() || 0;
+    return timeB - timeA;
+  });
 }
 
 /** Publishes an update instantly to local storage and syncs to backend. */
@@ -109,7 +136,10 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
       imageUrl: cleanImageUrl,
     });
 
-    await fetch(ENDPOINT, { method: 'POST', body });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    await fetch(ENDPOINT, { method: 'POST', body, signal: controller.signal });
+    clearTimeout(timer);
   } catch (err) {
     console.warn('Apps Script backend sync notice:', err);
   }
@@ -121,7 +151,10 @@ export async function fetchUpdates(): Promise<ClinicUpdate[]> {
   let remote: ClinicUpdate[] = [];
 
   try {
-    const res = await fetch(`${ENDPOINT}?type=updates`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 3500);
+    const res = await fetch(`${ENDPOINT}?type=updates`, { signal: controller.signal });
+    clearTimeout(timer);
     if (res.ok) {
       const data = JSON.parse(await res.text());
       if (data.ok && Array.isArray(data.updates)) {
