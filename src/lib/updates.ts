@@ -39,8 +39,20 @@ export async function verifyUpdateCode(code: string): Promise<boolean> {
   }
 }
 
+export function normalizeImageUrl(url: string): string {
+  if (!url) return '';
+  const trimmed = url.trim();
+  // Google Drive share link converter
+  const gdriveMatch = trimmed.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (gdriveMatch && gdriveMatch[1]) {
+    return `https://lh3.googleusercontent.com/d/${gdriveMatch[1]}`;
+  }
+  return trimmed;
+}
+
 /** Publishes an update. The code is re-checked server-side before anything is written. */
 export async function postUpdate(data: UpdatePayload): Promise<void> {
+  const cleanImageUrl = normalizeImageUrl(data.imageUrl);
   const body = new URLSearchParams({
     type: 'update',
     code: data.code,
@@ -48,7 +60,7 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
     category: data.category,
     body: data.body,
     author: data.author,
-    imageUrl: data.imageUrl,
+    imageUrl: cleanImageUrl,
   });
 
   const res = await fetch(ENDPOINT, { method: 'POST', body });
@@ -60,7 +72,12 @@ export async function postUpdate(data: UpdatePayload): Promise<void> {
   } catch {
     throw new Error('The server returned an unreadable response.');
   }
-  if (!result.ok) throw new Error(result.error || 'Your update could not be saved.');
+  if (!result.ok) {
+    if (result.error === 'Name and phone are required.') {
+      throw new Error('Google Apps Script requires a New Version deployment. Please open the Apps Script editor, save appointments.gs, and deploy a New Version under Manage Deployments.');
+    }
+    throw new Error(result.error || 'Your update could not be saved.');
+  }
 }
 
 /** Fetches published updates, newest first. Never throws, so the page can degrade gracefully. */

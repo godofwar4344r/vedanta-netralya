@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Plus, Megaphone, Calendar, X, Loader2, AlertCircle } from 'lucide-react';
 import FooterCTA from '../components/FooterCTA';
-import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode } from '../lib/updates';
+import { ClinicUpdate, fetchUpdates, postUpdate, verifyUpdateCode, normalizeImageUrl } from '../lib/updates';
 
 const CATEGORIES = ['Offer', 'Announcement', 'OPD Schedule', 'Camp', 'Notice', 'General'];
 
@@ -161,11 +161,16 @@ const Updates: React.FC = () => {
                 className="w-full bg-cream/60 border border-brand-navy/10 rounded-2xl px-5 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:border-brand-teal"
               />
               <p className="text-[11px] text-brand-navy/45 font-lora mt-1.5 px-1">
-                Paste a direct image link to show a poster above the text.
+                Paste a direct image link (ending in .jpg, .png or Google Drive image) to show a poster above the text.
               </p>
+              {imageUrl.trim() && imageUrl.includes('share.icloud.com') && (
+                <p className="text-[11px] text-amber-800 bg-amber-50 border border-amber-200/80 rounded-xl p-2.5 mt-2 font-lora">
+                  💡 <strong>Note on iCloud links:</strong> iCloud sharing links are web pages that require visiting in a browser and cannot be displayed inline as images. For a poster photo, paste a direct image URL (from Google Drive, Imgur, PostImages, or hospital media).
+                </p>
+              )}
               {imageUrl.trim() && (
                 <img
-                  src={imageUrl}
+                  src={normalizeImageUrl(imageUrl)}
                   alt="Poster preview"
                   className="mt-3 max-h-56 rounded-2xl border border-brand-navy/10 object-contain bg-cream/40"
                   onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
@@ -214,7 +219,7 @@ const Updates: React.FC = () => {
                 </div>
                 {u.imageUrl && (
                   <img
-                    src={u.imageUrl}
+                    src={normalizeImageUrl(u.imageUrl)}
                     alt={u.title}
                     loading="lazy"
                     className="w-full max-h-[26rem] object-contain rounded-2xl border border-cream/10 bg-brand-navy-deep mb-4"
