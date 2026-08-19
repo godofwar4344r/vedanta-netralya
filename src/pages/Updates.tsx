@@ -34,9 +34,7 @@ const Updates: React.FC = () => {
 
   const load = async () => {
     const list = await fetchUpdates();
-    if (list && list.length > 0) {
-      setUpdates(list);
-    }
+    setUpdates(list || []);
   };
 
   useEffect(() => { load(); }, []);
